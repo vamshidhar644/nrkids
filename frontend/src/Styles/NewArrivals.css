@@ -1,0 +1,138 @@
+
+.New-Arrivals{    
+    padding: 30px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+.New-Arrivals h2{
+    font-family: 'Oswald', sans-serif;
+}
+
+.Cards-Container{
+    display: flex;
+    gap: 20px;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.Cards-Container::-webkit-scrollbar {
+    width: 0.5em; /* Set the width of the scrollbar */
+  }
+  
+  .Cards-Container::-webkit-scrollbar-track {
+    background-color: transparent; /* Set the background color of the scrollbar track */
+  }
+  
+  .Cards-Container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set the background color of the scrollbar thumb */
+  }
+
+.card img{
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    width: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    
+  }
+  
+  .card::before,
+  .card::after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: lightblue;
+    opacity: 0.8;
+    transition: all 0.5s;
+  }
+  
+  .card::before {
+    top: 0;
+    right: 0;
+    border-radius: 0 15px 0 100%;
+  }
+  
+  .card::after {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 100%  0 15px;
+  }
+  
+  .card:hover::before,
+  .card:hover:after {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 15px;
+    transition: all 0.7s;
+    
+  }
+
+  .card .image2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.6s;
+  }
+
+  
+  .card:hover .image2{
+    opacity: 1;
+    transition: opacity 0.6s;
+  }
+
+  .Main-Card .title{
+    font-family: 'Kanit', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+
+  .Main-Card .price{
+    font-weight: 400;
+    text-align: center;
+  }
+
+
+  
+/* Smart phones */
+@media screen and (max-width: 600px) {
+  .card{
+    width: 180px;
+  }
+  
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+  
+}
+
+/* Monitors */
+@media screen and (min-width: 1200px) {
+  
+}

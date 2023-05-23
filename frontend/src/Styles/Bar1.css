@@ -1,0 +1,86 @@
+.bar1-container{
+    padding: 12px;
+}
+
+.bar1-content{
+    width: 100%;
+    background-color: rgb(239, 162, 187);
+    padding: 14px;
+    display: flex;
+    text-align: center;
+    align-items: first baseline;
+}
+
+.bar-box1 {
+    /* float: left; */
+    width: 50%;
+    position: relative;
+  }
+  
+  .bar-box2 {
+    /* float: left; */
+    width: 50%;
+  }
+  
+  .bar-box1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: black;
+  }
+  
+
+.bar1-content h3{
+    font-weight: 800;
+}
+
+.bar-box1 p{
+  padding: 0px 12px;
+}
+
+.bar1-content p{
+    margin: 0px;
+    /* padding: 3px; */
+    font-weight: 600;
+}
+
+p a{
+    text-decoration: none;
+    color: black;
+}
+
+  
+/* Smart phones */
+@media screen and (max-width: 600px) {
+ .bar1-content{
+  flex-direction: column;
+ }
+ .bar-box1, .bar-box2{
+  width: 100%;
+  position: initial;
+ }
+ .bar1-content .mid-line{
+  height: 1px;
+  width: 100%;
+  background-color: black;
+ }
+}
+
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+  
+}
+
+/* Monitors */
+@media screen and (min-width: 1200px) {
+  
+}

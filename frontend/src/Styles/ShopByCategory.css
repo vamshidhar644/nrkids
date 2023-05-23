@@ -1,0 +1,149 @@
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .line {
+    background-color: black;
+    width: 100%;
+    height: 3px;
+  }
+  
+.Category-Container{
+    padding: 20px;
+}
+
+.title-container h1{
+    background-color: white;
+    z-index: 1;
+    font-size: 34px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* From uiverse.io by @FrM-bot */
+.cat-card {
+  height: min-content;
+  transition: all .3s;
+  position: relative;
+  border-radius: .5rem 2rem;
+  box-shadow: 0px 15px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+.cat-card:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.cat-img {
+  transition: all .3s;
+  background: #ff0084;
+  background: -webkit-linear-gradient(to right, #33001b, #ff0084);
+  background: linear-gradient(to right, #33001b, #ff0084);
+  width: 100%;
+}
+
+.cat-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.cat-img:hover {
+  transform: scale(1.1);
+}
+
+.cat-img-container {
+  display: grid;
+  border-radius: .5rem 2rem;
+  overflow: hidden;
+}
+
+.cat-description {
+  position: absolute;
+  bottom: .5rem;
+  left: .5rem;
+  text-align: start;
+  padding: .5rem 1em;
+  width: 90%;
+  transition: all 0.5s ease;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  backdrop-filter: blur(.4rem);
+  background-color: rgba(244, 244, 244, 0.2);
+  border-radius: .5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .cat-description:hover {
+  transform: perspective(100px) translateX(7px) rotateX(3deg) rotateY(3deg) scale(1);
+  box-shadow: none;
+} */
+
+.cat-title {
+  color: black;
+  font-weight: 600;
+}
+
+.Cat-Card-Container{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    padding: 0px 6px;
+    padding: 10px 12px;
+    text-align: center;
+
+}
+
+.shop-button p{
+  padding: 2px 24px;
+  margin: 0px;
+  border: 1.5px solid black;
+  border-radius: 4px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.shop-button p:hover{
+  background-color: black;
+  color: #fff;
+}
+
+/* Smart phones */
+@media screen and (max-width: 600px) {
+  .Cat-Card-Container{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+  .shop-button{
+    display: none;
+  }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+  
+}
+
+/* Monitors */
+@media screen and (min-width: 1200px) {
+  
+}
