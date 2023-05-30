@@ -9,7 +9,6 @@ import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import SearchBar from './SearchBar';
 
-import '../Styles/NavbarItems.css'; // Import your CSS file for styling
 import { AiOutlineMenu } from 'react-icons/ai';
 import NavbarItems from './NavbarItems';
 
@@ -25,18 +24,19 @@ const Navigation = () => {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [Visibility, setVisibility] = useState('hidden');
-  const [navbarFixed, setNavbarFixed] = useState('');
+  // const [navbarFixed, setNavbarFixed] = useState('');
+  const [navHeight, setHeight] = useState('');
   const [navtop, setNavtop] = useState('');
 
   const handleNavToggle = () => {
     setIsNavOpen(!isNavOpen);
     setVisibility(isNavOpen ? 'visible' : 'hidden');
-    setNavbarFixed(isNavOpen ? '' : 'fixed');
-    setNavtop(isFixed ? '83.729px' : '')
+    setNavtop(isFixed ? '83.729px' : '');
+    setHeight(isNavOpen ? '' : '100vh');
   };
 
   const [isFixed, setIsFixed] = useState(false);
-
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
@@ -60,8 +60,12 @@ const Navigation = () => {
           </div>
         </div>
         <div className="navbar-nav-section2">
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <h1>nrKids</h1>
+          <Link
+            to="/"
+            style={{ textDecoration: 'none' }}
+            className="Brand-logo"
+          >
+            nrKids
           </Link>
         </div>
         <div className="navbar-nav-section3">
@@ -112,7 +116,13 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-      <NavbarItems navbarColor={Visibility} isNavOpen={isNavOpen} navTop={navtop}/>
+      <NavbarItems
+        navbarColor={Visibility}
+        isNavOpen={isNavOpen}
+        navTop={navtop}
+        navHeight={navHeight}
+        onClick={handleNavToggle}
+      />
     </div>
   );
 };

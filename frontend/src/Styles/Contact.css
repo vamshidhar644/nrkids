@@ -1,0 +1,26 @@
+.Chat-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.Chat-Container h1{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.Chat-Container p{
+    margin: 0px;
+}
+
+.Chat-Container .contact-button{
+    padding: 16px;
+}
+
+.contact-button p{
+    color: #fff;
+    padding: 12px 26px;
+    background-color: black;
+}

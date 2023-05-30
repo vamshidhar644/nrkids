@@ -3,6 +3,7 @@ import '../Styles/NewArrivals.css';
 // import sanityClient, { urlFor, builder } from '../client';
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import { NavLink } from 'react-router-dom';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -40,13 +41,20 @@ const NewArrivals = () => {
           NewArrivals.map((newarrivals) => {
             return (
               <div className="Main-Card" key={newarrivals.title}>
-                <div className="card">
-                  <img className='image1' src={getImageUrl(newarrivals.images[0])} alt="" />
-                  <img className='image2' src={getImageUrl(newarrivals.images[1])} alt="" />
-
-                </div>
-                <p className='title'>{newarrivals.title}</p>
-                <p className='price'>Rs.{newarrivals.price}</p>
+                <NavLink className="card" to={`/new-arrivals/${newarrivals.path}`}>
+                  <img
+                    className="image1"
+                    src={getImageUrl(newarrivals.images[0])}
+                    alt=""
+                  />
+                  <img
+                    className="image2"
+                    src={getImageUrl(newarrivals.images[1])}
+                    alt=""
+                  />
+                </NavLink>
+                <p className="title">{newarrivals.title}</p>
+                <p className="price">Rs.{newarrivals.price}</p>
               </div>
             );
           })}

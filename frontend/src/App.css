@@ -11,6 +11,19 @@
     min-height: 100vh;
 }
 
+
+body::-webkit-scrollbar {
+    width: 0.2em; /* Set the width of the scrollbar */
+  }
+  
+body::-webkit-scrollbar-track {
+    background-color: black; /* Set the background color of the scrollbar track */
+  }
+  
+body::-webkit-scrollbar-thumb {
+    background-color: orangered; /* Set the background color of the scrollbar thumb */
+  }
+
 .App-Container{
     display: flex;
     text-align: center;

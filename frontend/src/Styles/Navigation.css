@@ -1,16 +1,5 @@
 
-
-.collapse{
-    width: 100%;
-}
-
-.navbar-collapse ul{
-    display: flex;
-    flex-direction: column;
-}
-
 .navbar-nav{
-    width: 100%;
     display: flex;
     align-items: left;
     flex-direction: row;
@@ -18,44 +7,29 @@
 }
 
 .navbar-nav-section1, .navbar-nav-section3{
-    width: 45%;
-    
-}
-
-.navbar-nav-section3{
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.navbar-nav h1{
-    text-align: right;
-    color: var(--bs-font-color);
+.Brand-logo{
+    display: flex;
+    padding: 0px 8px;
+    font-size: 36px;
     font-weight: 600;
-    padding: 0px 10px;
-    font-family: 'Raleway', sans-serif;
-}
-
-.nav-item{
-    width: fit-content;
+    color: orangered;
 }
 
 .input-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 10px;
     padding: 0px 16px;
-    position: relative;
-    font-size: 25px;
-    font-weight: bolder;
 }
 
 .login-section-icons{
     cursor: pointer;
-    color: var(--secondary-color);
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -65,10 +39,7 @@
     align-items: center;
     gap: inherit;
     color: var(--secondary-color);
-}
-
-.login-section-icons:hover{
-    color: var(--bs-font-color);
+    white-space: nowrap;
 }
 
 .user-firstname{
@@ -76,26 +47,13 @@
     font-weight: 500;
     font-size: 20px;
 }
-  
-ul{
-    list-style: none;
-}
-
-ul li {
-    display: inline-block;
-    position: relative;
-    line-height: 30px;
-}
 
 ul li a {
-    display: block;
-    border: 2px solid transparent;
-    font-weight: 500;
     color: #000;
     text-decoration: none;
 }
 
-ul li a:hover {
+.navbar-link a:hover {
     cursor: pointer;
     color: var(--secondary-color);
 }
@@ -103,21 +61,39 @@ ul li a:hover {
 ul li ul.down-dropdown {
     font-size: 14px;
     background: #fff;
-    display: none;
     border-radius: 6px;
+    overflow: hidden;
+    display: none;
     position: absolute;
-    top: 0%;
-    right: 0%;
     width: 150px;
     z-index: 10;
+    padding: 0px;
 }
+
 
 ul li:hover ul.down-dropdown {
     display: block; /* Display the dropdown */
 }
 
+
+.navbar-link:hover .dropdown {
+    display: block; /* Display the dropdown */
+}
+
+.nav-item:hover {
+    cursor: pointer;
+    background-color: #000;
+}
+
+.nav-item:hover .nav-item-a{
+    color: var(--secondary-color);
+}
+
 ul li ul.down-dropdown li {
     display: block;
+    font-size: 16px;
+    padding: 8px;
+    list-style: none;
 }
 
 .down-dropdown li a{
@@ -177,32 +153,108 @@ ul li ul.down-dropdown li {
     
   }
 
+
+  .navbar-toggle { 
+    display: none;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  .navbar-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar-link {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  .Close-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    font-size: 30px;
+  }
+
+  .cross-icon{
+    cursor: pointer;
+  }
+
+  .cross-btn{
+    display: none;
+  }
   
 /* Smart phones */
 @media screen and (max-width: 600px) {
-    
-    .navigation-container{
-        z-index: 99;
-        background-color: #fff;
-    }
-    
-    .navbar-nav-section1, .navbar-nav-section2, .navbar-nav-section3{
-        width: fit-content;
-        padding: 0px;
+.navbar-nav-section1, .navbar-nav-section2, .navbar-nav-section3{
+    width: fit-content;
+    padding: 0px;
+}
+
+.login-section-icons{
+    width: 30px;
+}
+.Close-navbar{
+    display: flex;
+    justify-content: flex-end;
+}
+ul li ul.down-dropdown {
+    font-size: 14px;
+    background: #fff;
+    display: none;
+    border-radius: 6px;
+    position: absolute;
+    right: 0%;
+}
+
+.user-firstname{
+    display: none;
+}
+
+.navbar{
+    z-index: 7;
+    display: none;
+    position: fixed;
+    top: 0%;
+    opacity: 0.85;
+    width: 80%;
     }
 
-    .login-section-icons{
-        width: 35px;
+    .navbar.navbar-open{
+    display: block; 
     }
 
-    .group{
-        padding: 0px;
+    .navbar-link{
+    width: 100%;
+    padding: 12px;
     }
     
-    .navbar-nav-section1, .navbar-nav-section2{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .navbar-toggle{
+    display: flex;
+
+    }
+    
+    .navbar-links.open {
+    display: flex;
+    background-color: #000;
+    flex-direction: column;
+    border-bottom-right-radius: 10px;
+    }
+    .navbar-link a{
+    color: #f2f2f2;
     }
 
   }

@@ -17,7 +17,7 @@ const Signup = () => {
   };
   return (
     <div className="Signup-Container">
-      <div className="card">
+      <div className="login-card">
         <div className="signup">Signup</div>
         <div className='signup-box'>
         <div className="inputBox">
@@ -58,7 +58,7 @@ const Signup = () => {
           have an account? <span>login</span>
         </Link>
       </div>
-      <img src='../../../Assets/login-bg.jpg' width={400} className='login-bg' alt=''/>
+      {/* <img src='../../../Assets/login-bg.jpg' width={400} className='login-bg' alt=''/> */}
     </div>
     // <form className="signup" onSubmit={handleSubmit}>
     //   <h3>Sign up</h3>

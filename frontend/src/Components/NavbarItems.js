@@ -8,10 +8,13 @@ const NavbarItems = (props) => {
       className={`navbar ${props.isNavOpen ? 'navbar-open' : ''}`}
       style={{ padding: '0px', visibility: props.isNavOpen }}
     >
-      <ul className={`navbar-links ${props.isNavOpen ? 'open' : ''}`}>
-        {/* <li className={`${props.isNavOpen ? 'Close-navbar' : ''}`}>
-            <AiFillCloseSquare/>
-        </li> */}
+      <ul
+        className={`navbar-links ${props.isNavOpen ? 'open' : ''}`}
+        style={{ height: props.navHeight }}
+      >
+        <li className={`cross-btn ${props.isNavOpen ? 'Close-navbar' : ''}`}>
+          <AiFillCloseSquare onClick={props.onClick} className="cross-icon" />
+        </li>
         <li className="navbar-link">
           <NavLink to="/">HOME</NavLink>
         </li>
@@ -21,29 +24,43 @@ const NavbarItems = (props) => {
         <li className="navbar-link">
           <NavLink to="/sample-sale">SAMPLE SALE</NavLink>
         </li>
-        <li className="navbar-link">
+        <li className="navbar-link ">
           <NavLink>SHOP BY CATEGORY</NavLink>
           <ul className="down-dropdown">
-            <li className="nav-item-a">
-              <NavLink to="/first-birthday">First Birthday</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/first-birthday">
+                First Birthday
+              </NavLink>
             </li>
-            <li className="nav-item-a">
-              <NavLink to="/new-arrivals">New Arrivals</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/new-arrivals">
+                New Arrivals
+              </NavLink>
             </li>
-            <li className="nav-item-a">
-              <NavLink to="/ethnic-wear">Ethnic wear</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/ethnic-wear">
+                Ethnic wear
+              </NavLink>
             </li>
-            <li className="nav-item-a">
-              <NavLink to="party-wear">Party wear</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/party-wear">
+                Party wear
+              </NavLink>
             </li>
-            <li className="nav-item-a">
-              <NavLink to="/gowns">Gowns</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/gowns">
+                Gowns
+              </NavLink>
             </li>
-            <li className="nav-item-a">
-              <NavLink to="/dresses">Dresses</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/dresses">
+                Dresses
+              </NavLink>
             </li>
-            <li className="nav-item-a">
-              <NavLink to="/accessories">Accessories</NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/accessories">
+                Accessories
+              </NavLink>
             </li>
           </ul>
         </li>
@@ -51,7 +68,7 @@ const NavbarItems = (props) => {
           <NavLink to="/teens">TEENS</NavLink>
         </li>
         <li className="navbar-link">
-          <NavLink to="/events">GOWNS</NavLink>
+          <NavLink to="/gowns">GOWNS</NavLink>
         </li>
         <li className="navbar-link">
           <NavLink to="/accessories">ACCESSORIES</NavLink>
@@ -60,13 +77,13 @@ const NavbarItems = (props) => {
         <li className="navbar-link">
           <NavLink>DRESSES</NavLink>
           <ul className="down-dropdown">
-            <li>
-              <NavLink to="/short-dresses" className="nav-item-a">
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/short-dresses">
                 Short dresses
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/high-low-dresses" className="nav-item-a">
+            <li className="nav-item">
+              <NavLink className="nav-item-a" to="/high-low-dresses">
                 High low dresses
               </NavLink>
             </li>

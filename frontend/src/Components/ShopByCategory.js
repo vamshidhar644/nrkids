@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../Styles/ShopByCategory.css';
 import sanityClient from '../client';
+import { NavLink } from 'react-router-dom';
 
 const ShopByCategory = () => {
   const [Categories, setCategories] = useState(null);
@@ -25,20 +26,26 @@ const ShopByCategory = () => {
         {Categories &&
           Categories.map((categories) => {
             return (
-              <div>
-                <div className="cat-card">
-                <div className="cat-img-container">
-                  <div className="cat-img">
-                    <img src={categories.image.asset.url} alt="" />
+              <div key={categories.path}>
+                <NavLink
+                  to={`/categories/${categories.path}`}
+                  className="cat-card"
+                >
+                  <div className="cat-img-container">
+                    <div className="cat-img">
+                      <img src={categories.image.asset.url} alt="" />
+                    </div>
+                    <div className="cat-description cat-card">
+                      <span className="cat-title">{categories.title}</span>
+                    </div>
                   </div>
-                  <div className="cat-description cat-card">
-                    <span className="cat-title">{categories.title}</span>
-                  </div>
-                </div>
-              </div>
-              <div className='shop-button'>
-                <p>Shop</p>
-              </div>
+                </NavLink>
+                <NavLink
+                  to={`/categories/${categories.path}`}
+                  className="shop-button"
+                >
+                  <p>Shop</p>
+                </NavLink>
               </div>
             );
           })}

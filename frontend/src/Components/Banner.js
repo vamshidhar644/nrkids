@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import sanityClient from '../client';
+import { NavLink } from 'react-router-dom';
 
 const Banner = () => {
   const [Banner, setBanner] = useState('');
@@ -19,7 +20,9 @@ const Banner = () => {
       {Banner &&
         Banner.map((homedata) => (
           <Carousel.Item className="Carousel-Item" key={homedata.path}>
-            <img src={homedata.image.asset.url} alt="" />
+            <NavLink to={`${homedata.path}`}>
+              <img src={homedata.image.asset.url} alt="" />
+            </NavLink>
           </Carousel.Item>
         ))}
     </Carousel>
