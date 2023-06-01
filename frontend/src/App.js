@@ -1,16 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import Navigation from './Components/Navigation';
+import Navigation from './Components/NavigationBar/Navigation';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { useAuthContext } from './hooks/useAuthContext';
 import Favorites from './pages/Favorites';
 import Cart from './pages/Cart';
 
-import Banners from './pages/Banners';
-import NewArrivals from './pages/NewArrivals';
 import Categories from './pages/Categories';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   const { user } = useAuthContext();
@@ -18,8 +17,6 @@ function App() {
     <>
       <BrowserRouter>
         <Navigation />
-        {/* <NavbarItems/> */}
-        {/* <div className="pages"> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -33,12 +30,11 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/your-bag" element={<Cart />} />
 
-          <Route path="/:bannerpath" element={<Banners />} />
           <Route
-            path="/new-arrivals/:newarrivalpath"
-            element={<NewArrivals />}
+            path="/shop-by-category/:categorypath"
+            element={<Categories />}
           />
-          <Route path="/categories/:categorypath" element={<Categories />} />
+          <Route path="/:productparent/:product" element={<ProductPage />} />
         </Routes>
         {/* </div> */}
       </BrowserRouter>

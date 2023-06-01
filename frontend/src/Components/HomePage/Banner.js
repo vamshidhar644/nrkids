@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import sanityClient from '../client';
+import sanityClient from '../../client';
 import { NavLink } from 'react-router-dom';
 
 const Banner = () => {
@@ -9,18 +9,24 @@ const Banner = () => {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "banner"] {title, path, image {asset -> {_id, url}, alt}}`
+        `*[_type == "banner"] {title, path, image {asset -> {_id, url}, alt}, images}`
       )
       .then((HomeData) => setBanner(HomeData))
       .catch(console.error);
   });
+  
 
   return (
     <Carousel className="Carousel-Container">
       {Banner &&
         Banner.map((homedata) => (
           <Carousel.Item className="Carousel-Item" key={homedata.path}>
-            <NavLink to={`${homedata.path}`}>
+            <NavLink
+              to={`/sale/${homedata.path}`}
+              state={{
+                data: homedata,
+              }}
+            >
               <img src={homedata.image.asset.url} alt="" />
             </NavLink>
           </Carousel.Item>

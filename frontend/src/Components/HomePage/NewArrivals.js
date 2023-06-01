@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../Styles/NewArrivals.css';
-// import sanityClient, { urlFor, builder } from '../client';
+import '../../Styles/HomePage/NewArrivals.css';
+
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import { NavLink } from 'react-router-dom';
@@ -41,7 +41,13 @@ const NewArrivals = () => {
           NewArrivals.map((newarrivals) => {
             return (
               <div className="Main-Card" key={newarrivals.title}>
-                <NavLink className="card" to={`/new-arrivals/${newarrivals.path}`}>
+                <NavLink
+                  className="card"
+                  to={`/new-arrivals/${newarrivals.path}`}
+                  state={{
+                    data: newarrivals,
+                  }}
+                >
                   <img
                     className="image1"
                     src={getImageUrl(newarrivals.images[0])}
@@ -54,7 +60,7 @@ const NewArrivals = () => {
                   />
                 </NavLink>
                 <p className="title">{newarrivals.title}</p>
-                <p className="price">Rs.{newarrivals.price}</p>
+                <p className="price">From Rs.{newarrivals.price}</p>
               </div>
             );
           })}

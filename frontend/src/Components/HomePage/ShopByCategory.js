@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../Styles/ShopByCategory.css';
-import sanityClient from '../client';
+import '../../Styles/HomePage/ShopByCategory.css';
+import sanityClient from '../../client';
 import { NavLink } from 'react-router-dom';
 
 const ShopByCategory = () => {
@@ -28,7 +28,7 @@ const ShopByCategory = () => {
             return (
               <div key={categories.path}>
                 <NavLink
-                  to={`/categories/${categories.path}`}
+                  to={`/shop-by-category/${categories.path}`}
                   className="cat-card"
                 >
                   <div className="cat-img-container">
@@ -41,7 +41,7 @@ const ShopByCategory = () => {
                   </div>
                 </NavLink>
                 <NavLink
-                  to={`/categories/${categories.path}`}
+                  to={`/shop-by-category/${categories.path}`}
                   className="shop-button"
                 >
                   <p>Shop</p>

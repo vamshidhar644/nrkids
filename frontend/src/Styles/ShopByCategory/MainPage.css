@@ -1,0 +1,26 @@
+.Main-Category-Container{
+    min-height: 100vh;
+    background-color: #efefef;
+    display: flex;
+    gap: 18px;
+    padding: 12px;
+}
+
+.filter-container{
+    width: 300px;
+    background-color: #fff;
+}
+
+.products-container{
+    width: 100%;
+    background-color: #fff;
+    padding: 8px;
+    padding-bottom: 60px;
+}
+
+.Product-Grid{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-around;
+    gap: 24px;
+}

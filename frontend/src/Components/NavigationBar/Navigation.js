@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../Styles/Navigation.css';
+import '../../Styles/Navigation/Navigation.css';
 import { Link } from 'react-router-dom';
 
-import { useLogout } from '../hooks/useLogout';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useLogout } from '../../hooks/useLogout';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
@@ -36,7 +36,7 @@ const Navigation = () => {
   };
 
   const [isFixed, setIsFixed] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;

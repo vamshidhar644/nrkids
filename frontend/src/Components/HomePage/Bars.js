@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/Bars.css';
+import '../../Styles/HomePage/Bars.css';
 
 import { TbTruckDelivery } from 'react-icons/tb';
 import { GiReturnArrow } from 'react-icons/gi';

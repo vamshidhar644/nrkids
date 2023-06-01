@@ -1,11 +1,11 @@
 import React from 'react';
-import '../Styles/Home.css';
-import Banner from '../Components/Banner';
-import NewArrivals from '../Components/NewArrivals';
-import ShopByCategory from '../Components/ShopByCategory';
-import Reviews from '../Components/Reviews';
-import { Bar1, Bar2 } from '../Components/Bars';
-import Contact from '../Components/Contact';
+import '../Styles/HomePage/Home.css';
+import Banner from '../Components/HomePage/Banner';
+import NewArrivals from '../Components/HomePage/NewArrivals';
+import ShopByCategory from '../Components/HomePage/ShopByCategory';
+import Reviews from '../Components/HomePage/Reviews';
+import { Bar1, Bar2 } from '../Components/HomePage/Bars';
+import Contact from '../Components/HomePage/Contact';
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       <ShopByCategory />
       <Reviews />
       <Bar2 />
-      <Contact/>
+      <Contact />
     </div>
   );
 };

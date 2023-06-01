@@ -19,7 +19,7 @@ const NavbarItems = (props) => {
           <NavLink to="/">HOME</NavLink>
         </li>
         <li className="navbar-link">
-          <NavLink to="/new-arrivals">NEW ARRIVALS</NavLink>
+          <NavLink to={`/shop-by-category/new-arrivals`}>NEW ARRIVALS</NavLink>
         </li>
         <li className="navbar-link">
           <NavLink to="/sample-sale">SAMPLE SALE</NavLink>
@@ -28,37 +28,52 @@ const NavbarItems = (props) => {
           <NavLink>SHOP BY CATEGORY</NavLink>
           <ul className="down-dropdown">
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/first-birthday">
+              <NavLink
+                className="nav-item-a"
+                to={`/shop-by-category/first-birthday`}
+              >
                 First Birthday
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/new-arrivals">
+              <NavLink
+                className="nav-item-a"
+                to="/shop-by-category/new-arrivals"
+              >
                 New Arrivals
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/ethnic-wear">
+              <NavLink
+                className="nav-item-a"
+                to="/shop-by-category/ethnic-wear"
+              >
                 Ethnic wear
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/party-wear">
+              <NavLink
+                className="nav-item-a"
+                to={`/shop-by-category/party-wear`}
+              >
                 Party wear
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/gowns">
+              <NavLink className="nav-item-a" to="/shop-by-category/gowns">
                 Gowns
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/dresses">
+              <NavLink className="nav-item-a" to="/shop-by-category/dresses">
                 Dresses
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-item-a" to="/accessories">
+              <NavLink
+                className="nav-item-a"
+                to="/shop-by-category/accessories"
+              >
                 Accessories
               </NavLink>
             </li>
