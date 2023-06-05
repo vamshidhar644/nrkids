@@ -1,17 +1,19 @@
-const express = require('express')
+const express = require('express');
 
 // controller functions
-const { signupUser, loginUser } = require('../controllers/userController')
+const { signupUser, loginUser, cartfunction } = require('../controllers/userController');
 
-
-const router = express.Router()
+const router = express.Router();
 
 // login route
-router.post('/login', loginUser)
-
+router.post('/login', loginUser);
 
 // signup route
-router.post('/signup', signupUser)
+router.post('/signup', signupUser);
 
+// add to cart
 
-module.exports = router
+router.post('/:userid/cart', cartfunction)
+
+module.exports = router;
+ 

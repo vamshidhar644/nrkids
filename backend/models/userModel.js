@@ -5,6 +5,10 @@ const validator = require('validator');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  _id: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     required: true,
@@ -22,16 +26,35 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  cartItems: [
+    {
+      productId: {
+        type: String ,
+        ref: 'Product',
+      },
+      quantity: {
+        type: Number,
+        default: 1,
+      },
+      price: {
+        type: Number,
+      },
+    },
+  ],
 });
 
 // static signup method
 userSchema.statics.signup = async function (
+  _id,
   firstName,
   lastName,
   email,
   password
 ) {
   // validation
+  if(!_id){
+    throw Error('Email is required');    
+  }
   if (!email) {
     throw Error('Email is required');
   }
@@ -60,6 +83,7 @@ userSchema.statics.signup = async function (
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
   const user = await this.create({
+    _id,
     firstName,
     lastName,
     email,

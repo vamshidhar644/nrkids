@@ -4,6 +4,7 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 
 const userRoutes = require('./routes/user');
+const cartRoutes = require('./routes/cart');
 // Express app
 const app = express();
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/user', userRoutes);
+app.use('/api/cart', cartRoutes);
 
 mongoose.set('strictQuery', false);
 
@@ -30,7 +32,7 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error); 
+    console.log(error);
   });
 
 process.env;
