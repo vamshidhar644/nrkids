@@ -1,11 +1,16 @@
 const express = require('express');
 
 // controller functions
-const { cartitems } = require('../controllers/cartController');
+const {
+  Setcartitems,
+  Deletecartitems,
+} = require('../controllers/cartController');
 
 const router = express.Router();
 
 // login route
-router.post('/:userid', cartitems);
+router.post('/:userid', Setcartitems);
+
+router.delete('/:userid', Deletecartitems);
 
 module.exports = router;

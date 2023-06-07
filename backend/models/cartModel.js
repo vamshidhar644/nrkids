@@ -3,12 +3,13 @@ const Schema = mongoose.Schema;
 
 // Define a schema for the cart
 const cartSchema = new mongoose.Schema({
-  productId: String,
+  _id: String,
   price: Number,
   users: [
     {
       userId: String,
       quantity: Number,
+      size: String,
     },
   ],
 });
