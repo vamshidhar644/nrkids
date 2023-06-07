@@ -28,17 +28,10 @@ const userSchema = new Schema({
   },
   cartItems: [
     {
-      productId: {
-        type: String ,
-        ref: 'Product',
-      },
-      quantity: {
-        type: Number,
-        default: 1,
-      },
-      price: {
-        type: Number,
-      },
+      productId: String,
+      price: Number,
+      quantity: Number,
+      size: String,
     },
   ],
 });
@@ -52,8 +45,8 @@ userSchema.statics.signup = async function (
   password
 ) {
   // validation
-  if(!_id){
-    throw Error('Email is required');    
+  if (!_id) {
+    throw Error('Email is required');
   }
   if (!email) {
     throw Error('Email is required');

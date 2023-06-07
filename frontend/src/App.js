@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Navigation from './Components/NavigationBar/Navigation';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import { useAuthContext } from './hooks/useAuthContext';
+import { UseAuthContext } from './hooks/useAuthContext';
 import Favorites from './pages/Favorites';
 import Cart from './pages/Cart';
 
@@ -12,7 +12,7 @@ import Categories from './pages/Categories';
 import ProductPage from './pages/ProductPage';
 
 function App() {
-  const { user } = useAuthContext();
+  const { user } = UseAuthContext();
   return (
     <>
       <BrowserRouter>

@@ -3,7 +3,7 @@ import '../../Styles/Navigation/Navigation.css';
 import { Link } from 'react-router-dom';
 
 import { useLogout } from '../../hooks/useLogout';
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
@@ -14,8 +14,8 @@ import NavbarItems from './NavbarItems';
 
 const Navigation = () => {
   const { logout } = useLogout();
-  const { user } = useAuthContext();
-
+  const { user } = UseAuthContext();
+  // console.log(user);
   defineElement(lottie.loadAnimation);
 
   const handleClick = () => {

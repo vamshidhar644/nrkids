@@ -40,39 +40,59 @@ const signupUser = async (req, res) => {
   }
 };
 
-const cartfunction = async (req, res) => {
-  const newData = req.body;
+const addCart = async (req, res) => {
+  const { userId, quantity, size, productId, price } = req.body;
 
   try {
-    const existingData = await User.findOne({
-      /* Query to find existing data */
-    });
+    // Check if the user exists
+    const user = await User.findById(userId);
 
-    if (existingData) {
-      // Update the existing data
-      existingData.field1 = newData.field1;
-      existingData.field2 = newData.field2;
-      // ... Update other fields as needed
-
-      await existingData.save();
-
-      res.status(200).json({ message: 'Data updated successfully' });
-    } else {
-      // Create a new data object
-      const newDataObject = new DataModel({
-        field1: newData.field1,
-        field2: newData.field2,
-        // ... Set other fields as needed
-      });
-
-      await newDataObject.save();
-
-      res.status(201).json({ message: 'New data added successfully' });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
+    // Check if the PRODUCT already exists for the USER
+    const product = user.cartItems.find((item) => item.productId === productId);
+
+    if (product) {
+      // Update the details of the existing product
+      product.quantity = quantity;
+      product.size = size;
+      product.price = price;
+    } else {
+      // Add a new User to the product
+      user.cartItems.push({ productId, quantity, size, price });
+    }
+
+    // Save the updated cart
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: 'Product updated to user successfully', user });
   } catch (error) {
-    console.error('Error updating or adding data:', error);
+    console.error('Error updating user:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-module.exports = { signupUser, loginUser, cartfunction };
+const deletecartitem = async (req, res) => {
+  const { userId, productId } = req.body;
+
+  User.updateOne(
+    { _id: userId },
+    { $pull: { cartItems: { productId: productId } } }
+  )
+    .then((result) => {
+      if (result.modifiedCount === 1) {
+        res.sendStatus(204); // Success, no content
+      } else {
+        res.sendStatus(404); // Item not found
+      }
+    })
+    .catch((err) => {
+      console.error('Error deleting item from cart', err);
+      res.sendStatus(500); // Internal Server Error
+    });
+};
+
+module.exports = { signupUser, loginUser, addCart, deletecartitem };

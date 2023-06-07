@@ -4,10 +4,12 @@ const express = require('express');
 const {
   Setcartitems,
   Deletecartitems,
+  getCartItems,
 } = require('../controllers/cartController');
 
 const router = express.Router();
-
+// get cart items
+router.get('/', getCartItems);
 // login route
 router.post('/:userid', Setcartitems);
 

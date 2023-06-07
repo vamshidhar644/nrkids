@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import { Link } from 'react-router-dom';
@@ -10,9 +10,8 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 const MainProduct = ({ Product }) => {
-
   const getImageUrl = (image) => {
-    return builder.image(image).url();
+    return builder.image(image).url(); 
   };
 
   return (

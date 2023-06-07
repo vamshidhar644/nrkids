@@ -2,6 +2,13 @@ const Cart = require('../models/cartModel');
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
+// GET all items
+const getCartItems = async (req, res) => {
+  const cartitems = await Cart.find({}).sort({ createdAt: -1 });
+
+  res.status(200).json(cartitems);
+};
+
 const Setcartitems = async (req, res) => {
   const { userId, quantity, size } = req.body;
   const { _id, price } = req.body;
@@ -90,4 +97,4 @@ const Deletecartitems = async (req, res) => {
     });
 };
 
-module.exports = { Setcartitems, Deletecartitems };
+module.exports = { getCartItems, Setcartitems, Deletecartitems };

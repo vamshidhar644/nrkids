@@ -1,7 +1,12 @@
 const express = require('express');
 
 // controller functions
-const { signupUser, loginUser, cartfunction } = require('../controllers/userController');
+const {
+  signupUser,
+  loginUser,
+  addCart,
+  deletecartitem,
+} = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -12,8 +17,9 @@ router.post('/login', loginUser);
 router.post('/signup', signupUser);
 
 // add to cart
+router.post('/:userId/cart', addCart);
 
-router.post('/:userid/cart', cartfunction)
+// delete item from cart
+router.delete('/:userId/cart', deletecartitem);
 
 module.exports = router;
- 
