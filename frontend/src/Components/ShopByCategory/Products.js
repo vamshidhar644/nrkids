@@ -5,7 +5,7 @@ import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -23,7 +23,7 @@ const Products = ({ categoryProducts }) => {
       {categoryProducts &&
         categoryProducts.map((products) => {
           return (
-            <NavLink
+            <Link
               className="Productcard"
               to={`/new-arrivals/${products.path}`}
               state={{
@@ -45,7 +45,7 @@ const Products = ({ categoryProducts }) => {
                   <AiOutlineShoppingCart />
                 </div>
               </div>
-            </NavLink>
+            </Link>
           );
         })}
     </div>

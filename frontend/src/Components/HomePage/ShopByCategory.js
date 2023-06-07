@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../Styles/HomePage/ShopByCategory.css';
 import sanityClient from '../../client';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ShopByCategory = () => {
   const [Categories, setCategories] = useState(null);
@@ -27,7 +27,7 @@ const ShopByCategory = () => {
           Categories.map((categories) => {
             return (
               <div key={categories.path}>
-                <NavLink
+                <Link
                   to={`/shop-by-category/${categories.path}`}
                   className="cat-card"
                 >
@@ -39,13 +39,13 @@ const ShopByCategory = () => {
                       <span className="cat-title">{categories.title}</span>
                     </div>
                   </div>
-                </NavLink>
-                <NavLink
+                </Link>
+                <Link
                   to={`/shop-by-category/${categories.path}`}
                   className="shop-button"
                 >
                   <p>Shop</p>
-                </NavLink>
+                </Link>
               </div>
             );
           })}

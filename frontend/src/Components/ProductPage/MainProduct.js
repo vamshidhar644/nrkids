@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import { Link } from 'react-router-dom';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -9,11 +10,11 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 const MainProduct = ({ Product }) => {
-  console.log(Product);
 
   const getImageUrl = (image) => {
     return builder.image(image).url();
   };
+
   return (
     <div className="product-page">
       <div className="product-image">
@@ -27,7 +28,10 @@ const MainProduct = ({ Product }) => {
           convallis.
         </p>
         <p className="product-price">Rs. {Product.price}</p>
-        <button className="add-to-cart-button">Add to Cart</button>&nbsp;
+        <Link to="/your-bag" className="add-to-cart-button">
+          Add to Cart
+        </Link>
+        &nbsp;
         <button className="add-to-cart-button">Buy now</button>
       </div>
     </div>

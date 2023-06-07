@@ -36,7 +36,7 @@ const Categories = () => {
   }, [categorypath, data]);
 
   if (categoryProducts) {
-    console.log(categoryProducts);
+    // console.log(categoryProducts);
   }
 
   return (
