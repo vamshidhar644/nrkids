@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { UseAuthContext } from '../../hooks/useAuthContext';
+import { UseCartContext } from '../../hooks/useCartContext';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -11,7 +13,108 @@ const client = sanityClient({
 const builder = imageUrlBuilder(client);
 const MainProduct = ({ Product }) => {
   const getImageUrl = (image) => {
-    return builder.image(image).url(); 
+    return builder.image(image).url();
+  };
+
+  const { user, dispatch } = UseAuthContext();
+  const { cartitems, cartdispatch } = UseCartContext();
+
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const [prodId, setProdId] = useState();
+  const [userId, setUserId] = useState();
+  const [size, setSize] = useState('l');
+  const [price, setPrice] = useState();
+  const [quantity, setQty] = useState(1);
+
+  useEffect(() => {
+    setProdId(Product.productId);
+    setUserId(user.id);
+
+    switch (size) {
+      case 'xs':
+        setPrice(Product.prices.xs);
+        break;
+      case 's':
+        setPrice(Product.prices.s);
+        break;
+      case 'm':
+        setPrice(Product.prices.m);
+        break;
+      case 'l':
+        setPrice(Product.prices.l);
+        break;
+      case 'xl':
+        setPrice(Product.prices.xl);
+        break;
+      case 'xxl':
+        setPrice(Product.prices.xxl);
+        break;
+      case 'xxxl':
+        setPrice(Product.prices.xxxl);
+        break;
+      default:
+        setPrice(Product.prices.l);
+    }
+  }, [
+    Product.productId,
+    user.id,
+    size,
+    Product.prices.xs,
+    Product.prices.s,
+    Product.prices.m,
+    Product.prices.l,
+    Product.prices.xl,
+    Product.prices.xxl,
+    Product.prices.xxxl,
+  ]);
+
+  const handleSizeChange = (event) => {
+    setSize(event.target.value);
+  };
+
+  const handleQtyChange = (event) => {
+    setQty(event.target.value);
+  };
+
+  const UpdateCart = (e) => {
+    e.preventDefault();
+
+    const itemsData = { userId, quantity, size, price };
+
+    console.log(prodId);
+
+    if (user) {
+      const response = fetch(`/api/user/cart/${prodId}`, {
+        method: 'POST',
+        body: JSON.stringify(itemsData),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const json = response.json();
+      if (!response.ok) {
+        setError(json.error);
+        setEmptyFields(json.emptyFields);
+        setIsLoading(false);
+
+        console.log(error);
+      }
+      if (response.ok) {
+        setError(null);
+        setEmptyFields([]);
+        // console.log('new item added', json);
+        dispatch({ type: 'CREATE_ITEM', payload: json });
+        console.log('Added');
+        navigate('/your-bag');
+      }
+    }
   };
 
   return (
@@ -26,10 +129,46 @@ const MainProduct = ({ Product }) => {
           sit amet nulla egestas vulputate. Sed vel velit at magna commodo
           convallis.
         </p>
-        <p className="product-price">Rs. {Product.price}</p>
-        <Link to="/your-bag" className="add-to-cart-button">
+        <p className="product-price">₹ {price}</p>
+        <div className="item-desc">
+          <div className="size-section">
+            <h6>Size</h6>
+            <select
+              name="size"
+              id="size"
+              className="size-select"
+              value={size}
+              onChange={handleSizeChange}
+            >
+              <option value="xs">XS</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+              <option value="xxl">XXL</option>
+              <option value="xxxl">XXXL</option>
+            </select>
+          </div>
+          <div className="qty-section">
+            <h6>Quantity</h6>
+            <select
+              name="quantity"
+              id="quantity"
+              className="qty-select"
+              value={quantity}
+              onChange={handleQtyChange}
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </select>
+          </div>
+        </div>
+        <button className="add-to-cart-button" onClick={UpdateCart}>
           Add to Cart
-        </Link>
+        </button>
         &nbsp;
         <button className="add-to-cart-button">Buy now</button>
       </div>

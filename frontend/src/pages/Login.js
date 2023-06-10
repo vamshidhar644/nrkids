@@ -38,7 +38,7 @@ const LoginSection = () => {
           <span>Password</span>
           <p className="inner-logcard-text">Forgot Password?</p>
         </div>
-        {error && <div classNameName="error">{error}!!</div>}
+        {error && <div className="error">{error}!!</div>}
 
         <button className="enter" onClick={handleSubmit} disabled={isLoading}>
           Login

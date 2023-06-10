@@ -21,9 +21,18 @@ export default {
       type: 'string',
     },
     {
-      name: 'price',
-      title: 'Price',
-      type: 'number',
+      name: 'prices',
+      title: 'Prices',
+      type: 'object',
+      fields: [
+        {name: 'xs', title: 'XS', type: 'number'},
+        {name: 's', title: 'S', type: 'number'},
+        {name: 'm', title: 'M', type: 'number'},
+        {name: 'l', title: 'L', type: 'number'},
+        {name: 'xl', title: 'XL', type: 'number'},
+        {name: 'xxl', title: 'XXL', type: 'number'},
+        {name: 'xxxl', title: 'XXXL', type: 'number'},
+      ],
     },
     {
       name: 'path',

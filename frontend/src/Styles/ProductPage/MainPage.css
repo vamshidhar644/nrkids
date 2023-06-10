@@ -45,4 +45,35 @@
   .add-to-cart-button:hover {
     background-color: #fd632b;
   }
+
+  .item-desc{
+    display: flex;
+    justify-content: flex-start;
+    padding: 12px;
+    padding-left: 0px;
+    gap: 12px;
+  }
   
+
+  .size-section, .qty-section{
+    display: flex;
+    gap: 10px;
+  }
+
+  .size-select, .qty-select{
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center; 
+    border: transparent;
+    border-bottom: 2px solid #e67e22;
+    border-radius: 4px;
+
+  }
+
+  .item-desc option{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #e67e22;
+    border-radius: 4px;
+  }
