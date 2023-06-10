@@ -4,7 +4,6 @@ import axios from 'axios';
 import '../Styles/CartPage/Cart.css';
 
 import sanityClient from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
 import ItemCard from '../Components/CartPage.js/ItemCard';
 
 const client = sanityClient({
@@ -12,16 +11,11 @@ const client = sanityClient({
   dataset: 'production',
 });
 
-const builder = imageUrlBuilder(client);
-
 const Cart = () => {
-  const getImageUrl = (image) => {
-    return builder.image(image).url();
-  };
-
   const { user } = UseAuthContext();
 
-  const [cartData, setCartdata] = useState(null);
+  const [cartData, setCartdata] = useState();
+  const [sanityData, setSanityData] = useState();
 
   const [selectSanityCart, setSelectedSanity] = useState();
 
@@ -29,10 +23,10 @@ const Cart = () => {
     if (user) {
       const id = user.id;
       axios
-        .get(`/api/user/cart/${id}`) 
+        .get(`/api/user/cart/${id}`)
         .then((response) => {
           setCartdata(response.data);
-        }) 
+        })
         .catch((error) => {
           console.error('Error fetching document:', error);
         });
@@ -47,24 +41,29 @@ const Cart = () => {
 
       const mergedData = [...data1, ...data3];
 
-      const sanitycart = [];
+      setSanityData(mergedData);
+    };
 
-      if (cartData) {
-        for (let i = 0; i < cartData.length; i++) {
-          if (mergedData) {
-            for (let j = 0; j < mergedData.length; j++) {
-              if (cartData[i].productId === mergedData[j].productId) {
-                sanitycart.push(mergedData[j]);
-              }
+    fetchData();
+  }, [user]);
+
+  useEffect(() => {
+    const sanitycart = [];
+    if (cartData) {
+      for (let i = 0; i < cartData.length; i++) {
+        if (sanityData) {
+          for (let j = 0; j < sanityData.length; j++) {
+            if (cartData[i].productId === sanityData[j].productId) {
+              sanitycart.push(sanityData[j]);
             }
           }
         }
       }
+    }
+    if (sanitycart) {
       setSelectedSanity(sanitycart);
-    };
-
-    fetchData();
-  });
+    }
+  }, [cartData, sanityData]);
 
   return (
     <div className="cart-page">
@@ -73,10 +72,10 @@ const Cart = () => {
           selectSanityCart.map((item, index) => {
             return (
               <ItemCard
-                key={item.id}
-                index={index}
+                key={index}
                 item={item}
                 cartData={cartData}
+                index={index}
               />
             );
           })}

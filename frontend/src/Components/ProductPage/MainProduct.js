@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import { useNavigate } from 'react-router-dom';
+
 import { UseAuthContext } from '../../hooks/useAuthContext';
-import { UseCartContext } from '../../hooks/useCartContext';
+import { useCart } from '../../hooks/useCart';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -12,18 +12,12 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 const MainProduct = ({ Product }) => {
+  const { updatecart, error, isLoading } = useCart();
   const getImageUrl = (image) => {
     return builder.image(image).url();
   };
 
-  const { user, dispatch } = UseAuthContext();
-  const { cartitems, cartdispatch } = UseCartContext();
-
-  const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate();
+  const { user } = UseAuthContext();
 
   const [prodId, setProdId] = useState();
   const [userId, setUserId] = useState();
@@ -81,40 +75,13 @@ const MainProduct = ({ Product }) => {
     setQty(event.target.value);
   };
 
-  const UpdateCart = (e) => {
+  const UpdateCart = async (e) => {
     e.preventDefault();
 
     const itemsData = { userId, quantity, size, price };
 
-    console.log(prodId);
+    await updatecart(prodId, itemsData);
 
-    if (user) {
-      const response = fetch(`/api/user/cart/${prodId}`, {
-        method: 'POST',
-        body: JSON.stringify(itemsData),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      const json = response.json();
-      if (!response.ok) {
-        setError(json.error);
-        setEmptyFields(json.emptyFields);
-        setIsLoading(false);
-
-        console.log(error);
-      }
-      if (response.ok) {
-        setError(null);
-        setEmptyFields([]);
-        // console.log('new item added', json);
-        dispatch({ type: 'CREATE_ITEM', payload: json });
-        console.log('Added');
-        navigate('/your-bag');
-      }
-    }
   };
 
   return (

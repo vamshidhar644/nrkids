@@ -12,7 +12,7 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.login(email, password);
 
-    // create a token 
+    // create a token
     const token = createToken(user._id);
 
     const firstName = user.firstName;
@@ -21,7 +21,7 @@ const loginUser = async (req, res) => {
 
     res.status(200).json({ id, firstName, lastName, email, token });
   } catch (error) {
-    res.status(400).json({ error: error.message }); 
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -65,23 +65,26 @@ const getCartData = async (req, res) => {
 
 const addCart = async (req, res) => {
   const productId = req.params.id;
-  const { userId, quantity, size, price } = req.body;
+  const { itemsData } = req.body;
 
+  const userId = itemsData.userId;
+  const quantity = itemsData.quantity; 
+  const price = itemsData.price;
+  const size = itemsData.size;
   try {
     // Check if the user exists
     const user = await User.findById(userId);
-
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
     // Check if the PRODUCT already exists for the USER
     const product = user.cartItems.find((item) => item.productId === productId);
 
-    if (product) { 
+    if (product) {
       // Update the details of the existing product
-      product.quantity = quantity; 
-      product.size = size;  
-      product.price = price; 
+      product.quantity = quantity;
+      product.size = size;
+      product.price = price;
     } else {
       // Add a new User to the product
       user.cartItems.push({ productId, quantity, size, price });
@@ -90,9 +93,9 @@ const addCart = async (req, res) => {
     // Save the updated cart
     await user.save();
 
-    res
-      .status(200)
-      .json({ message: 'Product updated to user successfully', user });
+    const cartItem = user.cartItems;
+
+    res.status(200).json({ cartItem });
   } catch (error) {
     console.error('Error updating user:', error);
     res.status(500).json({ error: 'Internal server error' });

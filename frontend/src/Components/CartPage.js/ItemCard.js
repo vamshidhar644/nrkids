@@ -4,6 +4,7 @@ import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 import { UseAuthContext } from '../../hooks/useAuthContext';
+import { useCart } from '../../hooks/useCart';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -17,127 +18,75 @@ const ItemCard = ({ item, cartData, index }) => {
     return builder.image(image).url();
   };
 
-  const { user, dispatch } = UseAuthContext();
+  const { updatecart, error, isLoading } = useCart();
 
-  // console.log(item);
-  const [cartDatas, setCartdata] = useState();
+  const { user } = UseAuthContext();
 
   const [prodId, setProdId] = useState();
   const [userId, setUserId] = useState();
-  const [size, setSize] = useState(cartData[index].size);
+  const [size, setSize] = useState();
   const [price, setPrice] = useState();
-  const [quantity, setQty] = useState(cartData[index].quantity);
-
-  const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [quantity, setQty] = useState();
 
   useEffect(() => {
-    setProdId(item.productId);
-    if (cartData) {
-      switch (size) {
-        case 'xs':
-          setPrice(item.prices.xs);
-          break;
-        case 's':
-          setPrice(item.prices.s);
-          break;
-        case 'm':
-          setPrice(item.prices.m);
-          break;
-        case 'l':
-          setPrice(item.prices.l);
-          break;
-        case 'xl':
-          setPrice(item.prices.xl);
-          break;
-        case 'xxl':
-          setPrice(item.prices.xxl);
-          break;
-        case 'xxxl':
-          setPrice(item.prices.xxxl);
-          break;
-        default:
-          setPrice(item.prices.l);
-      }
-    }
-  }, [
-    cartData,
-    item,
-    item.productId,
-    user.id,
-    size,
-    index,
-    item.prices.xs,
-    item.prices.s,
-    item.prices.m,
-    item.prices.l,
-    item.prices.xl,
-    item.prices.xxl,
-    item.prices.xxxl,
-  ]);
+    setUserId(user.id);
+    setProdId(cartData[index].productId);
+    setQty(cartData[index].quantity);
+    setSize(cartData[index].size);
 
-  const handleSizeChange = async (event) => {
-    setSize(event.target.value);
-    const itemsData = { userId, quantity, size, price };
+    setPricing(cartData[index].size);
+  }, []);
 
-    console.log(prodId);
-
-    const response = await fetch(`/api/user/cart/${prodId}`, {
-      method: 'POST',
-      body: JSON.stringify(itemsData),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-      setEmptyFields(json.emptyFields);
-      setIsLoading(false);
-    }
-    if (response.ok) {
-      setError(null);
-      setEmptyFields([]);
-      dispatch({ type: 'CREATE_ITEM', payload: json });
-
-      setSize(size);
-      setQty(quantity);
+  const setPricing = (size) => {
+    switch (size) {
+      case 'xs':
+        setPrice(item.prices.xs);
+        break;
+      case 's':
+        setPrice(item.prices.s);
+        break;
+      case 'm':
+        setPrice(item.prices.m);
+        break;
+      case 'l':
+        setPrice(item.prices.l);
+        break;
+      case 'xl':
+        setPrice(item.prices.xl);
+        break;
+      case 'xxl':
+        setPrice(item.prices.xxl);
+        break;
+      case 'xxxl':
+        setPrice(item.prices.xxxl);
+        break;
+      default:
+        setPrice(item.prices.l);
     }
   };
 
-  const handleQtyChange = async (event) => {
-    setQty(event.target.value);
-
-    const itemsData = { userId, quantity, size, price };
-
-    if (user) {
-      const response = await fetch(`/api/user/cart/${prodId}`, {
-        method: 'POST',
-        body: JSON.stringify(itemsData),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      const json = await response.json();
-      if (!response.ok) {
-        setError(json.error);
-        setEmptyFields(json.emptyFields);
-        setIsLoading(false);
+  useEffect(() => {
+    const itemData = { userId, quantity, size, price };
+    const updateFun = async () => {
+      if (prodId && itemData) {
+        console.log(prodId, itemData);
+        await updatecart(prodId, itemData);
       }
-      if (response.ok) {
-        setError(null);
-        setEmptyFields([]);
-        dispatch({ type: 'CREATE_ITEM', payload: json });
+    };
 
-        setSize(size);
-        setQty(quantity);
-      }
+    updateFun();
+  }, [prodId, userId, quantity, size, price]);
+
+  const handleQtyChange = (event) => {
+    const intValue = parseInt(event.target.value, 10);
+    if (!isNaN(intValue)) {
+      setQty(intValue);
     }
+  };
+
+  const handleSizeChange = (event) => {
+    setSize(event.target.value);
+    setPricing(event.target.value);
   };
 
   return (
@@ -146,7 +95,7 @@ const ItemCard = ({ item, cartData, index }) => {
         <img className="image1" src={getImageUrl(item.images[0])} alt="" />
         <div className="item-details">
           <h6>{item.title}</h6>
-          <p>₹ {cartData[index].price}</p>
+          <p>₹ {price}</p>
           <div className="item-desc">
             <div className="size-section">
               <h6>Size</h6>
@@ -183,7 +132,6 @@ const ItemCard = ({ item, cartData, index }) => {
               </select>
             </div>
           </div>
-          <p>Total: ₹ {cartData[index].price * cartData[index].quantity}</p>
         </div>
       </div>
       <div className="cart-buttons-box">

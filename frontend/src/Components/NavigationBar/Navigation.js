@@ -15,7 +15,7 @@ import NavbarItems from './NavbarItems';
 const Navigation = () => {
   const { logout } = useLogout();
   const { user } = UseAuthContext();
-  // console.log(user);
+  
   defineElement(lottie.loadAnimation);
 
   const handleClick = () => {

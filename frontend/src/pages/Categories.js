@@ -10,7 +10,6 @@ const Categories = () => {
   const [data, setData] = useState([]);
   const [categoryProducts, setCatogeryProducts] = useState([]);
 
-  // console.log(categorypath);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,10 +33,6 @@ const Categories = () => {
     }
     setCatogeryProducts(CategoryProducts);
   }, [categorypath, data]);
-
-  if (categoryProducts) {
-    // console.log(categoryProducts);
-  }
 
   return (
     <div className='Main-Category-Container'>
