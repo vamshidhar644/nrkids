@@ -5,7 +5,11 @@ import imageUrlBuilder from '@sanity/image-url';
 
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { useCart } from '../../hooks/useCart';
+import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
+import { UseCartContext } from '../../hooks/useCartContext';
 const client = sanityClient({
   projectId: 'dkv2w16f',
   dataset: 'production',
@@ -21,12 +25,15 @@ const ItemCard = ({ item, cartData, index }) => {
   const { updatecart, error, isLoading } = useCart();
 
   const { user } = UseAuthContext();
+  const { cartitems, cartdispatch } = UseCartContext();
 
   const [prodId, setProdId] = useState();
   const [userId, setUserId] = useState();
   const [size, setSize] = useState();
   const [price, setPrice] = useState();
   const [quantity, setQty] = useState();
+
+  const [OoStock, setOoStock] = useState(false);
 
   useEffect(() => {
     setUserId(user.id);
@@ -40,28 +47,69 @@ const ItemCard = ({ item, cartData, index }) => {
   const setPricing = (size) => {
     switch (size) {
       case 'xs':
-        setPrice(item.prices.xs);
+        if (item.prices.xs !== 0) {
+          setPrice(item.prices.xs);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       case 's':
-        setPrice(item.prices.s);
+        if (item.prices.s !== 0) {
+          setPrice(item.prices.s);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       case 'm':
-        setPrice(item.prices.m);
+        if (item.prices.m !== 0) {
+          setPrice(item.prices.m);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       case 'l':
-        setPrice(item.prices.l);
+        if (item.prices.l !== 0) {
+          setPrice(item.prices.l);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       case 'xl':
-        setPrice(item.prices.xl);
+        if (item.prices.xl !== 0) {
+          setPrice(item.prices.xl);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       case 'xxl':
-        setPrice(item.prices.xxl);
+        if (item.prices.xxl !== 0) {
+          setPrice(item.prices.xxl);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       case 'xxxl':
-        setPrice(item.prices.xxxl);
+        if (item.prices.xxxl !== 0) {
+          setPrice(item.prices.xxxl);
+          setOoStock(false);
+        } else {
+          setPrice(0);
+          setOoStock(true);
+        }
         break;
       default:
-        setPrice(item.prices.l);
     }
   };
 
@@ -69,7 +117,7 @@ const ItemCard = ({ item, cartData, index }) => {
     const itemData = { userId, quantity, size, price };
     const updateFun = async () => {
       if (prodId && itemData) {
-        console.log(prodId, itemData);
+        // console.log(prodId, itemData);
         await updatecart(prodId, itemData);
       }
     };
@@ -89,13 +137,34 @@ const ItemCard = ({ item, cartData, index }) => {
     setPricing(event.target.value);
   };
 
+  const handleDelete = async (event) => {
+    console.log(userId, prodId);
+
+    try {
+      await axios.delete(`api/user/${userId}/cart/${prodId}`);
+      window.location.reload();
+    } catch (error) {
+      // Handle error
+      console.error('Error deleting item:', error);
+    }
+  };
+
   return (
     <div className="cart-item">
       <div className="cart-item-box">
-        <img className="image1" src={getImageUrl(item.images[0])} alt="" />
+        <Link
+          to={`/new-arrivals/${item.path}`}
+          state={{
+            data: item,
+          }}
+          key={index}
+        >
+          <img className="image1" src={getImageUrl(item.images[0])} alt="" />
+        </Link>
         <div className="item-details">
           <h6>{item.title}</h6>
-          <p>₹ {price}</p>
+          {!OoStock && <p className="product-price">₹ {price}</p>}
+          {OoStock && <p className="product-price">Out of Stock</p>}
           <div className="item-desc">
             <div className="size-section">
               <h6>Size</h6>
@@ -137,7 +206,9 @@ const ItemCard = ({ item, cartData, index }) => {
       <div className="cart-buttons-box">
         <div className="cart-button">Save for later</div>
         <div className="cart-button">Buy now</div>
-        <div className="cart-button">Remove</div>
+        <div className="cart-button" onClick={handleDelete}>
+          Remove
+        </div>
       </div>
     </div>
   );

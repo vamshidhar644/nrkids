@@ -10,6 +10,7 @@ import Cart from './pages/Cart';
 
 import Categories from './pages/Categories';
 import ProductPage from './pages/ProductPage';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   const { user } = UseAuthContext();
@@ -36,6 +37,7 @@ function App() {
           />
           <Route path="/:productparent/:product" element={<ProductPage />} />
         </Routes>
+        <Footer />
         {/* </div> */}
       </BrowserRouter>
     </>

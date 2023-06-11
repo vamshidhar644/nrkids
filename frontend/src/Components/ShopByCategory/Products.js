@@ -21,7 +21,7 @@ const Products = ({ categoryProducts }) => {
   return (
     <div className="Product-Grid">
       {categoryProducts &&
-        categoryProducts.map((products) => {
+        categoryProducts.map((products, index) => {
           return (
             <Link
               className="Productcard"
@@ -29,6 +29,7 @@ const Products = ({ categoryProducts }) => {
               state={{
                 data: products,
               }}
+              key={index}
             >
               <div className="hover-sheet"></div>
               <div className="Productcard-img">

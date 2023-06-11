@@ -68,7 +68,7 @@ const addCart = async (req, res) => {
   const { itemsData } = req.body;
 
   const userId = itemsData.userId;
-  const quantity = itemsData.quantity; 
+  const quantity = itemsData.quantity;
   const price = itemsData.price;
   const size = itemsData.size;
   try {
@@ -103,22 +103,20 @@ const addCart = async (req, res) => {
 };
 
 const deletecartitem = async (req, res) => {
-  const { userId, productId } = req.body;
+  const { userId, productId } = req.params;
+
+  console.log(productId, userId);
 
   User.updateOne(
     { _id: userId },
     { $pull: { cartItems: { productId: productId } } }
   )
-    .then((result) => {
-      if (result.modifiedCount === 1) {
-        res.sendStatus(204); // Success, no content
-      } else {
-        res.sendStatus(404); // Item not found
-      }
+    .then(() => {
+      res.status(200).json({ message: 'Item deleted successfully' });
     })
-    .catch((err) => {
-      console.error('Error deleting item from cart', err);
-      res.sendStatus(500); // Internal Server Error
+    .catch((error) => {
+      console.error('Error deleting item:', error);
+      res.status(500).json({ error: 'Failed to delete item' });
     });
 };
 

@@ -4,6 +4,7 @@ import imageUrlBuilder from '@sanity/image-url';
 
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { useCart } from '../../hooks/useCart';
+import { Outlet } from 'react-router-dom';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -25,34 +26,70 @@ const MainProduct = ({ Product }) => {
   const [price, setPrice] = useState();
   const [quantity, setQty] = useState(1);
 
+  const [OoStock, setOoStock] = useState(false);
+
   useEffect(() => {
     setProdId(Product.productId);
     setUserId(user.id);
 
     switch (size) {
       case 'xs':
-        setPrice(Product.prices.xs);
+        if (Product.prices.xs !== 0) {
+          setPrice(Product.prices.xs);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       case 's':
-        setPrice(Product.prices.s);
+        if (Product.prices.s !== 0) {
+          setPrice(Product.prices.s);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       case 'm':
-        setPrice(Product.prices.m);
+        if (Product.prices.m !== 0) {
+          setPrice(Product.prices.m);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       case 'l':
-        setPrice(Product.prices.l);
+        if (Product.prices.l !== 0) {
+          setPrice(Product.prices.l);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       case 'xl':
-        setPrice(Product.prices.xl);
+        if (Product.prices.xl !== 0) {
+          setPrice(Product.prices.xl);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       case 'xxl':
-        setPrice(Product.prices.xxl);
+        if (Product.prices.xxl !== 0) {
+          setPrice(Product.prices.xxl);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       case 'xxxl':
-        setPrice(Product.prices.xxxl);
+        if (Product.prices.xxxl !== 0) {
+          setPrice(Product.prices.xxxl);
+          setOoStock(false);
+        } else {
+          setOoStock(true);
+        }
         break;
       default:
-        setPrice(Product.prices.l);
     }
   }, [
     Product.productId,
@@ -65,6 +102,7 @@ const MainProduct = ({ Product }) => {
     Product.prices.xl,
     Product.prices.xxl,
     Product.prices.xxxl,
+    OoStock,
   ]);
 
   const handleSizeChange = (event) => {
@@ -81,7 +119,6 @@ const MainProduct = ({ Product }) => {
     const itemsData = { userId, quantity, size, price };
 
     await updatecart(prodId, itemsData);
-
   };
 
   return (
@@ -96,7 +133,8 @@ const MainProduct = ({ Product }) => {
           sit amet nulla egestas vulputate. Sed vel velit at magna commodo
           convallis.
         </p>
-        <p className="product-price">₹ {price}</p>
+        {!OoStock && <p className="product-price">₹ {price}</p>}
+        {OoStock && <p className="product-price">Out of Stock</p>}
         <div className="item-desc">
           <div className="size-section">
             <h6>Size</h6>
@@ -133,11 +171,15 @@ const MainProduct = ({ Product }) => {
             </select>
           </div>
         </div>
-        <button className="add-to-cart-button" onClick={UpdateCart}>
-          Add to Cart
-        </button>
-        &nbsp;
-        <button className="add-to-cart-button">Buy now</button>
+        {!OoStock ? (
+          <div>
+            <button className="add-to-cart-button" onClick={UpdateCart}>
+              Add to Cart
+            </button>
+            &nbsp;
+            <button className="add-to-cart-button">Buy now</button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

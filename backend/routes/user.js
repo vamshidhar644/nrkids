@@ -24,6 +24,6 @@ router.get('/cart/:id', getCartData);
 router.post('/cart/:id', addCart);
 
 // delete item from cart
-router.delete('/:userId/cart', deletecartitem);
+router.delete('/:userId/cart/:productId', deletecartitem);
 
 module.exports = router;
