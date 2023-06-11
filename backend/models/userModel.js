@@ -34,6 +34,14 @@ const userSchema = new Schema({
       size: String,
     },
   ],
+  saveforLater: [
+    {
+      productId: String,
+      price: Number,
+      quantity: Number,
+      size: String,
+    },
+  ],
 });
 
 // static signup method

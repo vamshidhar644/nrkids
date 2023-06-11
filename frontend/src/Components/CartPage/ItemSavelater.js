@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { UseCartContext } from '../../hooks/useCartContext';
+import { useSavelater } from '../../hooks/useSavelater';
 const client = sanityClient({
   projectId: 'dkv2w16f',
   dataset: 'production',
@@ -17,12 +18,13 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 
-const ItemCard = ({ item, cartData, index }) => {
+const ItemSavelater = ({ item, cartData, index }) => {
   const getImageUrl = (image) => {
     return builder.image(image).url();
   };
 
-  const { updatecart, error, isLoading } = useCart();
+  const { updatecart } = useCart();
+  const { updatesavelater, isLoading, error } = useSavelater();
 
   const { user } = UseAuthContext();
   const { cartitems, cartdispatch } = UseCartContext();
@@ -35,6 +37,8 @@ const ItemCard = ({ item, cartData, index }) => {
 
   const [OoStock, setOoStock] = useState(false);
 
+  const [cart, setCart] = useState(false);
+
   useEffect(() => {
     setUserId(user.id);
     setProdId(cartData[index].productId);
@@ -42,7 +46,7 @@ const ItemCard = ({ item, cartData, index }) => {
     setSize(cartData[index].size);
 
     setPricing(cartData[index].size);
-  }, []);
+  }, [cartData]);
 
   const setPricing = (size) => {
     switch (size) {
@@ -115,15 +119,29 @@ const ItemCard = ({ item, cartData, index }) => {
 
   useEffect(() => {
     const itemData = { userId, quantity, size, price };
-    const updateFun = async () => {
+
+    const updateSavelater = async () => {
       if (prodId && itemData) {
         // console.log(prodId, itemData);
-        await updatecart(prodId, itemData);
+        await updatesavelater(prodId, itemData);
       }
     };
 
-    updateFun();
+    updateSavelater();
   }, [prodId, userId, quantity, size, price]);
+
+  useEffect(() => {
+    const itemData = { userId, quantity, size, price };
+
+    const updateSavelater = async () => {
+      if (cart) {
+        await updatecart(prodId, itemData);
+        handleDelete();
+      }
+    };
+
+    updateSavelater();
+  }, [cart]);
 
   const handleQtyChange = (event) => {
     const intValue = parseInt(event.target.value, 10);
@@ -141,7 +159,7 @@ const ItemCard = ({ item, cartData, index }) => {
     console.log(userId, prodId);
 
     try {
-      await axios.delete(`api/user/${userId}/cart/${prodId}`);
+      await axios.delete(`api/user/${userId}/savelater/${prodId}`);
       window.location.reload();
     } catch (error) {
       // Handle error
@@ -149,6 +167,9 @@ const ItemCard = ({ item, cartData, index }) => {
     }
   };
 
+  const handleCart = async (event) => {
+    setCart(true);
+  };
   return (
     <div className="cart-item">
       <div className="cart-item-box">
@@ -204,7 +225,9 @@ const ItemCard = ({ item, cartData, index }) => {
         </div>
       </div>
       <div className="cart-buttons-box">
-        <div className="cart-button">Save for later</div>
+        <div className="cart-button" onClick={handleCart}>
+          Move to cart
+        </div>
         <div className="cart-button">Buy now</div>
         <div className="cart-button" onClick={handleDelete}>
           Remove
@@ -214,4 +237,4 @@ const ItemCard = ({ item, cartData, index }) => {
   );
 };
 
-export default ItemCard;
+export default ItemSavelater;

@@ -3,18 +3,16 @@ import { useState } from 'react';
 import { UseCartContext } from './useCartContext';
 import { useNavigate } from 'react-router-dom';
 
-export const useCart = () => {
+export const useSavelater = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { cartdispatch } = UseCartContext();
 
-  const navigate = useNavigate();
-
-  const updatecart = async (prodId, itemsData) => {
+  const updatesavelater = async (prodId, itemsData) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(`/api/user/cart/${prodId}`, {
+    const response = await fetch(`/api/user/savelater/${prodId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ itemsData }),
@@ -26,14 +24,10 @@ export const useCart = () => {
       setError(json.error);
     }
     if (response.ok) {
-      // save the user to local storage
-      localStorage.setItem('cart', JSON.stringify(json));
-      // update the auth context
-      cartdispatch({ type: 'CREATE_ITEM', payload: json });
-      navigate('/your-bag');
+      // cartdispatch({ type: 'CREATE_ITEM', payload: json });
       setIsLoading(false);
     }
   };
 
-  return { updatecart, isLoading, error };
+  return { updatesavelater, isLoading, error };
 };
