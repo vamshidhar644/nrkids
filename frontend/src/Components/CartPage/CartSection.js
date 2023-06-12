@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import axios from 'axios';
-import '../../Styles/CartPage/Cart.css';
+import '../../Styles/CartPage/CartSection.css';
 
 import sanityClient from '@sanity/client';
 import ItemCard from './ItemCart';
+import Checkout from './Checkout';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -68,18 +69,25 @@ const CartSection = () => {
   return (
     <div className="cart-page">
       <div className="cart-items">
-        {selectSanityCart &&
-          selectSanityCart.map((item, index) => {
-            return (
-              <ItemCard
-                key={index}
-                item={item}
-                cartData={cartData}
-                index={index}
-              />
-            );
-          })}
+        <div className='cart-header'>
+          <h1>Shopping cart <span>deselect all items</span></h1>
+          <h2>Price</h2>
+        </div>
+        <div>
+          {selectSanityCart &&
+            selectSanityCart.map((item, index) => {
+              return (
+                <ItemCard
+                  key={index}
+                  item={item}
+                  cartData={cartData}
+                  index={index}
+                />
+              );
+            })}
+        </div>
       </div>
+      <Checkout itemCart={cartData} />
     </div>
   );
 };

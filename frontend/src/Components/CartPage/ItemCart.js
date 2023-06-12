@@ -9,7 +9,10 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
+import '../../Styles/CartPage/ItemCart.css'
+
 import { useSavelater } from '../../hooks/useSavelater';
+import Checkboxes from '../OtherComponenets/Checkboxes';
 const client = sanityClient({
   projectId: 'dkv2w16f',
   dataset: 'production',
@@ -22,7 +25,7 @@ const ItemCart = ({ item, cartData, index }) => {
     return builder.image(image).url();
   };
 
-  const { updatecart, error, isLoading } = useCart();
+  const { updatecart } = useCart();
   const { updatesavelater } = useSavelater();
 
   const { user } = UseAuthContext();
@@ -42,7 +45,6 @@ const ItemCart = ({ item, cartData, index }) => {
     setProdId(cartData[index].productId);
     setQty(cartData[index].quantity);
     setSize(cartData[index].size);
-
     setPricing(cartData[index].size);
   }, []);
 
@@ -115,6 +117,10 @@ const ItemCart = ({ item, cartData, index }) => {
     }
   };
 
+  const setitemTotal = (itemQty) => {
+    console.log(price, itemQty);
+  };
+
   useEffect(() => {
     const itemData = { userId, quantity, size, price };
 
@@ -146,6 +152,7 @@ const ItemCart = ({ item, cartData, index }) => {
     const intValue = parseInt(event.target.value, 10);
     if (!isNaN(intValue)) {
       setQty(intValue);
+      setitemTotal(intValue);
     }
   };
 
@@ -173,6 +180,8 @@ const ItemCart = ({ item, cartData, index }) => {
   return (
     <div className="cart-item">
       <div className="cart-item-box">
+        <Checkboxes/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <Link
           to={`/new-arrivals/${item.path}`}
           state={{
@@ -180,7 +189,7 @@ const ItemCart = ({ item, cartData, index }) => {
           }}
           key={index}
         >
-          <img className="image1" src={getImageUrl(item.images[0])} alt="" />
+          <img src={getImageUrl(item.images[0])} alt="" />
         </Link>
         <div className="item-details">
           <h6>{item.title}</h6>
@@ -222,6 +231,11 @@ const ItemCart = ({ item, cartData, index }) => {
               </select>
             </div>
           </div>
+          {/* {!OoStock && (
+            <div className="total-price">
+              <p>Total: ₹ {price * quantity}</p>
+            </div>
+          )} */}
         </div>
       </div>
       <div className="cart-buttons-box">

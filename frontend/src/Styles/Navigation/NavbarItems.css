@@ -1,0 +1,151 @@
+
+.navbar-link a:hover {
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.navbar-link:hover .dropdown {
+    display: block; /* Display the dropdown */
+}
+
+.navbar-link {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+.navbar-link{
+    padding: 12px;
+}
+
+    
+ul li ul.down-dropdown {
+    font-size: 14px;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    width: 150px;
+    z-index: 10;
+    padding: 0px;
+}
+
+ul li:hover ul.down-dropdown {
+    display: block; /* Display the dropdown */
+}
+
+
+.nav-item:hover {
+    cursor: pointer;
+    background-color: #000;
+}
+
+.nav-item:hover .nav-item-a{
+    color: var(--secondary-color);
+}
+
+ul li ul.down-dropdown li {
+    display: block;
+    font-size: 16px;
+    padding: 8px;
+    list-style: none;
+}
+
+.down-dropdown li a{
+    color: #000;
+}
+
+
+.navbar-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar-link {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  
+  .Close-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    font-size: 30px;
+  }
+
+  .cross-btn{
+    display: none;
+  }
+  
+
+  
+/* Smart phones */
+@media screen and (max-width: 600px) {    
+    .Close-navbar{
+        display: flex;
+        justify-content: flex-end;
+    }
+    ul li ul.down-dropdown {
+        font-size: 14px;
+        background: #fff;
+        display: none;
+        border-radius: 6px;
+        position: absolute;
+        right: 0%;
+    }    
+    .navbar{
+    z-index: 7;
+    display: none;
+    position: fixed;
+    top: 0%;
+    opacity: 0.85;
+    width: 80%;
+    }
+    .navbar.navbar-open{
+        display: block; 
+    }
+
+    .navbar-link{
+        width: 100%;
+    padding: 12px;
+    }
+        
+    .navbar-links.open {
+    display: flex;
+    background-color: #000;
+    flex-direction: column;
+    border-bottom-right-radius: 10px;
+    }
+    .navbar-link a{
+    color: #f2f2f2;
+    }
+    
+}
+    
+      
+/* Tablets */
+@media screen and (max-width: 768px) {
+
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+
+}
+
+/* Monitors */
+@media screen and (min-width: 1200px) {
+
+}
+      

@@ -1,12 +1,8 @@
 import { useState } from 'react';
 
-import { UseCartContext } from './useCartContext';
-import { useNavigate } from 'react-router-dom';
-
 export const useSavelater = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
-  const { cartdispatch } = UseCartContext();
 
   const updatesavelater = async (prodId, itemsData) => {
     setIsLoading(true);

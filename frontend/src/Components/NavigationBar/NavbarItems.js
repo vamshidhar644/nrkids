@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { AiFillCloseSquare } from 'react-icons/ai';
+import 'bootstrap';
+
+import '../../Styles/Navigation/NavbarItems.css'
 
 const NavbarItems = (props) => {
   return (
@@ -13,7 +16,7 @@ const NavbarItems = (props) => {
         style={{ height: props.navHeight }}
       >
         <li className={`cross-btn ${props.isNavOpen ? 'Close-navbar' : ''}`}>
-          <AiFillCloseSquare onClick={props.onClick} className="cross-icon" />
+          <AiFillCloseSquare onClick={props.onClick} className="cursor-pointer" />
         </li>
         <li className="navbar-link">
           <NavLink to="/">HOME</NavLink>

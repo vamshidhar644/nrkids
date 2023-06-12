@@ -4,7 +4,6 @@ import imageUrlBuilder from '@sanity/image-url';
 
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { useCart } from '../../hooks/useCart';
-import { Outlet } from 'react-router-dom';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -13,7 +12,7 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 const MainProduct = ({ Product }) => {
-  const { updatecart, error, isLoading } = useCart();
+  const { updatecart } = useCart();
   const getImageUrl = (image) => {
     return builder.image(image).url();
   };
@@ -25,6 +24,8 @@ const MainProduct = ({ Product }) => {
   const [size, setSize] = useState('l');
   const [price, setPrice] = useState();
   const [quantity, setQty] = useState(1);
+
+  const [imageIndex, setImageindex] = useState(0);
 
   const [OoStock, setOoStock] = useState(false);
 
@@ -124,7 +125,26 @@ const MainProduct = ({ Product }) => {
   return (
     <div className="product-page">
       <div className="product-image">
-        <img className="image1" src={getImageUrl(Product.images[0])} alt="" />
+        <div className="other-images">
+          {Product.images &&
+            Product.images.map((image, path) => {
+              return (
+                <div className="other-image" key={path}>
+                  <img
+                    className="image1"
+                    src={getImageUrl(Product.images[path])}
+                    alt=""
+                    onMouseEnter={() => setImageindex(path)}
+                  />
+                </div>
+              );
+            })}
+        </div>
+        <img
+          className="image1"
+          src={getImageUrl(Product.images[imageIndex])}
+          alt=""
+        />
       </div>
       <div className="product-details">
         <h1 className="product-title">{Product.title}</h1>

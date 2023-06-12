@@ -1,0 +1,67 @@
+
+.Checkout-Section{
+    width: 100%;
+    height: fit-content;
+    background-color: #fff;
+  }
+
+  .Checkout-header{
+    padding: 6px 12px;
+    border-bottom: 1px solid #6b6969;
+  }
+
+  .Checkout-header h5{
+    color: #6b6969;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .Checkout-body{    
+    padding: 8px 12px;
+  }
+
+  .checkout-row{
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .checkout-row p{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0px;
+  }
+
+  .total-amount{    
+    border-top: 1px dashed #908d8d;
+    border-bottom: 1px dashed #908d8d;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .total-amount h4{
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .checkout-footer{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .checkout-footer button{
+    width: 100%;
+    background-color: rgb(52, 210, 52);
+    color: #fff;
+    border: 0px;
+    padding: 4px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .checkout-footer button:hover{
+    background-color: rgb(52, 190, 52);
+  }

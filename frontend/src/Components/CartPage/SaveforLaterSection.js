@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import axios from 'axios';
-import '../../Styles/CartPage/Cart.css';
 
 import sanityClient from '@sanity/client';
-import ItemCard from './ItemCart';
+
 import ItemSavelater from './ItemSavelater';
 
 const client = sanityClient({
@@ -66,23 +65,26 @@ const SaveforLaterSection = () => {
     }
   }, [saveforlaterData, sanityData]);
 
-  return (
-    <div className="cart-page">
-      <div className="cart-items">
-        {selectSanitySaveforlater &&
-          selectSanitySaveforlater.map((item, index) => {
-            return (
-              <ItemSavelater
-                key={index}
-                item={item}
-                cartData={saveforlaterData}
-                index={index}
-              />
-            );
-          })}
+  if (user) {
+    return (
+      <div className="cart-page">
+        <h4>Save for later</h4>
+        <div className="cart-items">
+          {selectSanitySaveforlater &&
+            selectSanitySaveforlater.map((item, index) => {
+              return (
+                <ItemSavelater
+                  key={index}
+                  item={item}
+                  cartData={saveforlaterData}
+                  index={index}
+                />
+              );
+            })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default SaveforLaterSection;

@@ -8,8 +8,6 @@ import { useCart } from '../../hooks/useCart';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
-
-import { UseCartContext } from '../../hooks/useCartContext';
 import { useSavelater } from '../../hooks/useSavelater';
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -24,10 +22,9 @@ const ItemSavelater = ({ item, cartData, index }) => {
   };
 
   const { updatecart } = useCart();
-  const { updatesavelater, isLoading, error } = useSavelater();
+  const { updatesavelater } = useSavelater();
 
   const { user } = UseAuthContext();
-  const { cartitems, cartdispatch } = UseCartContext();
 
   const [prodId, setProdId] = useState();
   const [userId, setUserId] = useState();
@@ -205,7 +202,7 @@ const ItemSavelater = ({ item, cartData, index }) => {
                 <option value="xxxl">XXXL</option>
               </select>
             </div>
-            <div className="qty-section">
+            {/* <div className="qty-section">
               <h6>Quantity</h6>
               <select
                 name="quantity"
@@ -220,7 +217,7 @@ const ItemSavelater = ({ item, cartData, index }) => {
                 <option value={4}>4</option>
                 <option value={5}>5</option>
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -228,7 +225,7 @@ const ItemSavelater = ({ item, cartData, index }) => {
         <div className="cart-button" onClick={handleCart}>
           Move to cart
         </div>
-        <div className="cart-button">Buy now</div>
+        <div className="cart-button" >Buy now</div>
         <div className="cart-button" onClick={handleDelete}>
           Remove
         </div>
