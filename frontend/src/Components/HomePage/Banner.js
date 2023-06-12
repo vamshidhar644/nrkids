@@ -19,8 +19,8 @@ const Banner = () => {
     <Carousel className="Carousel-Container">
       {Banner &&
         Banner.map((homedata) => (
-          <Carousel.Item className="Carousel-Item" key={homedata.path}>
-            <Link to={`/sale/${homedata.path}`}>
+          <Carousel.Item className="Carousel-Item" key={homedata.path.current}>
+            <Link to={`/sale/${homedata.path.current}`}>
               <img src={homedata.image.asset.url} alt="" />
             </Link>
           </Carousel.Item>

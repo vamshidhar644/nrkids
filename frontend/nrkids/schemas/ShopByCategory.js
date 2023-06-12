@@ -15,11 +15,27 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      options: {
+        list: [
+          {title: 'First Birthday', value: 'first-birthday'},
+          {title: 'New Arrivals', value: 'new-arrivals'},
+          {title: 'Ethnic Wear', value: 'ethnic-wear'},
+          {title: 'Party Wear', value: 'party-wear'},
+          {title: 'Gowns', value: 'gowns'},
+          {title: 'Dresses', value: 'dresses'},
+          {title: 'Accessories', value: 'accessories'},
+        ],
+        layout: 'dropdown', // Display style: dropdown
+      },
     },
     {
       name: 'path',
-      title: 'Path',
-      type: 'string',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 90,
+      },
     },
   ],
 }

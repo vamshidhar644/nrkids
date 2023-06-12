@@ -17,6 +17,8 @@ const MainProduct = ({ Product }) => {
     return builder.image(image).url();
   };
 
+
+
   const { user } = UseAuthContext();
 
   const [prodId, setProdId] = useState();

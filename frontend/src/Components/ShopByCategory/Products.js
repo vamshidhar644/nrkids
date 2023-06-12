@@ -25,7 +25,7 @@ const Products = ({ categoryProducts }) => {
           return (
             <Link
               className="Productcard"
-              to={`/new-arrivals/${products.path}`}
+              to={`/new-arrivals/${products.path.current}`}
               state={{
                 data: products,
               }}

@@ -21,17 +21,15 @@ const CartSection = () => {
   const [selectSanityCart, setSelectedSanity] = useState();
 
   useEffect(() => {
-    if (user) {
-      const id = user.id;
-      axios
-        .get(`/api/user/cart/${id}`)
-        .then((response) => {
-          setCartdata(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
-    }
+    const id = user.id;
+    axios
+      .get(`/api/user/cart/${id}`)
+      .then((response) => {
+        setCartdata(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching document:', error);
+      });
 
     const query1 = `*[_type == "banner"]`;
     const query3 = `*[_type == "categories"]`;
@@ -66,16 +64,30 @@ const CartSection = () => {
     }
   }, [cartData, sanityData]);
 
+  const [revSanity, setRevSanity] = useState();
+
+  useEffect(() => {
+    const sanityRev = [];
+    if (selectSanityCart) {
+      for (let i = selectSanityCart.length - 1; i >= 0; i--) {
+        sanityRev.push(selectSanityCart[i]);
+      }
+      setRevSanity(sanityRev);
+    }
+  }, [selectSanityCart]);
+
   return (
     <div className="cart-page">
       <div className="cart-items">
-        <div className='cart-header'>
-          <h1>Shopping cart <span>deselect all items</span></h1>
+        <div className="cart-header">
+          <h1>
+            Shopping cart <span>deselect all items</span>
+          </h1>
           <h2>Price</h2>
         </div>
         <div>
-          {selectSanityCart &&
-            selectSanityCart.map((item, index) => {
+          {revSanity &&
+            revSanity.map((item, index) => {
               return (
                 <ItemCard
                   key={index}

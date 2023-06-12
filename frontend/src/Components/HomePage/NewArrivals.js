@@ -43,7 +43,7 @@ const NewArrivals = () => {
               <div className="Main-Card" key={newarrivals.title}>
                 <Link
                   className="card"
-                  to={`/new-arrivals/${newarrivals.path}`}
+                  to={`/new-arrivals/${newarrivals.path.current}`}
                   state={{
                     data: newarrivals,
                   }}

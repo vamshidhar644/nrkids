@@ -28,7 +28,7 @@ const ProductPage = () => {
 
       if (mergedData) {
         for (let i = 0; i < mergedData.length; i++) {
-          if (mergedData[i].path === product) {
+          if (mergedData[i].path.current === product) {
             setData(mergedData[i]);
           }
         }
@@ -37,7 +37,6 @@ const ProductPage = () => {
 
     fetchData();
   });
-
   if (data.length !== 0) {
     return (
       <div>

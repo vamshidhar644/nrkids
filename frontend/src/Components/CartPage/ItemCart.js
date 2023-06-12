@@ -183,7 +183,7 @@ const ItemCart = ({ item, cartData, index }) => {
         <Checkboxes/>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <Link
-          to={`/new-arrivals/${item.path}`}
+          to={`/new-arrivals/${item.path.current}`}
           state={{
             data: item,
           }}

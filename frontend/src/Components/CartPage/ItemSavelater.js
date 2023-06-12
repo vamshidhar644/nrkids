@@ -171,7 +171,7 @@ const ItemSavelater = ({ item, cartData, index }) => {
     <div className="cart-item">
       <div className="cart-item-box">
         <Link
-          to={`/new-arrivals/${item.path}`}
+          to={`/new-arrivals/${item.path.current}`}
           state={{
             data: item,
           }}

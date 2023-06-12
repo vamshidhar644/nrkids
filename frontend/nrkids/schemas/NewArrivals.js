@@ -36,8 +36,12 @@ export default {
     },
     {
       name: 'path',
-      title: 'Path',
-      type: 'string',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 90,
+      },
     },
   ],
 }

@@ -24,11 +24,11 @@ const ShopByCategory = () => {
       </div>
       <div className="Cat-Card-Container">
         {Categories &&
-          Categories.map((categories) => {
+          Categories.map((categories, index) => {
             return (
-              <div key={categories.path}>
+              <div key={index}>
                 <Link
-                  to={`/shop-by-category/${categories.path}`}
+                  to={`/shop-by-category/${categories.path.current}`}
                   className="cat-card"
                 >
                   <div className="cat-img-container">
@@ -41,7 +41,7 @@ const ShopByCategory = () => {
                   </div>
                 </Link>
                 <Link
-                  to={`/shop-by-category/${categories.path}`}
+                  to={`/shop-by-category/${categories.path.current}`}
                   className="shop-button"
                 >
                   <p>Shop</p>
