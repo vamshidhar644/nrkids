@@ -15,16 +15,12 @@ const ProductPage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const query1 = `*[_type == "banner"]`;
-    // const query2 = `*[_type == "new-arrivals"]`;
     const query3 = `*[_type == "categories"]`;
 
     const fetchData = async () => {
-      const data1 = await client.fetch(query1);
-      // const data2 = await client.fetch(query2);
       const data3 = await client.fetch(query3);
 
-      const mergedData = [...data1, ...data3];
+      const mergedData = [...data3];
 
       if (mergedData) {
         for (let i = 0; i < mergedData.length; i++) {

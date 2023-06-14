@@ -10,11 +10,11 @@ export const useCart = () => {
 
   const navigate = useNavigate();
 
-  const updatecart = async (prodId, itemsData) => {
+  const updatecart = async (productId, itemsData) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(`/api/user/cart/${prodId}`, {
+    const response = await fetch(`/api/user/cart/${productId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ itemsData }),

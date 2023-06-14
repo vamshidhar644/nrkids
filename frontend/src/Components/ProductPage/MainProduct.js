@@ -4,6 +4,7 @@ import imageUrlBuilder from '@sanity/image-url';
 
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { useCart } from '../../hooks/useCart';
+import { useNavigate } from 'react-router-dom';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -17,11 +18,10 @@ const MainProduct = ({ Product }) => {
     return builder.image(image).url();
   };
 
-
-
   const { user } = UseAuthContext();
+  const navigate = useNavigate();
 
-  const [prodId, setProdId] = useState();
+  const [productId, setProdId] = useState();
   const [userId, setUserId] = useState();
   const [size, setSize] = useState('l');
   const [price, setPrice] = useState();
@@ -33,7 +33,9 @@ const MainProduct = ({ Product }) => {
 
   useEffect(() => {
     setProdId(Product.productId);
-    setUserId(user.id);
+    if (user) {
+      setUserId(user.id);
+    }
 
     switch (size) {
       case 'xs':
@@ -96,7 +98,7 @@ const MainProduct = ({ Product }) => {
     }
   }, [
     Product.productId,
-    user.id,
+    user,
     size,
     Product.prices.xs,
     Product.prices.s,
@@ -119,9 +121,22 @@ const MainProduct = ({ Product }) => {
   const UpdateCart = async (e) => {
     e.preventDefault();
 
-    const itemsData = { userId, quantity, size, price };
-
-    await updatecart(prodId, itemsData);
+    if (user) {
+      const itemsData = { userId, quantity, size, price };
+      console.log(itemsData);
+      await updatecart(productId, itemsData);
+    } else {
+      // const itemsData = { productId, quantity, size, price };
+      // // Get the existing data from local storage
+      // const existingData = localStorage.getItem('cart');
+      // // If no data exists, set the initial value to an empty array
+      // const newData = existingData ? JSON.parse(existingData) : [];
+      // // Append the new data to the array
+      // newData.push(itemsData);
+      // // Store the updated data back to local storage
+      // localStorage.setItem('cart', JSON.stringify(newData));
+      // navigate('/your-bag');
+    }
   };
 
   return (

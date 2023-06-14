@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Styles/OtherComponents/Checkbox.css';
 
 const Checkboxes = () => {
+  
   return (
     <div className="checkbox-wrapper-12">
       <div className="cbx">

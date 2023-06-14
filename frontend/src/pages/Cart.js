@@ -8,12 +8,8 @@ const Cart = () => {
   const { user } = UseAuthContext();
   return (
     <div className="Parent-cart" style={{ backgroundColor: '#f2f2f2' }}>
-      {user && (
-        <>
-          <CartSection />
-          <SaveforLaterSection />
-        </>
-      )}
+      <CartSection />
+      <SaveforLaterSection />
     </div>
   );
 };

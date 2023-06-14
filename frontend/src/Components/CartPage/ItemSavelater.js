@@ -26,7 +26,7 @@ const ItemSavelater = ({ item, cartData, index }) => {
 
   const { user } = UseAuthContext();
 
-  const [prodId, setProdId] = useState();
+  const [productId, setProdId] = useState();
   const [userId, setUserId] = useState();
   const [size, setSize] = useState();
   const [price, setPrice] = useState();
@@ -118,21 +118,20 @@ const ItemSavelater = ({ item, cartData, index }) => {
     const itemData = { userId, quantity, size, price };
 
     const updateSavelater = async () => {
-      if (prodId && itemData) {
-        // console.log(prodId, itemData);
-        await updatesavelater(prodId, itemData);
+      if (productId && itemData) {
+        await updatesavelater(productId, itemData);
       }
     };
 
     updateSavelater();
-  }, [prodId, userId, quantity, size, price]);
+  }, [productId, userId, quantity, size, price]);
 
   useEffect(() => {
     const itemData = { userId, quantity, size, price };
 
     const updateSavelater = async () => {
       if (cart) {
-        await updatecart(prodId, itemData);
+        await updatecart(productId, itemData);
         handleDelete();
       }
     };
@@ -153,10 +152,10 @@ const ItemSavelater = ({ item, cartData, index }) => {
   };
 
   const handleDelete = async (event) => {
-    console.log(userId, prodId);
+    console.log(userId, productId);
 
     try {
-      await axios.delete(`api/user/${userId}/savelater/${prodId}`);
+      await axios.delete(`api/user/${userId}/savelater/${productId}`);
       window.location.reload();
     } catch (error) {
       // Handle error

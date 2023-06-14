@@ -6,6 +6,7 @@ import '../../Styles/CartPage/CartSection.css';
 import sanityClient from '@sanity/client';
 import ItemCard from './ItemCart';
 import Checkout from './Checkout';
+import EmptyCart from './EmptyCart';
 
 const client = sanityClient({
   projectId: 'dkv2w16f',
@@ -21,24 +22,23 @@ const CartSection = () => {
   const [selectSanityCart, setSelectedSanity] = useState();
 
   useEffect(() => {
-    const id = user.id;
-    axios
-      .get(`/api/user/cart/${id}`)
-      .then((response) => {
-        setCartdata(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching document:', error);
-      });
-
-    const query1 = `*[_type == "banner"]`;
+    if (user) {
+      const id = user.id;
+      axios
+        .get(`/api/user/cart/${id}`)
+        .then((response) => {
+          setCartdata(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching document:', error);
+        });
+    }
     const query3 = `*[_type == "categories"]`;
 
     const fetchData = async () => {
-      const data1 = await client.fetch(query1);
       const data3 = await client.fetch(query3);
 
-      const mergedData = [...data1, ...data3];
+      const mergedData = [...data3];
 
       setSanityData(mergedData);
     };
@@ -65,43 +65,61 @@ const CartSection = () => {
   }, [cartData, sanityData]);
 
   const [revSanity, setRevSanity] = useState();
+  const [revCart, setRevCart] = useState();
 
   useEffect(() => {
     const sanityRev = [];
+    const cartRev = [];
     if (selectSanityCart) {
       for (let i = selectSanityCart.length - 1; i >= 0; i--) {
         sanityRev.push(selectSanityCart[i]);
+        cartRev.push(cartData[i]);
       }
       setRevSanity(sanityRev);
+      setRevCart(cartRev);
     }
-  }, [selectSanityCart]);
+  }, [selectSanityCart, cartData]);
 
-  return (
-    <div className="cart-page">
-      <div className="cart-items">
-        <div className="cart-header">
-          <h1>
-            Shopping cart <span>deselect all items</span>
-          </h1>
-          <h2>Price</h2>
+  const [data, setData] = useState('');
+
+  const handleDataChange = (newData) => {
+    setData(newData);
+  };
+
+  if (cartData) {
+    if (cartData.length !== 0) {
+      return (
+        <div className="cart-page">
+          <div className="cart-items">
+            <div className="cart-header">
+              <h1>
+                Shopping cart <span>deselect all items</span>
+              </h1>
+              <h2>Price</h2>
+            </div>
+            <div>
+              {selectSanityCart &&
+                revSanity.map((item, index) => {
+                  return (
+                    <ItemCard
+                      key={index}
+                      item={item}
+                      cartData={revCart}
+                      index={index}
+                      sendData={handleDataChange}
+                    />
+                  );
+                })}
+            </div>
+          </div>
+          <Checkout data={data} />
         </div>
-        <div>
-          {revSanity &&
-            revSanity.map((item, index) => {
-              return (
-                <ItemCard
-                  key={index}
-                  item={item}
-                  cartData={cartData}
-                  index={index}
-                />
-              );
-            })}
-        </div>
-      </div>
-      <Checkout itemCart={cartData} />
-    </div>
-  );
+      );
+    }
+    if (cartData.length === 0) {
+      return <EmptyCart />;
+    }
+  }
 };
 
 export default CartSection;

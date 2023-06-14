@@ -19,7 +19,7 @@ export const Bar1 = () => {
         </div>
         <p className="mid-line"></p>
         <div className="bar1-box">
-          <h3>SEAMLESS VIDEO SHOPPING</h3>
+          <h3>SEAMLESS SHOPPING</h3>
           <p>Whats app</p>
           <p>+91 1234567890</p>
         </div>
@@ -39,18 +39,6 @@ export const Bar2 = () => {
               <TbTruckDelivery />
             </span>
             SHIPPING & DELIVERY
-          </div>
-          <div className="bar-box">
-            <span className="icon-space">
-              <GiReturnArrow />
-            </span>
-            EASY RETURNS*
-          </div>
-          <div className="bar-box">
-            <span className="icon-space">
-              <TbReceiptTax />
-            </span>
-            TAXES & DUTIES
           </div>
           <div className="bar-box">
             <span className="icon-space">

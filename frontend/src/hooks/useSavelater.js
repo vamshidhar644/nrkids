@@ -4,11 +4,11 @@ export const useSavelater = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
-  const updatesavelater = async (prodId, itemsData) => {
+  const updatesavelater = async (productId, itemsData) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(`/api/user/savelater/${prodId}`, {
+    const response = await fetch(`/api/user/savelater/${productId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ itemsData }),

@@ -9,10 +9,11 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-import '../../Styles/CartPage/ItemCart.css'
+import '../../Styles/CartPage/ItemCart.css';
 
 import { useSavelater } from '../../hooks/useSavelater';
 import Checkboxes from '../OtherComponenets/Checkboxes';
+
 const client = sanityClient({
   projectId: 'dkv2w16f',
   dataset: 'production',
@@ -20,7 +21,7 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 
-const ItemCart = ({ item, cartData, index }) => {
+const ItemCart = ({ item, cartData, index, sendData }) => {
   const getImageUrl = (image) => {
     return builder.image(image).url();
   };
@@ -30,7 +31,7 @@ const ItemCart = ({ item, cartData, index }) => {
 
   const { user } = UseAuthContext();
 
-  const [prodId, setProdId] = useState();
+  const [productId, setProdId] = useState();
   const [userId, setUserId] = useState();
   const [size, setSize] = useState();
   const [price, setPrice] = useState();
@@ -40,107 +41,106 @@ const ItemCart = ({ item, cartData, index }) => {
 
   const [savelater, setSavelater] = useState(false);
 
+  console.log(cartData);
+
   useEffect(() => {
-    setUserId(user.id);
-    setProdId(cartData[index].productId);
-    setQty(cartData[index].quantity);
-    setSize(cartData[index].size);
-    setPricing(cartData[index].size);
+    if (cartData) {
+      setUserId(user.id);
+      setProdId(cartData[index].productId);
+      setQty(cartData[index].quantity);
+      setSize(cartData[index].size);
+      const setprice = setPricing(cartData[index].size);
+      setPrice(setprice);
+    }
   }, []);
 
   const setPricing = (size) => {
     switch (size) {
       case 'xs':
         if (item.prices.xs !== 0) {
-          setPrice(item.prices.xs);
+          // setPrice(item.prices.xs);
           setOoStock(false);
+          return item.prices.xs;
         } else {
-          setPrice(0);
+          // setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       case 's':
         if (item.prices.s !== 0) {
-          setPrice(item.prices.s);
+          // setPrice(item.prices.s);
           setOoStock(false);
+          return item.prices.s;
         } else {
-          setPrice(0);
+          // setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       case 'm':
         if (item.prices.m !== 0) {
-          setPrice(item.prices.m);
+          // setPrice(item.prices.m);
           setOoStock(false);
+          return item.prices.m;
         } else {
-          setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       case 'l':
         if (item.prices.l !== 0) {
-          setPrice(item.prices.l);
           setOoStock(false);
+          return item.prices.l;
         } else {
-          setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       case 'xl':
         if (item.prices.xl !== 0) {
-          setPrice(item.prices.xl);
           setOoStock(false);
+          return item.prices.xl;
         } else {
-          setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       case 'xxl':
         if (item.prices.xxl !== 0) {
-          setPrice(item.prices.xxl);
           setOoStock(false);
+          return item.prices.xxl;
         } else {
-          setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       case 'xxxl':
         if (item.prices.xxxl !== 0) {
-          setPrice(item.prices.xxxl);
           setOoStock(false);
+          return item.prices.xxxl;
         } else {
-          setPrice(0);
           setOoStock(true);
+          return 0;
         }
-        break;
       default:
     }
-  };
-
-  const setitemTotal = (itemQty) => {
-    console.log(price, itemQty);
   };
 
   useEffect(() => {
     const itemData = { userId, quantity, size, price };
 
     const updateCart = async () => {
-      if (prodId && itemData) {
-        // console.log(prodId, itemData);
-        await updatecart(prodId, itemData);
+      if (productId && itemData) {
+        await updatecart(productId, itemData);
+        const reqData = { productId, quantity, size, price };
+        sendData(reqData);
       }
     };
 
     updateCart();
-  }, [prodId, userId, quantity, size, price]);
+  }, [productId, userId, quantity, size, price]);
 
   useEffect(() => {
     const itemData = { userId, quantity, size, price };
 
     const updateSavelater = async () => {
       if (savelater) {
-        // console.log(prodId, itemData);
-        await updatesavelater(prodId, itemData);
+        await updatesavelater(productId, itemData);
         handleDelete();
       }
     };
@@ -152,20 +152,20 @@ const ItemCart = ({ item, cartData, index }) => {
     const intValue = parseInt(event.target.value, 10);
     if (!isNaN(intValue)) {
       setQty(intValue);
-      setitemTotal(intValue);
     }
   };
 
   const handleSizeChange = (event) => {
     setSize(event.target.value);
-    setPricing(event.target.value);
+    const setprice = setPricing(event.target.value);
+    setPrice(setprice);
   };
 
   const handleDelete = async (event) => {
-    console.log(userId, prodId);
+    console.log(userId, productId);
 
     try {
-      await axios.delete(`api/user/${userId}/cart/${prodId}`);
+      await axios.delete(`api/user/${userId}/cart/${productId}`);
       window.location.reload();
     } catch (error) {
       // Handle error
@@ -180,7 +180,7 @@ const ItemCart = ({ item, cartData, index }) => {
   return (
     <div className="cart-item">
       <div className="cart-item-box">
-        <Checkboxes/>
+        <Checkboxes />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <Link
           to={`/new-arrivals/${item.path.current}`}
