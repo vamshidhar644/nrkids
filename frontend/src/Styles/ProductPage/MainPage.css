@@ -25,7 +25,6 @@
   .other-image{
     width: 80px;
     height: 80px;
-    background-color: #e67e22;
   }
 
   .other-image img{
@@ -34,6 +33,8 @@
   }
   
   .product-details {
+    display: flex;
+    flex-direction: column;
     flex: 2;
   }
   
@@ -44,12 +45,13 @@
   
   .product-price {
     font-size: 18px;
-    color: #e67e22;
+    font-weight: 700;
     margin-bottom: 10px;
   }
   
   .product-description {
-    margin-bottom: 20px;
+    position: static;
+    bottom: 0;
   }
   
   .add-to-cart-button {

@@ -165,11 +165,6 @@ const MainProduct = ({ Product }) => {
       </div>
       <div className="product-details">
         <h1 className="product-title">{Product.title}</h1>
-        <p className="product-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in ex
-          sit amet nulla egestas vulputate. Sed vel velit at magna commodo
-          convallis.
-        </p>
         {!OoStock && <p className="product-price">₹ {price}</p>}
         {OoStock && <p className="product-price">Out of Stock</p>}
         <div className="item-desc">
@@ -217,6 +212,12 @@ const MainProduct = ({ Product }) => {
             <button className="add-to-cart-button">Buy now</button>
           </div>
         ) : null}
+
+        <p className="product-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in ex
+          sit amet nulla egestas vulputate. Sed vel velit at magna commodo
+          convallis.
+        </p>
       </div>
     </div>
   );
