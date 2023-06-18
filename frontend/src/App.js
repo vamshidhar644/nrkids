@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import Navigation from './Components/NavigationBar/Navigation';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import { UseAuthContext } from './hooks/useAuthContext';
-import Favorites from './pages/Favorites';
-import Cart from './pages/Cart';
 
-import Categories from './pages/Categories';
-import ProductPage from './pages/ProductPage';
-import Footer from './Components/Footer/Footer';
+import Login from './pages/Login/Login';
+import Signup from './pages/Login/Signup';
+import Home from './pages/Home/Home';
+import Categories from './pages/Category/Categories';
+import ProductPage from './pages/Product/ProductPage';
+import Favorites from './pages/Favorites/Favorites';
+import Bag from './pages/Bag/Bag';
+import Footer from './pages/Footer/Footer';
+
+import Navigation from './pages/Navigation/Navigation';
+import { UseAuthContext } from './hooks/useAuthContext';
 
 function App() {
   const { user } = UseAuthContext();
@@ -29,7 +30,7 @@ function App() {
             element={!user ? <Signup /> : <Navigate to="/" />}
           />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/your-bag" element={<Cart />} />
+          <Route path="/your-bag" element={<Bag />} />
 
           <Route
             path="/shop-by-category/:categorypath"

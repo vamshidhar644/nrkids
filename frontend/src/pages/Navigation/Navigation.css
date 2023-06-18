@@ -1,0 +1,93 @@
+
+.navbar-nav{
+    display: flex;
+    align-items: left;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navbar-nav-section1, .navbar-nav-section3{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.Brand-logo{
+    display: flex;
+    padding: 0px 8px;
+    font-size: 36px;
+    font-weight: 600;
+    color: orangered;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    padding: 0px 16px;
+}
+
+ul li a {
+    color: #000;
+    text-decoration: none;
+}
+   .fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    
+  }
+
+  .navbar-toggle { 
+    display: none;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  
+  .nav-bar-icons{
+    font-size: 24px;
+    text-decoration: none;
+    color: orangered;
+  }
+
+/* Smart phones */
+@media screen and (max-width: 600px) {
+.navbar-nav-section1, .navbar-nav-section2, .navbar-nav-section3{
+    width: fit-content;
+    padding: 0px;
+}
+
+.login-section-icons{
+    width: 30px;
+}
+
+.user-firstname{
+    display: none;
+}
+    
+.navbar-toggle{
+display: flex;
+}
+}
+
+  
+  /* Tablets */
+  @media screen and (max-width: 768px) {
+    
+  }
+  
+  /* Laptops */
+  @media screen and (max-width: 992px) {
+    
+  }
+  
+  /* Monitors */
+  @media screen and (min-width: 1200px) {
+    
+  }
+  
