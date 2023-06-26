@@ -17,13 +17,13 @@ export default {
       type: 'string',
       options: {
         list: [
-          {title: 'First Birthday', value: 'first-birthday'},
+          {title: 'Birthday', value: 'birthday'},
           {title: 'New Arrivals', value: 'new-arrivals'},
           {title: 'Ethnic Wear', value: 'ethnic-wear'},
           {title: 'Party Wear', value: 'party-wear'},
-          {title: 'Gowns', value: 'gowns'},
-          {title: 'Dresses', value: 'dresses'},
-          {title: 'Accessories', value: 'accessories'},
+          {title: 'Casual Wear', value: 'casual-wear'},
+          {title: 'Mom & me', value: 'mom-and-me'},
+          {title: 'Siblings Set', value: 'siblings-set'},
         ],
         layout: 'dropdown', // Display style: dropdown
       },

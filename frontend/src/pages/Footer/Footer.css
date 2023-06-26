@@ -1,5 +1,65 @@
 .Parent-Footer{
-    height: 60vh;
     position: relative;
+    left: 0;
     bottom: 0;
+    background-color: #1B4B66;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+
+.box b{
+    font-weight: 450;
+}
+
+.box p{
+    margin: 0px;
+    font-weight: lighter;
+}
+
+.Footer-links{
+    display: flex;
+    flex-direction: column;
+}
+
+.Footer-links a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: lighter;
+}
+
+.Footer-links a:hover{
+    color: #8EC3E1;
+}
+
+.box hr{
+    margin: 6px 0px;
+}
+
+.box2{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-icons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    font-size: 26px;
+    padding: 8px 0px;
+}
+
+.social-icon{
+    padding: 4px;
+    border-radius: 50%;
+    background-color: #5085B9;
+    color: #1B4B66;
+}
+
+.address{
+    text-align: right;
 }

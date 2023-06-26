@@ -1,32 +1,20 @@
 .title-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    text-align: center;
+    text-align: left;
   }
-  
-  .line {
-    background-color: black;
-    width: 100%;
-    height: 3px;
-  }
+
   
 .Category-Container{
     padding: 20px;
+    background-color: #1B4B66;
+    color: #fff;
 }
 
-.title-container h1{
-    background-color: white;
-    z-index: 1;
-    font-size: 34px;
-    font-weight: 700;
+.title-container h3{
+    font-size: 28px;
     white-space: nowrap;
 }
 
-/* From uiverse.io by @FrM-bot */
 .cat-card {
-  height: min-content;
   transition: all .3s;
   position: relative;
   border-radius: .5rem 2rem;
@@ -59,6 +47,7 @@
   display: grid;
   border-radius: .5rem 2rem;
   overflow: hidden;
+  width: 240px;
 }
 
 .cat-description {
@@ -72,7 +61,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   backdrop-filter: blur(.4rem);
-  background-color: rgba(244, 244, 244, 0.2);
+  background-color: rgba(244, 244, 244, 0.3);
   border-radius: .5rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -93,7 +82,7 @@
     grid-template-columns: repeat(5, auto);
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 

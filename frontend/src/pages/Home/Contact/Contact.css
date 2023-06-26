@@ -17,10 +17,25 @@
 
 .Chat-Container .contact-button{
     padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.contact-button p:hover{
+    overflow: hidden;
+    border-radius: 0px;
 }
 
 .contact-button p{
     color: #fff;
     padding: 12px 26px;
-    background-color: black;
+    border-radius: 8px;
+    background-color: #1B4B66;
+}
+
+.chat-icon{
+    color: #25D366;
+    font-size: 28px;
 }

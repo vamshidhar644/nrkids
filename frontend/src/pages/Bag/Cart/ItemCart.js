@@ -1,34 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import sanityClient from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
-
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { useCart } from '../../../hooks/useCart';
-import { Link } from 'react-router-dom';
-
-import axios from 'axios';
-
 import './ItemCart.css';
+import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
 
-import { useSavelater } from '../../../hooks/useSavelater';
-import Checkboxes from '../../Components/Checkbox';
-
-const client = sanityClient({
-  projectId: 'dkv2w16f',
-  dataset: 'production',
-});
-
-const builder = imageUrlBuilder(client);
-
-const ItemCart = ({ item, cartData, index, sendData }) => {
-  const getImageUrl = (image) => {
-    return builder.image(image).url();
-  };
-
+const ItemCart = ({ item, cartItems, index, sendData }) => {
   const { updatecart } = useCart();
-  const { updatesavelater } = useSavelater();
-
+  const { setPriceperSize, itemprice, OoStock } = ChangePriceperSize();
   const { user } = UseAuthContext();
 
   const [productId, setProdId] = useState();
@@ -37,93 +16,27 @@ const ItemCart = ({ item, cartData, index, sendData }) => {
   const [price, setPrice] = useState();
   const [quantity, setQty] = useState();
 
-  const [OoStock, setOoStock] = useState(false);
-
-  const [savelater, setSavelater] = useState(false);
-
-  console.log(cartData);
-
   useEffect(() => {
-    if (cartData) {
+    if (user) {
       setUserId(user.id);
-      setProdId(cartData[index].productId);
-      setQty(cartData[index].quantity);
-      setSize(cartData[index].size);
-      const setprice = setPricing(cartData[index].size);
-      setPrice(setprice);
+      setProdId(cartItems[index].productId);
+      setPrice(cartItems[index].price);
+      setSize(cartItems[index].size);
+      setQty(cartItems[index].quantity);
     }
   }, []);
 
-  const setPricing = (size) => {
-    switch (size) {
-      case 'xs':
-        if (item.prices.xs !== 0) {
-          // setPrice(item.prices.xs);
-          setOoStock(false);
-          return item.prices.xs;
-        } else {
-          // setPrice(0);
-          setOoStock(true);
-          return 0;
-        }
-      case 's':
-        if (item.prices.s !== 0) {
-          // setPrice(item.prices.s);
-          setOoStock(false);
-          return item.prices.s;
-        } else {
-          // setPrice(0);
-          setOoStock(true);
-          return 0;
-        }
-      case 'm':
-        if (item.prices.m !== 0) {
-          // setPrice(item.prices.m);
-          setOoStock(false);
-          return item.prices.m;
-        } else {
-          setOoStock(true);
-          return 0;
-        }
-      case 'l':
-        if (item.prices.l !== 0) {
-          setOoStock(false);
-          return item.prices.l;
-        } else {
-          setOoStock(true);
-          return 0;
-        }
-      case 'xl':
-        if (item.prices.xl !== 0) {
-          setOoStock(false);
-          return item.prices.xl;
-        } else {
-          setOoStock(true);
-          return 0;
-        }
-      case 'xxl':
-        if (item.prices.xxl !== 0) {
-          setOoStock(false);
-          return item.prices.xxl;
-        } else {
-          setOoStock(true);
-          return 0;
-        }
-      case 'xxxl':
-        if (item.prices.xxxl !== 0) {
-          setOoStock(false);
-          return item.prices.xxxl;
-        } else {
-          setOoStock(true);
-          return 0;
-        }
-      default:
-    }
-  };
+  useEffect(() => {
+    const setPricing = (size) => {
+      setPriceperSize(item.prices, size);
+    };
+
+    setPricing(size);
+  });
 
   useEffect(() => {
     const itemData = { userId, quantity, size, price };
-
+    // console.log(item);
     const updateCart = async () => {
       if (productId && itemData) {
         await updatecart(productId, itemData);
@@ -131,22 +44,10 @@ const ItemCart = ({ item, cartData, index, sendData }) => {
         sendData(reqData);
       }
     };
-
-    updateCart();
-  }, [productId, userId, quantity, size, price]);
-
-  useEffect(() => {
-    const itemData = { userId, quantity, size, price };
-
-    const updateSavelater = async () => {
-      if (savelater) {
-        await updatesavelater(productId, itemData);
-        handleDelete();
-      }
-    };
-
-    updateSavelater();
-  }, [savelater]);
+    if ((productId && userId, quantity, size, price)) {
+      updateCart();
+    }
+  }, [productId, userId, quantity, size, itemprice]);
 
   const handleQtyChange = (event) => {
     const intValue = parseInt(event.target.value, 10);
@@ -157,40 +58,12 @@ const ItemCart = ({ item, cartData, index, sendData }) => {
 
   const handleSizeChange = (event) => {
     setSize(event.target.value);
-    const setprice = setPricing(event.target.value);
-    setPrice(setprice);
-  };
-
-  const handleDelete = async (event) => {
-    console.log(userId, productId);
-
-    try {
-      await axios.delete(`api/user/${userId}/cart/${productId}`);
-      window.location.reload();
-    } catch (error) {
-      // Handle error
-      console.error('Error deleting item:', error);
-    }
-  };
-
-  const handleSavelater = async (event) => {
-    setSavelater(true);
+    setPrice(itemprice);
   };
 
   return (
     <div className="cart-item">
       <div className="cart-item-box">
-        <Checkboxes />
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <Link
-          to={`/new-arrivals/${item.path.current}`}
-          state={{
-            data: item,
-          }}
-          key={index}
-        >
-          <img src={getImageUrl(item.images[0])} alt="" />
-        </Link>
         <div className="item-details">
           <h6>{item.title}</h6>
           {!OoStock && <p className="product-price">₹ {price}</p>}
@@ -231,20 +104,6 @@ const ItemCart = ({ item, cartData, index, sendData }) => {
               </select>
             </div>
           </div>
-          {/* {!OoStock && (
-            <div className="total-price">
-              <p>Total: ₹ {price * quantity}</p>
-            </div>
-          )} */}
-        </div>
-      </div>
-      <div className="cart-buttons-box">
-        <div className="cart-button" onClick={handleSavelater}>
-          Save for later
-        </div>
-        <div className="cart-button">Buy now</div>
-        <div className="cart-button" onClick={handleDelete}>
-          Remove
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import './Checkout.css';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import axios from 'axios';
 
-const Checkout = ({ data }) => {
+const Checkout = ({ data, cartItems }) => {
   const { user } = UseAuthContext();
   const [cartData, setCartdata] = useState();
 
@@ -24,6 +24,8 @@ const Checkout = ({ data }) => {
         });
     }
   }, [user]);
+
+  console.log(cartItems);
 
   useEffect(() => {
     const cartitems = [];
@@ -61,10 +63,10 @@ const Checkout = ({ data }) => {
         }
 
         setTotalPrice(price);
-        if (checkoutData.length === 1) {
-          setItemCount(checkoutData.length + ' item');
+        if (cartItems.length === 1) {
+          setItemCount(cartItems.length + ' item');
         } else {
-          setItemCount(checkoutData.length + ' items');
+          setItemCount(cartItems.length + ' items');
         }
       }
     };

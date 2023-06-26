@@ -1,125 +1,89 @@
-import React, { useEffect, useState } from 'react';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
-import axios from 'axios';
+import React, { useState } from 'react';
 import './CartSection.css';
 
-import sanityClient from '@sanity/client';
-import ItemCard from './ItemCart';
 import Checkout from './Checkout';
-import EmptyCart from '../Empty/EmptyCart';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const client = sanityClient({
-  projectId: 'dkv2w16f',
-  dataset: 'production',
-});
+import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 
-const CartSection = () => {
-  const { user } = UseAuthContext();
-
-  const [cartData, setCartdata] = useState();
-  const [sanityData, setSanityData] = useState();
-
-  const [selectSanityCart, setSelectedSanity] = useState();
-
-  useEffect(() => {
-    if (user) {
-      const id = user.id;
-      axios
-        .get(`/api/user/cart/${id}`)
-        .then((response) => {
-          setCartdata(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
-    }
-    const query3 = `*[_type == "categories"]`;
-
-    const fetchData = async () => {
-      const data3 = await client.fetch(query3);
-
-      const mergedData = [...data3];
-
-      setSanityData(mergedData);
-    };
-
-    fetchData();
-  }, [user]);
-
-  useEffect(() => {
-    const sanitycart = [];
-    if (cartData) {
-      for (let i = 0; i < cartData.length; i++) {
-        if (sanityData) {
-          for (let j = 0; j < sanityData.length; j++) {
-            if (cartData[i].productId === sanityData[j].productId) {
-              sanitycart.push(sanityData[j]);
-            }
-          }
-        }
-      }
-    }
-    if (sanitycart) {
-      setSelectedSanity(sanitycart);
-    }
-  }, [cartData, sanityData]);
-
-  const [revSanity, setRevSanity] = useState();
-  const [revCart, setRevCart] = useState();
-
-  useEffect(() => {
-    const sanityRev = [];
-    const cartRev = [];
-    if (selectSanityCart) {
-      for (let i = selectSanityCart.length - 1; i >= 0; i--) {
-        sanityRev.push(selectSanityCart[i]);
-        cartRev.push(cartData[i]);
-      }
-      setRevSanity(sanityRev);
-      setRevCart(cartRev);
-    }
-  }, [selectSanityCart, cartData]);
-
+const CartSection = ({ SanityProducts, cartItems }) => {
   const [data, setData] = useState('');
+  const { user } = UseAuthContext();
 
   const handleDataChange = (newData) => {
     setData(newData);
   };
 
-  if (cartData) {
-    if (cartData.length !== 0) {
-      return (
-        <div className="cart-page">
-          <div className="cart-items">
-            <div className="cart-header">
-              <h1>
-                Shopping cart <span>deselect all items</span>
-              </h1>
-              <h2>Price</h2>
-            </div>
-            <div>
-              {selectSanityCart &&
-                revSanity.map((item, index) => {
-                  return (
-                    <ItemCard
-                      key={index}
-                      item={item}
-                      cartData={revCart}
-                      index={index}
-                      sendData={handleDataChange}
-                    />
-                  );
-                })}
-            </div>
-          </div>
-          <Checkout data={data} />
-        </div>
+  const { getImageUrl } = FetchImageUrl();
+
+  const handleDelete = async (index) => {
+    console.log(user.id, cartItems[index].productId);
+
+    try {
+      await axios.delete(
+        `api/user/${user.id}/cart/${cartItems[index].productId}`
       );
+      window.location.reload();
+    } catch (error) {
+      // Handle error
+      console.error('Error deleting item:', error);
     }
-    if (cartData.length === 0) {
-      return <EmptyCart />;
-    }
-  }
+  };
+
+  // console.log(cartItems);
+
+  return (
+    <div className="cart-page">
+      <div className="cart-items">
+        <div className="cart-header">
+          <h1>
+            Shopping cart <span>deselect all items</span>
+          </h1>
+          <h2>Price</h2>
+        </div>
+        <div>
+          {SanityProducts &&
+            SanityProducts.map((item, index) => {
+              return (
+                <div className="cart-item" key={index}>
+                  <div className="cart-item-box">
+                    <Link
+                      to={`/new-arrivals/${item.path.current}`}
+                      state={{
+                        data: item,
+                      }}
+                      key={index}
+                    >
+                      <img src={getImageUrl(item.images[0])} alt="" />
+                    </Link>
+                    {/* <ItemCart
+                      index={index}
+                      item={item}
+                      cartItems={cartItems}
+                      sendData={handleDataChange}
+                    /> */}
+                  </div>
+
+                  <div className="cart-buttons-box">
+                    <div className="cart-button">Save for later</div>
+                    <div className="cart-button">Buy now</div>
+                    <div
+                      className="cart-button"
+                      onClick={() => handleDelete(index)}
+                    >
+                      Remove
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+      <Checkout data={data} cartItems={cartItems} />
+    </div>
+  );
 };
 
 export default CartSection;

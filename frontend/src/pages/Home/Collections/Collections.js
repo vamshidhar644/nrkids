@@ -1,52 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import sanityClient from '../../../client';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import './Collections.css';
 
-const ShopByCategory = () => {
-  const [Categories, setCategories] = useState(null);
+const ShopByCategory = ({ Collections }) => {
+  const { getImageUrl } = FetchImageUrl();
 
-  useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "shopbycategory"] {title, path, image {asset -> {_id, url}, alt}}`
-      )
-      .then((HomeData) => setCategories(HomeData))
-      .catch(console.error);
-  }, []);
+  // useEffect(() => {
+  //   if (Collections) {
+  //     console.log(Collections);
+  //   }
+  // });
 
   return (
     <div className="Category-Container">
       <div className="title-container">
-        <div className="line" />
-        <h1 className="title">Shop by Category</h1>
-        <div className="line" />
+        <h3 className="title">Handpicked Collections</h3>
       </div>
       <div className="Cat-Card-Container">
-        {Categories &&
-          Categories.map((categories, index) => {
+        {Collections &&
+          Collections.map((categories, index) => {
             return (
               <div key={index}>
-                <Link
-                  to={`/shop-by-category/${categories.path.current}`}
-                  className="cat-card"
-                >
+                <Link to={`/${categories.path.current}`} className="cat-card">
                   <div className="cat-img-container">
                     <div className="cat-img">
-                      <img src={categories.image.asset.url} alt="" />
+                      <img src={getImageUrl(categories.image)} alt="" />
                     </div>
                     <div className="cat-description cat-card">
                       <span className="cat-title">{categories.title}</span>
                     </div>
                   </div>
                 </Link>
-                <Link
+                {/* <Link
                   to={`/shop-by-category/${categories.path.current}`}
                   className="shop-button"
                 >
                   <p>Shop</p>
-                </Link>
+                </Link> */}
               </div>
             );
           })}

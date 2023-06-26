@@ -9,13 +9,13 @@ export default {
       type: 'string',
       options: {
         list: [
-          {title: 'First Birthday', value: 'first-birthday'},
+          {title: 'Birthday', value: 'birthday'},
           {title: 'New Arrivals', value: 'new-arrivals'},
           {title: 'Ethnic Wear', value: 'ethnic-wear'},
           {title: 'Party Wear', value: 'party-wear'},
-          {title: 'Gowns', value: 'gowns'},
-          {title: 'Dresses', value: 'dresses'},
-          {title: 'Accessories', value: 'accessories'},
+          {title: 'Casual Wear', value: 'casual-wear'},
+          {title: 'Mom & me', value: 'mom-and-me'},
+          {title: 'Siblings Sets', value: 'siblings-sets'},
         ],
         layout: 'dropdown', // Display style: dropdown
       },
@@ -56,82 +56,22 @@ export default {
         maxLength: 90,
       },
     },
-    {
-      name: 'prices',
-      title: 'Prices',
-      type: 'object',
-      fields: [
-        {
-          name: 'xs',
-          title: 'XS',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'boolean'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-        {
-          name: 's',
-          title: 'S',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'number'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-        {
-          name: 'm',
-          title: 'M',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'number'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-        {
-          name: 'l',
-          title: 'L',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'number'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-        {
-          name: 'xl',
-          title: 'XL',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'number'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-        {
-          name: 'xxl',
-          title: 'XXL',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'number'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-        {
-          name: 'xxxl',
-          title: 'XXXL',
-          type: 'object',
-          fields: [
-            {name: 'stock', title: 'In Stock', type: 'number'},
-            {name: 'mrp', title: 'MRP', type: 'number'},
-            {name: 'sp', title: 'Sale price', type: 'number'},
-          ],
-        },
-      ],
-    },
+    // {
+    //   name: 'prices',
+    //   title: 'Prices',
+    //   type: 'object',
+    //   fields: [
+    //     {
+    //       name: 'l',
+    //       title: 'L',
+    //       type: 'object',
+    //       fields: [
+    //         {name: 'stock', title: 'In Stock', type: 'boolean'},
+    //         {name: 'mrp', title: 'MRP', type: 'number'},
+    //         {name: 'sp', title: 'Sale price', type: 'number'},
+    //       ],
+    //     },
+    //   ],
+    // },
   ],
 }

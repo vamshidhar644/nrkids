@@ -1,0 +1,60 @@
+
+/* Smart phones */
+@media screen and (max-width: 600px) {    
+    .Close-navbar{
+        display: flex;
+        justify-content: flex-end;
+    }
+    ul li ul.down-dropdown {
+        font-size: 14px;
+        background: #fff;
+        display: none;
+        border-radius: 6px;
+        position: absolute;
+        right: 0%;
+    }    
+    .navbar-links{
+    z-index: 7;
+    display: none;
+    position: fixed;
+    top: 0%;
+    opacity: 0.85;
+    width: 80%;
+    }
+    .navbar.navbar-open{
+        display: block; 
+    }
+
+    .navbar-link{
+        width: 100%;
+        padding: 12px;
+    }
+        
+    .navbar-links.open {
+        display: flex;
+        background-color: #000;
+        flex-direction: column;
+        border-bottom-right-radius: 10px;
+    }
+    .navbar-link a{
+    color: #f2f2f2;
+    }
+    
+}
+    
+      
+/* Tablets */
+@media screen and (max-width: 768px) {
+
+}
+
+/* Laptops */
+@media screen and (max-width: 992px) {
+
+}
+
+/* Monitors */
+@media screen and (min-width: 1200px) {
+
+}
+      

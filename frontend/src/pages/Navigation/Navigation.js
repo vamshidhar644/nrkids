@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Navigation.css';
+import './Desktop/Navigation.css';
 import { Link } from 'react-router-dom';
 
 import NavbarItems from './NavbarItems';
@@ -8,13 +8,15 @@ import SearchBar from './SearchBar';
 import { useLogout } from '../../hooks/useLogout';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 
-import { AiOutlineMenu } from 'react-icons/ai';
-import { FaUser } from 'react-icons/fa';
-import { MdOutlineFavorite, MdLogin, MdShoppingBag } from 'react-icons/md';
+import { AiOutlineMenu, AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
+import { BsHandbag } from 'react-icons/bs';
+import { MdLogin } from 'react-icons/md';
 
 const Navigation = () => {
   const { logout } = useLogout();
   const { user } = UseAuthContext();
+
+  const [closeOffer, setCloseOffer] = useState(false);
 
   const handleClick = () => {
     logout();
@@ -48,54 +50,55 @@ const Navigation = () => {
   }, []);
 
   return (
-    <div>
-      <div className="offer-section"></div>
-      <div className={`navigation-container  ${isFixed ? 'fixed' : ''}`}>
-        <div className="navbar-nav">
+    <div className={`${isFixed ? 'fixed position-fixed' : ''}`}>
+      <div className="navigation-container">
+        <div className="navbar-nav d-flex flex-row">
           <div className="navbar-nav-section1">
             <div className="navbar-toggle" onClick={handleNavToggle}>
               <AiOutlineMenu />
             </div>
           </div>
-          <div className="navbar-nav-section2">
-            <Link
-              to="/"
-              style={{ textDecoration: 'none' }}
-              className="Brand-logo"
-            >
-              nrKids
-            </Link>
-          </div>
-          <div className="navbar-nav-section3">
+          <NavbarItems
+            navbarColor={Visibility}
+            isNavOpen={isNavOpen}
+            navTop={navtop}
+            navHeight={navHeight}
+            onClick={handleNavToggle}
+          />
+
+          <Link to="/" style={{ textDecoration: 'none' }} className="logo">
+            nrKids
+          </Link>
+          <div className="navbar-icon-section d-flex justify-content-end align-items-center">
             <SearchBar className="Search-Section" />
-            <div className="input-wrapper">
+            <div className="input-wrapper d-flex">
               <Link className="nav-bar-icons" to="/favorites">
-                <MdOutlineFavorite />
+                <AiOutlineHeart />
               </Link>
               {user && (
                 <Link className="nav-bar-icons">
-                  <FaUser onClick={handleClick} />
+                  <MdLogin onClick={handleClick} />
                 </Link>
               )}
               {!user && (
                 <Link to="/login" className="nav-bar-icons">
-                  <MdLogin />
+                  <AiOutlineUser />
                 </Link>
               )}
               <Link className="nav-bar-icons" to="/your-bag">
-                <MdShoppingBag />
+                <BsHandbag />
               </Link>
             </div>
           </div>
         </div>
-        <NavbarItems
-          navbarColor={Visibility}
-          isNavOpen={isNavOpen}
-          navTop={navtop}
-          navHeight={navHeight}
-          onClick={handleNavToggle}
-        />
       </div>
+      {!closeOffer && (
+        <div className="offer-section">
+          <p className="Close" onClick={() => setCloseOffer(true)}>
+            X
+          </p>
+        </div>
+      )}
     </div>
   );
 };

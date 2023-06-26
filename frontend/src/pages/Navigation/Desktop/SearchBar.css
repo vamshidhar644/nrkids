@@ -4,7 +4,6 @@
     line-height: 28px;
     align-items: center;
     position: relative;
-    width: 100%;
     padding: 0px 10px;
    }
    
@@ -30,7 +29,7 @@
     outline: none;
     border-color: rgba(234,76,137,0.4);
     background-color: #fff;
-    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    box-shadow: 0 0 0 4px rgba(19, 33, 125, 0.1);
    }
    
    .icon {
