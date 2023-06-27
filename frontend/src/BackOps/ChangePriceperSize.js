@@ -1,74 +1,42 @@
 import { useState } from 'react';
 
 const ChangePriceperSize = () => {
-  const [itemprice, setPrice] = useState();
-  const [OoStock, setOoStock] = useState(false);
+  const [size, setSize] = useState('');
+  const [price, setPrice] = useState();
 
-  const setPriceperSize = async (prices, size) => {
-    switch (size) {
-      case 'xs':
-        if (prices.xs !== 0) {
-          setPrice(prices.xs);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      case 's':
-        if (prices.s !== 0) {
-          setPrice(prices.s);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      case 'm':
-        if (prices.m !== 0) {
-          setPrice(prices.m);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      case 'l':
-        if (prices.l !== 0) {
-          setPrice(prices.l);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      case 'xl':
-        if (prices.xl !== 0) {
-          setPrice(prices.xl);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      case 'xxl':
-        if (prices.xxl !== 0) {
-          setPrice(prices.xxl);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      case 'xxxl':
-        if (prices.xxxl !== 0) {
-          setPrice(prices.xxxl);
-          setOoStock(false);
-        } else {
-          setOoStock(true);
-        }
-        break;
-      default:
+  const [item, setItem] = useState({ size, price });
+
+  const setSizes = (Product) => {
+    let sizes = [];
+    let prices = [];
+
+    if (Product.prices[`prices_one`]) {
+      sizes.push(Product.prices[`prices_one`].size);
+      prices.push(Product.prices[`prices_one`].price);
     }
+    if (Product.prices[`prices_two`]) {
+      sizes.push(Product.prices[`prices_two`].size);
+      prices.push(Product.prices[`prices_two`].price);
+    }
+    if (Product.prices[`prices_three`]) {
+      sizes.push(Product.prices[`prices_three`].size);
+      prices.push(Product.prices[`prices_three`].price);
+    }
+    if (Product.prices[`prices_four`]) {
+      sizes.push(Product.prices[`prices_four`].size);
+      prices.push(Product.prices[`prices_four`].price);
+    }
+    if (Product.prices[`prices_five`]) {
+      sizes.push(Product.prices[`prices_five`].size);
+      prices.push(Product.prices[`prices_five`].price);
+    }
+    setItem({ ...item, size: sizes, price: prices });
+    setSize(sizes[0]);
   };
+
   return {
-    setPriceperSize,
-    itemprice,
-    OoStock,
+    setSizes,
+    item,
   };
 };
 

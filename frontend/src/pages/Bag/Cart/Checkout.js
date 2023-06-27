@@ -25,7 +25,7 @@ const Checkout = ({ data, cartItems }) => {
     }
   }, [user]);
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   useEffect(() => {
     const cartitems = [];

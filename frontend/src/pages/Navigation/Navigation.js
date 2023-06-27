@@ -50,8 +50,8 @@ const Navigation = () => {
   }, []);
 
   return (
-    <div className={`${isFixed ? 'fixed position-fixed' : ''}`}>
-      <div className="navigation-container">
+    <div className={`${isFixed ? 'fixed position-fixed w-100' : ''}`}>
+      <div className="navigation-container bg-white p-0 py-0 px-2 ">
         <div className="navbar-nav d-flex flex-row">
           <div className="navbar-nav-section1">
             <div className="navbar-toggle" onClick={handleNavToggle}>
@@ -69,9 +69,9 @@ const Navigation = () => {
           <Link to="/" style={{ textDecoration: 'none' }} className="logo">
             nrKids
           </Link>
-          <div className="navbar-icon-section d-flex justify-content-end align-items-center">
+          <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">
             <SearchBar className="Search-Section" />
-            <div className="input-wrapper d-flex">
+            <div className="input-wrapper d-flex p-2">
               <Link className="nav-bar-icons" to="/favorites">
                 <AiOutlineHeart />
               </Link>
@@ -94,7 +94,10 @@ const Navigation = () => {
       </div>
       {!closeOffer && (
         <div className="offer-section">
-          <p className="Close" onClick={() => setCloseOffer(true)}>
+          <p
+            className="Close position-absolute"
+            onClick={() => setCloseOffer(true)}
+          >
             X
           </p>
         </div>

@@ -2,6 +2,7 @@
 .group {
     display: flex;
     line-height: 28px;
+    width: 100%;
     align-items: center;
     position: relative;
     padding: 0px 10px;

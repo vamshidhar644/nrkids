@@ -14,11 +14,11 @@ const ShopByCategory = ({ Collections }) => {
   // });
 
   return (
-    <div className="Category-Container">
+    <div className="Category-Container p-4">
       <div className="title-container">
         <h3 className="title">Handpicked Collections</h3>
       </div>
-      <div className="Cat-Card-Container">
+      <div className="Cat-Card-Container d-grid justify-content-around align-items-center">
         {Collections &&
           Collections.map((categories, index) => {
             return (
@@ -33,12 +33,6 @@ const ShopByCategory = ({ Collections }) => {
                     </div>
                   </div>
                 </Link>
-                {/* <Link
-                  to={`/shop-by-category/${categories.path.current}`}
-                  className="shop-button"
-                >
-                  <p>Shop</p>
-                </Link> */}
               </div>
             );
           })}

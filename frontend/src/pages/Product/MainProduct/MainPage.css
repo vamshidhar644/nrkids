@@ -1,57 +1,65 @@
-.product-page {
-    display: flex;
-    padding: 20px;
-    gap: 30px;
+
+.product-image {
+  gap: 16px;
+}
+
+.product-page .product-path{
+  gap: 8px;
+  font-size: small;
+  cursor: default;
   }
-  
-  .product-image {
-    /* flex: 1; */
-    display: flex;
-    gap: 26px;
-    margin-right: 20px;
+
+  .product-page .product-path a{
+      text-decoration: none;
+      color: var(--bs-font-color);
   }
-  
-  .product-image img {
-    width: 100%;
-    max-width: 360px;
+
+  .product-page .product-path a:hover{
+      color: var(--bs-hover-color);
   }
 
   .other-images{
-    display: flex;
-    flex-direction: column;
     gap: 36px;
   }
 
   .other-image{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 124px;
   }
 
-  .other-image img{
-    width: 100%;
-    max-width: 80px;
+  .product-title {
+    font-family: Optima nova,sans-serif;
   }
-  
-  .product-details {
+
+  .product-subtitle{
+    color: var(--type-low-emphasis, #626262);
+    font-weight: 600;
+  }
+
+  .product-description{
+    /* padding: 50px 0px 0px 0px; */
     display: flex;
     flex-direction: column;
-    flex: 2;
   }
-  
-  .product-title {
-    font-size: 24px;
-    margin-bottom: 10px;
+
+  .product-description a{
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    width: 100%;
+    border: 2px solid black;
+    padding: 8px;
+  }
+
+  .product-description a:hover{
+    background-color: #000;
+    color: #fff;
   }
   
   .product-price {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 10px;
-  }
-  
-  .product-description {
-    position: static;
-    bottom: 0;
   }
   
   .add-to-cart-button {
@@ -77,14 +85,16 @@
   }
   
 
-  .size-section, .qty-section{
+  .select-size, .qty-section{
     display: flex;
+    align-items: center;
     gap: 10px;
+    height: fit-content;
+    width: 100%;
   }
 
   .size-select, .qty-select{
     width: 80px;
-    height: 30px;
     display: flex;
     justify-content: center; 
     border: transparent;
@@ -93,9 +103,32 @@
 
   }
 
-  .item-desc option{
-    width: 80px;
-    height: 30px;
-    border: 1px solid #e67e22;
-    border-radius: 4px;
+  .size-guide{
+    cursor: pointer;
+  }
+
+  .size-guide:hover{
+    text-decoration: underline;
+  }
+
+  .quantity-section{
+    height: fit-content;
+    gap: 6px;
+
+  }
+
+  .change-qty{
+    border: 1px solid #0066CC;
+    
+  }
+
+  .change-qty label{
+    padding: 4px;
+  }
+
+  .qty-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
   }

@@ -1,44 +1,11 @@
-.bar-container{
-    padding: 12px;
-}
 
 .bar-content{
-    width: 100%;
     background: var(--fuschia-100, #EF5DA8);
-    text-align: center;
-    padding: 14px;
 }
-
-.bar-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bar-box2{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
 
 .icon-space{
     font-size: 34px;
-    padding: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
-
-.bottom-image{
-    padding: 40px 10px;
-}
-
-.bottom-image img{
-    border-radius: 20px;
-}
-
 
 /* Smart phones */
 @media screen and (max-width: 600px) {

@@ -1,27 +1,41 @@
-.Main-Category-Container{
-    min-height: 100vh;
-    background-color: #fff;
-}
 
 .category-body{
     gap: 18px;
-    display: flex;
-
 }
 
 .filter-container{
     width: 300px;
 }
 
-.products-container{
-    width: 100%;
-    padding: 8px;
-    padding-bottom: 60px;
+.Cards-Grid{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 24px;
 }
 
 .Product-Grid{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: space-around;
-    gap: 24px;
+    display: flex;
+    justify-content: center;
 }
+
+.Main-Card .card{
+    max-width: 300px;
+    border-radius: 0px;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 300px;
+    transition: 0.4s ease-out;
+}
+
+.Product-Details{
+    position: relative;
+}
+
+.favs-icon{
+    position: relative;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+  }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './CategoryHero.css';
 import { FetchSanity } from '../../../BackOps/FetchSanity';
+import { SetPaths } from '../../../BackOps/SetPaths';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import { BiChevronRight } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
@@ -8,54 +9,33 @@ import { Link } from 'react-router-dom';
 const CategoryHero = ({ params }) => {
   const { fetchHero, Hero } = FetchSanity();
   const { getImageUrl } = FetchImageUrl();
+  const { setCategoryPath, categorypath } = SetPaths();
+
   const [image, setImage] = useState();
 
-  const [currentPath, setCurrentPath] = useState('');
   useEffect(() => {
     fetchHero();
-  }, []);
+    setCategoryPath(params);
+  }, [params]);
 
   useEffect(() => {
     if (Hero) {
       for (let i = 0; i < Hero.length; i++) {
         if (Hero[i].bannerlocation === params) {
           setImage(Hero[i]);
+          break;
+        } else {
+          setImage('');
         }
       }
     }
   }, [Hero, params]);
 
-  useEffect(() => {
-    switch (params) {
-      case 'birthday':
-        setCurrentPath('Birthday');
-        break;
-      case 'new-arrivals':
-        setCurrentPath('New Arrivals');
-        break;
-      case 'ethnic-wear':
-        setCurrentPath('Ethnic wear');
-        break;
-      case 'party-wear':
-        setCurrentPath('Party wear');
-        break;
-      case 'casual-wear':
-        setCurrentPath('Casual wear');
-        break;
-      case 'mom-and-me':
-        setCurrentPath('Mom & me');
-        break;
-      case 'siblings-set':
-        setCurrentPath('Siblings set');
-        break;
-      default:
-    }
-  }, [params]);
   return (
-    <div className="hero-container">
+    <div className="hero-container p-4">
       <p>
         <Link to="/">Home </Link>
-        <BiChevronRight /> {currentPath}
+        <BiChevronRight /> {categorypath}
       </p>
       {image && (
         <img src={getImageUrl(image.image)} alt="" style={{ width: '100%' }} />

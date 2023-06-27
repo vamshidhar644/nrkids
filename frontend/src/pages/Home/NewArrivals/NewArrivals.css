@@ -1,34 +1,16 @@
 
-.New-Arrivals{    
-    padding: 0px 30px;
-    display: flex;
-    align-items: center;
-}
-
-.newarrivals-head{
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 50px;
-}
-
 .newarrivals-head a{
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #171520;
-  font-size: 14px;
+  color: var(--bs-font-color);
+  gap: 4px;
   font-weight: 600;
-  cursor: pointer;
 }
 
 .newarrivals-head a:hover{
-  color: #0066CC;
+  color: var(--bs-hover-color);
 }
 
 .Cards-Container{
-  display: flex;
   gap: 20px;
-  overflow-x: scroll;
   scroll-behavior: smooth;
   transition: scroll-behavior 1.6s;
 }
@@ -45,18 +27,7 @@
   background-color: transparent; /* Set the background color of the scrollbar thumb */
 }
 
-.card img{
-  width: 100%;
-  height: 100%;
-}
-
-.card {
-  width: 200px;
-  overflow: hidden;
-}
-
 .card .image2{
-  position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
@@ -70,37 +41,24 @@
 
 .Main-Card .title{
   color: var(--type-high-emphasis, #171520);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  margin-bottom: 0px;
 }
 
 .Main-Card .subtitle{
-  overflow: hidden;
   color: var(--type-low-emphasis, #626262);
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 0px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.Main-Card .price{
-  color: var(--type-high-emphasis, #171520);
-  margin-bottom: 0px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
 }
 
 .scroll-button{
-  font-size: xx-large;
+  font-size: 4rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  height: 330px;
   transition: .9s ease all;
+  border-radius: 30px;
+}
+
+.scroll-button:hover{
+  background-color: rgba(0, 96, 192, 0.7);
+  color: #fff;
 }
 
 .Product-Details{
@@ -108,16 +66,15 @@
 }
 
 .Product-Details .fav-icon{
-  position: absolute;
   top: 0;
   right: 0;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
 }
 
 .fav-icon:hover{
-  color: #0066CC;
+  color: var(--bs-hover-color);
 }
 
 /* Smart phones */

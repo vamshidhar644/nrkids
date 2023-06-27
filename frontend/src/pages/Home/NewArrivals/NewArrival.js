@@ -15,26 +15,26 @@ const NewArrival = ({ NewArrivals }) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (NewArrivals) {
-  //     console.log(NewArrivals);
-  //   }
-  // });
-
   return (
     <div>
-      <div className="newarrivals-head">
-        <h3>New Arrivals</h3>
-        <Link to="/new-arrivals">
+      <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-5">
+        <h3 className="medium">New Arrivals</h3>
+        <Link
+          to="/new-arrivals"
+          className="d-flex align-items-center small text-decoration-none"
+        >
           View all <AiOutlineRight />
         </Link>
       </div>
-      <div className="New-Arrivals">
+      <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4">
         <AiOutlineLeft
-          onClick={() => scrollHorizontally(-500)}
-          className="scroll-button"
+          onClick={() => scrollHorizontally(-600)}
+          className="scroll-button d-flex"
         />
-        <div className="Cards-Container" ref={containerRef}>
+        <div
+          className="Cards-Container overflow-x-auto d-flex"
+          ref={containerRef}
+        >
           {NewArrivals &&
             NewArrivals.map((newarrivals) => {
               return (
@@ -47,28 +47,29 @@ const NewArrival = ({ NewArrivals }) => {
                     }}
                   >
                     <img
-                      className="image1"
+                      className="image1 w-100 h-100"
                       src={getImageUrl(newarrivals.images[0])}
                       alt=""
                     />
                     <img
-                      className="image2"
+                      className="image2 w-100 h-100 position-absolute"
                       src={getImageUrl(newarrivals.images[1])}
                       alt=""
                     />
                   </Link>
                   <div className="Product-Details">
-                    <p className="title">{newarrivals.title}</p>
-                    <p className="subtitle">Description</p>
-                    <p className="price">From ₹ {newarrivals.price}</p>
-                    <AiOutlineHeart className="fav-icon" />
+                    <p className="title mb-0 font-weight-normal">
+                      {newarrivals.title}
+                    </p>
+                    <p className="subtitle small">Description</p>
+                    <AiOutlineHeart className="fav-icon position-absolute" />
                   </div>
                 </div>
               );
             })}
         </div>
         <AiOutlineRight
-          onClick={() => scrollHorizontally(500)}
+          onClick={() => scrollHorizontally(600)}
           className="scroll-button"
         />
       </div>

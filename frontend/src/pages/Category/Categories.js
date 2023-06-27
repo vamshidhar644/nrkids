@@ -26,11 +26,11 @@ const Categories = ({ Products }) => {
   return (
     <div className="Main-Category-Container">
       <CategoryHero className="category-head" params={categorypath} />
-      <div className="category-body">
+      <div className="category-body d-flex">
         <div className="filter-container">
           <Filters />
         </div>
-        <div className="products-container">
+        <div className="products-container w-100 pb-4">
           <ProductGrid categoryProducts={categoryProducts} />
         </div>
       </div>

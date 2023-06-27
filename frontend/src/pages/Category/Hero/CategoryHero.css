@@ -1,13 +1,11 @@
 
-.hero-container{
-    padding: 20px;
-}
-
 .hero-container p{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     cursor: default;
+    gap: 8px;
+    font-size: small;
 }
 
 .hero-container p a{

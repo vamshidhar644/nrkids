@@ -6,7 +6,7 @@ import { RiSecurePaymentFill } from 'react-icons/ri';
 
 export const Bar1 = () => {
   return (
-    <div className="bar-content">
+    <div className="bar-content text-center p-4">
       <h3>MADE TO FIT PERFECTLY</h3>
       <p>
         We want to make sure your garment fits perfeclty. Just select "Custom
@@ -18,22 +18,22 @@ export const Bar1 = () => {
 
 export const Bar2 = () => {
   return (
-    <div className="bar-content">
-        <h3>WE MADE SHOPPING EASY</h3>
-        <div className="bar-box2">
-          <div className="bar-box">
-            <span className="icon-space">
-              <TbTruckDelivery />
-            </span>
-            SHIPPING & DELIVERY
-          </div>
-          <div className="bar-box">
-            <span className="icon-space">
-              <RiSecurePaymentFill />
-            </span>
-            SECURE PAYMENTS
-          </div>
+    <div className="bar-content text-center p-3">
+      <h3>WE MADE SHOPPING EASY</h3>
+      <div className="w-100 d-flex justify-content-around align-items-center">
+        <div className="d-flex justify-content-center align-items-center">
+          <span className="icon-space p-2">
+            <TbTruckDelivery />
+          </span>
+          SHIPPING & DELIVERY
         </div>
+        <div className="d-flex justify-content-center align-items-center">
+          <span className="icon-space p-2">
+            <RiSecurePaymentFill />
+          </span>
+          SECURE PAYMENTS
+        </div>
+      </div>
     </div>
   );
 };

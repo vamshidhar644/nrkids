@@ -1,3 +1,5 @@
+import Prices from './Prices'
+
 export default {
   name: 'categories',
   title: 'All Products',
@@ -56,22 +58,23 @@ export default {
         maxLength: 90,
       },
     },
-    // {
-    //   name: 'prices',
-    //   title: 'Prices',
-    //   type: 'object',
-    //   fields: [
-    //     {
-    //       name: 'l',
-    //       title: 'L',
-    //       type: 'object',
-    //       fields: [
-    //         {name: 'stock', title: 'In Stock', type: 'boolean'},
-    //         {name: 'mrp', title: 'MRP', type: 'number'},
-    //         {name: 'sp', title: 'Sale price', type: 'number'},
-    //       ],
-    //     },
-    //   ],
-    // },
+    {
+      name: 'isData',
+      title: 'Show Prices?',
+      type: 'boolean',
+      defaultValue: false,
+    },
+    Prices,
+  ],
+
+  fieldsets: [
+    {
+      name: 'prices',
+      title: 'Prices',
+      options: {
+        collapsible: true,
+        collapsed: true, // Set to false if you want the fieldset to be expanded by default
+      },
+    },
   ],
 }

@@ -21,15 +21,13 @@ const ProductPage = ({ Products }) => {
 
     fetchData();
   });
-
-  // useEffect(() => {
-  //   console.log(data);
-  // });
-
   if (data.length !== 0) {
     return (
       <div>
         <MainProduct Product={data} />
+        <div>
+          <h2>You may also like</h2>
+        </div>
       </div>
     );
   }

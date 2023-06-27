@@ -1,8 +1,9 @@
 :root{
-    --primary-color: rgb(242,227,220);
+    --primary-color: #1B4B66;
     --secondary-color: rgb(223,142,105);
     --bs-third-color: rgb(242,236,222);
     --bs-fourth-color: rgb(208,202,190);
+    --bs-hover-color: #0066CC;
     --bs-font-color: rgb(34,34,46);
 }
 

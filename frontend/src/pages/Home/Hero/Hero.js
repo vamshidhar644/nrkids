@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import './Hero.css';
 
 const Hero = ({ Hero }) => {
   const { getImageUrl } = FetchImageUrl();
 
   const [image, setImage] = useState();
-  // useEffect(() => {
-  //   if (Hero) {
-  //     console.log(Hero);
-  //   }
-  // });
   useEffect(() => {
     const data = [];
     if (Hero) {
@@ -25,7 +19,10 @@ const Hero = ({ Hero }) => {
   }, [Hero]);
 
   return (
-    <div className="Hero">
+    <div
+      className="Hero"
+      style={{ margin: '14px', borderRadius: '16px', overflow: 'hidden' }}
+    >
       <Carousel className="Carousel-Container">
         {image &&
           image.map((homedata, i) => (
