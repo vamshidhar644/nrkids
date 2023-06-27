@@ -1,0 +1,24 @@
+
+.hero-container{
+    padding: 20px;
+}
+
+.hero-container p{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: default;
+}
+
+.hero-container p a{
+    text-decoration: none;
+    color: #000;
+}
+
+.hero-container p a:hover{
+    color: #0066CC;
+}
+
+.hero-container img{
+    border-radius: 20px;
+}

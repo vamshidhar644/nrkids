@@ -31,6 +31,15 @@
     align-items: center;
 }
 
+.bottom-image{
+    padding: 40px 10px;
+}
+
+.bottom-image img{
+    border-radius: 20px;
+}
+
+
 /* Smart phones */
 @media screen and (max-width: 600px) {
     .bar-content{

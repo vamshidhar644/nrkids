@@ -31,7 +31,7 @@
 }
 
 .navbar-link a:hover {
-    color: var(--secondary-color);
+    color: #0066CC;
 }
 
 .navbar-link:hover .dropdown {
@@ -113,7 +113,7 @@ ul li ul.down-dropdown li {
 }
 
 .nav-bar-icons:hover{
-    color: #000;
+    color: #0066CC;
 }
 
 

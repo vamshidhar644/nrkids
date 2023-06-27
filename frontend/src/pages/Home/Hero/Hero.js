@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import './Hero.css';
@@ -6,18 +6,30 @@ import './Hero.css';
 const Hero = ({ Hero }) => {
   const { getImageUrl } = FetchImageUrl();
 
+  const [image, setImage] = useState();
   // useEffect(() => {
   //   if (Hero) {
   //     console.log(Hero);
   //   }
   // });
+  useEffect(() => {
+    const data = [];
+    if (Hero) {
+      for (let i = 0; i < Hero.length; i++) {
+        if (Hero[i].bannerlocation === 'home-top') {
+          data.push(Hero[i]);
+        }
+      }
+    }
+    setImage(data);
+  }, [Hero]);
 
   return (
-    <div className='Hero'>
+    <div className="Hero">
       <Carousel className="Carousel-Container">
-        {Hero &&
-          Hero.map((homedata) => (
-            <Carousel.Item className="Carousel-Item" key={homedata.title}>
+        {image &&
+          image.map((homedata, i) => (
+            <Carousel.Item className="Carousel-Item" key={i}>
               <img
                 src={getImageUrl(homedata.image)}
                 alt=""

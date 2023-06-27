@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Filters from './Filtering/Filters';
 import ProductGrid from './Products/Products';
 import './Categories.css';
+import CategoryHero from './Hero/CategoryHero';
 
 const Categories = ({ Products }) => {
   const { categorypath } = useParams();
@@ -24,11 +25,14 @@ const Categories = ({ Products }) => {
 
   return (
     <div className="Main-Category-Container">
-      <div className="filter-container">
-        <Filters />
-      </div>
-      <div className="products-container">
-        <ProductGrid categoryProducts={categoryProducts} />
+      <CategoryHero className="category-head" params={categorypath} />
+      <div className="category-body">
+        <div className="filter-container">
+          <Filters />
+        </div>
+        <div className="products-container">
+          <ProductGrid categoryProducts={categoryProducts} />
+        </div>
       </div>
     </div>
   );

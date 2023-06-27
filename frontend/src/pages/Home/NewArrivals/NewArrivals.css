@@ -5,6 +5,26 @@
     align-items: center;
 }
 
+.newarrivals-head{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 50px;
+}
+
+.newarrivals-head a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #171520;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newarrivals-head a:hover{
+  color: #0066CC;
+}
+
 .Cards-Container{
   display: flex;
   gap: 20px;
@@ -81,6 +101,23 @@
   align-items: center;
   height: 330px;
   transition: .9s ease all;
+}
+
+.Product-Details{
+  position: relative;
+}
+
+.Product-Details .fav-icon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.fav-icon:hover{
+  color: #0066CC;
 }
 
 /* Smart phones */
