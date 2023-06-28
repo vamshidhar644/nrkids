@@ -1,7 +1,6 @@
 
 .Checkout-Section{
-    width: 100%;
-    height: fit-content;
+  width: 30%;
     background-color: #fff;
   }
 
@@ -11,9 +10,9 @@
   }
 
   .Checkout-header h5{
-    color: #6b6969;
     font-weight: 700;
     font-size: 18px;
+    color: var(--primary-color);
   }
 
   .Checkout-body{    
@@ -48,20 +47,20 @@
 
   .checkout-footer{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
   }
 
   .checkout-footer button{
-    width: 100%;
-    background-color: rgb(52, 210, 52);
+    border: 2px solid var(--primary-color);
+    padding: 4px 24px;
+    border-radius: 6px;
+  }
+
+  .place-order{
+    background-color: var(--primary-color);
     color: #fff;
-    border: 0px;
-    padding: 4px;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 2px;
   }
 
   .checkout-footer button:hover{
-    background-color: rgb(52, 190, 52);
+    transform: scale(.98);
   }

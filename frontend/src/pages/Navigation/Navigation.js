@@ -66,7 +66,17 @@ const Navigation = () => {
             onClick={handleNavToggle}
           />
 
-          <Link to="/" style={{ textDecoration: 'none' }} className="logo">
+          <Link
+            to="/"
+            style={{ textDecoration: 'none' }}
+            className="logo"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              });
+            }}
+          >
             nrKids
           </Link>
           <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">

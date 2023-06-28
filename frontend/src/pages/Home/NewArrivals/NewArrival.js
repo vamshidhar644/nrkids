@@ -29,7 +29,7 @@ const NewArrival = ({ NewArrivals }) => {
       <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4">
         <AiOutlineLeft
           onClick={() => scrollHorizontally(-600)}
-          className="scroll-button d-flex"
+          className="scroll-button"
         />
         <div
           className="Cards-Container overflow-x-auto d-flex"

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
+import RelatedProducts from './RelatedProducts/RelatedProducts';
 
 const ProductPage = ({ Products }) => {
   const { product } = useParams();
@@ -21,13 +22,16 @@ const ProductPage = ({ Products }) => {
 
     fetchData();
   });
+
   if (data.length !== 0) {
     return (
       <div>
         <MainProduct Product={data} />
-        <div>
-          <h2>You may also like</h2>
-        </div>
+        <RelatedProducts
+          category={data.dropdownField}
+          Products={Products}
+          productId={data.productId}
+        />
       </div>
     );
   }

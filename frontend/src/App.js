@@ -10,12 +10,12 @@ import ProductPage from './pages/Product/ProductPage';
 import Favorites from './pages/Favorites/Favorites';
 import Bag from './pages/Bag/Bag';
 import Footer from './pages/Footer/Footer';
-
+import Nextpage from './pages/Footer/NextPage/Nextpage';
 import Navigation from './pages/Navigation/Navigation';
 
 import { UseAuthContext } from './hooks/useAuthContext';
 import { FetchSanity } from './BackOps/FetchSanity';
-import Nextpage from './pages/Footer/NextPage/Nextpage';
+import { FetchMongo } from './BackOps/FetchMongo';
 
 function App() {
   const { user } = UseAuthContext();
@@ -24,12 +24,19 @@ function App() {
   const { fetchCollections, Collections } = FetchSanity();
   const { fetchAllProducts, Products } = FetchSanity();
 
+  const { fetchcartData, cartItems } = FetchMongo();
+
   useEffect(() => {
     fetchHero();
     fetchNewArrivals();
     fetchCollections();
     fetchAllProducts();
-  }, []);
+
+    if (user) {
+      fetchcartData();
+    }
+  }, [user]);
+
   return (
     <BrowserRouter>
       <Navigation />
@@ -53,7 +60,10 @@ function App() {
           element={!user ? <Signup /> : <Navigate to="/" />}
         />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/your-bag" element={<Bag />} />
+        <Route
+          path="/your-bag"
+          element={<Bag cartItems={cartItems} Products={Products} />}
+        />
 
         <Route
           path="/:categorypath"

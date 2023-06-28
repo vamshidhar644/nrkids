@@ -1,126 +1,80 @@
 import React, { useEffect, useState } from 'react';
 import './Checkout.css';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
-import axios from 'axios';
+import { FetchMongo } from '../../../BackOps/FetchMongo';
 
-const Checkout = ({ data, cartItems }) => {
-  const { user } = UseAuthContext();
-  const [cartData, setCartdata] = useState();
+const Checkout = ({ data }) => {
+  const { fetchcartData, cartItems } = FetchMongo();
 
-  const [cartitems, setCartitems] = useState();
-  const [itemCount, setItemCount] = useState('');
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState();
+  const [itemCount, setItemCount] = useState();
 
   useEffect(() => {
-    if (user) {
-      const id = user.id;
-      axios
-        .get(`/api/user/cart/${id}`)
-        .then((response) => {
-          setCartdata(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
-    }
-  }, [user]);
-
-  // console.log(cartItems);
+    fetchcartData();
+  }, []);
 
   useEffect(() => {
-    const cartitems = [];
-
-    // console.log(data);
-    if (cartData) {
-      for (let i = 0; i < cartData.length; i++) {
-        cartitems.push(cartData[i]);
-      }
-
-      // console.log(data);
-
-      const itemIndex = cartitems.findIndex(
-        (item) => item.productId === data.productId
-      );
-
-      if (itemIndex === -1) {
-        cartitems.push(data);
-      } else {
-        cartitems[itemIndex] = data;
-      }
-    }
-
-    setCartitems(cartitems);
-  }, [cartData, data]);
-
-  useEffect(() => {
-    // console.log(cartitems);
-
-    const totalPricing = (checkoutData) => {
+    const totalPricing = () => {
+      const Array = cartItems.filter((item) => item.price !== 0);
       let price = 0;
-      if (checkoutData) {
-        for (let i = 0; i < checkoutData.length; i++) {
-          price += checkoutData[i].price * checkoutData[i].quantity;
+      if (Array) {
+        for (let i = 0; i < Array.length; i++) {
+          price += Array[i].price * Array[i].quantity;
         }
 
         setTotalPrice(price);
-        if (cartItems.length === 1) {
-          setItemCount(cartItems.length + ' item');
+
+        const ArrayLength = Array.length;
+
+        if (ArrayLength === 1) {
+          setItemCount(ArrayLength + ' item');
         } else {
-          setItemCount(cartItems.length + ' items');
+          setItemCount(ArrayLength + ' items');
         }
       }
     };
 
-    totalPricing(cartitems);
-  }, [cartitems]);
+    totalPricing();
+  }, [cartItems]);
 
-  if (cartData) {
-    return (
-      <div className="Checkout-Section">
-        <div className="Checkout-header">
-          <h5>PRICE DETAILS</h5>
+  useEffect(() => {
+    if (data) {
+      fetchcartData();
+    }
+  }, [data]);
+
+  return (
+    <div className="Checkout-Section w-50">
+      <div className="Checkout-header">
+        <h5>ORDER SUMMARY</h5>
+      </div>
+      <div className="Checkout-body">
+        <div className="checkout-row price">
+          <h6>Sub Total ({itemCount})</h6>
+          <p>₹ {totalPrice}</p>
         </div>
-        <div className="Checkout-body">
-          <div className="checkout-row price">
-            <h6>Price({itemCount})</h6>
-            <p>₹ {totalPrice}</p>
-          </div>
-          <div className="checkout-row discount">
-            <h6>Discount</h6>
-            <p></p>
-          </div>
-          <div className="checkout-row delivery-charges">
-            <h6>Delivery Charges</h6>
-            <p></p>
-          </div>
-          <div className="checkout-row total-amount">
-            <h4>Total Amount</h4>
-            <p></p>
-          </div>
-          <div className="checkout-row saved">
-            <h6>You saved --- on this order</h6>
-            <p></p>
-          </div>
+        <div className="checkout-row discount">
+          <h6>Discount</h6>
+          <p></p>
         </div>
-        <div className="checkout-footer">
-          <button>Place Order</button>
+        <div className="checkout-row delivery-charges">
+          <h6>Delivery Charges</h6>
+          <p></p>
+        </div>
+        <div className="checkout-row total-amount">
+          <h4>Total Amount</h4>
+          <p></p>
+        </div>
+        <div className="checkout-row saved">
+          <h6>You saved --- on this order</h6>
+          <p></p>
         </div>
       </div>
-    );
-  }
-
-  return null;
+      <div className="checkout-footer">
+        <button className="place-order">Place Order</button>
+        <button className="bg-white">Continue shopping</button>
+      </div>
+    </div>
+  );
 };
-
-// export const totalPricing = (checkoutData) => {
-//   let price = 0;
-//   if (checkoutData) {
-//     for (let i = 0; i < checkoutData.length; i++) {
-//       price += checkoutData[i].price * checkoutData[i].quantity;
-//     }
-//     return price;
-//   }
-//   return 0;
-// };
 
 export default Checkout;

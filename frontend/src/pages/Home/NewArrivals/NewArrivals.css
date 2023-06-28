@@ -50,14 +50,16 @@
 }
 
 .scroll-button{
-  font-size: 4rem;
+  font-size: 28px;
   cursor: pointer;
   transition: .9s ease all;
-  border-radius: 30px;
+  border-radius: 8px;
+  height: fit-content;
+  padding: 7rem 0px;
 }
 
 .scroll-button:hover{
-  background-color: rgba(0, 96, 192, 0.7);
+  background-color: var(--primary-color);
   color: #fff;
 }
 
