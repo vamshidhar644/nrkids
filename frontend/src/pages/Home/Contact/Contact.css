@@ -23,12 +23,12 @@
     cursor: pointer;
 }
 
-.contact-button p:hover{
+.contact-button a:hover{
     overflow: hidden;
     border-radius: 0px;
 }
 
-.contact-button p{
+.contact-button a{
     color: #fff;
     padding: 12px 26px;
     border-radius: 8px;

@@ -7,10 +7,6 @@
   cursor: default;
 }
 
-.cart-page p a{
-  text-decoration: none;
-  color: var(--bs-font-color);
-}
 .cart-page p a:hover{
     color: var(--bs-hover-color);
 }

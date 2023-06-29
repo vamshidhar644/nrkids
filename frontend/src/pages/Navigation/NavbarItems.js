@@ -22,7 +22,7 @@ const NavbarItems = (props) => {
       </li>
       <li className="navbar-link d-flex justify-content-center align-items-center small p-2">
         <NavLink>SHOP BY CATEGORY</NavLink>
-        <ul className="down-dropdown position-fixed bg-white">
+        <ul className="cat-list down-dropdown position-fixed bg-white">
           <li className="nav-item">
             <NavLink className="nav-item-a " to="/birthday" onClick={moveTop}>
               Birthday

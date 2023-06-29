@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
@@ -6,12 +6,6 @@ import './Collections.css';
 
 const ShopByCategory = ({ Collections }) => {
   const { getImageUrl } = FetchImageUrl();
-
-  // useEffect(() => {
-  //   if (Collections) {
-  //     console.log(Collections);
-  //   }
-  // });
 
   return (
     <div className="Category-Container p-4">

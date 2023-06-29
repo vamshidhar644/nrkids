@@ -19,10 +19,7 @@ const NewArrival = ({ NewArrivals }) => {
     <div>
       <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-5">
         <h3 className="medium">New Arrivals</h3>
-        <Link
-          to="/new-arrivals"
-          className="d-flex align-items-center small text-decoration-none"
-        >
+        <Link to="/new-arrivals" className="d-flex align-items-center small">
           View all <AiOutlineRight />
         </Link>
       </div>

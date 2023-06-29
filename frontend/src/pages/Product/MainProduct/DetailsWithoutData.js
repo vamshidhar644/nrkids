@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImWhatsapp } from 'react-icons/im';
 
-const DetailsWithoutData = () => {
-  const phoneNumber = '8495009009'; // Replace with the recipient's phone number
-
-  const message = encodeURIComponent('Hello, Nischala!');
+const DetailsWithoutData = ({ Product }) => {
+  const Productname = Product.title;
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+    const message = encodeURIComponent(
+      `Hello,  Nischala!\nI want to know more about *${Productname}*.\nCould you help me with its sizes, prices.`
+    );
+    setMessage(message);
+  });
+  const phoneNumber = '8495009009'; // Replace with the phone number you want to send the message to
+  const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
     <div className="product-description">
@@ -16,7 +23,7 @@ const DetailsWithoutData = () => {
         </span>
       </p>
       <a
-        href={`https://wa.me/${phoneNumber}?text=${message}`}
+        href={url}
         target="_blank"
         rel="noreferrer"
         className="d-flex justify-content-center align-items-center"

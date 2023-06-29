@@ -29,8 +29,6 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
     setSize(cartItems[index].size);
     setPrice(cartItems[index].price);
     setQty(cartItems[index].quantity);
-
-    // console.log(size, price, quantity);
   }, []);
 
   useEffect(() => {
@@ -46,8 +44,6 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
     setSizes(items);
 
     const i = item.size.indexOf(itemsize);
-    // console.log(itemsize);
-
     let size = itemsize;
     let price;
     if (itemsize === 'none') {
@@ -153,7 +149,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
           </div>
         </div>
       ) : (
-        <DetailsWithoutData />
+        <DetailsWithoutData Product={items} />
       )}
     </div>
   );

@@ -7,6 +7,7 @@ export const FetchSanity = () => {
   const [NewArrivals, setNewArrivals] = useState();
   const [Collections, setCollections] = useState();
   const [Products, setProducts] = useState();
+  const [offerLine, setOfferLine] = useState();
 
   const fetchHero = async () => {
     try {
@@ -15,7 +16,7 @@ export const FetchSanity = () => {
     } catch (error) {
       console.error('Error fetching first image:', error);
     }
-  }; 
+  };
 
   const fetchNewArrivals = async () => {
     try {
@@ -44,14 +45,25 @@ export const FetchSanity = () => {
     }
   };
 
+  const fetchOfferLine = async () => {
+    try {
+      const offerLine = await client.fetch('*[_type == "offer-text"]');
+      setOfferLine(offerLine);
+    } catch (error) {
+      console.error('Error fetching first image:', error);
+    }
+  };
+
   return {
     fetchHero,
     fetchNewArrivals,
     fetchCollections,
     fetchAllProducts,
+    fetchOfferLine,
     Hero,
     NewArrivals,
     Collections,
     Products,
+    offerLine,
   };
 };

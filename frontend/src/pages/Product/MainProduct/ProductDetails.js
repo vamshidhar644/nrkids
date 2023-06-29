@@ -51,15 +51,17 @@ const ProductDetails = ({ Product }) => {
 
     if (user) {
       const itemsData = { userId, quantity, size, price };
-      console.log(itemsData);
-      console.log(itemsData);
-      await updatecart(productId, itemsData);
-      window.location.reload();
+
+      if (productId && quantity && size && price) {
+        await updatecart(productId, itemsData);
+        window.location.reload();
+      }
     }
   };
+
   return (
     <div className="product-withdata">
-      {price && <p className="product-price">₹ {price}</p>}
+      {size !== 'none' && <p className="product-price">₹ {price}</p>}
       <div className="item-specifications d-flex">
         <div className="select-quantity d-flex justify-content-center align-items-center">
           <h6>Quantity:</h6>

@@ -17,6 +17,7 @@
 
   .Checkout-body{    
     padding: 8px 12px;
+    border-bottom: 2px solid var(--primary-color);
   }
 
   .checkout-row{
@@ -33,9 +34,7 @@
     margin: 0px;
   }
 
-  .total-amount{    
-    border-top: 1px dashed #908d8d;
-    border-bottom: 1px dashed #908d8d;
+  .total-amount{
     padding-top: 8px;
     padding-bottom: 8px;
   }
@@ -50,7 +49,7 @@
     justify-content: space-around;
   }
 
-  .checkout-footer button{
+  .checkout-footer a{
     border: 2px solid var(--primary-color);
     padding: 4px 24px;
     border-radius: 6px;
@@ -58,8 +57,10 @@
 
   .place-order{
     background-color: var(--primary-color);
-    color: #fff;
+    color: #fff !important;
   }
+
+
 
   .checkout-footer button:hover{
     transform: scale(.98);

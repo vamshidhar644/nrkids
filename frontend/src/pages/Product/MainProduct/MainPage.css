@@ -10,11 +10,6 @@
   cursor: default;
   }
 
-  .product-page .product-path a{
-      text-decoration: none;
-      color: var(--bs-font-color);
-  }
-
   .product-page .product-path a:hover{
       color: var(--bs-hover-color);
   }
@@ -44,8 +39,6 @@
   }
 
   .product-description a{
-    text-decoration: none;
-    color: #000;
     text-align: center;
     width: 100%;
     border: 2px solid black;

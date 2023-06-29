@@ -16,8 +16,6 @@ const CartSection = ({ SanityProducts, cartItems }) => {
   const { getImageUrl } = FetchImageUrl();
 
   const handleDelete = async (index) => {
-    console.log(user.id, cartItems[index].productId);
-
     try {
       await axios.delete(
         `api/user/${user.id}/cart/${cartItems[index].productId}`
@@ -35,14 +33,16 @@ const CartSection = ({ SanityProducts, cartItems }) => {
   };
 
   return (
-    <div className="cart-page d-flex justify-content-between bg-white p-4">
-      <div className="cart-items w-100">
-        <p className="m-0">
-          <Link to="/">Home </Link>
-          <BiChevronRight /> Shopping cart
-        </p>
-        <div className="cart-header d-flex justify-content-between align-items-center pt-4 pb-4">
-          <h1>Shopping cart</h1>
+    <div className="cart-page d-flex justify-content-between bg-white">
+      <div className="cart-items w-100 p-4">
+        <div>
+          <p className="d-flex justify-content-start align-items-center gap-2 small">
+            <Link to="/">Home </Link>
+            <BiChevronRight /> Shopping cart
+          </p>
+          <div className="cart-header d-flex justify-content-between align-items-center pt-4 pb-3">
+            <h1>Shopping cart</h1>
+          </div>
         </div>
         <div className="d-flex justify-content-between gap-5">
           <div className="d-flex flex-column w-100">

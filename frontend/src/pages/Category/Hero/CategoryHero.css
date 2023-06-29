@@ -1,19 +1,4 @@
 
-.hero-container p{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: default;
-    gap: 8px;
-    width: 100%;
-    font-size: small;
-}
-
-.hero-container p a{
-    text-decoration: none;
-    color: #000;
-}
-
 .hero-container p a:hover{
     color: #0066CC;
 }

@@ -36,7 +36,7 @@ const RelatedProducts = ({ Products, category, productId }) => {
         <h3 className="medium">Related items</h3>
         <Link
           to={`/${category}`}
-          className="d-flex align-items-center small text-decoration-none"
+          className="d-flex align-items-center"
         >
           View all <AiOutlineRight />
         </Link>

@@ -21,7 +21,6 @@
 .Main-Card .card{
     max-width: 300px;
     border-radius: 0px;
-    text-decoration: none;
     cursor: pointer;
     min-width: 300px;
     transition: 0.4s ease-out;

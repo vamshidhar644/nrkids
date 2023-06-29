@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Desktop/Navigation.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import NavbarItems from './NavbarItems';
 import SearchBar from './SearchBar';
@@ -10,14 +10,12 @@ import { UseAuthContext } from '../../hooks/useAuthContext';
 
 import { AiOutlineMenu, AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
 import { BsHandbag } from 'react-icons/bs';
-import { MdLogin } from 'react-icons/md';
+
+import OfferSection from './OfferSection';
 
 const Navigation = () => {
   const { logout } = useLogout();
   const { user } = UseAuthContext();
-
-  const [closeOffer, setCloseOffer] = useState(false);
-
   const handleClick = () => {
     logout();
   };
@@ -51,7 +49,7 @@ const Navigation = () => {
 
   return (
     <div className={`${isFixed ? 'fixed position-fixed w-100' : ''}`}>
-      <div className="navigation-container bg-white p-0 py-0 px-2 ">
+      <div className="navigation-container bg-white p-0 py-1 px-2 ">
         <div className="navbar-nav d-flex flex-row">
           <div className="navbar-nav-section1">
             <div className="navbar-toggle" onClick={handleNavToggle}>
@@ -82,19 +80,44 @@ const Navigation = () => {
           <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">
             <SearchBar className="Search-Section" />
             <div className="input-wrapper d-flex p-2">
+              <div className="user-profile d-flex justify-content-end align-items-center p-0 m-0">
+                {user ? (
+                  <ul className=" navbar-links p-0 m-0">
+                    <li className="navbar-link d-flex justify-content-center align-items-center">
+                      <NavLink>
+                        <AiOutlineUser />
+                      </NavLink>
+                      <ul className="down-dropdown position-fixed bg-white p-2 ">
+                        <li className="nav-item">
+                          <NavLink
+                            className="profile-d p-2 small w-100"
+                            to="/my-profile"
+                          >
+                            Hello {user.firstName}
+                          </NavLink>
+                          <hr className="m-0" />
+                        </li>
+                        
+                        <li className="nav-item">
+                          <NavLink
+                            className="profile-d p-2 small w-100"
+                            onClick={handleClick}
+                          >
+                            logout
+                          </NavLink>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                ) : (
+                  <Link className="nav-bar-icons " to="/login">
+                    <AiOutlineUser />
+                  </Link>
+                )}
+              </div>
               <Link className="nav-bar-icons" to="/favorites">
                 <AiOutlineHeart />
               </Link>
-              {user && (
-                <Link className="nav-bar-icons">
-                  <MdLogin onClick={handleClick} />
-                </Link>
-              )}
-              {!user && (
-                <Link to="/login" className="nav-bar-icons">
-                  <AiOutlineUser />
-                </Link>
-              )}
               <Link className="nav-bar-icons" to="/your-bag">
                 <BsHandbag />
               </Link>
@@ -102,16 +125,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-      {!closeOffer && (
-        <div className="offer-section">
-          <p
-            className="Close position-absolute"
-            onClick={() => setCloseOffer(true)}
-          >
-            X
-          </p>
-        </div>
-      )}
+      <OfferSection />
     </div>
   );
 };

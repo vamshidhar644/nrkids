@@ -16,6 +16,7 @@ import Navigation from './pages/Navigation/Navigation';
 import { UseAuthContext } from './hooks/useAuthContext';
 import { FetchSanity } from './BackOps/FetchSanity';
 import { FetchMongo } from './BackOps/FetchMongo';
+import ProfileBody from './pages/Profile/ProfileBody';
 
 function App() {
   const { user } = UseAuthContext();
@@ -75,6 +76,11 @@ function App() {
         />
 
         <Route path="nr-kids/:nextpage" element={<Nextpage />} />
+
+        <Route
+          path="/my-profile"
+          element={user ? <ProfileBody /> : <Navigate to="/" />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

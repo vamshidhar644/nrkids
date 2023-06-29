@@ -7,9 +7,20 @@
     --bs-font-color: rgb(34,34,46);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+
 #root{
+  position: relative;
     overflow-x: hidden;
-    min-height: 100vh;
+    /* min-height: 100vh !important; */
+    /* height: fit-content; */
+    font-family: 'Poppins';
+}
+
+a{
+  text-decoration: none;
+  color: var(--bs-font-color);
 }
 
 
@@ -22,7 +33,7 @@ body::-webkit-scrollbar-track {
   }
   
 body::-webkit-scrollbar-thumb {
-    background-color: orangered; /* Set the background color of the scrollbar thumb */
+    background-color: var(--primary-color); /* Set the background color of the scrollbar thumb */
   }
 
 .App-Container{

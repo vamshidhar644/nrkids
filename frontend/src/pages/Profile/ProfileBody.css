@@ -1,0 +1,88 @@
+.profile-header h1{
+    color: var(--primary-color);
+    font-size: 32px;
+    margin: 0px;
+}
+
+
+.profile-section-list{  
+    width: fit-content;
+}
+
+.go-to-user{
+    cursor: pointer;
+}
+
+.go-to-user:hover{
+    color: var(--bs-hover-color);
+}
+
+.profile-section-list ul{
+    background: rgba(241, 241, 241, 1);
+    border-radius: 6px;
+    overflow: hidden;
+    border-left: 3px solid transparent;
+}
+
+.profile-section-list ul li{
+    cursor: pointer;
+    width: 16rem;
+}
+
+
+.profile-section-list ul li svg{
+    font-size: x-large;
+}
+.active-section{
+    border-left: 3px solid var(--primary-color);
+}
+
+.active-section-arrow{
+    color: var(--primary-color);
+    font-weight: 900;
+}
+
+.profile-header p{
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.profile-image-container{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-image-upload {
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.profile-image-delete{
+    border: 2px solid #B00020;
+    color: #B00020;
+    border-radius: 6px;
+}
+
+.user-inforomation input, .change-password input{
+    border: none;
+    background: rgba(241, 241, 241, 1);
+    border-radius: 4px;
+    min-width: initial;
+    font-size: small;
+}
+
+.user-inforomation input:focus, .change-password input:focus{
+    border: none;
+    outline: none;
+}
+
+.save-button{
+    height: fit-content;
+    right: 0;
+    bottom: 0;
+}

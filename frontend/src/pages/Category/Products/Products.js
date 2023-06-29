@@ -31,7 +31,7 @@ const ProductGrid = ({ categoryProducts }) => {
               <div className="Main-Card" key={newarrivals.title}>
                 <Link
                   className="card"
-                  to={`/new-arrivals/${newarrivals.path.current}`}
+                  to={`/${newarrivals.dropdownField}/${newarrivals.path.current}`}
                   state={{
                     data: newarrivals,
                   }}

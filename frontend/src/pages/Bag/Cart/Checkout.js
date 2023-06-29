@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Checkout.css';
 import { FetchMongo } from '../../../BackOps/FetchMongo';
+import { Link } from 'react-router-dom';
 
 const Checkout = ({ data }) => {
   const { fetchcartData, cartItems } = FetchMongo();
@@ -14,16 +15,19 @@ const Checkout = ({ data }) => {
 
   useEffect(() => {
     const totalPricing = () => {
-      const Array = cartItems.filter((item) => item.price !== 0);
       let price = 0;
-      if (Array) {
-        for (let i = 0; i < Array.length; i++) {
-          price += Array[i].price * Array[i].quantity;
+      let Arrayel = [];
+      if (cartItems) {
+        Arrayel = cartItems.filter((item) => item.price !== 0);
+      }
+      if (Arrayel) {
+        for (let i = 0; i < Arrayel.length; i++) {
+          price += Arrayel[i].price * Arrayel[i].quantity;
         }
 
         setTotalPrice(price);
 
-        const ArrayLength = Array.length;
+        const ArrayLength = Arrayel.length;
 
         if (ArrayLength === 1) {
           setItemCount(ArrayLength + ' item');
@@ -64,14 +68,16 @@ const Checkout = ({ data }) => {
           <h4>Total Amount</h4>
           <p></p>
         </div>
-        <div className="checkout-row saved">
+        {/* <div className="checkout-row saved">
           <h6>You saved --- on this order</h6>
           <p></p>
-        </div>
+        </div> */}
       </div>
-      <div className="checkout-footer">
-        <button className="place-order">Place Order</button>
-        <button className="bg-white">Continue shopping</button>
+      <div className="checkout-footer pt-4">
+        <Link to="/your-bag/check-out" className="place-order">Place Order</Link>
+        <Link to="/" className="bg-white">
+          Continue shopping
+        </Link>
       </div>
     </div>
   );
