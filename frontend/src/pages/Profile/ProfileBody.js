@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
-import { FiLogOut } from 'react-icons/fi';
 import './ProfileBody.css';
 
 import PersonalInfo from './ProfileSections/PersonalInfo';
@@ -9,20 +8,16 @@ import MyOrders from './ProfileSections/MyOrders';
 import MyWishlist from './ProfileSections/MyWishlist';
 import MyReviews from './ProfileSections/MyReviews';
 import MyAddress from './ProfileSections/MyAddress';
-import { useLogout } from '../../hooks/useLogout';
+
 import ChangePassword from './ProfileSections/ChangePassword';
+import Logout from '../Components/Logout/Logout';
 
 const ProfileBody = () => {
-  const { logout } = useLogout();
-  const handleClick = () => {
-    logout();
-  };
   const profileList = [
     { title: 'Personal Information' },
     { title: 'My Orders' },
-    { title: 'My Wishlist' },
-    { title: 'My Reviews' },
     { title: 'My Address Book' },
+    { title: 'My Reviews' },
     { title: 'Change Password' },
   ];
 
@@ -32,13 +27,10 @@ const ProfileBody = () => {
     setSection(item);
   };
 
-  useEffect(() => {
-    console.log(section);
-  }, [section]);
   return (
     <div className="p-4">
       <div>
-        <p className="small d-flex justify-content-start align-items-center gap-2">
+        <div className="small d-flex justify-content-start align-items-center gap-2">
           <Link to="/">Home </Link>
           <BiChevronRight />
           <p
@@ -55,16 +47,10 @@ const ProfileBody = () => {
               {section}
             </>
           )}
-        </p>
+        </div>
         <div className="profile-header py-4 d-flex justify-content-between align-items-center">
           <h1>{section}</h1>
-          <p
-            className="d-flex bg-white m-0 gap-2 align-items-center py-1 px-3"
-            onClick={handleClick}
-          >
-            <FiLogOut />
-            Logout
-          </p>
+          <Logout/>
         </div>
       </div>
       <div className="profile-body d-flex gap-4">
@@ -94,10 +80,9 @@ const ProfileBody = () => {
         </div>
         {section === profileList[0].title ? <PersonalInfo /> : null}
         {section === profileList[1].title ? <MyOrders /> : null}
-        {section === profileList[2].title ? <MyWishlist /> : null}
         {section === profileList[3].title ? <MyReviews /> : null}
-        {section === profileList[4].title ? <MyAddress /> : null}
-        {section === profileList[5].title ? <ChangePassword /> : null}
+        {section === profileList[2].title ? <MyAddress /> : null}
+        {section === profileList[4].title ? <ChangePassword /> : null}
       </div>
     </div>
   );

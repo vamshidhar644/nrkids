@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import { AiOutlineRight, AiOutlineLeft, AiOutlineHeart } from 'react-icons/ai';
 import './NewArrivals.css';
+import Viewall from '../../Components/ViewAll/Viewall';
 
 const NewArrival = ({ NewArrivals }) => {
   const { getImageUrl } = FetchImageUrl();
@@ -17,10 +18,10 @@ const NewArrival = ({ NewArrivals }) => {
 
   return (
     <div>
-      <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-5">
+      <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-4">
         <h3 className="medium">New Arrivals</h3>
         <Link to="/new-arrivals" className="d-flex align-items-center small">
-          View all <AiOutlineRight />
+          <Viewall />
         </Link>
       </div>
       <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4">

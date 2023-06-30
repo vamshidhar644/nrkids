@@ -10,23 +10,28 @@ const ChangePassword = () => {
           <label htmlFor="firstName" id="firstName">
             Current Password
           </label>
-          <input className="h-100 p-2" type="password" name="firstName"></input>
+          <input
+            className="h-100 p-2"
+            type="password"
+            name="firstName"
+            autoComplete={false}
+          />
         </div>
         <div className="d-flex flex-column w-50">
           <label htmlFor="lastName" id="lastName">
             New Password
           </label>
-          <input className="h-100 p-2" type="password" name="lastName"></input>
+          <input className="h-100 p-2" type="password" name="lastName" />
         </div>
         <div className="d-flex flex-column w-50">
           <label htmlFor="lastName" id="lastName">
             Confirm Password
           </label>
-          <input className="h-100 p-2" type="password" name="lastName"></input>
+          <input className="h-100 p-2" type="password" name="lastName" />
         </div>
         <div className="save-button w-50">
-          <button className="profile-image-upload bg-white py-1 px-3">
-            Update password
+          <button className="profile-image-upload bg-white py-1 px-3 w-100">
+            Update
           </button>
         </div>
       </div>

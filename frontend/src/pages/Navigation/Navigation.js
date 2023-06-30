@@ -98,7 +98,7 @@ const Navigation = () => {
                           <hr className="m-0" />
                         </li>
                         
-                        <li className="nav-item">
+                        <li className="nav-item small">
                           <NavLink
                             className="profile-d p-2 small w-100"
                             onClick={handleClick}

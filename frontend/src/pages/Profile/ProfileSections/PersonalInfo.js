@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ImBin } from 'react-icons/im';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 
 const PersonalInfo = () => {
+  const { user } = UseAuthContext();
   const [selectedDate, setSelectedDate] = useState();
   return (
     <div className="w-100">
@@ -15,12 +17,20 @@ const PersonalInfo = () => {
             <img src={``} alt="" className="w-100 h-100 bg-black" />
           </div>
           <div className="d-flex h-100 justify-content-between align-items-center gap-4">
-            <button className="profile-image-upload bg-white py-1 px-3">
-              Upload
-            </button>
-            <button className="profile-image-delete bg-white py-1 px-3">
+            <div className="profile-image-upload py-1 px-3 file-input w-100 h-100">
+              <input
+                type="file"
+                name="file-input"
+                id="file-input"
+                className="file-input__input w-100"
+              />
+              <label className="file-input__label" htmlFor="file-input">
+                <span>Upload</span>
+              </label>
+            </div>
+            <button className="profile-image-delete d-flex align-items-center bg-white py-1 px-3 gap-1">
               <ImBin />
-              &nbsp; Delete
+              Delete
             </button>
           </div>
         </div>
@@ -35,6 +45,7 @@ const PersonalInfo = () => {
                   className="h-100 p-2"
                   type="text"
                   name="firstName"
+                  defaultValue={user.firstName}
                 ></input>
               </div>
               <div className="d-flex flex-column w-100">
@@ -45,6 +56,7 @@ const PersonalInfo = () => {
                   className="h-100 p-2"
                   type="text"
                   name="lastName"
+                  defaultValue={user.lastName}
                 ></input>
               </div>
             </div>
@@ -56,19 +68,24 @@ const PersonalInfo = () => {
                 className="h-100 p-2"
                 type="text"
                 name="emailAddress"
+                defaultValue={user.email}
               ></input>
             </div>
             <div className="d-flex flex-column">
               <label htmlFor="phoneNumber" id="phoneNumber">
                 Mobile Number
               </label>
-              <p>
+              <p className="w-50 d-flex align-items-center m-0">
                 <span>+91 </span>&nbsp;&nbsp;&nbsp;
-                <input className="h-100 p-2" type="text" name="phoneNumber" />
+                <input
+                  className="h-100 p-2 w-100"
+                  type="text"
+                  name="phoneNumber"
+                />
               </p>
             </div>
             <div className="d-flex position-relative">
-              <div className="d-flex flex-column">
+              <div className="d-flex flex-column w-50">
                 <label htmlFor="DateofBirth" id="dob">
                   Date of birth
                 </label>
@@ -80,7 +97,7 @@ const PersonalInfo = () => {
                 />
               </div>
               <div className="save-button d-flex gap-4 position-absolute">
-                <p className="profile-image-upload bg-white py-1 px-3 m-0">
+                <p className="profile-image-upload py-1 px-3 m-0">
                   Save Changes
                 </p>
               </div>

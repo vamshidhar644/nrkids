@@ -68,6 +68,24 @@
     border-radius: 6px;
 }
 
+
+.file-input__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .file-input__label {
+    cursor: pointer;
+  }
+
+  .file-input__label span{
+    border: none;
+  }
+
 .user-inforomation input, .change-password input{
     border: none;
     background: rgba(241, 241, 241, 1);
@@ -85,4 +103,31 @@
     height: fit-content;
     right: 0;
     bottom: 0;
+}
+
+.save-button:hover p{
+    background-color: var(--primary-color);
+    color: aliceblue;
+}
+
+
+/* My Orders */
+
+.orders-header{
+    width: 80%;
+}
+
+.orders-list{
+    width: 80%;
+    background-color: rgba(241, 241, 241, 1);
+    border-radius: 8px;
+}
+
+.orders-list p{
+    margin: 0;
+}
+
+.order-status-label p{
+    width: 7rem;
+    text-align: right;
 }

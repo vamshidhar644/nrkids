@@ -21,7 +21,6 @@ const OfferSection = () => {
                 <div className="marquee-item">{offerLine[0].offer}</div>
                 <div className="marquee-item">{offerLine[0].offer}</div>
                 <div className="marquee-item">{offerLine[0].offer}</div>
-                <div className="marquee-item">{offerLine[0].offer}</div>
               </div>
             </div>
           )}
