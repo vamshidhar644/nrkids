@@ -14,7 +14,7 @@ const ChangePassword = () => {
             className="h-100 p-2"
             type="password"
             name="firstName"
-            autoComplete={false}
+            autoComplete=""
           />
         </div>
         <div className="d-flex flex-column w-50">

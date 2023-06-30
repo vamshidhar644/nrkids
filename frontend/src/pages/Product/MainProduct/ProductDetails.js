@@ -54,7 +54,6 @@ const ProductDetails = ({ Product }) => {
 
       if (productId && quantity && size && price) {
         await updatecart(productId, itemsData);
-        window.location.reload();
       }
     }
   };

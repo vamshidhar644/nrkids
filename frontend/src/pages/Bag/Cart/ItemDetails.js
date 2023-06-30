@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
-import axios from 'axios';
+
 import { useCart } from '../../../hooks/useCart';
 import DetailsWithoutData from '../../Product/MainProduct/DetailsWithoutData';
 
@@ -23,7 +23,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   const [subTotal, setSubtotal] = useState();
 
   useEffect(() => {
-    setUserId(user.id);
+    setUserId(user._id);
     setProductId(cartItems[index].productId);
 
     setSize(cartItems[index].size);

@@ -30,15 +30,6 @@ const MainProduct = ({ Product }) => {
 
   const watchImg = getImageUrl(Product.images[imageIndex]);
 
-  const [isMagnified, setIsMagnified] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsMagnified(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsMagnified(false);
-  };
   return (
     <div className="product-page p-4">
       <p className="product-path d-flex flex-start align-items-center">
@@ -64,7 +55,7 @@ const MainProduct = ({ Product }) => {
               },
             }}
           />
-    
+
           <div className="other-images d-flex justify-content-center">
             {Product.images &&
               Product.images.map((image, path) => {

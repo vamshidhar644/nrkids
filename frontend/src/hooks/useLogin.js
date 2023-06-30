@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { UseAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
-  const [error, setError] = useState(null);
+  const [loginerror, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = UseAuthContext();
 
@@ -19,7 +19,7 @@ export const useLogin = () => {
 
     if (!response.ok) {
       setIsLoading(false);
-      setError(json.error);
+      setError('*' + json.error);
     }
     if (response.ok) {
       // save the user to local storage
@@ -31,5 +31,5 @@ export const useLogin = () => {
       setIsLoading(false);
     }
   };
-  return { login, isLoading, error };
+  return { login, isLoading, loginerror };
 };

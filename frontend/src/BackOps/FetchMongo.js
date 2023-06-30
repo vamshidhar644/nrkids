@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export const FetchMongo = () => {
   const { user } = UseAuthContext();
-
   const [cartItems, setCartitems] = useState();
 
   const fetchcartData = async () => {

@@ -45,7 +45,7 @@ const signupUser = async (req, res) => {
 const getCartData = async (req, res) => {
   const userId = req.params.id;
 
-  console.log("Get Cart data")
+  console.log('Get Cart data');
 
   User.findOne({ _id: userId }, (err, data) => {
     if (err) {
@@ -69,7 +69,7 @@ const addCart = async (req, res) => {
   const productId = req.params.id;
   const { itemsData } = req.body;
 
-  console.log("Add item to Cart data")
+  console.log('Add item to Cart data');
 
   const userId = itemsData.userId;
   const quantity = itemsData.quantity;
@@ -79,12 +79,12 @@ const addCart = async (req, res) => {
     // Check if the user exists
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ error: 'User not found' }); 
+      return res.status(404).json({ error: 'User not found' });
     }
     // Check if the PRODUCT already exists for the USER
     const product = user.cartItems.find((item) => item.productId === productId);
 
-    if (product) { 
+    if (product) {
       // Update the details of the existing product
       product.quantity = quantity;
       product.size = size;
@@ -109,7 +109,7 @@ const addCart = async (req, res) => {
 const deletecartitem = async (req, res) => {
   const { userId, productId } = req.params;
 
-  console.log("Delete item from cart");
+  console.log('Delete item from cart');
 
   User.updateOne(
     { _id: userId },
@@ -128,8 +128,7 @@ const deletecartitem = async (req, res) => {
 const getSavelater = async (req, res) => {
   const userId = req.params.id;
 
-  
-  console.log("Get Save later data")
+  console.log('Get Save later data');
 
   User.findOne({ _id: userId }, (err, data) => {
     if (err) {
@@ -153,8 +152,7 @@ const addSavelater = async (req, res) => {
   const productId = req.params.id;
   const { itemsData } = req.body;
 
-  
-  console.log("Add item to save later data")
+  console.log('Add item to save later data');
 
   const userId = itemsData.userId;
   const quantity = itemsData.quantity;
@@ -197,10 +195,10 @@ const addSavelater = async (req, res) => {
 
 const deleteSavelater = async (req, res) => {
   const { userId, productId } = req.params;
- 
-  console.log("Delete from save later");
- 
-  User.updateOne( 
+
+  console.log('Delete from save later');
+
+  User.updateOne(
     { _id: userId },
     { $pull: { saveforLater: { productId: productId } } }
   )

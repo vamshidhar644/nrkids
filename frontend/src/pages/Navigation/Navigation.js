@@ -20,6 +20,8 @@ const Navigation = () => {
     logout();
   };
 
+  
+
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [Visibility, setVisibility] = useState('hidden');
   const [navHeight, setHeight] = useState('');
@@ -97,7 +99,7 @@ const Navigation = () => {
                           </NavLink>
                           <hr className="m-0" />
                         </li>
-                        
+
                         <li className="nav-item small">
                           <NavLink
                             className="profile-d p-2 small w-100"
@@ -110,7 +112,7 @@ const Navigation = () => {
                     </li>
                   </ul>
                 ) : (
-                  <Link className="nav-bar-icons " to="/login">
+                  <Link className="nav-bar-icons " to="/login-or-signup">
                     <AiOutlineUser />
                   </Link>
                 )}

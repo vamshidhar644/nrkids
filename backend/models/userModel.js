@@ -54,7 +54,7 @@ userSchema.statics.signup = async function (
 ) {
   // validation
   if (!_id) {
-    throw Error('Email is required');
+    throw Error('Id is required');
   }
   if (!email) {
     throw Error('Email is required');
