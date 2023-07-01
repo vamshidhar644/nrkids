@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Signin.css';
 import { useSignup } from '../../hooks/useSignup';
 import { FcGoogle } from 'react-icons/fc';
+import { auth, provider } from './config';
+import { signInWithPopup } from 'firebase/auth';
 
 const Signup = () => {
   const [signup_firstName, setSignup_Firstname] = useState('');
@@ -10,18 +12,20 @@ const Signup = () => {
   const [signup_password, setSignup_Password] = useState('');
   const { signup, signerror } = useSignup();
 
+  const [user, setUser] = useState();
+
+  const currentDate = new Date();
+  const hours = currentDate.getHours().toString().padStart(2, '0');
+  const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+  const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+  const milliseconds = currentDate
+    .getMilliseconds()
+    .toString()
+    .padStart(3, '0');
+  const _id = `NKUID${hours}${minutes}${seconds}${milliseconds}`;
+
   const handleSignup = async (e) => {
     e.preventDefault();
-    const currentDate = new Date();
-    const hours = currentDate.getHours().toString().padStart(2, '0');
-    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-    const seconds = currentDate.getSeconds().toString().padStart(2, '0');
-    const milliseconds = currentDate
-      .getMilliseconds()
-      .toString()
-      .padStart(3, '0');
-
-    const _id = `NKUID${hours}${minutes}${seconds}${milliseconds}`;
 
     const firstName = signup_firstName;
     const lastName = signup_lastName;
@@ -29,6 +33,33 @@ const Signup = () => {
     const password = signup_password;
 
     await signup(_id, firstName, lastName, email, password);
+  };
+
+  const handleGoogleSignup = async () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setUser(data.user);
+
+      console.log(data.user);
+      const newName = data.user.displayName;
+      // Split the display name into first name and last name
+      const namesArray = newName.split(' ');
+
+      const _id = `NKUID${hours}${minutes}${seconds}${milliseconds}`;
+      const firstName = namesArray[0];
+      const lastName = namesArray.slice(1).join(' ');
+      const email = data.user.email;
+      const password = data.user.uid;
+
+      console.log(
+        'uid: ' + _id,
+        'Firstname: ' + firstName,
+        'Lastname: ' + lastName,
+        'email: ' + email,
+        'password: ' + password
+      );
+      signup(_id, firstName, lastName, email, password);
+      localStorage.setItem('email', data.user.email);
+    });
   };
 
   return (
@@ -64,11 +95,14 @@ const Signup = () => {
         onChange={(e) => setSignup_Password(e.target.value)}
         value={signup_password}
       />
-      <div className="p-2 d-flex text-nowrap gap-3">
+      <div className="p-2 d-flex text-nowrap gap-3 align-items-center">
         <button onClick={handleSignup}>Sign Up</button>
-        <button>
-          Signup with <FcGoogle className="google-icon" />
-        </button>
+        <p
+          className="d-flex m-0 google-login h-100 align-items-center px-4"
+          onClick={handleGoogleSignup}
+        >
+          Signup with&nbsp;<FcGoogle className="google-icon" />
+        </p>
       </div>
       <p className="error-p m-0">{signerror ? signerror : ''}</p>
     </form>

@@ -17,9 +17,9 @@ const loginUser = async (req, res) => {
 
     const firstName = user.firstName;
     const lastName = user.lastName;
-    const id = user.id;
+    const _id = user.id;
 
-    res.status(200).json({ id, firstName, lastName, email, token });
+    res.status(200).json({ _id, firstName, lastName, email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -69,21 +69,24 @@ const addCart = async (req, res) => {
   const productId = req.params.id;
   const { itemsData } = req.body;
 
-  console.log('Add item to Cart data');
+  // console.log(productId, itemsData);
 
   const userId = itemsData.userId;
   const quantity = itemsData.quantity;
   const price = itemsData.price;
   const size = itemsData.size;
+
+  // console.log(productId, itemsData);
   try {
     // Check if the user exists
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
+      console.log('not found');
     }
+
     // Check if the PRODUCT already exists for the USER
     const product = user.cartItems.find((item) => item.productId === productId);
-
     if (product) {
       // Update the details of the existing product
       product.quantity = quantity;

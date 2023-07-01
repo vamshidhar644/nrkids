@@ -38,7 +38,7 @@ function App() {
     if (user) {
       fetchcartData();
     }
-  });
+  }, [user]);
 
   return (
     <BrowserRouter>

@@ -8,7 +8,7 @@ export const FetchMongo = () => {
 
   const fetchcartData = async () => {
     if (user) {
-      const id = user.id;
+      const id = user._id;
       axios
         .get(`/api/user/cart/${id}`)
         .then((response) => {

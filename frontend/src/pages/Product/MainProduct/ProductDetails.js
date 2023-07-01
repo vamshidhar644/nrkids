@@ -11,7 +11,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 const ProductDetails = ({ Product }) => {
   const { updatecart } = useCart();
-  const { user } = UseAuthContext();
+  const { user } = UseAuthContext(); 
 
   const { setSizes, item } = ChangePriceperSize();
 
@@ -26,7 +26,7 @@ const ProductDetails = ({ Product }) => {
   useEffect(() => {
     setProdId(Product.productId);
     if (user) {
-      setUserId(user.id);
+      setUserId(user._id);
     }
     setSizes(Product);
   }, [Product.productId, user]);
@@ -41,7 +41,7 @@ const ProductDetails = ({ Product }) => {
     if (size) {
       const index = item.size.indexOf(size);
       if (item.price[index]) {
-        setPrice(item.price[index].toFixed(2));
+        setPrice(item.price[index]);
       }
     }
   }, [item.size, size]);
@@ -54,6 +54,7 @@ const ProductDetails = ({ Product }) => {
 
       if (productId && quantity && size && price) {
         await updatecart(productId, itemsData);
+        window.location.reload();
       }
     }
   };
@@ -105,7 +106,7 @@ const ProductDetails = ({ Product }) => {
         </div>
       </div>
       {size === 'none' ? (
-        <DetailsWithoutData />
+        <DetailsWithoutData Product={Product} />
       ) : (
         <div className="product-buttons d-flex p-3">
           <button
