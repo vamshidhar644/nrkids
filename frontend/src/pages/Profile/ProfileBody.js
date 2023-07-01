@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
 import './ProfileBody.css';
 
@@ -11,8 +11,9 @@ import MyAddress from './ProfileSections/MyAddress';
 
 import ChangePassword from './ProfileSections/ChangePassword';
 import Logout from '../Components/Logout/Logout';
+import NotLoggedIn from '../UnAuth/NotLoggedIn';
 
-const ProfileBody = () => {
+const ProfileBody = ({ user }) => {
   const profileList = [
     { title: 'Personal Information' },
     { title: 'My Orders' },
@@ -26,6 +27,12 @@ const ProfileBody = () => {
   const changeSection = (item) => {
     setSection(item);
   };
+
+  // const user =
+
+  if (!user) {
+    window.location = '/';
+  }
 
   return (
     <div className="p-4">
@@ -50,7 +57,7 @@ const ProfileBody = () => {
         </div>
         <div className="profile-header py-4 d-flex justify-content-between align-items-center">
           <h1>{section}</h1>
-          <Logout/>
+          <Logout />
         </div>
       </div>
       <div className="profile-body d-flex gap-4">

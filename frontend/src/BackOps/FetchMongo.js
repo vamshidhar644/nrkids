@@ -5,6 +5,21 @@ import axios from 'axios';
 export const FetchMongo = () => {
   const { user } = UseAuthContext();
   const [cartItems, setCartitems] = useState();
+  const [userData, setUserdata] = useState();
+
+  const fetchUserData = async () => {
+    if (user) {
+      const id = user._id;
+      axios
+        .get(`/api/user/${id}`)
+        .then((response) => {
+          setUserdata(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching document:', error);
+        });
+    }
+  };
 
   const fetchcartData = async () => {
     if (user) {
@@ -20,5 +35,5 @@ export const FetchMongo = () => {
     }
   };
 
-  return { fetchcartData, cartItems };
+  return { fetchcartData, cartItems, fetchUserData, userData };
 };

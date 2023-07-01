@@ -56,16 +56,15 @@
 }
 
 .profile-image-upload {
-    border: 2px solid var(--primary-color);
     border-radius: 6px;
     color: var(--primary-color);
     cursor: pointer;
 }
 
 .profile-image-delete{
-    border: 2px solid #B00020;
     color: #B00020;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 
@@ -74,6 +73,7 @@
     height: 0.1px;
     opacity: 0;
     overflow: hidden;
+    visibility: hidden;
     position: absolute;
     z-index: -1;
   }
@@ -130,4 +130,8 @@
 .order-status-label p{
     width: 7rem;
     text-align: right;
+}
+
+.uploaded-image{
+    width: 60px;
 }

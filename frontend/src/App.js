@@ -17,6 +17,7 @@ import { FetchMongo } from './BackOps/FetchMongo';
 import ProfileBody from './pages/Profile/ProfileBody';
 import Signin from './pages/Google/Signup';
 import ParentCard from './pages/Google/ParentCard';
+import NotLoggedIn from './pages/UnAuth/NotLoggedIn';
 
 function App() {
   const { user } = UseAuthContext();
@@ -76,10 +77,7 @@ function App() {
 
         <Route path="nr-kids/:nextpage" element={<Nextpage />} />
 
-        <Route
-          path="/my-profile"
-          element={user ? <ProfileBody /> : <Navigate to="/" />}
-        />
+        <Route path="/my-profile/:id" element={<ProfileBody user={user} />} />
       </Routes>
       <Footer />
     </BrowserRouter>

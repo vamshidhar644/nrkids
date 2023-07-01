@@ -20,8 +20,6 @@ const Navigation = () => {
     logout();
   };
 
-  
-
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [Visibility, setVisibility] = useState('hidden');
   const [navHeight, setHeight] = useState('');
@@ -93,7 +91,7 @@ const Navigation = () => {
                         <li className="nav-item">
                           <NavLink
                             className="profile-d p-2 small w-100"
-                            to="/my-profile"
+                            to={`/my-profile/${user._id}`}
                           >
                             Hello {user.firstName}
                           </NavLink>

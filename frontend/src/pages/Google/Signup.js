@@ -39,7 +39,6 @@ const Signup = () => {
     signInWithPopup(auth, provider).then((data) => {
       setUser(data.user);
 
-      console.log(data.user);
       const newName = data.user.displayName;
       // Split the display name into first name and last name
       const namesArray = newName.split(' ');
@@ -49,15 +48,9 @@ const Signup = () => {
       const lastName = namesArray.slice(1).join(' ');
       const email = data.user.email;
       const password = data.user.uid;
+      const displayPic = data.user.photoURL;
 
-      console.log(
-        'uid: ' + _id,
-        'Firstname: ' + firstName,
-        'Lastname: ' + lastName,
-        'email: ' + email,
-        'password: ' + password
-      );
-      signup(_id, firstName, lastName, email, password);
+      signup(_id, firstName, lastName, email, password, displayPic);
       localStorage.setItem('email', data.user.email);
     });
   };
@@ -101,7 +94,8 @@ const Signup = () => {
           className="d-flex m-0 google-login h-100 align-items-center px-4"
           onClick={handleGoogleSignup}
         >
-          Signup with&nbsp;<FcGoogle className="google-icon" />
+          Signup with&nbsp;
+          <FcGoogle className="google-icon" />
         </p>
       </div>
       <p className="error-p m-0">{signerror ? signerror : ''}</p>

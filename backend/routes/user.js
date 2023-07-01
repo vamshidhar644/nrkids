@@ -1,16 +1,18 @@
 const express = require('express');
 
 // controller functions
+const { signupUser, loginUser } = require('../controllers/userController');
 const {
-  signupUser,
-  loginUser,
-  addCart,
   getCartData,
+  addCart,
   deletecartitem,
-  getSavelater,
-  addSavelater,
-  deleteSavelater,
-} = require('../controllers/userController');
+} = require('../controllers/User/CartData');
+const {
+  getWishlist,
+  addWishlist,
+  deleteWishlist,
+} = require('../controllers/User/WishlistData');
+const { getUserData, updateUserData } = require('../controllers/User/userData');
 
 const router = express.Router();
 
@@ -30,12 +32,18 @@ router.post('/cart/:id', addCart);
 router.delete('/:userId/cart/:productId', deletecartitem);
 
 // get all the save later items
-router.get('/savelater/:id', getSavelater);
+router.get('/savelater/:id', getWishlist);
 
 // add / update save later
-router.post('/savelater/:id', addSavelater);
+router.post('/savelater/:id', addWishlist);
 
 // delete item from cart
-router.delete('/:userId/savelater/:productId', deleteSavelater);
+router.delete('/:userId/savelater/:productId', deleteWishlist);
+
+//Update user data
+router.put('/:id', updateUserData);
+
+// get user data
+router.get('/:id', getUserData);
 
 module.exports = router;

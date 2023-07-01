@@ -26,6 +26,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  displayPic: { type: String },
+  phoneNumber: { type: String },
+  dob: { type: Date },
   cartItems: [
     {
       productId: String,
@@ -50,7 +53,8 @@ userSchema.statics.signup = async function (
   firstName,
   lastName,
   email,
-  password
+  password,
+  displayPic
 ) {
   // validation
   if (!_id) {
@@ -89,6 +93,7 @@ userSchema.statics.signup = async function (
     lastName,
     email,
     password: hash,
+    displayPic,
   });
 
   return user;
