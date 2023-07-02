@@ -26,7 +26,7 @@ function App() {
   const { fetchCollections, Collections } = FetchSanity();
   const { fetchAllProducts, Products } = FetchSanity();
 
-  const { fetchcartData, cartItems } = FetchMongo();
+  const { fetchcartData, fetchUserData, cartItems, userData } = FetchMongo();
 
   useEffect(() => {
     fetchHero();
@@ -38,6 +38,7 @@ function App() {
   useEffect(() => {
     if (user) {
       fetchcartData();
+      fetchUserData();
     }
   }, [user]);
 
@@ -77,7 +78,10 @@ function App() {
 
         <Route path="nr-kids/:nextpage" element={<Nextpage />} />
 
-        <Route path="/my-profile/:id" element={<ProfileBody user={user} />} />
+        <Route
+          path="/my-profile/:id"
+          element={<ProfileBody userData={userData} />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

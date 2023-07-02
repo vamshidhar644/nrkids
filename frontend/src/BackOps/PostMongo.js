@@ -1,39 +1,56 @@
-import { format } from 'date-fns';
-import { FetchMongo } from './FetchMongo';
+import { useState } from 'react';
 
 export const PostMongo = () => {
-  const { fetchUserData, userData } = FetchMongo();
+  const [imageSrc, setImage] = useState();
+
+  const handleCompress = (inputRef, compressedImageRef) => {
+    const inputImage = inputRef.current;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const image = new Image();
+    image.src = URL.createObjectURL(inputImage.files[0]);
+
+    image.onload = () => {
+      const maxWidth = 200; // You can adjust this to the desired width
+      const maxHeight = 200; // You can adjust this to the desired height
+
+      let newWidth = image.width;
+      let newHeight = image.height;
+
+      if (image.width > maxWidth) {
+        newWidth = maxWidth;
+        newHeight = (image.height * maxWidth) / image.width;
+      }
+
+      if (newHeight > maxHeight) {
+        newHeight = maxHeight;
+        newWidth = (image.width * maxHeight) / image.height;
+      }
+
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      ctx.drawImage(image, 0, 0, newWidth, newHeight);
+
+      const compressedImageBase64 = canvas.toDataURL('image/jpeg', 0.5); // Set the quality (0.0 - 1.0)
+      setImage(compressedImageBase64);
+      // compressedImageRef.current.value = compressedImageBase64;
+
+      // console.log(compressedImageBase64);
+    };
+  };
 
   const updateUserData = async (
     _id,
-    UserfirstName,
-    UserlastName,
-    UserphoneNumber,
-    Userdob
+    firstName,
+    lastName,
+    phoneNumber,
+    dob,
+    displayPic
   ) => {
-    fetchUserData();
-
-    let firstName = UserfirstName,
-      lastName = UserlastName,
-      phoneNumber = UserphoneNumber,
-      dob = Userdob;
-
-    if (!UserfirstName) {
-      firstName = userData.firstName;
-    }
-
-    if (!UserlastName) {
-      lastName = userData.lastName;
-    }
-
-    if (!UserphoneNumber) {
-      phoneNumber = userData.phoneNumber;
-    }
-
-    if (!dob) {
-      const dateObj = new Date(dob);
-      dob = format(dateObj, 'dd-MM-yyyy');
-    }
+    console.log(_id, firstName, lastName, phoneNumber, dob, displayPic);
 
     const response = await fetch(`/api/user/${_id}`, {
       method: 'PUT',
@@ -43,11 +60,12 @@ export const PostMongo = () => {
         lastName,
         phoneNumber,
         dob,
+        displayPic,
       }),
     });
 
     if (!response.ok) {
-      console.log(firstName, lastName, phoneNumber, dob);
+      console.log(_id, firstName, lastName, phoneNumber, dob, displayPic);
     }
     if (response.ok) {
       alert('updated');
@@ -55,5 +73,5 @@ export const PostMongo = () => {
     }
   };
 
-  return { updateUserData };
+  return { updateUserData, handleCompress, imageSrc };
 };

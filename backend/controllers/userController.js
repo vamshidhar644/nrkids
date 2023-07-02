@@ -21,10 +21,10 @@ const loginUser = async (req, res) => {
 
     res.status(200).json({ _id, firstName, lastName, email, token });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message }); 
   }
 };
-
+ 
 // signup user
 const signupUser = async (req, res) => {
   const { _id, firstName, lastName, email, password, displayPic } = req.body;

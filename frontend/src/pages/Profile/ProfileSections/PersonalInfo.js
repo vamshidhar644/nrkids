@@ -1,89 +1,76 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ImBin } from 'react-icons/im';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
-import Dropzone from 'react-dropzone';
 import { PostMongo } from '../../../BackOps/PostMongo';
 
-const PersonalInfo = () => {
+const PersonalInfo = ({ userData }) => {
   const { user } = UseAuthContext();
-  const { fetchUserData, userData } = FetchMongo();
-  const { updateUserData } = PostMongo();
+  const { updateUserData, handleCompress, imageSrc } = PostMongo();
+
+  const inputRef = useRef();
+  const compressedImageRef = useRef();
 
   const [displayPicture, setDisplaypic] = useState();
 
-  const [file, setFile] = useState(null);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setMobilenumber] = useState('');
+  const [dob, setSelectedDate] = useState('');
 
-  const [UserfirstName, setFirstName] = useState('');
-  const [UserlastName, setLastName] = useState('');
-  const [UserphoneNumber, setMobilenumber] = useState('');
-  const [Userdob, setSelectedDate] = useState('');
-
-  const handleDrop = (acceptedFiles) => {
-    const uploadedFile = acceptedFiles[0];
-    setFile(uploadedFile);
-  };
   const convertDateFormat = (inputDate) => {
     const date = new Date(inputDate);
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // Months are zero-based, so we add 1 to get the correct month number.
-    const year = date.getFullYear();
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+    return `${day}-${month}-${year}`;
+  };
 
-    // Ensure two-digit format for day and month
-    const formattedDay = day < 10 ? `0${day}` : day;
-    const formattedMonth = month < 10 ? `0${month}` : month;
-
-    return `${formattedDay}-${formattedMonth}-${year}`;
+  const dateFormat = (dob) => {
+    const [year, month, day] = dob.split('-');
+    setSelectedDate(`${day}-${month}-${year}`);
   };
 
   useEffect(() => {
     if (userData) {
-      // console.log(userData);
-      // setFirstName(userData.firstName);
-      // setLastName(userData.lastName);
-
       if (userData.displayPic) {
         setDisplaypic(userData.displayPic);
       }
-      // if (userData.phoneNumber) {
-      //   setMobilenumber(userData.phoneNumber);
-      // }
 
       if (userData.dob) {
         setSelectedDate(convertDateFormat(userData.dob));
       }
-    }
-  });
 
-  useEffect(() => {
-    fetchUserData();
-  }, [user]);
+      if (!firstName) {
+        setFirstName(userData.firstName);
+      }
+      if (!lastName) {
+        setLastName(userData.lastName);
+      }
+      if (!phoneNumber) {
+        setMobilenumber(userData.phoneNumber);
+      }
+    }
+  }, []);
+
+  const handleUpload = () => {
+    handleCompress(inputRef, compressedImageRef);
+  };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    // let displayPic;
-    // if (!file) {
-    //   displayPic = null;
-    // } else {
-    //   displayPic = file;
-    // }
 
     const _id = user._id;
-
-    updateUserData(_id, UserfirstName, UserlastName, UserphoneNumber, Userdob);
+    updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
   };
 
-  const handleDeleteImage = () => {
-    if (file !== null) {
-      setFile(null);
-    } else {
-      alert("You don't want DP");
-    }
-  };
-
-  if (!userData) {
-    return null;
-  }
+  // const handleDeleteImage = () => {
+  //   if (imageSrc) {
+  //     setDisplaypic(null);
+  //     const _id = user._id;
+  //     const imageSrc = '';
+  //     // updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
+  //   }
+  // };
 
   return (
     <div className="w-100">
@@ -92,52 +79,40 @@ const PersonalInfo = () => {
         <hr />
       </div>
       <div className="information-body">
-        <div className="user-image-section d-flex align-items-start p-2 gap-4">
+        <div className="user-image-section d-flex align-items-end p-2 gap-4">
           <div className="profile-image-container">
             <img
               className="w-100 h-100"
-              src={file ? URL.createObjectURL(file) : displayPicture}
+              src={imageSrc ? imageSrc : displayPicture}
               alt=""
             />
           </div>
-          <div className="d-flex flex-column h-100 justify-content-start align-items-start gap-1">
-            <div className="file-input w-100 h-100">
+          <div className="d-flex flex-column justify-content-start align-items-start gap-1">
+            <div className=" d-flex align-items-center small bg-white py-1 px-3 gap-1">
               <input
                 type="file"
-                name="file-input"
                 id="file-input"
-                className="file-input__input"
+                className="hidden-input"
+                onChange={handleUpload}
+                ref={inputRef}
               />
-              <Dropzone onDrop={handleDrop}>
-                {({ getRootProps, getInputProps }) => (
-                  <div
-                    {...getRootProps()}
-                    style={{
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <input {...getInputProps()} />
-
-                    {file ? (
-                      <p className="profile-image-upload py-1 px-3 m-0 small text-nowrap">
-                        click again to change
-                      </p>
-                    ) : (
-                      <p className="profile-image-upload py-1 px-3 m-0 small">
-                        select image
-                      </p>
-                    )}
-                  </div>
-                )}
-              </Dropzone>
+              {!imageSrc ? (
+                <label htmlFor="file-input" className="custom-label">
+                  upload image
+                </label>
+              ) : (
+                <label htmlFor="file-input" className="custom-label">
+                  change
+                </label>
+              )}
             </div>
-            <div
+            {/* <div
               className="profile-image-delete d-flex align-items-center small bg-white py-1 px-3 gap-1"
               onClick={handleDeleteImage}
             >
               <ImBin />
               Delete
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="user-inforomation p-2 w-50 mb-4">
@@ -205,13 +180,13 @@ const PersonalInfo = () => {
                     type="text"
                     className="m-0"
                     readOnly
-                    defaultValue={Userdob}
+                    defaultValue={dob}
                   />
                 )}
                 {!userData.dob && (
                   <input
                     type="date"
-                    onChange={(e) => setSelectedDate(e.target.value)}
+                    onChange={(e) => dateFormat(e.target.value)}
                     className="h-100 p-2"
                   />
                 )}

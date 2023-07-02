@@ -1,6 +1,6 @@
 const User = require('../../models/userModel');
 const moment = require('moment'); // Import moment.js library
- 
+
 // Convert the date to DD-MM-YYYY format
 function formatDateToDDMMYYYY(date) {
   const parts = date.split('-');
@@ -56,7 +56,7 @@ const getUserData = async (req, res) => {
 // Update user Data
 const updateUserData = async (req, res) => {
   const { id } = req.params;
-  const { firstName, lastName, phoneNumber, dob } = req.body; 
+  const { firstName, lastName, phoneNumber, dob, displayPic } = req.body;
 
   // console.log(displayPic);
   try {
@@ -64,7 +64,7 @@ const updateUserData = async (req, res) => {
 
     const user = await User.findByIdAndUpdate(
       id,
-      { firstName, lastName, phoneNumber, dob: formattedDOB },
+      { firstName, lastName, phoneNumber, dob: formattedDOB, displayPic },
       { new: true }
     );
     if (!user) {
