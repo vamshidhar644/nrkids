@@ -73,5 +73,28 @@ export const PostMongo = () => {
     }
   };
 
-  return { updateUserData, handleCompress, imageSrc };
+  const updatePassword = async (_id, email, oldpassword, newpassword) => {
+    console.log(email, oldpassword, newpassword);
+
+    const response = await fetch(`/api/user/${_id}/change-password`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        oldpassword,
+        newpassword,
+      }),
+    });
+
+    if (!response.ok) {
+      console.log(email, oldpassword, newpassword);
+    }
+    if (response.ok) {
+      console.log(response);
+      alert('updated');
+      window.location.reload();
+    }
+  };
+
+  return { updateUserData, handleCompress, imageSrc, updatePassword };
 };

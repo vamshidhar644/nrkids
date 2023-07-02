@@ -86,7 +86,9 @@ const ProfileBody = ({ userData }) => {
             {section === profileList[1].title ? <MyOrders /> : null}
             {section === profileList[3].title ? <MyReviews /> : null}
             {section === profileList[2].title ? <MyAddress /> : null}
-            {section === profileList[4].title ? <ChangePassword /> : null}
+            {section === profileList[4].title ? (
+              <ChangePassword userData={userData} />
+            ) : null}
           </div>
         </div>
       ) : (

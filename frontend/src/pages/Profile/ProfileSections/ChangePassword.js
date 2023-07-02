@@ -1,41 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PostMongo } from '../../../BackOps/PostMongo';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 
-const ChangePassword = () => {
+const ChangePassword = ({ userData }) => {
+  const { user } = UseAuthContext();
+  const { updatePassword } = PostMongo();
+
+  const [oldpassword, setOldpassword] = useState();
+  const [newpassword, setNewpassword] = useState();
+  const [re_password, setRepassword] = useState();
+
+  const [error, setError] = useState();
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    // update password logic here...
+    if (newpassword !== re_password) {
+      setError('Not matched');
+    } else {
+      updatePassword(user._id, userData.email, oldpassword, newpassword);
+      setError('matched');
+    }
+  };
+
   return (
-    <div className="w-100">
+    <form className="w-100" action="" onSubmit={handleUpdate}>
       <h5>Change Password</h5>
       <hr />
-      <div className="change-password d-flex justify-content-between gap-3 flex-column w-50">
-        <div className="d-flex flex-column w-50">
-          <label htmlFor="firstName" id="firstName">
-            Current Password
-          </label>
-          <input
-            className="h-100 p-2"
-            type="password"
-            name="firstName"
-            autoComplete=""
-          />
+      <div className="d-flex align-items-end gap-3">
+        <div className="change-password d-flex justify-content-between gap-1 flex-column">
+          <div className="d-flex flex-column ">
+            <label htmlFor="firstName" id="firstName">
+              Current Password
+            </label>
+            <input
+              className="h-100 p-2"
+              type="password"
+              name="oldpassword"
+              required
+              onChange={(e) => setOldpassword(e.target.value)}
+            />
+          </div>
+          <div className="d-flex flex-column ">
+            <label htmlFor="lastName" id="newpassword">
+              New Password
+            </label>
+            <input
+              className="h-100 p-2"
+              type="password"
+              name="lastName"
+              required
+              onChange={(e) => setNewpassword(e.target.value)}
+            />
+          </div>
+          <div className="d-flex flex-column ">
+            <label htmlFor="lastName" id="lastName">
+              Confirm Password
+            </label>
+            <input
+              className="h-100 p-2"
+              type="password"
+              name="repassword"
+              required
+              onChange={(e) => setRepassword(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="d-flex flex-column w-50">
-          <label htmlFor="lastName" id="lastName">
-            New Password
-          </label>
-          <input className="h-100 p-2" type="password" name="lastName" />
-        </div>
-        <div className="d-flex flex-column w-50">
-          <label htmlFor="lastName" id="lastName">
-            Confirm Password
-          </label>
-          <input className="h-100 p-2" type="password" name="lastName" />
-        </div>
-        <div className="save-button w-50">
-          <button className="profile-image-upload bg-white py-1 px-3 w-100">
-            Update
-          </button>
-        </div>
+        <p className="m-0 pb-2">{error && error}</p>
       </div>
-    </div>
+      <div className="save-button w-50 justify-content-center">
+        <button className="profile-image-upload bg-white py-1 px-3 w-100">
+          Update
+        </button>
+      </div>
+    </form>
   );
 };
 

@@ -10,6 +10,7 @@ const Signup = () => {
   const [signup_lastName, setSignup_Lastname] = useState('');
   const [signup_email, setSignup_Email] = useState('');
   const [signup_password, setSignup_Password] = useState('');
+  const [signup_confirmpassword, setSignup_ConfirmPassword] = useState('');
   const { signup, signerror } = useSignup();
 
   const [user, setUser] = useState();
@@ -87,6 +88,13 @@ const Signup = () => {
         required="required"
         onChange={(e) => setSignup_Password(e.target.value)}
         value={signup_password}
+      />
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        required="required"
+        onChange={(e) => setSignup_ConfirmPassword(e.target.value)}
+        value={signup_confirmpassword}
       />
       <div className="p-2 d-flex text-nowrap gap-3 align-items-center">
         <button onClick={handleSignup}>Sign Up</button>

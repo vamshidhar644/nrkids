@@ -2,6 +2,7 @@ const express = require('express');
 
 // controller functions
 const { signupUser, loginUser } = require('../controllers/userController');
+const { updatePassword } = require('../controllers/User/ChangePassword');
 const {
   getCartData,
   addCart,
@@ -16,22 +17,18 @@ const { getUserData, updateUserData } = require('../controllers/User/userData');
 
 const router = express.Router();
 
-// login route
+// login / signup route
 router.post('/login', loginUser);
-
-// signup route
 router.post('/signup', signupUser);
 
-// get all the cart items
+// Change Password
+router.put('/:id/change-password', updatePassword);
+
+// Cart Routes
 router.get('/cart/:id', getCartData);
-
-// add to cart / update cart
 router.post('/cart/:id', addCart);
-
-// delete item from cart
 router.delete('/:userId/cart/:productId', deletecartitem);
 
-// get all the save later items
 router.get('/savelater/:id', getWishlist);
 
 // add / update save later

@@ -60,7 +60,12 @@ const updateUserData = async (req, res) => {
 
   // console.log(displayPic);
   try {
-    const formattedDOB = formatDateToDDMMYYYY(dob);
+    let formattedDOB;
+    if (dob) {
+      formattedDOB = formatDateToDDMMYYYY(dob);
+    } else {
+      formattedDOB = '';
+    }
 
     const user = await User.findByIdAndUpdate(
       id,
