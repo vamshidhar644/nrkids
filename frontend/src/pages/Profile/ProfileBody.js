@@ -11,7 +11,6 @@ import MyAddress from './ProfileSections/MyAddress';
 
 import ChangePassword from './ProfileSections/ChangePassword';
 import Logout from '../Components/Logout/Logout';
-import NotLoggedIn from '../UnAuth/NotLoggedIn';
 
 const ProfileBody = ({ userData }) => {
   const profileList = [
