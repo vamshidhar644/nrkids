@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import { AiOutlineRight, AiOutlineLeft, AiOutlineHeart } from 'react-icons/ai';
-import './NewArrivals.css';
+
+import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+
 import Viewall from '../../Components/ViewAll/Viewall';
+
+import './NewArrivals.css';
 
 const NewArrival = ({ NewArrivals }) => {
   const { getImageUrl } = FetchImageUrl();

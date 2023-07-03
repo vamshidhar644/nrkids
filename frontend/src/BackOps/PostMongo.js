@@ -6,6 +6,7 @@ export const PostMongo = () => {
   const [imageSrc, setImage] = useState();
   // const [aId, setAid] = useState('');
 
+  //  I M A G E  C O M P R E S S . . . . .
   const handleCompress = (inputRef, compressedImageRef) => {
     const inputImage = inputRef.current;
 
@@ -42,6 +43,7 @@ export const PostMongo = () => {
     };
   };
 
+  //  U S E R D A T A . . . . . . .
   const updateUserData = async (
     _id,
     firstName,
@@ -73,6 +75,7 @@ export const PostMongo = () => {
     }
   };
 
+  // P A S S W O R D S . . . . . . .
   const updatePassword = async (_id, email, oldpassword, newpassword) => {
     console.log(email, oldpassword, newpassword);
 
@@ -96,6 +99,7 @@ export const PostMongo = () => {
     }
   };
 
+  //  A D D R E S S . . . . . . .
   const updateAddress = async (
     addId,
     fullname,
@@ -160,6 +164,45 @@ export const PostMongo = () => {
     }
   };
 
+  // W I S H L I S T
+  const updateWishlist = async (productId) => {
+    const userId = user._id;
+    console.log(userId, productId);
+
+    const response = await fetch(`/api/user/wishlist/add`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId,
+        productId,
+      }),
+    });
+
+    if (!response.ok) {
+      console.log(userId, productId);
+    }
+    if (response.ok) {
+      console.log(response);
+    }
+  };
+
+  const deleteWishlist = async (productId) => {
+    const userId = user._id;
+    console.log(userId, productId);
+
+    const response = await fetch(`/api/user/${userId}/wishlist/${productId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      console.log(userId, productId);
+    }
+    if (response.ok) {
+      console.log(response);
+    }
+  };
+
   return {
     updateUserData,
     handleCompress,
@@ -167,5 +210,7 @@ export const PostMongo = () => {
     updatePassword,
     updateAddress,
     deleteAddress,
+    updateWishlist,
+    deleteWishlist,
   };
 };

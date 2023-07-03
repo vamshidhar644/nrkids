@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
+
 import { FetchMongo } from '../../../BackOps/FetchMongo';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
+
 import './OrderAddress.css';
+
 import AddressForm from '../../Profile/ProfileSections/AddressForm';
 
 const OrderAddress = () => {
   const { user } = UseAuthContext();
   const { fetchAddressData, address } = FetchMongo();
+
   useEffect(() => {
     fetchAddressData();
   }, [user]);
@@ -36,7 +40,7 @@ const OrderAddress = () => {
             })}
         </div>
       </div>
-      <div className='py-3'>
+      <div className="py-3">
         <AddressForm />
       </div>
     </div>

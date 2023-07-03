@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
-
 import { BiChevronRight } from 'react-icons/bi';
 
-import './CartSection.css';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
+import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+
 import ItemDetails from './ItemDetails';
 import Checkout from './Checkout';
+import './CartSection.css';
 
 const CartSection = ({ SanityProducts, cartItems }) => {
   const { user } = UseAuthContext();

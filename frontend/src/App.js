@@ -25,7 +25,14 @@ function App() {
   const { fetchCollections, Collections } = FetchSanity();
   const { fetchAllProducts, Products } = FetchSanity();
 
-  const { fetchcartData, fetchUserData, cartItems, userData } = FetchMongo();
+  const {
+    fetchcartData,
+    fetchUserData,
+    fetchWishlist,
+    cartItems,
+    userData,
+    wishlist,
+  } = FetchMongo();
 
   useEffect(() => {
     fetchHero();
@@ -38,6 +45,7 @@ function App() {
     if (user) {
       fetchcartData();
       fetchUserData();
+      fetchWishlist();
     }
   }, [user]);
 
@@ -60,7 +68,15 @@ function App() {
           element={!user ? <ParentCard /> : <Navigate to="/" />}
         />
 
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/wishlist"
+          element={
+            <Wishlist
+              wishlist={wishlist ? wishlist : null}
+              Products={Products}
+            />
+          }
+        />
         <Route
           path="/your-bag"
           element={<Bag cartItems={cartItems} Products={Products} />}

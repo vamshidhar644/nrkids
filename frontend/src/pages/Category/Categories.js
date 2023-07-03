@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import Filters from './Filtering/Filters';
 import ProductGrid from './Products/Products';
-import './Categories.css';
 import CategoryHero from './Hero/CategoryHero';
+
+import './Categories.css';
 
 const Categories = ({ Products }) => {
   const { categorypath } = useParams();

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MainPage.css';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 import { SetPaths } from '../../../BackOps/SetPaths';
 import ProductDetails from './ProductDetails';
@@ -10,11 +11,16 @@ import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 
 import { BiChevronRight } from 'react-icons/bi';
 import DetailsWithoutData from './DetailsWithoutData';
+import { PostMongo } from '../../../BackOps/PostMongo';
+import { FetchMongo } from '../../../BackOps/FetchMongo';
 
 const MainProduct = ({ Product }) => {
   const { getImageUrl } = FetchImageUrl();
+  const { updateWishlist, deleteWishlist } = PostMongo();
+  const { fetchWishlist, wishlist } = FetchMongo();
 
   const [imageIndex, setImageindex] = useState(0);
+  const [fav, setFav] = useState(false);
   const changeImage = (path) => {
     setImageindex(path);
     window.scrollTo({
@@ -25,8 +31,27 @@ const MainProduct = ({ Product }) => {
   const { setCategoryPath, categorypath } = SetPaths();
 
   useEffect(() => {
+    fetchWishlist();
     setCategoryPath(Product.dropdownField);
   }, [Product.dropdownField]);
+
+  const addFav = () => {
+    setFav(true);
+    updateWishlist(Product.productId);
+  };
+  const delFav = () => {
+    setFav(false);
+    deleteWishlist(Product.productId);
+  };
+
+  useEffect(() => {
+    if (wishlist) {
+      const valueExists = wishlist.some(
+        (item) => item.productId === Product.productId
+      );
+      setFav(valueExists);
+    }
+  }, [wishlist]);
 
   const watchImg = getImageUrl(Product.images[imageIndex]);
 
@@ -74,7 +99,16 @@ const MainProduct = ({ Product }) => {
           </div>
         </div>
         <div className="product-details d-flex flex-column">
-          <h2 className="product-title mb-1">{Product.title}</h2>
+          <h2 className="product-title mb-1">
+            {Product.title}{' '}
+            <span>
+              {fav ? (
+                <AiFillHeart className="product-icon" onClick={delFav} />
+              ) : (
+                <AiOutlineHeart className="product-icon" onClick={addFav} />
+              )}
+            </span>
+          </h2>
           <p className="product-subtitle">Description</p>
           {Product.isData && <ProductDetails Product={Product} />}
           {!Product.isData && <DetailsWithoutData Product={Product} />}

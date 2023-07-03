@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import './Signin.css';
+
 import Signup from './Signup';
 import Signin from './Signin';
+
+import './Signin.css';
 
 const ParentCard = () => {
   const [signuppage, setSignup] = useState(false);

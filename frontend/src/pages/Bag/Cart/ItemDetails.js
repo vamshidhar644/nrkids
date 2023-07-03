@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+
 import { UseAuthContext } from '../../../hooks/useAuthContext';
+import { useCart } from '../../../hooks/useCart';
 import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
 
-import { useCart } from '../../../hooks/useCart';
 import DetailsWithoutData from '../../Product/MainProduct/DetailsWithoutData';
 
 const ItemDetails = ({ index, items, cartItems, onDataChange }) => {

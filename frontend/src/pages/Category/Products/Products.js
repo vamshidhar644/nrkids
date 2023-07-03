@@ -1,26 +1,11 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 
-import { Link } from 'react-router-dom';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
 
 const ProductGrid = ({ categoryProducts }) => {
   const { getImageUrl } = FetchImageUrl();
-  const { setSizes, item } = ChangePriceperSize();
-
-  useEffect(() => {
-    if (categoryProducts) {
-      // categoryProducts.forEach((element, i) => {
-      //   if (element.prices) {
-      //     console.log(element);
-      //     // setSizes(element);
-      //   }
-      //   // setSizes(element);
-      // });
-    }
-  });
 
   return (
     <div className="Product-Grid">

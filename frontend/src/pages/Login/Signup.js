@@ -16,7 +16,6 @@ const Signup = () => {
   const [user, setUser] = useState();
 
   const currentDate = new Date();
-  const date = currentDate.getDate().toString().padStart(2, '0');
   const hours = currentDate.getHours().toString().padStart(2, '0');
   const minutes = currentDate.getMinutes().toString().padStart(2, '0');
   const seconds = currentDate.getSeconds().toString().padStart(2, '0');
@@ -24,7 +23,7 @@ const Signup = () => {
     .getMilliseconds()
     .toString()
     .padStart(3, '0');
-  const _id = `NKUID${date}${hours}${minutes}${seconds}${milliseconds}`;
+  const _id = `NKUID${hours}${minutes}${seconds}${milliseconds}`;
 
   const handleSignup = async (e) => {
     e.preventDefault();

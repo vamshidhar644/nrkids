@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+
 import './Collections.css';
 
 const ShopByCategory = ({ Collections }) => {

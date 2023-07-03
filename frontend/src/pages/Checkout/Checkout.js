@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Link, Navigate, useLocation } from 'react-router-dom';
+import { BiChevronRight } from 'react-icons/bi';
 
 import OrderAddress from './Address/OrderAddress';
 import OrderItems from './CartItems/OrderItems';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+
 import './Checkout.css';
 
-import { BiChevronRight } from 'react-icons/bi';
 const Checkout = ({ Products }) => {
   const location = useLocation();
-  const { data } = location.state;
+  const { data = null } = location.state || {};
 
   const [selectSanityCart, setSelectedSanity] = useState();
 

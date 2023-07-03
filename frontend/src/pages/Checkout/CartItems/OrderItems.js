@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 
 const OrderItems = ({ data, cartItems }) => {
-  console.log(cartItems);
-
   const { getImageUrl } = FetchImageUrl();
 
   const [totalPrice, setTotalPrice] = useState();
@@ -50,7 +49,7 @@ const OrderItems = ({ data, cartItems }) => {
                       <div className="checkout-row checkout-image">
                         <img src={getImageUrl(item.images[0])} alt="" />
                       </div>
-                      <div className=''>
+                      <div className="">
                         <h6>{item.title}</h6>
                         <p className="m-0 small">Description</p>
                         <p className="d-flex gap-3 justify-content-between w-100 m-0 small">

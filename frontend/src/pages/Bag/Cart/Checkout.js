@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './Checkout.css';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
 import { Link } from 'react-router-dom';
+
+import { FetchMongo } from '../../../BackOps/FetchMongo';
+import './Checkout.css';
 
 const Checkout = ({ data }) => {
   const { fetchcartData, cartItems } = FetchMongo();
@@ -13,7 +14,7 @@ const Checkout = ({ data }) => {
 
   useEffect(() => {
     fetchcartData();
-  },[]);
+  }, []);
   useEffect(() => {
     if (data) {
       fetchcartData();
@@ -48,8 +49,6 @@ const Checkout = ({ data }) => {
     totalPricing();
   }, [cartItems]);
 
-  
-
   return (
     <div className="Checkout-Section w-50">
       <div className="Checkout-header">
@@ -72,10 +71,6 @@ const Checkout = ({ data }) => {
           <h4>Total Amount</h4>
           <p></p>
         </div>
-        {/* <div className="checkout-row saved">
-          <h6>You saved --- on this order</h6>
-          <p></p>
-        </div> */}
       </div>
       <div className="checkout-footer pt-4">
         <Link

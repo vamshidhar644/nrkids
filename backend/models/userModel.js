@@ -31,7 +31,7 @@ const userSchema = new Schema({
   dob: { type: Date },
   addresses: [
     {
-      aId: { type: String, required: true, unique: true },
+      aId: { type: String, required: true },
       fullname: { type: String, required: true },
       mobile: { type: String, required: true },
       fullAddress: { type: String, required: true },
@@ -43,7 +43,6 @@ const userSchema = new Schema({
   cartItems: [
     {
       productId: String,
-      imagepath: String,
       price: Number,
       quantity: Number,
       size: String,

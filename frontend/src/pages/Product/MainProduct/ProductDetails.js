@@ -8,6 +8,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { BsHandbag } from 'react-icons/bs';
 
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const ProductDetails = ({ Product }) => {
   const { updatecart } = useCart();
@@ -117,10 +118,9 @@ const ProductDetails = ({ Product }) => {
             Add to Cart
           </button>
           &nbsp;
-          <button className="product-button d-flex justify-content-center align-items-center">
-            <AiOutlineHeart className="product-icon" />
-            Add to favorites
-          </button>
+          <Link className="product-button d-flex justify-content-center align-items-center">
+            Buy now
+          </Link>
         </div>
       )}
     </div>

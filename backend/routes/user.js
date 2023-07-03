@@ -44,9 +44,9 @@ router.post('/cart/:id', addCart);
 router.delete('/:userId/cart/:productId', deletecartitem);
 
 // Wishlist Routes
-router.get('/savelater/:id', getWishlist);
-router.post('/savelater/:id', addWishlist);
-router.delete('/:userId/savelater/:productId', deleteWishlist);
+router.get('/wishlist/:id', getWishlist);
+router.post('/wishlist/add', addWishlist);
+router.delete('/:userId/wishlist/:productId', deleteWishlist);
 
 // Address Routes
 router.get('/address/:id', getAddressData);

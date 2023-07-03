@@ -29,8 +29,6 @@ const AddressForm = ({ editData }) => {
     updateAddress(aId, fullname, mobile, email, fullAddress, state, pincode);
   };
 
-
-  
   return (
     <div className="d-flex">
       <form action="" className="">

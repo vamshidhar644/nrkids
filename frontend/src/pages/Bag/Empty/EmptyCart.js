@@ -1,7 +1,9 @@
 import React from 'react';
-import './EmptyCart.css';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
+
+import { UseAuthContext } from '../../../hooks/useAuthContext';
+
+import './EmptyCart.css';
 
 const EmptyCart = () => {
   const { user } = UseAuthContext();
