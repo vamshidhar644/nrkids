@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { UseAuthContext } from '../hooks/useAuthContext';
 
 export const PostMongo = () => {
+  const { user } = UseAuthContext();
   const [imageSrc, setImage] = useState();
+  // const [aId, setAid] = useState('');
 
   const handleCompress = (inputRef, compressedImageRef) => {
     const inputImage = inputRef.current;
@@ -36,9 +39,6 @@ export const PostMongo = () => {
 
       const compressedImageBase64 = canvas.toDataURL('image/jpeg', 0.5); // Set the quality (0.0 - 1.0)
       setImage(compressedImageBase64);
-      // compressedImageRef.current.value = compressedImageBase64;
-
-      // console.log(compressedImageBase64);
     };
   };
 
@@ -96,5 +96,76 @@ export const PostMongo = () => {
     }
   };
 
-  return { updateUserData, handleCompress, imageSrc, updatePassword };
+  const updateAddress = async (
+    addId,
+    fullname,
+    mobile,
+    email,
+    fullAddress,
+    state,
+    pincode
+  ) => {
+    let aId;
+    if (addId) {
+      aId = addId;
+    } else {
+      const currentDate = new Date();
+      const date = currentDate.getDate().toString().padStart(2, '0');
+      const hours = currentDate.getHours().toString().padStart(2, '0');
+      const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+      const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+      const milliseconds = currentDate
+        .getMilliseconds()
+        .toString()
+        .padStart(3, '0');
+      aId = `NKADDUID${date}${hours}${minutes}${seconds}${milliseconds}`;
+    }
+    const userId = user._id;
+    const response = await fetch(`/api/user/address/${aId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId,
+        fullname,
+        mobile,
+        email,
+        fullAddress,
+        state,
+        pincode,
+      }),
+    });
+    if (!response.ok) {
+      console.log(response);
+    }
+    if (response.ok) {
+      console.log(response);
+      alert('updated');
+      window.location.reload();
+    }
+  };
+
+  const deleteAddress = async (userId, addressId) => {
+    const response = await fetch(`/api/user/${userId}/address/${addressId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      console.log('Something went Wrong');
+    }
+    if (response.ok) {
+      console.log(response);
+      alert('Deleted');
+      window.location.reload();
+    }
+  };
+
+  return {
+    updateUserData,
+    handleCompress,
+    imageSrc,
+    updatePassword,
+    updateAddress,
+    deleteAddress,
+  };
 };

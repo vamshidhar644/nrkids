@@ -2,7 +2,7 @@
 const getWishlist = async (req, res) => {
   const userId = req.params.id;
 
-  console.log('Get Save later data');
+  console.log('Get wishlist data');
 
   User.findOne({ _id: userId }, (err, data) => {
     if (err) {
@@ -18,7 +18,7 @@ const getWishlist = async (req, res) => {
       return;
     }
 
-    res.json(data.saveforLater);
+    res.json(data.wishlist);
   });
 };
 
@@ -26,7 +26,7 @@ const addWishlist = async (req, res) => {
   const productId = req.params.id;
   const { itemsData } = req.body;
 
-  console.log('Add item to save later data');
+  console.log('Add item to Wishlist data');
 
   const userId = itemsData.userId;
   const quantity = itemsData.quantity;
@@ -40,7 +40,7 @@ const addWishlist = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
     // Check if the PRODUCT already exists for the USER
-    const product = user.saveforLater.find(
+    const product = user.wishlist.find(
       (item) => item.productId === productId
     );
 
@@ -52,15 +52,15 @@ const addWishlist = async (req, res) => {
     } else {
       // Add a new User to the product
 
-      user.saveforLater.push({ productId, quantity, size, price });
+      user.wishlist.push({ productId, quantity, size, price });
     }
 
     // Save the updated cart
     await user.save();
 
-    const saveforLater = user.saveforLater;
+    const wishlist = user.wishlist;
 
-    res.status(200).json({ saveforLater });
+    res.status(200).json({ wishlist });
   } catch (error) {
     console.error('Error updating user:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -70,11 +70,11 @@ const addWishlist = async (req, res) => {
 const deleteWishlist = async (req, res) => {
   const { userId, productId } = req.params;
 
-  console.log('Delete from save later');
+  console.log('Delete from Wishlist');
 
   User.updateOne(
     { _id: userId },
-    { $pull: { saveforLater: { productId: productId } } }
+    { $pull: { wishlist: { productId: productId } } }
   )
     .then(() => {
       res.status(200).json({ message: 'Item deleted successfully' });

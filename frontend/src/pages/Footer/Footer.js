@@ -8,7 +8,7 @@ import { GoLocation } from 'react-icons/go';
 
 const Footer = () => {
   return (
-    <footer className="Parent-Footer">
+    <footer className="Parent-Footer small">
       <div className="box box1">
         <b>Shop by Category</b>
         <hr />

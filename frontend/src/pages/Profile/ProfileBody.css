@@ -4,6 +4,10 @@
     margin: 0px;
 }
 
+.profile-main-container{
+    min-height: 100vh;
+}
+
 
 .profile-section-list{  
     width: fit-content;
@@ -143,4 +147,14 @@
 
 .change-password{ 
     width: 30%;
+}
+
+.address-card{
+    border-radius: 6px;
+    background: rgba(241, 241, 241, 1);
+}
+
+.edit-address p{
+    width: fit-content;
+    cursor: pointer;
 }

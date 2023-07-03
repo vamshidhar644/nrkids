@@ -63,15 +63,6 @@ const PersonalInfo = ({ userData }) => {
     updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
   };
 
-  // const handleDeleteImage = () => {
-  //   if (imageSrc) {
-  //     setDisplaypic(null);
-  //     const _id = user._id;
-  //     const imageSrc = '';
-  //     // updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
-  //   }
-  // };
-
   return (
     <div className="w-100">
       <div className="information-header">
@@ -106,13 +97,6 @@ const PersonalInfo = ({ userData }) => {
                 </label>
               )}
             </div>
-            {/* <div
-              className="profile-image-delete d-flex align-items-center small bg-white py-1 px-3 gap-1"
-              onClick={handleDeleteImage}
-            >
-              <ImBin />
-              Delete
-            </div> */}
           </div>
         </div>
         <div className="user-inforomation p-2 w-50 mb-4">
@@ -123,7 +107,6 @@ const PersonalInfo = ({ userData }) => {
                   First Name
                 </label>
                 <input
-                  className="h-100 p-2"
                   type="text"
                   name="firstName"
                   placeholder={userData.firstName}
@@ -135,7 +118,6 @@ const PersonalInfo = ({ userData }) => {
                   Last Name
                 </label>
                 <input
-                  className="h-100 p-2"
                   type="text"
                   name="lastName"
                   placeholder={userData.lastName}
@@ -148,7 +130,6 @@ const PersonalInfo = ({ userData }) => {
                 Email
               </label>
               <input
-                className="h-100 p-2"
                 type="text"
                 name="emailAddress"
                 defaultValue={userData.email}
@@ -162,7 +143,6 @@ const PersonalInfo = ({ userData }) => {
               <p className="w-50 d-flex align-items-center m-0">
                 <span>+91 </span>&nbsp;&nbsp;&nbsp;
                 <input
-                  className="h-100 p-2 w-100"
                   type="text"
                   name="phoneNumber"
                   placeholder={userData.phoneNumber}
@@ -176,18 +156,12 @@ const PersonalInfo = ({ userData }) => {
                   Date of birth
                 </label>
                 {userData.dob && (
-                  <input
-                    type="text"
-                    className="m-0"
-                    readOnly
-                    defaultValue={dob}
-                  />
+                  <input type="text" readOnly defaultValue={dob} />
                 )}
                 {!userData.dob && (
                   <input
                     type="date"
                     onChange={(e) => dateFormat(e.target.value)}
-                    className="h-100 p-2"
                   />
                 )}
               </div>

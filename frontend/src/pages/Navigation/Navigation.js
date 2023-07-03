@@ -115,7 +115,7 @@ const Navigation = () => {
                   </Link>
                 )}
               </div>
-              <Link className="nav-bar-icons" to="/favorites">
+              <Link className="nav-bar-icons" to="/wishlist">
                 <AiOutlineHeart />
               </Link>
               <Link className="nav-bar-icons" to="/your-bag">

@@ -32,7 +32,7 @@ const MainProduct = ({ Product }) => {
 
   return (
     <div className="product-page p-4">
-      <p className="product-path d-flex flex-start align-items-center">
+      <p className="product-path d-flex flex-start align-items-center small">
         <Link to="/">Home </Link>
         <BiChevronRight />
         <Link to={`/${Product.dropdownField}`}>{categorypath}</Link>

@@ -6,6 +6,7 @@ export const FetchMongo = () => {
   const { user } = UseAuthContext();
   const [cartItems, setCartitems] = useState();
   const [userData, setUserdata] = useState();
+  const [address, setAddress] = useState();
 
   const fetchUserData = async () => {
     if (user) {
@@ -35,5 +36,26 @@ export const FetchMongo = () => {
     }
   };
 
-  return { fetchcartData, cartItems, fetchUserData, userData };
+  const fetchAddressData = async () => {
+    if (user) {
+      const id = user._id;
+      axios
+        .get(`/api/user/address/${id}`)
+        .then((response) => {
+          setAddress(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching document:', error);
+        });
+    }
+  };
+
+  return {
+    fetchcartData,
+    cartItems,
+    fetchUserData,
+    userData,
+    fetchAddressData,
+    address,
+  };
 };

@@ -5,8 +5,6 @@ import './ProfileBody.css';
 
 import PersonalInfo from './ProfileSections/PersonalInfo';
 import MyOrders from './ProfileSections/MyOrders';
-import MyWishlist from './ProfileSections/MyWishlist';
-import MyReviews from './ProfileSections/MyReviews';
 import MyAddress from './ProfileSections/MyAddress';
 
 import ChangePassword from './ProfileSections/ChangePassword';
@@ -16,8 +14,7 @@ const ProfileBody = ({ userData }) => {
   const profileList = [
     { title: 'Personal Information' },
     { title: 'My Orders' },
-    { title: 'My Address Book' },
-    { title: 'My Reviews' },
+    { title: 'My Addresses' },
     { title: 'Change Password' },
   ];
 
@@ -28,7 +25,7 @@ const ProfileBody = ({ userData }) => {
   };
 
   return (
-    <div>
+    <div className="profile-main-container">
       {userData ? (
         <div className="p-4">
           <div>
@@ -84,9 +81,8 @@ const ProfileBody = ({ userData }) => {
               <PersonalInfo userData={userData} />
             ) : null}
             {section === profileList[1].title ? <MyOrders /> : null}
-            {section === profileList[3].title ? <MyReviews /> : null}
             {section === profileList[2].title ? <MyAddress /> : null}
-            {section === profileList[4].title ? (
+            {section === profileList[3].title ? (
               <ChangePassword userData={userData} />
             ) : null}
           </div>

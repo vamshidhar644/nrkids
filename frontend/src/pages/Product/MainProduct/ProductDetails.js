@@ -11,7 +11,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 const ProductDetails = ({ Product }) => {
   const { updatecart } = useCart();
-  const { user } = UseAuthContext(); 
+  const { user } = UseAuthContext();
 
   const { setSizes, item } = ChangePriceperSize();
 

@@ -29,6 +29,17 @@ const userSchema = new Schema({
   displayPic: { type: String },
   phoneNumber: { type: String },
   dob: { type: Date },
+  addresses: [
+    {
+      aId: { type: String, required: true, unique: true },
+      fullname: { type: String, required: true },
+      mobile: { type: String, required: true },
+      fullAddress: { type: String, required: true },
+      email: { type: String, required: true },
+      state: { type: String, required: true },
+      pincode: { type: String, required: true },
+    },
+  ],
   cartItems: [
     {
       productId: String,
@@ -37,14 +48,7 @@ const userSchema = new Schema({
       size: String,
     },
   ],
-  saveforLater: [
-    {
-      productId: String,
-      price: Number,
-      quantity: Number,
-      size: String,
-    },
-  ],
+  wishlist: [{ productId: String }],
 });
 
 // static signup method
