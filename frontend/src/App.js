@@ -16,6 +16,7 @@ import { UseAuthContext } from './hooks/useAuthContext';
 import { FetchSanity } from './BackOps/FetchSanity';
 import { FetchMongo } from './BackOps/FetchMongo';
 import ProfileBody from './pages/Profile/ProfileBody';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   const { user } = UseAuthContext();
@@ -79,6 +80,11 @@ function App() {
         <Route
           path="/my-profile/:id"
           element={<ProfileBody userData={userData} />}
+        />
+
+        <Route
+          path="/your-bag/check-out"
+          element={<Checkout Products={Products} />}
         />
       </Routes>
       <Footer />

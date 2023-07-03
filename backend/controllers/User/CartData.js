@@ -4,7 +4,7 @@ const User = require('../../models/userModel');
 const getCartData = async (req, res) => {
   const userId = req.params.id;
 
-  console.log('Get Cart data');
+  console.log('Get Cart data');   
 
   User.findOne({ _id: userId }, (err, data) => {
     if (err) {
@@ -35,13 +35,13 @@ const addCart = async (req, res) => {
   const price = itemsData.price;
   const size = itemsData.size;
 
-  // console.log(productId, itemsData);
-  try {
-    // Check if the user exists
+  // console.log(productId, itemsData); 
+  try {     
+    // Check if the user exists 
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
-      console.log('not found');
+      console.log('not found');  
     }
 
     // Check if the PRODUCT already exists for the USER

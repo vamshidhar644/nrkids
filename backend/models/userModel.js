@@ -43,6 +43,7 @@ const userSchema = new Schema({
   cartItems: [
     {
       productId: String,
+      imagepath: String,
       price: Number,
       quantity: Number,
       size: String,

@@ -1,0 +1,17 @@
+.checkout-address{
+    width: 100%;
+}
+.checkout-summary{
+    width: 60%;
+    padding: 0px 4rem;
+}   
+.checkout-image{
+    width: 100px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.checkout-image img{
+    width: 100%;
+    height: 100%;
+}

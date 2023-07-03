@@ -7,7 +7,7 @@
   cursor: default;
 }
 
-.cart-page p a:hover{
+p a:hover{
     color: var(--bs-hover-color);
 }
 

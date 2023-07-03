@@ -9,9 +9,16 @@ const Checkout = ({ data }) => {
   const [totalPrice, setTotalPrice] = useState();
   const [itemCount, setItemCount] = useState();
 
+  const [cartData, setCartdata] = useState();
+
   useEffect(() => {
     fetchcartData();
-  }, []);
+  },[]);
+  useEffect(() => {
+    if (data) {
+      fetchcartData();
+    }
+  }, [data]);
 
   useEffect(() => {
     const totalPricing = () => {
@@ -20,6 +27,7 @@ const Checkout = ({ data }) => {
       if (cartItems) {
         Arrayel = cartItems.filter((item) => item.price !== 0);
       }
+      setCartdata(Arrayel);
       if (Arrayel) {
         for (let i = 0; i < Arrayel.length; i++) {
           price += Arrayel[i].price * Arrayel[i].quantity;
@@ -40,11 +48,7 @@ const Checkout = ({ data }) => {
     totalPricing();
   }, [cartItems]);
 
-  useEffect(() => {
-    if (data) {
-      fetchcartData();
-    }
-  }, [data]);
+  
 
   return (
     <div className="Checkout-Section w-50">
@@ -74,7 +78,13 @@ const Checkout = ({ data }) => {
         </div> */}
       </div>
       <div className="checkout-footer pt-4">
-        <Link to="/your-bag/check-out" className="place-order">Place Order</Link>
+        <Link
+          to="/your-bag/check-out"
+          className="place-order"
+          state={{ data: cartData, imgpath: '' }}
+        >
+          Place Order
+        </Link>
         <Link to="/" className="bg-white">
           Continue shopping
         </Link>
