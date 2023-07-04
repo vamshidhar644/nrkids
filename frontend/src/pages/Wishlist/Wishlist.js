@@ -12,7 +12,7 @@ const Wishlist = ({ wishlist, Products }) => {
   useEffect(() => {
     filtersanity(wishlist, Products);
   });
- 
+
   return (
     <div className="p-4">
       <div>

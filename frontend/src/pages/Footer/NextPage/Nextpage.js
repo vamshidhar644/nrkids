@@ -4,9 +4,6 @@ import './Nextpage.css';
 const Nextpage = () => {
   const nextpage = useParams();
 
-  // useEffect(() => {
-  //   console.log(nextpage);
-  // });
   return <div className="Nextpage-container">{nextpage.nextpage}</div>;
 };
 

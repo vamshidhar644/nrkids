@@ -52,7 +52,6 @@ export const PostMongo = () => {
     dob,
     displayPic
   ) => {
-    console.log(_id, firstName, lastName, phoneNumber, dob, displayPic);
 
     const response = await fetch(`/api/user/${_id}`, {
       method: 'PUT',
@@ -67,7 +66,6 @@ export const PostMongo = () => {
     });
 
     if (!response.ok) {
-      console.log(_id, firstName, lastName, phoneNumber, dob, displayPic);
     }
     if (response.ok) {
       alert('updated');
@@ -77,7 +75,6 @@ export const PostMongo = () => {
 
   // P A S S W O R D S . . . . . . .
   const updatePassword = async (_id, email, oldpassword, newpassword) => {
-    console.log(email, oldpassword, newpassword);
 
     const response = await fetch(`/api/user/${_id}/change-password`, {
       method: 'PUT',
@@ -188,7 +185,6 @@ export const PostMongo = () => {
 
   const deleteWishlist = async (productId) => {
     const userId = user._id;
-    console.log(userId, productId);
 
     const response = await fetch(`/api/user/${userId}/wishlist/${productId}`, {
       method: 'DELETE',

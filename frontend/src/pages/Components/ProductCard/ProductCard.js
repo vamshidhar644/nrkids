@@ -25,8 +25,6 @@ const ProductCard = ({ item }) => {
     fetchWishlist();
   }, []);
 
-  console.log(item);
-
   useEffect(() => {
     if (wishlist) {
       const valueExists = wishlist.some(
@@ -50,7 +48,7 @@ const ProductCard = ({ item }) => {
         <div className="Product-Details">
           <p className="title mb-0">{item.title}</p>
           <p className="subtitle mb-0">Description</p>
-          <p className="price mb-0">₹ {item.price}</p>
+          {/* <p className="price mb-0">₹ {item.price}</p> */}
           {fav ? (
             <AiFillHeart
               className="fav-icon position-absolute"
