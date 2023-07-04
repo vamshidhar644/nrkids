@@ -34,7 +34,10 @@ const Categories = ({ Products }) => {
         <div className="products-container w-100 pb-4">
           <div className="Product-Grid">
             <div className="Cards-Grid w-100 justify-content-start">
-              <ProductCard Products={categoryProducts} />
+              {categoryProducts &&
+                categoryProducts.map((item, i) => {
+                  return <ProductCard item={item} key={i} />;
+                })}
             </div>
           </div>
         </div>

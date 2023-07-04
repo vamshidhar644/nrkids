@@ -39,16 +39,6 @@
   transition: opacity 0.6s;
 }
 
-.Main-Card .title{
-  color: var(--type-high-emphasis, #171520);
-}
-
-.Main-Card .subtitle{
-  color: var(--type-low-emphasis, #626262);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .scroll-button{
   font-size: 28px;
   cursor: pointer;

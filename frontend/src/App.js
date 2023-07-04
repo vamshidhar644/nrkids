@@ -70,12 +70,7 @@ function App() {
 
         <Route
           path="/wishlist"
-          element={
-            <Wishlist
-              wishlist={wishlist ? wishlist : null}
-              Products={Products}
-            />
-          }
+          element={<Wishlist wishlist={wishlist} Products={Products} />}
         />
         <Route
           path="/your-bag"

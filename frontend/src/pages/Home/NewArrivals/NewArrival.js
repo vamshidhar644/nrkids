@@ -33,7 +33,10 @@ const NewArrival = ({ NewArrivals }) => {
           className="Cards-Container overflow-x-auto d-flex"
           ref={containerRef}
         >
-          <DoubleProduct Products={NewArrivals} />
+          {NewArrivals &&
+            NewArrivals.map((item, i) => {
+              return <DoubleProduct item={item} key={i} favv={true} />;
+            })}
         </div>
         <AiOutlineRight
           onClick={() => scrollHorizontally(600)}

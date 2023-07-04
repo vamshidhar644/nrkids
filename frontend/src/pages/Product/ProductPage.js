@@ -4,8 +4,10 @@ import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
 import DoubleProduct from '../Components/DoubleProduct/DoubleProduct';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
 const ProductPage = ({ Products }) => {
+  const { user } = UseAuthContext();
   const { product } = useParams();
 
   const [data, setData] = useState([]);
@@ -22,11 +24,10 @@ const ProductPage = ({ Products }) => {
     };
 
     fetchData();
-  });
-
-  console.log(data);
+  }, [Products]);
 
   const [relatedProducts, setRelatedProducts] = useState([]);
+
   useEffect(() => {
     const CategoryProducts = [];
     if (Products) {
@@ -40,7 +41,7 @@ const ProductPage = ({ Products }) => {
     }
 
     setRelatedProducts(CategoryProducts);
-  }, [relatedProducts]);
+  }, [data]);
 
   const containerRef = useRef(null);
 
@@ -73,7 +74,10 @@ const ProductPage = ({ Products }) => {
               className="Cards-Container overflow-x-auto d-flex"
               ref={containerRef}
             >
-              <DoubleProduct Products={relatedProducts} />
+              {relatedProducts &&
+                relatedProducts.map((item, i) => {
+                  return <DoubleProduct item={item} />;
+                })}
             </div>
             <AiOutlineRight
               onClick={() => scrollHorizontally(600)}

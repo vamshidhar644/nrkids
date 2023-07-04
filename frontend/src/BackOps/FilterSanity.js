@@ -1,29 +1,28 @@
 import { useState } from 'react';
 
-const FilterSanity = (cartItems, Products) => {
-  const [selectSanityCart, setSelectedSanity] = useState();
+const FilterSanity = () => {
+  const [filteredItems, setFilteredItems] = useState();
   const [cartExist, setCartExist] = useState(null);
-  console.log(cartItems, Products);
-  const filtersanity = () => {
+
+  const filtersanity = (mongoItems, sanityItems) => {
     const sanitycart = [];
-    if (cartItems) {
-      setCartExist(cartItems.length);
-      for (let i = 0; i < cartItems.length; i++) { 
-        if (Products) {
-          for (let j = 0; j < Products.length; j++) {
-            if (cartItems[i].productId === Products[j].productId) {
-              sanitycart.push(Products[j]);
+    if (mongoItems) {
+      setCartExist(mongoItems.length);
+      for (let i = 0; i < mongoItems.length; i++) {
+        if (sanityItems) {
+          for (let j = 0; j < sanityItems.length; j++) {
+            if (mongoItems[i].productId === sanityItems[j].productId) {
+              sanitycart.push(sanityItems[j]);
             }
           }
         }
       }
     }
     if (sanitycart) {
-      setSelectedSanity(sanitycart);
+      setFilteredItems(sanitycart);
     }
-    console.log(sanitycart);
   };
-  return { filtersanity, selectSanityCart, cartExist };
+  return { filtersanity, filteredItems, cartExist };
 };
 
 export default FilterSanity;

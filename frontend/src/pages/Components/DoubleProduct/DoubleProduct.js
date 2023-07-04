@@ -1,52 +1,86 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-
-const DoubleProduct = ({ Products }) => {
+import { PostMongo } from '../../../BackOps/PostMongo';
+import { FetchMongo } from '../../../BackOps/FetchMongo';
+import './DoubleProduct.css';
+const DoubleProduct = ({ item, favv }) => {
   const { getImageUrl } = FetchImageUrl();
+
+  const { updateWishlist, deleteWishlist } = PostMongo();
+  const { fetchWishlist, wishlist } = FetchMongo();
+
+  const addFav = (id) => {
+    setFav(true);
+    updateWishlist(id);
+  };
+  const delFav = (id) => {
+    setFav(false);
+    deleteWishlist(id);
+  };
+
+  useEffect(() => {
+    fetchWishlist();
+  }, []);
+
+  const [fav, setFav] = useState(false);
+  useEffect(() => {
+    if (wishlist) {
+      const valueExists = wishlist.some(
+        (product) => product.productId === item.productId
+      );
+      setFav(valueExists);
+    }
+  }, [wishlist]);
+
+  console.log(favv);
   return (
     <>
-      {Products &&
-        Products.map((newarrivals) => {
-          return (
-            <div className="Main-Card" key={newarrivals.title}>
-              <Link
-                className="card"
-                to={`/new-arrivals/${newarrivals.path.current}`}
-                state={{
-                  data: newarrivals,
-                }}
-                onClick={() =>
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  })
-                }
-              >
-                <img
-                  className="image1 w-100 h-100"
-                  src={getImageUrl(newarrivals.images[0])}
-                  alt=""
-                />
-                {newarrivals.images[1] ? (
-                  <img
-                    className="image2 w-100 h-100 position-absolute"
-                    src={getImageUrl(newarrivals.images[1])}
-                    alt=""
-                  />
-                ) : null}
-              </Link>
-              <div className="Product-Details">
-                <p className="title mb-0 font-weight-normal">
-                  {newarrivals.title}
-                </p>
-                <p className="subtitle small">Description</p>
-                <AiOutlineHeart className="fav-icon position-absolute" />
-              </div>
-            </div>
-          );
-        })}
+      <div className="Main-Card" key={item.title}>
+        <Link
+          className="card"
+          to={`/${item.dropdownField}/${item.path.current}`}
+          state={{
+            data: item,
+          }}
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            })
+          }
+        >
+          <img
+            className="image1 w-100 h-100"
+            src={getImageUrl(item.images[0])}
+            alt=""
+          />
+          {item.images[1] ? (
+            <img
+              className="image2 w-100 h-100 position-absolute"
+              src={getImageUrl(item.images[1])}
+              alt=""
+            />
+          ) : null}
+        </Link>
+        <div className="Product-Details">
+          <p className="title mb-0 font-weight-normal">{item.title}</p>
+          <p className="subtitle small">Description</p>
+
+          {fav ? (
+            <AiFillHeart
+              className="fav-icon position-absolute"
+              onClick={() => delFav(item.productId)}
+            />
+          ) : (
+            <AiOutlineHeart
+              className="fav-icon position-absolute"
+              onClick={() => addFav(item.productId)}
+            />
+          )}
+        </div>
+      </div>
     </>
   );
 };

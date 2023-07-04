@@ -1,36 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import CartSection from './Cart/CartSection';
 import EmptyCart from './Empty/EmptyCart';
+import FilterSanity from '../../BackOps/FilterSanity';
 
 const Bag = ({ cartItems, Products }) => {
-
-  const [cartExist, setCartExist] = useState(null);
-  const [selectSanityCart, setSelectedSanity] = useState();
+  const { filtersanity, filteredItems, cartExist } = FilterSanity();
 
   useEffect(() => {
-    const sanitycart = [];
-    if (cartItems) {
-      setCartExist(cartItems.length);
-      for (let i = 0; i < cartItems.length; i++) {
-        if (Products) {
-          for (let j = 0; j < Products.length; j++) {
-            if (cartItems[i].productId === Products[j].productId) {
-              sanitycart.push(Products[j]);
-            }
-          }
-        }
-      }
-    }
-    if (sanitycart) {
-      setSelectedSanity(sanitycart);
-    }
+    filtersanity(cartItems, Products);
   }, [cartItems, Products]);
 
   return (
     <div className="Parent-cart" style={{ backgroundColor: '#f2f2f2' }}>
       {cartExist ? (
-        <CartSection SanityProducts={selectSanityCart} cartItems={cartItems} />
+        <CartSection SanityProducts={filteredItems} cartItems={cartItems} />
       ) : (
         <EmptyCart />
       )}
