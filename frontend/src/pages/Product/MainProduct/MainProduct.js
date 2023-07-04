@@ -3,14 +3,14 @@ import './MainPage.css';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 import { SetPaths } from '../../../BackOps/SetPaths';
-import ProductDetails from './ProductDetails';
+import ProductDetails from './ProductWithDetails';
 import { Link } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 
 import { BiChevronRight } from 'react-icons/bi';
-import DetailsWithoutData from './DetailsWithoutData';
+import DetailsWithoutData from './ProductWithoutData';
 import { PostMongo } from '../../../BackOps/PostMongo';
 import { FetchMongo } from '../../../BackOps/FetchMongo';
 

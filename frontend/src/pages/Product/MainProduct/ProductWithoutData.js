@@ -14,7 +14,7 @@ const DetailsWithoutData = ({ Product }) => {
   const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
-    <div className="product-description">
+    <div className="product-description h-100">
       <p>
         For help with sizes, delivery times or anything else, reach us at
         &nbsp;&nbsp;

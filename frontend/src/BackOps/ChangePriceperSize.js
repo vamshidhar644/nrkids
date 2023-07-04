@@ -32,7 +32,6 @@ const ChangePriceperSize = () => {
         prices.push(Product.prices[`prices_five`].price);
       }
       setItem({ ...item, size: sizes, price: prices });
-      setSize(sizes[0]);
     }
   };
 

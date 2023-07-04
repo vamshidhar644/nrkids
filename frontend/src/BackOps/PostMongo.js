@@ -164,7 +164,7 @@ export const PostMongo = () => {
     }
   };
 
-  // W I S H L I S T
+  // W I S H L I S T . . . . . . .
   const updateWishlist = async (productId) => {
     const userId = user._id;
     console.log(userId, productId);

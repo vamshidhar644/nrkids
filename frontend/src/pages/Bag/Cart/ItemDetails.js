@@ -5,7 +5,7 @@ import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { useCart } from '../../../hooks/useCart';
 import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
 
-import DetailsWithoutData from '../../Product/MainProduct/DetailsWithoutData';
+import DetailsWithoutData from '../../Product/MainProduct/ProductWithoutData';
 
 const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   const { updatecart } = useCart();

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Filters from './Filtering/Filters';
-import ProductGrid from './Products/Products';
-import CategoryHero from './Hero/CategoryHero';
+import CategoryHero from './CategoryHero';
 
 import './Categories.css';
+import ProductCard from '../Components/ProductCard/ProductCard';
 
 const Categories = ({ Products }) => {
   const { categorypath } = useParams();
@@ -32,7 +32,11 @@ const Categories = ({ Products }) => {
           <Filters />
         </div>
         <div className="products-container w-100 pb-4">
-          <ProductGrid categoryProducts={categoryProducts} />
+          <div className="Product-Grid">
+            <div className="Cards-Grid w-100 justify-content-start">
+              <ProductCard Products={categoryProducts} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

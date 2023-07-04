@@ -10,7 +10,7 @@ import Bag from './pages/Bag/Bag';
 import Footer from './pages/Footer/Footer';
 import Nextpage from './pages/Footer/NextPage/Nextpage';
 import Navigation from './pages/Navigation/Navigation';
-import ParentCard from './pages/Login/ParentCard';
+import ParentLogin from './pages/Login/ParentLogin';
 
 import { UseAuthContext } from './hooks/useAuthContext';
 import { FetchSanity } from './BackOps/FetchSanity';
@@ -65,7 +65,7 @@ function App() {
         />
         <Route
           path="/login-or-signup"
-          element={!user ? <ParentCard /> : <Navigate to="/" />}
+          element={!user ? <ParentLogin /> : <Navigate to="/" />}
         />
 
         <Route

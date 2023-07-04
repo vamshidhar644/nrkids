@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useCart } from '../../../hooks/useCart';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
-import DetailsWithoutData from './DetailsWithoutData';
+import DetailsWithoutData from './ProductWithoutData';
 import './ProductDetails.css';
-import { AiOutlineHeart } from 'react-icons/ai';
 import { BsHandbag } from 'react-icons/bs';
 
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
@@ -26,11 +25,9 @@ const ProductDetails = ({ Product }) => {
 
   useEffect(() => {
     setProdId(Product.productId);
-    if (user) {
-      setUserId(user._id);
-    }
+    setUserId(user._id);
     setSizes(Product);
-  }, [Product.productId, user]);
+  }, [user]);
 
   useEffect(() => {
     if (item.size) {

@@ -8,7 +8,7 @@ const FilterSanity = (cartItems, Products) => {
     const sanitycart = [];
     if (cartItems) {
       setCartExist(cartItems.length);
-      for (let i = 0; i < cartItems.length; i++) {
+      for (let i = 0; i < cartItems.length; i++) { 
         if (Products) {
           for (let j = 0; j < Products.length; j++) {
             if (cartItems[i].productId === Products[j].productId) {

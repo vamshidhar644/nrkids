@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
 
-import { FetchSanity } from '../../../BackOps/FetchSanity';
-import { SetPaths } from '../../../BackOps/SetPaths';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-
-import './CategoryHero.css';
+import { FetchSanity } from '../../BackOps/FetchSanity';
+import { SetPaths } from '../../BackOps/SetPaths';
+import FetchImageUrl from '../../BackOps/FetchImageUrl';
 
 const CategoryHero = ({ params }) => {
   const { fetchHero, Hero } = FetchSanity();

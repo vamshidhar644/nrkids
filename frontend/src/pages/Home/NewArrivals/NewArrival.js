@@ -1,16 +1,13 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineRight, AiOutlineLeft, AiOutlineHeart } from 'react-icons/ai';
-
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 
 import Viewall from '../../Components/ViewAll/Viewall';
 
 import './NewArrivals.css';
+import DoubleProduct from '../../Components/DoubleProduct/DoubleProduct';
 
 const NewArrival = ({ NewArrivals }) => {
-  const { getImageUrl } = FetchImageUrl();
-
   const containerRef = useRef(null);
 
   const scrollHorizontally = (scrollOffset) => {
@@ -36,38 +33,7 @@ const NewArrival = ({ NewArrivals }) => {
           className="Cards-Container overflow-x-auto d-flex"
           ref={containerRef}
         >
-          {NewArrivals &&
-            NewArrivals.map((newarrivals) => {
-              return (
-                <div className="Main-Card" key={newarrivals.title}>
-                  <Link
-                    className="card"
-                    to={`/new-arrivals/${newarrivals.path.current}`}
-                    state={{
-                      data: newarrivals,
-                    }}
-                  >
-                    <img
-                      className="image1 w-100 h-100"
-                      src={getImageUrl(newarrivals.images[0])}
-                      alt=""
-                    />
-                    <img
-                      className="image2 w-100 h-100 position-absolute"
-                      src={getImageUrl(newarrivals.images[1])}
-                      alt=""
-                    />
-                  </Link>
-                  <div className="Product-Details">
-                    <p className="title mb-0 font-weight-normal">
-                      {newarrivals.title}
-                    </p>
-                    <p className="subtitle small">Description</p>
-                    <AiOutlineHeart className="fav-icon position-absolute" />
-                  </div>
-                </div>
-              );
-            })}
+          <DoubleProduct Products={NewArrivals} />
         </div>
         <AiOutlineRight
           onClick={() => scrollHorizontally(600)}

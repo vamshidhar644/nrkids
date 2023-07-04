@@ -7,6 +7,12 @@
     width: 300px;
 }
 
+
+.hero-container img{
+    border-radius: 20px;
+}
+
+
 .Cards-Grid{
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -38,3 +44,4 @@
     width: 25px;
     height: 25px;
   }
+
