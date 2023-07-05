@@ -9,6 +9,7 @@ const AddressForm = ({ editData }) => {
   const [mobile, setMobile] = useState();
   const [email, setEmail] = useState();
   const [fullAddress, setAddress] = useState();
+  const [landmark, setLandmark] = useState();
   const [state, setState] = useState();
   const [pincode, setPincode] = useState();
 
@@ -19,6 +20,7 @@ const AddressForm = ({ editData }) => {
       setMobile(editData.mobile);
       setEmail(editData.email);
       setAddress(editData.fullAddress);
+      setLandmark(editData.landmark);
       setState(editData.state);
       setPincode(editData.pincode);
     }
@@ -26,7 +28,16 @@ const AddressForm = ({ editData }) => {
 
   const handleAddress = (e) => {
     e.preventDefault();
-    updateAddress(aId, fullname, mobile, email, fullAddress, state, pincode);
+    updateAddress(
+      aId,
+      fullname,
+      mobile,
+      email,
+      fullAddress,
+      landmark,
+      state,
+      pincode
+    );
   };
 
   return (
@@ -49,28 +60,15 @@ const AddressForm = ({ editData }) => {
             onChange={(e) => setMobile(e.target.value)}
           />
         </div>
-        <input
-          placeholder="Email"
-          className="h-2"
-          required="required"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          placeholder="Address"
-          className="h-2"
-          required="required"
-          value={fullAddress}
-          onChange={(e) => setAddress(e.target.value)}
-        />
         <div className="d-flex gap-2">
           <input
-            type="text"
-            placeholder="State"
+            placeholder="Email"
+            className="h-2"
             required="required"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
+
           <input
             type="text"
             placeholder="Pincode"
@@ -79,6 +77,41 @@ const AddressForm = ({ editData }) => {
             onChange={(e) => setPincode(e.target.value)}
           />
         </div>
+        <div className="d-flex gap-2">
+          <textarea
+            placeholder="Address"
+            className="w-50 h-100"
+            required="required"
+            value={fullAddress}
+            rows="4"
+            cols="18"
+            onChange={(e) => setAddress(e.target.value)}
+          ></textarea>
+          {/* <input
+            placeholder="Address"
+            className="w-50"
+            required="required"
+            value={fullAddress}
+            onChange={(e) => setAddress(e.target.value)}
+          /> */}
+          <div className="d-flex flex-column gap-2">
+            <input
+              type="text"
+              placeholder="Landmark"
+              required="required"
+              value={landmark}
+              onChange={(e) => setLandmark(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="State"
+              required="required"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </div>
+        </div>
+
         <div className="p-2 d-flex text-nowrap gap-3 align-items-center">
           <button onClick={handleAddress}>Add</button>
         </div>

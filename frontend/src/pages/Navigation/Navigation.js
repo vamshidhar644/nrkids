@@ -49,6 +49,7 @@ const Navigation = () => {
 
   return (
     <div className={`${isFixed ? 'fixed position-fixed w-100' : ''}`}>
+      <OfferSection />
       <div className="navigation-container bg-white p-0 py-1 px-2 ">
         <div className="navbar-nav d-flex flex-row">
           <div className="navbar-nav-section1">
@@ -64,19 +65,24 @@ const Navigation = () => {
             onClick={handleNavToggle}
           />
 
-          <Link
-            to="/"
-            style={{ textDecoration: 'none' }}
-            className="logo"
-            onClick={() => {
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-              });
-            }}
-          >
-            nrKids
-          </Link>
+          <div className="main-logo w-100 d-flex justify-content-center">
+            <Link
+              to="/"
+              style={{
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              <div className='img'></div>
+            </Link>
+          </div>
           <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">
             <SearchBar className="Search-Section" />
             <div className="input-wrapper d-flex p-2">
@@ -125,7 +131,6 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-      <OfferSection />
     </div>
   );
 };

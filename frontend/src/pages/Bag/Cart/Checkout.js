@@ -3,51 +3,21 @@ import { Link } from 'react-router-dom';
 
 import { FetchMongo } from '../../../BackOps/FetchMongo';
 import './Checkout.css';
+import { Calcuate } from '../../../BackOps/Calcuate';
 
 const Checkout = ({ data }) => {
   const { fetchcartData, cartItems } = FetchMongo();
-
-  const [totalPrice, setTotalPrice] = useState();
-  const [itemCount, setItemCount] = useState();
-
-  const [cartData, setCartdata] = useState();
+  const { totalPricing, totalPrice, itemCount, cartData } = Calcuate();
 
   useEffect(() => {
     fetchcartData();
-  }, []);
+    totalPricing(cartItems);
+  }, [cartItems]);
   useEffect(() => {
     if (data) {
       fetchcartData();
     }
   }, [data]);
-
-  useEffect(() => {
-    const totalPricing = () => {
-      let price = 0;
-      let Arrayel = [];
-      if (cartItems) {
-        Arrayel = cartItems.filter((item) => item.price !== 0);
-      }
-      setCartdata(Arrayel);
-      if (Arrayel) {
-        for (let i = 0; i < Arrayel.length; i++) {
-          price += Arrayel[i].price * Arrayel[i].quantity;
-        }
-
-        setTotalPrice(price);
-
-        const ArrayLength = Arrayel.length;
-
-        if (ArrayLength === 1) {
-          setItemCount(ArrayLength + ' item');
-        } else {
-          setItemCount(ArrayLength + ' items');
-        }
-      }
-    };
-
-    totalPricing();
-  }, [cartItems]);
 
   return (
     <div className="Checkout-Section w-50">
@@ -76,7 +46,7 @@ const Checkout = ({ data }) => {
         <Link
           to="/your-bag/check-out"
           className="place-order"
-          state={{ data: cartData, imgpath: '' }}
+          state={{ data: cartData }}
         >
           Place Order
         </Link>

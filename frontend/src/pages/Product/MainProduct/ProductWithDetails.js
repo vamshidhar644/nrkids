@@ -20,13 +20,16 @@ const ProductDetails = ({ Product }) => {
 
   const [size, setSize] = useState('');
   const [price, setPrice] = useState();
-
   const [quantity, setQty] = useState(1);
+
+  const [buyData, setBuydata] = useState();
 
   useEffect(() => {
     setProdId(Product.productId);
-    setUserId(user._id);
     setSizes(Product);
+    if (user) {
+      setUserId(user._id);
+    }
   }, [user]);
 
   useEffect(() => {
@@ -56,6 +59,13 @@ const ProductDetails = ({ Product }) => {
       }
     }
   };
+
+  useEffect(() => {
+    const buyData = { productId, price, quantity, size };
+    if (productId && quantity && size && price) {
+      setBuydata(buyData);
+    }
+  }, [price, quantity]);
 
   return (
     <div className="product-withdata">
@@ -115,7 +125,11 @@ const ProductDetails = ({ Product }) => {
             Add to Cart
           </button>
           &nbsp;
-          <Link className="product-button d-flex justify-content-center align-items-center">
+          <Link
+            className="product-button d-flex justify-content-center align-items-center"
+            to="/check-out"
+            state={{ data: buyData }}
+          >
             Buy now
           </Link>
         </div>

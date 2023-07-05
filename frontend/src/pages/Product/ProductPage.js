@@ -4,10 +4,8 @@ import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
 import DoubleProduct from '../Components/DoubleProduct/DoubleProduct';
-import { UseAuthContext } from '../../hooks/useAuthContext';
 
 const ProductPage = ({ Products }) => {
-  const { user } = UseAuthContext();
   const { product } = useParams();
 
   const [data, setData] = useState([]);
@@ -24,7 +22,7 @@ const ProductPage = ({ Products }) => {
     };
 
     fetchData();
-  }, [Products]);
+  }, [product, Products]);
 
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -50,7 +48,6 @@ const ProductPage = ({ Products }) => {
       containerRef.current.scrollLeft += scrollOffset;
     }
   };
-
   if (data.length !== 0) {
     return (
       <div>
@@ -76,7 +73,7 @@ const ProductPage = ({ Products }) => {
             >
               {relatedProducts &&
                 relatedProducts.map((item, i) => {
-                  return <DoubleProduct item={item} />;
+                  return <DoubleProduct item={item} key={i} />;
                 })}
             </div>
             <AiOutlineRight

@@ -5,7 +5,9 @@ import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import { PostMongo } from '../../../BackOps/PostMongo';
 import { FetchMongo } from '../../../BackOps/FetchMongo';
 import './ProductCard.css';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 const ProductCard = ({ item }) => {
+  const { user } = UseAuthContext();
   const { getImageUrl } = FetchImageUrl();
 
   const { updateWishlist, deleteWishlist } = PostMongo();
@@ -13,8 +15,12 @@ const ProductCard = ({ item }) => {
 
   const [fav, setFav] = useState(false);
   const addFav = (id) => {
-    setFav(true);
-    updateWishlist(id);
+    if (user) {
+      setFav(true);
+      updateWishlist(id);
+    } else {
+      alert('Please login');
+    }
   };
   const delFav = (id) => {
     setFav(false);
@@ -39,9 +45,12 @@ const ProductCard = ({ item }) => {
         <Link
           className="card"
           to={`/${item.dropdownField}/${item.path.current}`}
-          state={{
-            data: item,
-          }}
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            })
+          }
         >
           <img className="image1" src={getImageUrl(item.images[0])} alt="" />
         </Link>

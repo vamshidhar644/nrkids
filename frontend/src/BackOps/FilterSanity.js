@@ -5,6 +5,7 @@ const FilterSanity = () => {
   const [cartExist, setCartExist] = useState(null);
 
   const filtersanity = (mongoItems, sanityItems) => {
+    
     const sanitycart = [];
     if (mongoItems) {
       setCartExist(mongoItems.length);

@@ -46,8 +46,9 @@ const MyAddress = () => {
                 <div className="address-card p-3 pb-0" key={i}>
                   <h5>{address.fullname}</h5>
                   <p className="m-0 small">{address.email}</p>
+                  <p className="m-0">{address.fullAddress}</p>
                   <p className="m-0">
-                    {address.fullAddress}-<span>{address.pincode}</span>
+                    {address.landmark}-<span>{address.pincode}</span>
                   </p>
                   <p className="m-0">{address.state}</p>
                   <h6 className="mt-2">Mobile {address.mobile}</h6>

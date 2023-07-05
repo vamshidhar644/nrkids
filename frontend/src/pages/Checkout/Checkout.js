@@ -1,38 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
 
 import OrderAddress from './Address/OrderAddress';
 import OrderItems from './CartItems/OrderItems';
-
+import FilterSanity from '../../BackOps/FilterSanity';
 import './Checkout.css';
 
 const Checkout = ({ Products }) => {
   const location = useLocation();
   const { data = null } = location.state || {};
-
-  const [selectSanityCart, setSelectedSanity] = useState();
+  const { filtersanity, filteredItems } = FilterSanity();
 
   useEffect(() => {
-    const sanitycart = [];
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        if (Products) {
-          for (let j = 0; j < Products.length; j++) {
-            if (data[i].productId === Products[j].productId) {
-              sanitycart.push(Products[j]);
-            }
-          }
-        }
-      }
-    }
-    if (sanitycart) {
-      setSelectedSanity(sanitycart);
-    }
+    filtersanity(data, Products);
   }, [data]);
 
-  if (selectSanityCart) {
-    if (selectSanityCart.length === 0) {
+  if (filteredItems) {
+    if (filteredItems.length === 0) {
       return <Navigate to="/your-bag" />;
     }
   }
@@ -50,7 +35,7 @@ const Checkout = ({ Products }) => {
       </div>
       <div className="d-flex w-100 justify-content-around">
         <OrderAddress />
-        <OrderItems data={selectSanityCart} cartItems={data} />
+        <OrderItems data={filteredItems} cartItems={data} />
       </div>
     </div>
   );

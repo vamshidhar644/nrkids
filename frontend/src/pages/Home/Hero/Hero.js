@@ -21,7 +21,12 @@ const Hero = ({ Hero }) => {
   return (
     <div
       className="Hero"
-      style={{ margin: '14px', borderRadius: '16px', overflow: 'hidden' }}
+      style={{
+        margin: '14px',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        marginTop: '0px',
+      }}
     >
       <Carousel className="Carousel-Container">
         {image &&

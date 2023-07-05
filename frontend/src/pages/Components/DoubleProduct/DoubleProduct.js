@@ -5,15 +5,21 @@ import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import { PostMongo } from '../../../BackOps/PostMongo';
 import { FetchMongo } from '../../../BackOps/FetchMongo';
 import './DoubleProduct.css';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 const DoubleProduct = ({ item, favv }) => {
+  const { user } = UseAuthContext();
   const { getImageUrl } = FetchImageUrl();
 
   const { updateWishlist, deleteWishlist } = PostMongo();
   const { fetchWishlist, wishlist } = FetchMongo();
 
   const addFav = (id) => {
-    setFav(true);
-    updateWishlist(id);
+    if (user) {
+      updateWishlist(id);
+      setFav(true);
+    } else {
+      alert('please login');
+    }
   };
   const delFav = (id) => {
     setFav(false);
@@ -34,10 +40,9 @@ const DoubleProduct = ({ item, favv }) => {
     }
   }, [wishlist]);
 
-  console.log(favv);
   return (
     <>
-      <div className="Main-Card" key={item.title}>
+      <div className="Main-Card">
         <Link
           className="card"
           to={`/${item.dropdownField}/${item.path.current}`}

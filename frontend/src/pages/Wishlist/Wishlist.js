@@ -8,10 +8,11 @@ import FilterSanity from '../../BackOps/FilterSanity';
 
 const Wishlist = ({ wishlist, Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();
+  
 
   useEffect(() => {
     filtersanity(wishlist, Products);
-  });
+  }, [wishlist, Products]);
 
   return (
     <div className="p-4">
@@ -27,7 +28,7 @@ const Wishlist = ({ wishlist, Products }) => {
           <div className="wishlist-grid">
             {filteredItems &&
               filteredItems.map((item, i) => {
-                return <ProductCard item={item} />;
+                return <ProductCard item={item} key={i} />;
               })}
           </div>
         </div>

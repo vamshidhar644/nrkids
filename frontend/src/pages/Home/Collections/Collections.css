@@ -20,9 +20,6 @@
 
 .cat-img {
   transition: all .3s;
-  background: #ff0084;
-  background: -webkit-linear-gradient(to right, #33001b, #ff0084);
-  background: linear-gradient(to right, #33001b, #ff0084);
   width: 100%;
 }
 

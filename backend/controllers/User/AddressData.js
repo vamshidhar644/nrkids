@@ -27,8 +27,16 @@ const getAddressData = async (req, res) => {
 // Update Address
 const updateAddressData = async (req, res) => {
   const aId = req.params.aId;
-  const { userId, fullname, mobile, email, fullAddress, state, pincode } =
-    req.body;
+  const {
+    userId,
+    fullname,
+    mobile,
+    email,
+    fullAddress,
+    landmark,
+    state,
+    pincode,
+  } = req.body;
 
   // console.log(productId, itemsData);
   try {
@@ -47,6 +55,7 @@ const updateAddressData = async (req, res) => {
       address.mobile = mobile;
       address.email = email;
       address.fullAddress = fullAddress;
+      address.landmark = landmark;
       address.state = state;
       address.pincode = pincode;
     } else {
@@ -57,6 +66,7 @@ const updateAddressData = async (req, res) => {
         mobile,
         email,
         fullAddress,
+        landmark,
         state,
         pincode,
       });

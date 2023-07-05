@@ -52,7 +52,6 @@ export const PostMongo = () => {
     dob,
     displayPic
   ) => {
-
     const response = await fetch(`/api/user/${_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -75,7 +74,6 @@ export const PostMongo = () => {
 
   // P A S S W O R D S . . . . . . .
   const updatePassword = async (_id, email, oldpassword, newpassword) => {
-
     const response = await fetch(`/api/user/${_id}/change-password`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -87,10 +85,9 @@ export const PostMongo = () => {
     });
 
     if (!response.ok) {
-      console.log(email, oldpassword, newpassword);
+      console.log('Something went wrong');
     }
     if (response.ok) {
-      console.log(response);
       alert('updated');
       window.location.reload();
     }
@@ -103,6 +100,7 @@ export const PostMongo = () => {
     mobile,
     email,
     fullAddress,
+    landmark,
     state,
     pincode
   ) => {
@@ -131,15 +129,15 @@ export const PostMongo = () => {
         mobile,
         email,
         fullAddress,
+        landmark,
         state,
         pincode,
       }),
     });
     if (!response.ok) {
-      console.log(response);
+      console.log('Something went wrong');
     }
     if (response.ok) {
-      console.log(response);
       alert('updated');
       window.location.reload();
     }
@@ -155,7 +153,6 @@ export const PostMongo = () => {
       console.log('Something went Wrong');
     }
     if (response.ok) {
-      console.log(response);
       alert('Deleted');
       window.location.reload();
     }
@@ -164,7 +161,6 @@ export const PostMongo = () => {
   // W I S H L I S T . . . . . . .
   const updateWishlist = async (productId) => {
     const userId = user._id;
-    console.log(userId, productId);
 
     const response = await fetch(`/api/user/wishlist/add`, {
       method: 'POST',
@@ -176,10 +172,10 @@ export const PostMongo = () => {
     });
 
     if (!response.ok) {
-      console.log(userId, productId);
+      console.log('Something went wrong');
     }
     if (response.ok) {
-      console.log(response);
+      console.log('Updated');
     }
   };
 
@@ -192,10 +188,10 @@ export const PostMongo = () => {
     });
 
     if (!response.ok) {
-      console.log(userId, productId);
+      console.log('Something went wrong');
     }
     if (response.ok) {
-      console.log(response);
+      console.log('deleted');
     }
   };
 

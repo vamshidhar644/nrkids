@@ -17,6 +17,7 @@ import { FetchSanity } from './BackOps/FetchSanity';
 import { FetchMongo } from './BackOps/FetchMongo';
 import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
+import Buynow from './pages/Checkout/Buynow';
 
 function App() {
   const { user } = UseAuthContext();
@@ -97,6 +98,8 @@ function App() {
           path="/your-bag/check-out"
           element={<Checkout Products={Products} />}
         />
+
+        <Route path="/check-out" element={<Buynow Products={Products} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
