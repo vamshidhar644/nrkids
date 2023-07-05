@@ -5,6 +5,11 @@
   font-weight: 600;
 }
 
+.newarrivals-container{
+  
+  /* background-color: var(--bs-third-color);/ */
+}
+
 .newarrivals-head a:hover{
   color: var(--bs-hover-color);
 }

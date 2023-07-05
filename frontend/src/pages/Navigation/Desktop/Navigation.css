@@ -2,24 +2,11 @@
 .fixed {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     z-index: 999;   
-}
 
-.main-logo a{
-    position: absolute;
-    width: 110px;
-    height: 110px;
-    display: flex;
-    justify-content: center;
-    z-index: 11;
-    background: #fff;
-    border-radius: 50%;
 }
-
-.main-logo .img{
-    width: 95%;
-    height: 95%;
-    background-image: url('../../../../public/Assets/logo1.png');
-    background-size: cover;
+.navigation-container{
+    height: 86px;
+    /* background-color: var(--primary-color); */
 }
 
 /* Navbar links */
@@ -38,7 +25,7 @@
 }
 
 .cat-list .nav-item:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .nav-item a{
@@ -50,7 +37,7 @@
     overflow: hidden;
     padding: 0px;
     display: none;
-    top: 15%;
+    top: 17%;
     min-width: 150px;
     z-index: 10;
 }
@@ -76,17 +63,23 @@ ul li:hover ul.down-dropdown {
     font-size: 24px;
 }
 
+/* Icons */
 
-/* Brand Logo */
-.logo {
-    width: 100%;
-    color: #1B4B66;
-    text-align: center;
-    margin: auto;
-  }
+.main-logo a{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    z-index: 12;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
 
-
-  /* Icons */
+.main-logo img{
+    width: 95%;
+    height: 95%;
+}
 
 .input-wrapper {
     gap: 10px;
@@ -110,12 +103,9 @@ ul li:hover ul.down-dropdown {
     font-weight: 300;
 }
 
-
-
-
 /* Offer Section */
 .offer-section{
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: #fff;
 }
 

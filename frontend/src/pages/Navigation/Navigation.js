@@ -13,6 +13,8 @@ import { BsHandbag } from 'react-icons/bs';
 
 import OfferSection from './OfferSection';
 
+const imagePath = process.env.PUBLIC_URL + 'Assets/logo.png';
+
 const Navigation = () => {
   const { logout } = useLogout();
   const { user } = UseAuthContext();
@@ -50,8 +52,8 @@ const Navigation = () => {
   return (
     <div className={`${isFixed ? 'fixed position-fixed w-100' : ''}`}>
       <OfferSection />
-      <div className="navigation-container bg-white p-0 py-1 px-2 ">
-        <div className="navbar-nav d-flex flex-row">
+      <div className="navigation-container bg-white p-0 px-2 d-flex w-100">
+        <div className="navbar-nav d-flex flex-row w-100">
           <div className="navbar-nav-section1">
             <div className="navbar-toggle" onClick={handleNavToggle}>
               <AiOutlineMenu />
@@ -80,11 +82,12 @@ const Navigation = () => {
                 });
               }}
             >
-              <div className='img'></div>
+              <img src={imagePath} alt="" />
+              {/* <div className="img"></div> */}
             </Link>
           </div>
           <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">
-            <SearchBar className="Search-Section" />
+            {/* <SearchBar className="Search-Section" /> */}
             <div className="input-wrapper d-flex p-2">
               <div className="user-profile d-flex justify-content-end align-items-center p-0 m-0">
                 {user ? (

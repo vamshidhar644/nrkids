@@ -48,7 +48,7 @@ const Checkout = ({ data }) => {
           className="place-order"
           state={{ data: cartData }}
         >
-          Place Order
+          Checkout
         </Link>
         <Link to="/" className="bg-white">
           Continue shopping

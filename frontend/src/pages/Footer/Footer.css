@@ -2,7 +2,7 @@
     position: relative;
     left: 0;
     bottom: 0;
-    background-color: #1B4B66;
+    background-color: var(--secondary-color);
     color: #fff;
     width: 100%;
     display: flex;

@@ -12,12 +12,12 @@
   .Checkout-header h5{
     font-weight: 700;
     font-size: 18px;
-    color: var(--primary-color);
+    color: var(--secondary-color);
   }
 
   .Checkout-body{    
     padding: 8px 12px;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
   }
 
   .checkout-row{
@@ -50,13 +50,13 @@
   }
 
   .checkout-footer a{
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--secondary-color);
     padding: 4px 24px;
     border-radius: 6px;
   }
 
   .place-order{
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: #fff !important;
   }
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Filters from './Filtering/Filters';
 import CategoryHero from './CategoryHero';
 
 import './Categories.css';
@@ -27,13 +26,10 @@ const Categories = ({ Products }) => {
   return (
     <div className="Main-Category-Container">
       <CategoryHero className="category-head" params={categorypath} />
-      <div className="category-body d-flex">
-        <div className="filter-container">
-          <Filters />
-        </div>
+      <div className="category-body">
         <div className="products-container w-100 pb-4">
           <div className="Product-Grid">
-            <div className="Cards-Grid w-100 justify-content-start">
+            <div className="Cards-Grid w-100 justify-content-evenly">
               {categoryProducts &&
                 categoryProducts.map((item, i) => {
                   return <ProductCard item={item} key={i} />;

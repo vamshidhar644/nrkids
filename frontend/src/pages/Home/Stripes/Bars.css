@@ -1,6 +1,6 @@
 
 .bar-content{
-    background: var(--fuschia-100, var(--secondary-color));
+    background: var(--fuschia-100, var(--primary-color));
 }
 
 .icon-space{

@@ -17,8 +17,8 @@ const NewArrival = ({ NewArrivals }) => {
   };
 
   return (
-    <div>
-      <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-4">
+    <div className='newarrivals-container'>
+      <div className="newarrivals-head d-flex justify-content-between p-4">
         <h3 className="medium">New Arrivals</h3>
         <Link to="/new-arrivals" className="d-flex align-items-center small">
           <Viewall />

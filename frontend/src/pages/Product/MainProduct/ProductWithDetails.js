@@ -121,7 +121,7 @@ const ProductDetails = ({ Product }) => {
             className="product-button cart-button d-flex justify-content-center align-items-center"
             onClick={UpdateCart}
           >
-            <BsHandbag className="product-icon" />
+            {/* <BsHandbag className="product-icon" /> */}
             Add to Cart
           </button>
           &nbsp;
