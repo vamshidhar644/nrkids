@@ -13,8 +13,6 @@ import { BsHandbag } from 'react-icons/bs';
 
 import OfferSection from './OfferSection';
 
-const imagePath = process.env.PUBLIC_URL + 'Assets/logo.png';
-
 const Navigation = () => {
   const { logout } = useLogout();
   const { user } = UseAuthContext();
@@ -82,8 +80,7 @@ const Navigation = () => {
                 });
               }}
             >
-              <img src={imagePath} alt="" />
-              {/* <div className="img"></div> */}
+              <img src="./Assets/logo.png" alt="" />
             </Link>
           </div>
           <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">
