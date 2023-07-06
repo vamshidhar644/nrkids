@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { UseAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const PostMongo = () => {
   const { user } = UseAuthContext();
   const [imageSrc, setImage] = useState();
   // const [aId, setAid] = useState('');
-
+  const navigate = useNavigate();
   //  I M A G E  C O M P R E S S . . . . .
   const handleCompress = (inputRef, compressedImageRef) => {
     const inputImage = inputRef.current;
@@ -90,6 +91,24 @@ export const PostMongo = () => {
     if (response.ok) {
       alert('updated');
       window.location.reload();
+    }
+  };
+
+  const updatecart = async (productId, itemsData) => {
+    const response = await fetch(`/api/user/cart/${productId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itemsData }),
+    });
+    // const json = await response.json();
+
+    if (!response.ok) {
+      console.log('something wrong');
+    }
+    if (response.ok) {
+      // save the user to local storage
+      alert('Update');
+      navigate('/your-bag');
     }
   };
 
@@ -199,6 +218,7 @@ export const PostMongo = () => {
     updateUserData,
     handleCompress,
     imageSrc,
+    updatecart,
     updatePassword,
     updateAddress,
     deleteAddress,

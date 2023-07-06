@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useCart } from '../../../hooks/useCart';
+
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
 import DetailsWithoutData from './ProductWithoutData';
 import './ProductDetails.css';
-import { BsHandbag } from 'react-icons/bs';
 
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { PostMongo } from '../../../BackOps/PostMongo';
 
 const ProductDetails = ({ Product }) => {
-  const { updatecart } = useCart();
+  const { updatecart } = PostMongo();
   const { user } = UseAuthContext();
 
   const { setSizes, item } = ChangePriceperSize();
