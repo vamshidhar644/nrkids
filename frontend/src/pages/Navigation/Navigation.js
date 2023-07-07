@@ -3,7 +3,6 @@ import './Desktop/Navigation.css';
 import { Link, NavLink } from 'react-router-dom';
 
 import NavbarItems from './NavbarItems';
-import SearchBar from './SearchBar';
 
 import { useLogout } from '../../hooks/useLogout';
 import { UseAuthContext } from '../../hooks/useAuthContext';
@@ -80,7 +79,7 @@ const Navigation = () => {
                 });
               }}
             >
-              <img src="./Assets/logo.png" alt="" />
+              <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
             </Link>
           </div>
           <div className="navbar-icon-section d-flex justify-content-end align-items-center w-100">

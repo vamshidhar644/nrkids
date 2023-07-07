@@ -1,8 +1,16 @@
-
+.navigation-container{
+    background-color: #fff;
+    display: flex;
+    padding: 0px 8px;
+}
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
 .fixed {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     z-index: 999;   
-
 }
 .navigation-container{
     height: 86px;

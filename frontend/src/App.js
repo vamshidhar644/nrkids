@@ -18,9 +18,12 @@ import { FetchMongo } from './BackOps/FetchMongo';
 import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
+import MobileVerify from './pages/Profile/MobileVerify';
+import { UserAuthContextProvider } from './context/UseAuthContext';
 
 function App() {
   const { user } = UseAuthContext();
+  const { User } = UserAuthContextProvider;
   const { fetchHero, Hero } = FetchSanity();
   const { fetchNewArrivals, NewArrivals } = FetchSanity();
   const { fetchCollections, Collections } = FetchSanity();
@@ -100,6 +103,8 @@ function App() {
         />
 
         <Route path="/check-out" element={<Buynow Products={Products} />} />
+
+        <Route path="/phone-verify" element={<MobileVerify />} />
       </Routes>
       <Footer />
     </BrowserRouter>
