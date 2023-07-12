@@ -1,8 +1,32 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
-
 const Schema = mongoose.Schema;
+
+const orderSchema = new Schema({
+  _id: String,
+  userId: String,
+  orderedName: String,
+  orderedMobile: String,
+  orderdEmail: String,
+  orderedAddress: String,
+  oderedLocality: String,
+  orderedState: String,
+  orderedPincode: String,
+  orderDate: Date,
+  items: [
+    {
+      productId: String,
+      productName: String,
+      price: Number,
+      quantity: Number,
+      size: String,
+    },
+  ],
+  status: String,
+  totalAmount: Number,
+  shippingCost: Number,
+});
 
 const userSchema = new Schema({
   _id: {
@@ -49,6 +73,7 @@ const userSchema = new Schema({
       size: String,
     },
   ],
+  orders: [orderSchema],
   wishlist: [{ productId: String }],
 });
 

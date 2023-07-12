@@ -65,7 +65,7 @@ function App() {
               NewArrivals={NewArrivals}
               Collections={Collections}
             />
-          }
+          } 
         />
         <Route
           path="/login-or-signup"
@@ -99,7 +99,7 @@ function App() {
 
         <Route
           path="/your-bag/check-out"
-          element={<Checkout Products={Products} />}
+          element={<Checkout Products={Products} />} 
         />
 
         <Route path="/check-out" element={<Buynow Products={Products} />} />

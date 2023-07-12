@@ -1,17 +1,17 @@
-const Cart = require('../models/cartModel');
+const Admin = require('../models/adminModel');
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
 // GET all items
 const getCartItems = async (req, res) => {
-  const cartitems = await Cart.find({}).sort({ createdAt: -1 });
+  const cartitems = await Admin.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(cartitems);
 };
 
 const Setcartitems = async (req, res) => {
-  const { userId, quantity, size } = req.body;
-  const { _id, price } = req.body;
+  const { userId } = req.params.userId;
+  const { _id, price, quantity, size } = req.body;
 
   try {
     // Check if the user exists

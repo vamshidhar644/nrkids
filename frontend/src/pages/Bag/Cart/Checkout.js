@@ -10,13 +10,10 @@ const Checkout = ({ data }) => {
   const { totalPricing, totalPrice, itemCount, cartData } = Calcuate();
 
   useEffect(() => {
-    fetchcartData();
     totalPricing(cartItems);
   }, [cartItems]);
   useEffect(() => {
-    if (data) {
-      fetchcartData();
-    }
+    fetchcartData();
   }, [data]);
 
   return (
