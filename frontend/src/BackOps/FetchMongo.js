@@ -8,6 +8,7 @@ export const FetchMongo = () => {
   const [userData, setUserdata] = useState();
   const [address, setAddress] = useState();
   const [wishlist, setWishlist] = useState();
+  const [orders, setOrders] = useState();
 
   //  U S E R  D A T A . . . . . . . . .
   const fetchUserData = async () => {
@@ -54,7 +55,7 @@ export const FetchMongo = () => {
     }
   };
 
-  // W I S H L I S T  D A T A . . . . . . . 
+  // W I S H L I S T  D A T A . . . . . . .
   const fetchWishlist = async () => {
     if (user) {
       const id = user._id;
@@ -62,6 +63,21 @@ export const FetchMongo = () => {
         .get(`/api/user/wishlist/${id}`)
         .then((response) => {
           setWishlist(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching document:', error);
+        });
+    }
+  };
+
+  // O R D E R S  D A T A . . . . . . .
+  const fetchOrders = async () => {
+    if (user) {
+      const id = user._id;
+      axios
+        .get(`/api/user/${id}/orders`)
+        .then((response) => {
+          setOrders(response.data.orders);
         })
         .catch((error) => {
           console.error('Error fetching document:', error);
@@ -78,5 +94,7 @@ export const FetchMongo = () => {
     address,
     fetchWishlist,
     wishlist,
+    fetchOrders,
+    orders,
   };
 };
