@@ -1,38 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import { Calcuate } from '../../../BackOps/Calcuate';
 
 const OrderItems = ({ data, cartItems }) => {
   const { getImageUrl } = FetchImageUrl();
+  const { totalPricing, itemCount, totalPrice } = Calcuate();
 
-  const [totalPrice, setTotalPrice] = useState();
-  const [itemCount, setItemCount] = useState();
   useEffect(() => {
-    const totalPricing = () => {
-      let price = 0;
-      let Arrayel = [];
-      if (cartItems) {
-        Arrayel = cartItems.filter((item) => item.price !== 0);
-      }
-
-      if (Arrayel) {
-        for (let i = 0; i < Arrayel.length; i++) {
-          price += Arrayel[i].price * Arrayel[i].quantity;
-        }
-
-        setTotalPrice(price);
-
-        const ArrayLength = Arrayel.length;
-
-        if (ArrayLength === 1) {
-          setItemCount(ArrayLength + ' item');
-        } else {
-          setItemCount(ArrayLength + ' items');
-        }
-      }
-    };
-
-    totalPricing();
+    totalPricing(cartItems);
   }, [cartItems]);
   return (
     <div className="checkout-summary">

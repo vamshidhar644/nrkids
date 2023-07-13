@@ -14,9 +14,9 @@ export const Calcuate = () => {
     }
     setCartdata(Arrayel);
     if (Arrayel) {
-      for (let i = 0; i < Arrayel.length; i++) {
-        price += Arrayel[i].price * Arrayel[i].quantity;
-      }
+      Arrayel.forEach((element) => {
+        price += element.price * element.quantity;
+      });
 
       setTotalPrice(price);
 

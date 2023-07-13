@@ -45,7 +45,9 @@ const DoubleProduct = ({ item, favv }) => {
       <div className="Main-Card">
         <Link
           className="card"
-          to={`/${item.dropdownField}/${item.path.current}`}
+          to={`/${favv ? 'new-arrivals' : item.dropdownField}/${
+            item.path.current
+          }`}
           state={{
             data: item,
           }}
@@ -73,17 +75,21 @@ const DoubleProduct = ({ item, favv }) => {
           <p className="title mb-0 font-weight-normal">{item.title}</p>
           <p className="subtitle small">Description</p>
 
-          {fav ? (
-            <AiFillHeart
-              className="fav-icon position-absolute"
-              onClick={() => delFav(item.productId)}
-            />
-          ) : (
-            <AiOutlineHeart
-              className="fav-icon position-absolute"
-              onClick={() => addFav(item.productId)}
-            />
-          )}
+          {!favv ? (
+            <>
+              {fav ? (
+                <AiFillHeart
+                  className="fav-icon position-absolute"
+                  onClick={() => delFav(item.productId)}
+                />
+              ) : (
+                <AiOutlineHeart
+                  className="fav-icon position-absolute"
+                  onClick={() => addFav(item.productId)}
+                />
+              )}
+            </>
+          ) : null}
         </div>
       </div>
     </>

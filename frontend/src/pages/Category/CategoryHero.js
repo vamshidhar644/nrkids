@@ -20,14 +20,11 @@ const CategoryHero = ({ params }) => {
 
   useEffect(() => {
     if (Hero) {
-      for (let i = 0; i < Hero.length; i++) {
-        if (Hero[i].bannerlocation === params) {
-          setImage(Hero[i]);
-          break;
-        } else {
-          setImage('');
+      Hero.forEach((banner) => {
+        if (banner.bannerlocation === params) {
+          setImage(banner);
         }
-      }
+      });
     }
   }, [Hero, params]);
 

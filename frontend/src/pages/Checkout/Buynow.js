@@ -16,11 +16,11 @@ const Buynow = ({ Products }) => {
   useEffect(() => {
     const sanitycart = [];
     if (Products) {
-      for (let j = 0; j < Products.length; j++) {
-        if (data.productId === Products[j].productId) {
-          sanitycart.push(Products[j]);
+      Products.forEach((product) => {
+        if (data.productId === product.productId) {
+          sanitycart.push(product);
         }
-      }
+      });
     }
     if (sanitycart) {
       setFilteredItems(sanitycart);

@@ -5,19 +5,18 @@ const FilterSanity = () => {
   const [cartExist, setCartExist] = useState(null);
 
   const filtersanity = (mongoItems, sanityItems) => {
-    
     const sanitycart = [];
     if (mongoItems) {
       setCartExist(mongoItems.length);
-      for (let i = 0; i < mongoItems.length; i++) {
+      mongoItems.forEach((Mitem) => {
         if (sanityItems) {
-          for (let j = 0; j < sanityItems.length; j++) {
-            if (mongoItems[i].productId === sanityItems[j].productId) {
-              sanitycart.push(sanityItems[j]);
+          sanityItems.forEach((Sitem) => {
+            if (Mitem.productId === Sitem.productId) {
+              sanitycart.push(Sitem);
             }
-          }
+          });
         }
-      }
+      });
     }
     if (sanitycart) {
       setFilteredItems(sanitycart);

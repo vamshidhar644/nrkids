@@ -29,13 +29,13 @@ const ProductPage = ({ Products }) => {
   useEffect(() => {
     const CategoryProducts = [];
     if (Products) {
-      for (let i = 0; i < Products.length; i++) {
-        if (Products[i].dropdownField === data.dropdownField) {
-          if (Products[i].productId !== data.productId) {
-            CategoryProducts.push(Products[i]);
+      Products.forEach((product) => {
+        if (product.dropdownField === data.dropdownField) {
+          if (product.productId !== data.productId) {
+            CategoryProducts.push(product);
           }
         }
-      }
+      });
     }
 
     setRelatedProducts(CategoryProducts);

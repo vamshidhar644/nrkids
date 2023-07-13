@@ -14,11 +14,11 @@ const Categories = ({ Products }) => {
   useEffect(() => {
     const CategoryProducts = [];
     if (Products) {
-      for (let i = 0; i < Products.length; i++) {
-        if (Products[i].dropdownField === categorypath) {
-          CategoryProducts.push(Products[i]);
+      Products.forEach((product) => {
+        if (product.dropdownField === categorypath) {
+          CategoryProducts.push(product);
         }
-      }
+      });
     }
     setCatogeryProducts(CategoryProducts);
   }, [categorypath, Products]);

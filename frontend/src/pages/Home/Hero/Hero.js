@@ -9,11 +9,11 @@ const Hero = ({ Hero }) => {
   useEffect(() => {
     const data = [];
     if (Hero) {
-      for (let i = 0; i < Hero.length; i++) {
-        if (Hero[i].bannerlocation === 'home-top') {
-          data.push(Hero[i]);
+      Hero.forEach((banner) => {
+        if (banner.bannerlocation === 'home-top') {
+          data.push(banner);
         }
-      }
+      });
     }
     setImage(data);
   }, [Hero]);
