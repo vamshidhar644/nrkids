@@ -23,7 +23,23 @@ const getOrders = async (req, res) => {
 
 const addOrder = async (req, res) => {
   const { userId } = req.params;
-  const orderData = req.body;
+  const { orderData } = req.body;
+
+  const _id = orderData._id;
+  const orderedName = orderData.orderedName;
+  const orderedMobile = orderData.orderedMobile;
+  const orderedEmail = orderData.orderdEmail;
+  const orderedAddress = orderData.orderedAddress;
+  const orderedLocality = orderData.orderedLocality;
+  const orderedState = orderData.orderedState;
+  const orderedPincode = orderData.orderedPincode;
+  const orderedDate = orderData.orderedDate;
+  const items = orderData.items;
+  const status = orderData.status;
+  const totalAmount = orderData.totalAmount;
+  const shippingCost = orderData.shippingCost;
+
+  console.log(orderedDate);
 
   try {
     const user = await User.findById(userId);
@@ -37,13 +53,12 @@ const addOrder = async (req, res) => {
 
     Orders.create(orderData);
 
-    res.status(201).json(user); 
+    res.status(201).json(user);
   } catch (error) {
     console.error('Error inserting order:', error);
     res.status(500).json({ error: 'Failed to insert order' });
   }
 };
-
 
 module.exports = {
   getOrders,

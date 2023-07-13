@@ -10,7 +10,7 @@
 }
 .fixed {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    z-index: 999;   
+    z-index: 20;   
 }
 .navigation-container{
     height: 86px;
@@ -77,7 +77,7 @@ ul li:hover ul.down-dropdown {
     position: absolute;
     width: 130px;
     height: 130px;
-    z-index: 12;
+    z-index: 2;
     background-color: #fff;
     border-radius: 50%;
     display: flex;

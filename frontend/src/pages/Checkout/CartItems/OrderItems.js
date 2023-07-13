@@ -1,15 +1,10 @@
 import React, { useEffect } from 'react';
 
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import { Calcuate } from '../../../BackOps/Calcuate';
 
-const OrderItems = ({ data, cartItems }) => {
+const OrderItems = ({ data, cartItems, itemCount, totalPrice }) => {
   const { getImageUrl } = FetchImageUrl();
-  const { totalPricing, itemCount, totalPrice } = Calcuate();
 
-  useEffect(() => {
-    totalPricing(cartItems);
-  }, [cartItems]);
   return (
     <div className="checkout-summary">
       <div className="Summary-Section">

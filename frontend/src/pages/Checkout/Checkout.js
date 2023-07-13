@@ -5,15 +5,21 @@ import { BiChevronRight } from 'react-icons/bi';
 import OrderAddress from './Address/OrderAddress';
 import OrderItems from './CartItems/OrderItems';
 import FilterSanity from '../../BackOps/FilterSanity';
+import { Calcuate } from '../../BackOps/Calcuate';
 import './Checkout.css';
 
 const Checkout = ({ Products }) => {
   const location = useLocation();
   const { data = null } = location.state || {};
   const { filtersanity, filteredItems } = FilterSanity();
+  const { totalPricing, itemCount, totalPrice } = Calcuate();
 
   useEffect(() => {
     filtersanity(data, Products);
+  }, [data]);
+
+  useEffect(() => {
+    totalPricing(data);
   }, [data]);
 
   if (filteredItems) {
@@ -34,8 +40,17 @@ const Checkout = ({ Products }) => {
         </div>
       </div>
       <div className="d-flex w-100 justify-content-around">
-        <OrderAddress />
-        <OrderItems data={filteredItems} cartItems={data} />
+        <OrderAddress
+          data={filteredItems}
+          cartItems={data}
+          totalPrice={totalPrice}
+        />
+        <OrderItems
+          data={filteredItems}
+          cartItems={data}
+          itemCount={itemCount}
+          totalPrice={totalPrice}
+        />
       </div>
     </div>
   );

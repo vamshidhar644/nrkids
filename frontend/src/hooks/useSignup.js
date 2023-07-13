@@ -13,7 +13,7 @@ export const useSignup = () => {
     email,
     password,
     displayPic
-  ) => {
+  ) => { 
     setIsLoading(true);
     setError(null);
 

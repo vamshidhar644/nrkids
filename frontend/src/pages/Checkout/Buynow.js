@@ -47,7 +47,11 @@ const Buynow = ({ Products }) => {
             </div>
           </div>
           <div className="d-flex w-100 justify-content-around">
-            <OrderAddress />
+            <OrderAddress
+              data={filteredItems}
+              cartItems={data}
+              totalPrice={data.price}
+            />
             {filteredItems ? (
               <div className="checkout-summary">
                 <div className="Summary-Section">

@@ -1,21 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FetchMongo } from '../../../BackOps/FetchMongo';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
-
+import { FaWindowClose } from 'react-icons/fa';
 import './OrderAddress.css';
 
 import AddressForm from '../../Profile/ProfileSections/AddressForm';
+import ConfirmOrder from '../../ConfirmOrder/ConfirmOrder';
 
-const OrderAddress = () => {
-  const { user } = UseAuthContext();
+const OrderAddress = ({ cartItems, data, totalPrice }) => {
   const { fetchAddressData, address } = FetchMongo();
+
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   useEffect(() => {
     fetchAddressData();
-  }, [user]);
+  }, []);
 
-  const handleEdit = () => {};
+
+  const [orderAddress, setAddress] = useState();
+
+  const setIndex = (i) => {
+    setOpenConfirm(!openConfirm);
+    setAddress(address[i]);
+  };
+
   return (
     <div className="checkout-address">
       <div>
@@ -34,11 +42,30 @@ const OrderAddress = () => {
                   <p className="m-0">{address.state}</p>
                   <h6 className="mt-2">Mobile {address.mobile}</h6>
                   <div className=" deliver-address w-100 d-flex justify-content-end">
-                    <p onClick={() => handleEdit(i)}>Deliver to this address</p>
+                    <p onClick={() => setIndex(i)}>Deliver to this address</p>
                   </div>
                 </div>
               );
             })}
+          {openConfirm && (
+            <div className="popup">
+              <div className="popup-content position-relative">
+                Are you sure want to confirm this Order?{' '}
+                <ConfirmOrder
+                  cartItems={cartItems}
+                  data={data}
+                  address={orderAddress}
+                  totalPrice={totalPrice}
+                />
+                <p
+                  className="position-absolute"
+                  onClick={() => setOpenConfirm(!openConfirm)}
+                >
+                  <FaWindowClose />
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="py-3">

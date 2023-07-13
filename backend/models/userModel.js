@@ -8,16 +8,18 @@ const orderSchema = new Schema({
   userId: String,
   orderedName: String,
   orderedMobile: String,
-  orderdEmail: String,
+  orderedEmail: String,
   orderedAddress: String,
-  oderedLocality: String,
+  orderedLocality: String,
   orderedState: String,
   orderedPincode: String,
-  orderDate: Date,
+  orderedDate: {
+    type: Date,
+    default: Date.now,
+  },
   items: [
     {
       productId: String,
-      productName: String,
       price: Number,
       quantity: Number,
       size: String,

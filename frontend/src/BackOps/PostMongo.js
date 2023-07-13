@@ -213,6 +213,25 @@ export const PostMongo = () => {
     }
   };
 
+  const addOrder = async (userId, orderData) => {
+    // console.log(userId, orderData);
+    const response = await fetch(`/api/user/${userId}/orders`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ orderData }),
+    });
+    // const json = await response.json();
+
+    if (!response.ok) {
+      console.log('something wrong');
+    }
+    if (response.ok) {
+      // save the user to local storage
+      // navigate('/your-bag');
+      console.log('Success');
+    }
+  };
+
   return {
     updateUserData,
     handleCompress,
@@ -223,5 +242,6 @@ export const PostMongo = () => {
     deleteAddress,
     updateWishlist,
     deleteWishlist,
+    addOrder,
   };
 };
