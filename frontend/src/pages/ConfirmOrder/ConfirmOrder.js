@@ -9,7 +9,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   const [userId, setUserId] = useState();
   const [orderedName, setorderedName] = useState();
   const [orderedMobile, setorderedMobile] = useState();
-  const [orderdEmail, setorderdEmail] = useState();
+  const [orderedEmail, setorderedEmail] = useState();
   const [orderedAddress, setorderedAddress] = useState();
   const [orderedLocality, setorderedLocality] = useState();
   const [orderedState, setorderedState] = useState();
@@ -22,7 +22,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
     setUserId(user._id);
     setorderedName(address.fullname);
     setorderedMobile(address.mobile);
-    setorderdEmail(address.email);
+    setorderedEmail(address.email);
     setorderedAddress(address.fullAddress);
     setorderedLocality(address.landmark);
     setorderedState(address.state);
@@ -48,7 +48,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
     userId,
     orderedName,
     orderedMobile,
-    orderdEmail,
+    orderedEmail,
     orderedAddress,
     orderedLocality,
     orderedState,
@@ -79,7 +79,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
           </tr>
           <tr>
             <td>Email</td>
-            <td>{orderdEmail}</td>
+            <td>{orderedEmail}</td>
           </tr>
           <tr>
             <td>Address</td>

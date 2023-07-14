@@ -19,11 +19,9 @@ import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
-import { UserAuthContextProvider } from './context/UseAuthContext';
 
 function App() {
   const { user } = UseAuthContext();
-  const { User } = UserAuthContextProvider;
   const { fetchHero, Hero } = FetchSanity();
   const { fetchNewArrivals, NewArrivals } = FetchSanity();
   const { fetchCollections, Collections } = FetchSanity();
@@ -65,7 +63,7 @@ function App() {
               NewArrivals={NewArrivals}
               Collections={Collections}
             />
-          } 
+          }
         />
         <Route
           path="/login-or-signup"
@@ -99,7 +97,7 @@ function App() {
 
         <Route
           path="/your-bag/check-out"
-          element={<Checkout Products={Products} />} 
+          element={<Checkout Products={Products} />}
         />
 
         <Route path="/check-out" element={<Buynow Products={Products} />} />

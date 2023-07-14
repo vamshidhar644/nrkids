@@ -215,7 +215,7 @@ export const PostMongo = () => {
 
   const addOrder = async (userId, orderData) => {
     // console.log(userId, orderData);
-    const response = await fetch(`/api/user/${userId}/orders`, {
+    const response = await fetch(`/api/user/order/${userId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ orderData }),

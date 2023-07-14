@@ -5,6 +5,8 @@ const { signupUser, loginUser } = require('../controllers/userController');
 
 const { updatePassword } = require('../controllers/User/ChangePassword');
 
+const { getUserData, updateUserData } = require('../controllers/User/userData');
+
 const {
   getCartData,
   addCart,
@@ -22,10 +24,6 @@ const {
   addWishlist,
   deleteWishlist,
 } = require('../controllers/User/WishlistData');
-
-const { getOrders, addOrder } = require('../controllers/User/OrderData');
-
-const { getUserData, updateUserData } = require('../controllers/User/userData');
 
 const router = express.Router();
 
@@ -54,9 +52,5 @@ router.delete('/:userId/wishlist/:productId', deleteWishlist);
 router.get('/address/:id', getAddressData);
 router.post('/address/:aId', updateAddressData);
 router.delete('/:userId/address/:addressId', deleteAddressData);
-
-// Orders Routes
-router.post('/:userId/orders', addOrder);
-router.get('/:userId/orders', getOrders);
 
 module.exports = router;

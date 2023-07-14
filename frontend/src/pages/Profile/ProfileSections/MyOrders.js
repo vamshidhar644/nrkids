@@ -9,7 +9,6 @@ const MyOrders = () => {
     fetchOrders();
   }, []);
 
-  console.log(orders);
   return (
     <div className="orders-container w-100 d-flex flex-column">
       <div className="orders-header d-flex justify-content-evenly">
@@ -47,7 +46,7 @@ const MyOrders = () => {
                 key={i}
               >
                 <div className="text-center w-100">
-                  <p>{order._id}</p>
+                  <p>#{order._id}</p>
                 </div>
                 <div className="w-100">
                   <p className="text-wrap">{formattedDate}</p>

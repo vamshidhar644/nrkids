@@ -75,9 +75,9 @@ export const FetchMongo = () => {
     if (user) {
       const id = user._id;
       axios
-        .get(`/api/user/${id}/orders`)
+        .get(`/api/user/order/${id}`)
         .then((response) => {
-          setOrders(response.data.orders);
+          setOrders(response.data);
         })
         .catch((error) => {
           console.error('Error fetching document:', error);
