@@ -11,6 +11,7 @@
 .fixed {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     z-index: 20;   
+    top: 0;
 }
 .navigation-container{
     height: 86px;
@@ -45,7 +46,7 @@
     overflow: hidden;
     padding: 0px;
     display: none;
-    top: 17%;
+    top: 14%;
     min-width: 150px;
     z-index: 10;
 }

@@ -11,10 +11,6 @@
 
 
 #root{
-  position: relative;
-    overflow-x: hidden;
-    /* min-height: 100vh !important; */
-    /* height: fit-content; */
     font-family: 'Poppins';
 }
 
@@ -42,9 +38,4 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     padding: 100px;
-}
-
-.offer-section{
-    background-color: var(--bs-font-color);
-    height: 7vh;
 }

@@ -11,12 +11,12 @@ const OfferSection = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {!closeOffer && (
         <div className="offer-section d-flex align-items-center">
           {offerLine && (
             <div className="marquee-container w-100">
-              <div className="marquee-content m-0 p-0 justify-content-around">
+              <div className="marquee-content d-flex gap-1 m-0 p-0 justify-content-around">
                 <div className="marquee-item">{offerLine[0].offer}</div>
                 <div className="marquee-item">{offerLine[0].offer}</div>
                 <div className="marquee-item">{offerLine[0].offer}</div>
@@ -29,7 +29,7 @@ const OfferSection = () => {
           </p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
