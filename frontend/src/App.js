@@ -19,6 +19,7 @@ import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
+import Navbar from './pages/Navigation/Navbar';
 
 function App() {
   const { user } = UseAuthContext();
@@ -53,7 +54,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navigation />
+      {/* <Navigation /> */}
+      <Navbar />
       <Routes>
         <Route
           path="/"
