@@ -12,8 +12,7 @@ export const useLogout = () => {
 
     // dispatch logout action
     dispatch({ type: 'LOGOUT' });
-
-    navigate('/');
+    window.location.reload();
   };
   return { logout };
 };

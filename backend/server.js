@@ -16,13 +16,12 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-
+ 
 // routes
 app.use('/api/user', userRoutes);
 app.use('/api/user/order', cartRoutes);
-// app.use('/api/admin', adminRoutes);
 
-mongoose.set('strictQuery', false);
+mongoose.set('strictQuery', false); 
 
 // connect to DB
 mongoose

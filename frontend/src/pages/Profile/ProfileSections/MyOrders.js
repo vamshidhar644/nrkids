@@ -52,10 +52,16 @@ const MyOrders = () => {
                   <p className="text-wrap">{formattedDate}</p>
                 </div>
                 <div className="text-center w-100">
-                  <p>{order.totalAmount}</p>
+                  <p>{order.totalAmount + order.shippingCost}</p>
                 </div>
                 <div className="order-status-label d-flex align-items-center gap-4">
-                  <p>{order.status}</p>
+                  <p>
+                    {order.status === 'Confirm Order'
+                      ? 'Order Confirmed'
+                      : order.status === 'Cancel Order'
+                      ? 'Order Cancelled'
+                      : order.status}
+                  </p>
                   <BiChevronRight />
                 </div>
               </Link>
