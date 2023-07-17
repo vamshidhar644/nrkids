@@ -9,7 +9,7 @@ import Wishlist from './pages/Wishlist/Wishlist';
 import Bag from './pages/Bag/Bag';
 import Footer from './pages/Footer/Footer';
 import Nextpage from './pages/Footer/NextPage/Nextpage';
-import Navigation from './pages/Navigation/Navigation';
+import Navbar from './pages/Navigation/Navbar';
 import ParentLogin from './pages/Login/ParentLogin';
 
 import { UseAuthContext } from './hooks/useAuthContext';
@@ -19,7 +19,6 @@ import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
-import Navbar from './pages/Navigation/Navbar';
 
 function App() {
   const { user } = UseAuthContext();
