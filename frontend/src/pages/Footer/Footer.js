@@ -8,7 +8,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="Parent-Footer small">
+    <footer className="Parent-Footer">
       <div className="box box1">
         <b>Shop by Category</b>
         <hr />
@@ -44,6 +44,11 @@ const Footer = () => {
       </div>
 
       <div className="box box3">
+        <div className="d-flex justify-content-end">
+          <div className="footer__logo">
+            <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
+          </div>
+        </div>
         <div className="social-icons">
           <Link>
             <AiFillInstagram className="social-icon" />
