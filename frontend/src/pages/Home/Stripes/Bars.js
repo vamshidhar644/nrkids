@@ -18,20 +18,20 @@ export const Bar1 = () => {
 
 export const Bar2 = () => {
   return (
-    <div className="bar-content text-center p-3">
+    <div className="bar-content text-center p-4">
       <h3>WE MADE SHOPPING EASY</h3>
       <div className="w-100 d-flex justify-content-around align-items-center">
         <div className="d-flex justify-content-center align-items-center">
           <span className="icon-space p-2">
             <TbTruckDelivery />
           </span>
-          SHIPPING & DELIVERY
+          <p className="m-0">SHIPPING & DELIVERY</p>
         </div>
         <div className="d-flex justify-content-center align-items-center">
           <span className="icon-space p-2">
             <RiSecurePaymentFill />
           </span>
-          SECURE PAYMENTS
+          <p className="m-0">SECURE PAYMENTS</p>
         </div>
       </div>
     </div>

@@ -24,11 +24,7 @@ const NewArrival = ({ NewArrivals }) => {
           <Viewall />
         </Link>
       </div>
-      <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4">
-        <AiOutlineLeft
-          onClick={() => scrollHorizontally(-600)}
-          className="scroll-button"
-        />
+      <div className="New-Arrivals d-flex flex-column py-0 px-4">
         <div
           className="Cards-Container overflow-x-auto d-flex"
           ref={containerRef}
@@ -38,10 +34,16 @@ const NewArrival = ({ NewArrivals }) => {
               return <DoubleProduct item={item} key={i} favv={true} />;
             })}
         </div>
-        <AiOutlineRight
-          onClick={() => scrollHorizontally(600)}
-          className="scroll-button"
-        />
+        {/* <div className='scrol__arrows'>
+          <AiOutlineLeft
+            onClick={() => scrollHorizontally(-600)}
+            className="scroll-button"
+          />
+          <AiOutlineRight
+            onClick={() => scrollHorizontally(600)}
+            className="scroll-button"
+          />
+        </div> */}
       </div>
     </div>
   );

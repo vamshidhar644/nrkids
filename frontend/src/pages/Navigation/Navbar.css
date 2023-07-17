@@ -1,7 +1,5 @@
 header {
-  /* position: fixed; */
   width: 100%;
-  /* background-color: var(--secondary-color); */
   top: 0;
 }
 
@@ -9,6 +7,7 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   z-index: 20;   
   top: 0;
+  background-color: #ffffff;
 }
 
 nav {
@@ -17,7 +16,6 @@ nav {
   display: flex;
   padding: 1rem 0px;
   padding-bottom: 0px;
-  background-color: #ffffff;
   justify-content: space-between;
   align-items: center;
 }

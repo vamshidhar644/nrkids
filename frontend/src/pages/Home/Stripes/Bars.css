@@ -1,7 +1,11 @@
 
 .bar-content{
+    display:flex;
+    flex-direction: column;
     background: var(--fuschia-100, var(--primary-color));
 }
+
+
 
 .icon-space{
     font-size: 34px;
@@ -31,6 +35,13 @@
         text-align: center;
         white-space: nowrap;
         align-items: center;
+    }
+    .bar-content h3{
+        font-size: 18px;
+    }
+    
+    .bar-content p{
+        font-size: 14px;
     }
    }
    

@@ -7,7 +7,7 @@
 }
 
 .Chat-Container h1{
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
@@ -38,4 +38,18 @@
 .chat-icon{
     color: #25D366;
     font-size: 28px;
+}
+
+
+/* Smart phones */
+@media screen and (max-width: 600px) {
+    .Chat-Container h1{
+        font-size: 2.3rem;
+    }
+    .Chat-Container p{
+        font-size: 1.8rem;
+    }
+    .contact-button a{
+        font-size: 1.6rem;
+    }
 }

@@ -47,6 +47,23 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Calculate the dynamic width and height based on the scroll position
+  const containerSize = Math.max(100 - scrollPosition, 80);
   return (
     <header className={`${isFixed ? 'fixed position-fixed' : ' w-100'}`}>
       <OfferSection />
@@ -64,6 +81,11 @@ const Navbar = () => {
                 top: 0,
                 behavior: 'smooth',
               });
+            }}
+            style={{
+              width: `${containerSize}px`,
+              height: `${containerSize}px`,
+              transition: '1.2s'
             }}
           >
             <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />

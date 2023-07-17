@@ -1,10 +1,5 @@
-.Main-Card{
-    width: fit-content;
-}
 
 .Main-Card .card{
-    border-radius: 0px;
-    cursor: pointer;
     transition: 0.4s ease-out;
 }
 
