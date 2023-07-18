@@ -36,22 +36,23 @@ const MyAddress = () => {
   };
 
   return (
-    <div className="d-flex w-100 justify-content-between align-items-start">
-      <div>
-        <button onClick={handleAdd}>Add new Address</button>
-        <div className="d-flex flex-column mt-3 gap-3">
+    <div className="address__body d-flex w-100 justify-content-between align-items-start gap-3">
+      <button onClick={handleAdd}>Add new Address</button>
+      <div className="address d-flex w-100 gap-3">
+        <div className="saved__addresses d-flex flex-column mt-3 gap-3">
           {address &&
             address.map((address, i) => {
               return (
-                <div className="address-card p-3 pb-0" key={i}>
-                  <h5>{address.fullname}</h5>
+                <div className="address-card w-100 p-3 pb-0" key={i}>
+                  <p>{address.fullname}</p>
                   <p className="m-0 small">{address.email}</p>
                   <p className="m-0">{address.fullAddress}</p>
-                  <p className="m-0">
-                    {address.landmark}-<span>{address.pincode}</span>
+                  <p className="m-0">{address.landmark}</p>
+                  <p className="m-0 d-flex gap-2">
+                    {address.state}
+                    <span>{address.pincode}</span>
                   </p>
-                  <p className="m-0">{address.state}</p>
-                  <h6 className="mt-2">Mobile {address.mobile}</h6>
+                  <p className="mt-2">Mobile {address.mobile}</p>
                   <div className=" edit-address w-100 d-flex justify-content-around">
                     <p onClick={() => handleDelete(i)}>Remove</p>
                     <p onClick={() => handleEdit(i)}>Edit</p>
@@ -60,8 +61,8 @@ const MyAddress = () => {
               );
             })}
         </div>
+        {newForm ? <AddressForm editData={editData ? editData : ''} /> : null}
       </div>
-      {newForm ? <AddressForm editData={editData ? editData : ''} /> : null}
     </div>
   );
 };

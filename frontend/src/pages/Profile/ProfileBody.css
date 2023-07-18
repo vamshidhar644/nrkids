@@ -3,24 +3,18 @@
     font-size: 32px;
     margin: 0px;
 }
-
 .profile-main-container{
     min-height: 100vh;
 }
-
-
 .profile-section-list{  
     width: fit-content;
 }
-
 .go-to-user{
     cursor: pointer;
 }
-
 .go-to-user:hover{
     color: var(--bs-hover-color);
 }
-
 .profile_section__list ul{
     flex-direction: column;
     background: var(--secondary-color);
@@ -29,40 +23,32 @@
     overflow: hidden;
     border-left: 3px solid transparent;
 }
-
 .profile_section__list ul li{
     cursor: pointer;
     width: 16rem;
 }
-
-
 .profile_section__list ul li svg{
     font-size: x-large;
 }
-
 .active-section{
     color: var(--primary-color);
     border-left: 3px solid var(--primary-color);
 }
-
 .active-section-arrow{
     color: var(--primary-color);
     font-weight: 900;
 }
-
 .profile-header p{
     border: 1px solid var(--secondary-color);
     border-radius: 6px;
     cursor: pointer;
 }
-
 .profile-image-container{
     width: 100px;
     height: 100px;
     border-radius: 50%;
     overflow: hidden;
 }
-
 .profile-image-upload {
     border-radius: 6px;
     color: var(--secondary-color);
@@ -99,11 +85,7 @@
     cursor: pointer;
   }
   
-  .user__inforomation{
-    width: 50%;
-  }
-
-.user__inforomation input, textarea .change-password input{
+.user__inforomation input, textarea .change__password input{
     border: none;
     background: rgba(241, 241, 241, 1);
     border-radius: 4px;
@@ -119,13 +101,12 @@ textarea{
     resize: none;
 }
 
-.user__inforomation input:focus, .change-password input:focus{
+.user__inforomation input:focus, .change__password input:focus{
     border: none;
     outline: none;
 }
 
 .save-button{
-    height: fit-content;
     right: 0;
     bottom: 0;
 }
@@ -142,12 +123,7 @@ textarea{
 
 /* My Orders */
 
-.orders-header{
-    width: 80%;
-}
-
 .orders-list{
-    width: 80%;
     background-color: rgba(241, 241, 241, 1);
     border-radius: 8px;
 }
@@ -165,11 +141,40 @@ textarea{
     width: 60px;
 }
 
-.change-password{ 
-    width: 30%;
+.change__password{ 
+    width: 40%;
+}
+
+.order__price{
+    margin-right: 2rem;
+}
+
+/* ============================ */
+/* Address */
+.address__body{
+    display: flex;
+    flex-direction: column;
+}
+.address__body .address{
+    justify-content: space-between;
+}
+.address__body button{
+    border: none;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+}
+.saved__addresses{
+    width: 50%;
 }
 
 .address-card{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
     border-radius: 6px;
     background: rgba(241, 241, 241, 1);
 }
@@ -178,8 +183,6 @@ textarea{
     width: fit-content;
     cursor: pointer;
 }
-
-
 
 
 @media only screen and (max-width: 991px){
@@ -202,16 +205,20 @@ textarea{
     .profile_section__list ul li svg{
         display: none;
     }
+    .profile-sections{        
+        justify-content: center !important;
+    }
     .active-section{
         border-left: none;
-        border-top: 3px solid var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
     }
 
     
     .information__body{
         display: flex;
-        justify-content: space-evenly;
-        align-items: start;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .user_image__section{
         flex-direction: column;
@@ -219,5 +226,29 @@ textarea{
     }
     .profile__image{
         display: flex;
+    }
+
+    .order__price{
+        margin: 0px;
+    }
+
+    .address__body{
+        flex-direction: column;
+    }
+    .address__body .address {
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
+    .saved__addresses{
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .change_password__body{
+        justify-content: center;
+        font-size: 14px;
+    }
+    .change__password{
+        width: 60%;
     }
 }

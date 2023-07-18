@@ -10,18 +10,18 @@ const MyOrders = () => {
   }, []);
 
   return (
-    <div className="orders-container w-100 d-flex flex-column">
-      <div className="orders-header d-flex justify-content-evenly">
-        <div className="w-100 text-center">
+    <div className="orders-container w-100 d-flex flex-column px-4">
+      <div className="orders-header d-flex justify-content-between">
+        <div className="">
           <p>Order ID</p>
         </div>
-        <div className="w-100 text-center">
+        <div className="">
           <p>Date</p>
         </div>
-        <div className="w-100 text-center">
+        <div className="order__price">
           <p className="order-price-label">Price</p>
         </div>
-        <div className="w-100 text-center">
+        <div className="">
           <p>Status</p>
         </div>
       </div>
@@ -45,13 +45,13 @@ const MyOrders = () => {
                 className="orders-list d-flex justify-content-between p-3 align-items-center"
                 key={i}
               >
-                <div className="text-center w-100">
+                <div className="">
                   <p>#{order._id}</p>
                 </div>
-                <div className="w-100">
+                <div className="">
                   <p className="text-wrap">{formattedDate}</p>
                 </div>
-                <div className="text-center w-100">
+                <div className="">
                   <p>{order.totalAmount + order.shippingCost}</p>
                 </div>
                 <div className="order-status-label d-flex align-items-center gap-4">
@@ -62,7 +62,7 @@ const MyOrders = () => {
                       ? 'Order Cancelled'
                       : order.status}
                   </p>
-                  <BiChevronRight />
+                  {/* <BiChevronRight /> */}
                 </div>
               </Link>
             );

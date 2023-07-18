@@ -25,16 +25,14 @@ const ChangePassword = ({ userData }) => {
 
   return (
     <form className="w-100" action="" onSubmit={handleUpdate}>
-      <h5>Change Password</h5>
-      <hr />
-      <div className="d-flex align-items-end gap-3">
-        <div className="change-password d-flex justify-content-between gap-1 flex-column">
+      <div className="change_password__body d-flex align-items-end gap-3">
+        <div className="change__password d-flex justify-content-between gap-1 flex-column">
           <div className="d-flex flex-column ">
             <label htmlFor="firstName" id="firstName">
               Current Password
             </label>
             <input
-              className="h-100 p-2"
+              className="h-100 p-3"
               type="password"
               name="oldpassword"
               required
@@ -46,7 +44,7 @@ const ChangePassword = ({ userData }) => {
               New Password
             </label>
             <input
-              className="h-100 p-2"
+              className="h-100 p-3"
               type="password"
               name="lastName"
               required
@@ -58,21 +56,19 @@ const ChangePassword = ({ userData }) => {
               Confirm Password
             </label>
             <input
-              className="h-100 p-2"
+              className="h-100 p-3"
               type="password"
               name="repassword"
               required
               onChange={(e) => setRepassword(e.target.value)}
             />
           </div>
+          <button className="profile-image-upload bg-white py-1 px-3 w-100">
+            Update
+          </button>
         </div>
-        <p className="m-0 pb-2">{error && error}</p>
       </div>
-      <div className="save-button w-50 justify-content-center">
-        <button className="profile-image-upload bg-white py-1 px-3 w-100">
-          Update
-        </button>
-      </div>
+      {/* <div className="save-button justify-content-center"></div> */}
     </form>
   );
 };

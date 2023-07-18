@@ -41,9 +41,8 @@ const AddressForm = ({ editData }) => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex justify-content-center">
       <form action="" className="">
-        <h5 className="justify-content-end">Add new address</h5>
         <div className="d-flex gap-2">
           <input
             type="text"
@@ -87,13 +86,6 @@ const AddressForm = ({ editData }) => {
             cols="18"
             onChange={(e) => setAddress(e.target.value)}
           ></textarea>
-          {/* <input
-            placeholder="Address"
-            className="w-50"
-            required="required"
-            value={fullAddress}
-            onChange={(e) => setAddress(e.target.value)}
-          /> */}
           <div className="d-flex flex-column gap-2">
             <input
               type="text"

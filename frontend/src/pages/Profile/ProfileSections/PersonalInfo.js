@@ -153,10 +153,13 @@ const PersonalInfo = ({ userData }) => {
                   <input type="text" readOnly defaultValue={dob} />
                 )}
                 {!userData.dob && (
-                  <input
-                    type="date"
-                    onChange={(e) => dateFormat(e.target.value)}
-                  />
+                  <>
+                    <input
+                      type="date"
+                      onChange={(e) => dateFormat(e.target.value)}
+                    />
+                    *Once the dob is set, cannot be changed again
+                  </>
                 )}
               </div>
               <div
