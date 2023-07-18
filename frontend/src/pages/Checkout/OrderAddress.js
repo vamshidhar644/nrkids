@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import { FetchMongo } from '../../BackOps/FetchMongo';
 import { FaWindowClose } from 'react-icons/fa';
-import './OrderAddress.css';
 
-import AddressForm from '../../Profile/ProfileSections/AddressForm';
-import ConfirmOrder from '../../ConfirmOrder/ConfirmOrder';
+import AddressForm from '../Profile/ProfileSections/AddressForm';
+import ConfirmOrder from '../ConfirmOrder/ConfirmOrder';
 
 const OrderAddress = ({ cartItems, data, totalPrice }) => {
   const { fetchAddressData, address } = FetchMongo();
@@ -15,7 +14,6 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
   useEffect(() => {
     fetchAddressData();
   }, []);
-
 
   const [orderAddress, setAddress] = useState();
 
@@ -28,12 +26,12 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
     <div className="checkout-address">
       <div>
         <h5>Saved Adresses</h5>
-        <div className="saved-Address">
+        <div className="saved__Address">
           {address &&
             address.map((address, i) => {
               return (
                 <div className="address-card p-3 pb-0" key={i}>
-                  <h5>{address.fullname}</h5>
+                  <h6>{address.fullname}</h6>
                   <p className="m-0 small">{address.email}</p>
                   <p className="m-0">{address.fullAddress}</p>
                   <p className="m-0">
@@ -69,6 +67,9 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
         </div>
       </div>
       <div className="py-3">
+        <center>
+          <h3>Add new address</h3>
+        </center>
         <AddressForm />
       </div>
     </div>

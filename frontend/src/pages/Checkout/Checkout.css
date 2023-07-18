@@ -3,15 +3,59 @@
 }
 .checkout-summary{
     width: 60%;
-    padding: 0px 4rem;
 }   
 .checkout-image{
     width: 100px;
     border-radius: 6px;
     overflow: hidden;
 }
+.checkout__body{
+    flex-direction: row;
+}
 
 .checkout-image img{
     width: 100%;
     height: 100%;
+}
+
+.saved__Address{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0rem 3rem;
+}
+.saved__Address .address-card{
+    min-width: 100%;
+}
+
+.deliver-address{
+    cursor: pointer;
+}
+.checkout_summary__body{
+    padding: 14px;
+}
+
+@media only screen and (max-width: 991px){
+    .checkout__path{
+        font-size: 14px;
+    }
+    .checkout__body{
+        flex-direction: column-reverse;
+    }
+    .checkout-summary{
+        width: 100%;
+    }
+    .checkout__info{
+        font-size: 14px;
+    }
+    .checkout__info h6{
+        font-size: 14px;
+    }
+    .saved__Address .address-card, .address-card h6{
+        font-size: 16px;
+    }
+    .checkout-address h5{
+        font-size: 14px;
+        text-align: center;
+    }
 }

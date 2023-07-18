@@ -96,4 +96,12 @@
   .checkout__row h6{
     font-size: 2rem;
   }
+  .qstn__container svg{
+    font-size: 2rem;
+  }
+  .hover-text{
+    top: -44px;
+    left: -146px;
+    font-size: 12px;
+  }
 }

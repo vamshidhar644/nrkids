@@ -9,7 +9,6 @@ import FilterSanity from '../../BackOps/FilterSanity';
 const Wishlist = ({ wishlist, Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();
   
-
   useEffect(() => {
     filtersanity(wishlist, Products);
   }, [wishlist, Products]);
@@ -18,7 +17,7 @@ const Wishlist = ({ wishlist, Products }) => {
     <div className="p-4">
       <div>
         <div>
-          <p className="d-flex justify-content-start align-items-center gap-2 small">
+          <p className="wishlist__path d-flex justify-content-start align-items-center gap-2 small">
             <Link to="/">Home </Link>
             <BiChevronRight /> Wishlist
           </p>

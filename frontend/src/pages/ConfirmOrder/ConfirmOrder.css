@@ -1,14 +1,4 @@
-.saved-Address{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: space-around;
-    gap: 20px;
-    padding: 0rem 3rem;
-}
 
-.deliver-address{
-    cursor: pointer;
-}
 
 
 .popup {

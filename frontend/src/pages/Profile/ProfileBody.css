@@ -199,7 +199,8 @@ textarea{
     }
     .profile_section__list ul li{   
         font-size: 10px;
-        text-align: right;
+        font-size: 12px;
+        text-align: left !important;
         white-space: nowrap;
     }
     .profile_section__list ul li svg{

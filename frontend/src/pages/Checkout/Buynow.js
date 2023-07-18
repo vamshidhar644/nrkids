@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import FetchImageUrl from '../../BackOps/FetchImageUrl';
 import { BiChevronRight } from 'react-icons/bi';
-import OrderAddress from './Address/OrderAddress';
+import OrderAddress from './OrderAddress';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import ParentLogin from '../Login/ParentLogin';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 const Buynow = ({ Products }) => {
   const { user } = UseAuthContext();
@@ -37,7 +38,7 @@ const Buynow = ({ Products }) => {
       {user ? (
         <div>
           <div>
-            <p className="d-flex justify-content-start align-items-center gap-2 small">
+            <p className="checkout__path d-flex justify-content-start align-items-center gap-2">
               <Link to="/">Home </Link>
               <BiChevronRight /> <Link to="/your-bag">Shopping cart </Link>
               <BiChevronRight /> Checkout
@@ -46,7 +47,7 @@ const Buynow = ({ Products }) => {
               <h1>Checkout</h1>
             </div>
           </div>
-          <div className="d-flex w-100 justify-content-around">
+          <div className="checkout__body d-flex">
             <OrderAddress
               data={filteredItems}
               cartItems={data}
@@ -80,21 +81,33 @@ const Buynow = ({ Products }) => {
                     </div>
                     <hr />
                     <div>
-                      <div className="checkout-row price">
+                      <div className="checkout__row price">
                         <h6>Sub Total (1 item)</h6>
                         <p>₹ {data.price}</p>
                       </div>
-                      <div className="checkout-row discount">
+                      <div className="checkout__row discount">
                         <h6>Discount</h6>
                         <p></p>
                       </div>
-                      <div className="checkout-row delivery-charges">
+                      <div className="checkout__row delivery__charges">
                         <h6>Delivery Charges</h6>
-                        <p></p>
+                        <div className="d-flex align-items-center gap-1">
+                          <p>will be decided</p>
+                          <div className="qstn__container">
+                            {/* <p>Delivery cost is decided upon the location of delivery</p> */}
+                            <div className="hover-icon">
+                              <span className="hover-text">
+                                delivery cost is decided upon the location of
+                                delivery
+                              </span>
+                              <AiOutlineQuestionCircle />
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="checkout-row total-amount">
+                      <div className="checkout__row total-amount">
                         <h4>Total Amount</h4>
-                        <p></p>
+                        <h4>₹ {data.price}</h4>
                       </div>
                     </div>
                   </div>

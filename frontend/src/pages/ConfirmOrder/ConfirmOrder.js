@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { PostMongo } from '../../BackOps/PostMongo';
+import './ConfirmOrder.css';
 
 const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   const { user } = UseAuthContext();
