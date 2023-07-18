@@ -33,8 +33,8 @@ const Checkout = ({ data }) => {
         </div>
         <div className="checkout__row delivery__charges">
           <h6>Delivery Charges</h6>
-          <p className="d-flex align-items-center gap-1">
-            will be decided
+          <div className="d-flex align-items-center gap-1">
+            <p>will be decided</p>
             <div class="qstn__container">
               {/* <p>Delivery cost is decided upon the location of delivery</p> */}
               <div class="hover-icon">
@@ -46,7 +46,7 @@ const Checkout = ({ data }) => {
             </div>
             {/* <p>delivery cost is decided upon the location of delivery</p>
             <AiOutlineQuestionCircle /> */}
-          </p>
+          </div>
         </div>
         <div className="checkout__row total-amount">
           <h4>Total Amount</h4>
