@@ -35,10 +35,10 @@ const Checkout = ({ data }) => {
           <h6>Delivery Charges</h6>
           <div className="d-flex align-items-center gap-1">
             <p>will be decided</p>
-            <div class="qstn__container">
+            <div className="qstn__container">
               {/* <p>Delivery cost is decided upon the location of delivery</p> */}
-              <div class="hover-icon">
-                <span class="hover-text">
+              <div className="hover-icon">
+                <span className="hover-text">
                   delivery cost is decided upon the location of delivery
                 </span>
                 <AiOutlineQuestionCircle />

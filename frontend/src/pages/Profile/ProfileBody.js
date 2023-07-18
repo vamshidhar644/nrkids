@@ -29,7 +29,7 @@ const ProfileBody = ({ userData }) => {
       {userData ? (
         <div className="p-4">
           <div>
-            <div className="small d-flex justify-content-start align-items-center gap-2">
+            <div className="user__path d-flex justify-content-start align-items-center gap-2">
               <Link to="/">Home </Link>
               <BiChevronRight />
               <p
@@ -52,9 +52,9 @@ const ProfileBody = ({ userData }) => {
               <Logout />
             </div>
           </div>
-          <div className="profile-body d-flex gap-4">
-            <div className="profile-section-list">
-              <ul className="list-unstyled d-flex flex-column gap-2">
+          <div className="profile__body d-flex gap-4">
+            <div className="profile_section__list">
+              <ul className="list-unstyled d-flex gap-2 justify-content-between">
                 {profileList.map((item, i) => {
                   return (
                     <li

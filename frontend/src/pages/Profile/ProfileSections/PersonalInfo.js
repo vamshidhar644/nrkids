@@ -65,12 +65,8 @@ const PersonalInfo = ({ userData }) => {
 
   return (
     <div className="w-100">
-      <div className="information-header">
-        <h5>Personal Information</h5>
-        <hr />
-      </div>
-      <div className="information-body">
-        <div className="user-image-section d-flex align-items-end p-2 gap-4">
+      <div className="information__body">
+        <div className="user_image__section align-items-end p-2 gap-4">
           <div className="profile-image-container">
             <img
               className="w-100 h-100"
@@ -78,28 +74,26 @@ const PersonalInfo = ({ userData }) => {
               alt=""
             />
           </div>
-          <div className="d-flex flex-column justify-content-start align-items-start gap-1">
-            <div className=" d-flex align-items-center small bg-white py-1 px-3 gap-1">
-              <input
-                type="file"
-                id="file-input"
-                className="hidden-input"
-                onChange={handleUpload}
-                ref={inputRef}
-              />
-              {!imageSrc ? (
-                <label htmlFor="file-input" className="custom-label">
-                  upload image
-                </label>
-              ) : (
-                <label htmlFor="file-input" className="custom-label">
-                  change
-                </label>
-              )}
-            </div>
+          <div className="profile_image d-flex align-items-center bg-white py-1 px-3 gap-1">
+            <input
+              type="file"
+              id="file-input"
+              className="hidden-input"
+              onChange={handleUpload}
+              ref={inputRef}
+            />
+            {!imageSrc ? (
+              <label htmlFor="file-input" className="custom-label">
+                upload image
+              </label>
+            ) : (
+              <label htmlFor="file-input" className="custom-label">
+                change
+              </label>
+            )}
           </div>
         </div>
-        <div className="user-inforomation p-2 w-50 mb-4">
+        <div className="user__inforomation p-2 mb-4">
           <form action="" className="d-flex flex-column gap-2">
             <div className="d-flex justify-content-between gap-3">
               <div className="d-flex flex-column w-100">
@@ -140,7 +134,7 @@ const PersonalInfo = ({ userData }) => {
               <label htmlFor="phoneNumber" id="phoneNumber">
                 Mobile Number
               </label>
-              <p className="w-50 d-flex align-items-center m-0">
+              <p className="d-flex align-items-center m-0">
                 <span>+91 </span>&nbsp;&nbsp;&nbsp;
                 <input
                   type="text"
