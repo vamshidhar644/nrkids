@@ -7,9 +7,12 @@ import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
 
 import DetailsWithoutData from '../../Product/MainProduct/ProductWithoutData';
 import { PostMongo } from '../../../BackOps/PostMongo';
+import { Link } from 'react-router-dom';
+import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 
 const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   const { updatecart } = PostMongo();
+  const { getImageUrl } = FetchImageUrl();
   const { user } = UseAuthContext();
 
   const { setSizes, item } = ChangePriceperSize();
@@ -94,59 +97,74 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   };
 
   return (
-    <div className="cart-item-box d-flex w-100 justify-content-between align-items-center">
-      <div className="d-flex flex-column p-3 pt-0 position-relative">
-        <h6 className="m-0 text-nowrap">{items.title}</h6>
-        <p className="m-0">Description</p>
+    <div className="cart-item-box d-flex w-100 align-items-center">
+      <div className="cart_item__box d-flex">
+        <Link
+          className="cart-image-container overflow-hidden"
+          to={`/${items.dropdownField}/${items.path.current}`}
+          key={index}
+        >
+          <img
+            className="w-100 h-100"
+            src={getImageUrl(items.images[0])}
+            alt=""
+          />
+        </Link>
+        <div className="cart_item__info d-flex flex-column p-3">
+          <h6 className="m-0">{items.title}</h6>
+          <p className="m-0">Description</p>
 
-        <div className="size-section mt-5">
-          <h6>Size</h6>
-          <select
-            name="size"
-            id="size"
-            className="custom-select"
-            value={size}
-            onChange={(e) => changeSize(e.target.value)}
-          >
-            {item.size &&
-              item.size.map((size, i) => {
-                return (
-                  <option value={size} key={i} className="custom-option">
-                    {size}
-                  </option>
-                );
-              })}
-            <option value="none">Not listed</option>
-          </select>
+          <div className="size__section d-flex align-items-center gap-2 pt-3">
+            <p className='m-0'>Size</p>
+            <select
+              name="size"
+              id="size"
+              className="custom-select"
+              value={size}
+              onChange={(e) => changeSize(e.target.value)}
+            >
+              {item.size &&
+                item.size.map((size, i) => {
+                  return (
+                    <option value={size} key={i} className="custom-option">
+                      {size}
+                    </option>
+                  );
+                })}
+              <option value="none">Not listed</option>
+            </select>
+          </div>
         </div>
       </div>
 
       {price ? (
-        <div className="d-flex justify-content-center align-items-start w-100 h-100">
-          <div className="w-100 d-flex justify-content-center w-100">
+        <div className="cart_item__details d-flex justify-content-between  align-items-start w-100 h-100">
+          <div className="cart_item__price d-flex w-100 text-nowrap">
             <p>₹ {price}</p>
           </div>
 
-          <div className="select-quantity d-flex justify-content-end align-items-center w-100">
-            <div className="change-qty d-flex">
-              <div
-                className="qty-button d-flex justify-content-center align-items-center"
-                onClick={decr}
-              >
-                <AiOutlineMinus />
-              </div>
-              <label>{qty}</label>
-              <div
-                className="qty-button d-flex justify-content-center align-items-center"
-                onClick={incr}
-              >
-                <AiOutlinePlus />
+          <div className="d-flex w-100 justify-content-between">
+            <div className="select-quantity d-flex justify-content-center align-items-center">
+              <div className="change-qty d-flex">
+                <div
+                  className="qty-button d-flex justify-content-center align-items-center"
+                  onClick={decr}
+                >
+                  <AiOutlineMinus />
+                </div>
+                <label>{qty}</label>
+                <div
+                  className="qty-button d-flex justify-content-center align-items-center"
+                  onClick={incr}
+                >
+                  <AiOutlinePlus />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="w-100 w-100 d-flex justify-content-center align-items-center text-center">
-            <p>₹ {subTotal}</p>
+            <div className="cart_item__subtotal text-nowrap">
+              <p>₹ {subTotal}</p>
+            </div>
           </div>
         </div>
       ) : (

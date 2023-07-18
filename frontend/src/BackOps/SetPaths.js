@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const SetPaths = () => {
-  const [categorypath, setCategory] = useState('');
+  const [categorypathh, setCategory] = useState('');
 
   const setCategoryPath = (category) => {
     switch (category) {
@@ -32,6 +32,6 @@ export const SetPaths = () => {
 
   return {
     setCategoryPath,
-    categorypath,
+    categorypathh,
   };
 };

@@ -13,7 +13,7 @@ import FetchImageUrl from '../../BackOps/FetchImageUrl';
 const Categories = ({ Products }) => {
   const { fetchHero, Hero } = FetchSanity();
   const { getImageUrl } = FetchImageUrl();
-  const { setCategoryPath } = SetPaths();
+  const { setCategoryPath, categorypathh } = SetPaths();
   const { categorypath } = useParams();
 
   const [categoryProducts, setCatogeryProducts] = useState([]);
@@ -37,6 +37,8 @@ const Categories = ({ Products }) => {
     setCategoryPath(categorypath);
   }, [categorypath]);
 
+  console.log(categoryProducts);
+
   useEffect(() => {
     if (Hero) {
       Hero.forEach((banner) => {
@@ -52,7 +54,7 @@ const Categories = ({ Products }) => {
       <div className="hero-container p-4">
         <p className="d-flex justify-content-start align-items-center gap-2">
           <Link to="/">Home </Link>
-          <BiChevronRight /> {categorypath}
+          <BiChevronRight /> {categorypathh}
         </p>
         {image && (
           <img

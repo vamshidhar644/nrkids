@@ -28,7 +28,7 @@ const MainProduct = ({ Product }) => {
       behavior: 'smooth',
     });
   };
-  const { setCategoryPath, categorypath } = SetPaths();
+  const { setCategoryPath, categorypathh } = SetPaths();
 
   useEffect(() => {
     fetchWishlist();
@@ -60,7 +60,7 @@ const MainProduct = ({ Product }) => {
       <p className="product-path d-flex flex-start align-items-center">
         <Link to="/">Home </Link>
         <BiChevronRight />
-        <Link to={`/${Product.dropdownField}`}>{categorypath}</Link>
+        <Link to={`/${Product.dropdownField}`}>{categorypathh}</Link>
         <BiChevronRight />
         {Product.title}
       </p>

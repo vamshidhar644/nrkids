@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
 import DoubleProduct from '../Components/DoubleProduct/DoubleProduct';
 
@@ -41,13 +40,6 @@ const ProductPage = ({ Products }) => {
     setRelatedProducts(CategoryProducts);
   }, [data]);
 
-  const containerRef = useRef(null);
-
-  const scrollHorizontally = (scrollOffset) => {
-    if (containerRef.current) {
-      containerRef.current.scrollLeft += scrollOffset;
-    }
-  };
   if (data.length !== 0) {
     return (
       <div>
@@ -58,15 +50,12 @@ const ProductPage = ({ Products }) => {
             {/* <Link
               to={`/${data.dropdownField}`}
               className="d-flex align-items-center"
-            >
+            > 
               View all <AiOutlineRight />
             </Link> */}
           </div>
           <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4 small">
-            <div
-              className="Cards-Container overflow-x-auto d-flex"
-              ref={containerRef}
-            >
+            <div className="Cards-Container overflow-x-auto d-flex">
               {relatedProducts &&
                 relatedProducts.map((item, i) => {
                   return <DoubleProduct item={item} key={i} />;

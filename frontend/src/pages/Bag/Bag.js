@@ -12,7 +12,7 @@ const Bag = ({ cartItems, Products }) => {
   }, [cartItems, Products]);
 
   return (
-    <div className="Parent-cart" style={{ backgroundColor: '#f2f2f2' }}>
+    <div className="Parent-cart">
       {cartExist ? (
         <CartSection SanityProducts={filteredItems} cartItems={cartItems} />
       ) : (

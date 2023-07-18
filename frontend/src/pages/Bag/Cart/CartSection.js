@@ -4,16 +4,15 @@ import axios from 'axios';
 import { BiChevronRight } from 'react-icons/bi';
 
 import { UseAuthContext } from '../../../hooks/useAuthContext';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 
 import ItemDetails from './ItemDetails';
 import Checkout from './Checkout';
 import './CartSection.css';
+import { PostMongo } from '../../../BackOps/PostMongo';
 
 const CartSection = ({ SanityProducts, cartItems }) => {
   const { user } = UseAuthContext();
-
-  const { getImageUrl } = FetchImageUrl();
+  const { updateWishlist } = PostMongo();
 
   const handleDelete = async (index) => {
     try {
@@ -32,52 +31,38 @@ const CartSection = ({ SanityProducts, cartItems }) => {
     setData(newData);
   };
 
+  const handleWishlist = async (index) => {
+    console.log(cartItems[index].productId);
+    await updateWishlist(cartItems[index].productId);
+    handleDelete(index);
+  };
+
   return (
     <div className="cart-page d-flex justify-content-between bg-white">
       <div className="cart-items w-100 p-4">
-        <div>
-          <p className="d-flex justify-content-start align-items-center gap-2 small">
+        <div className="cart__path">
+          <p className="d-flex justify-content-start align-items-center gap-2">
             <Link to="/">Home </Link>
             <BiChevronRight /> Shopping cart
           </p>
-          <div className="cart-header d-flex justify-content-between align-items-center pt-4 pb-3">
+          <div className="cart-header d-flex justify-content-between align-items-center py-3">
             <h1>Shopping cart</h1>
           </div>
         </div>
-        <div className="d-flex justify-content-between gap-5">
-          <div className="d-flex flex-column w-100">
-            <div className="cart-sub-header d-flex justify-content-evenly mb-4">
-              <p className="m-0 w-100 d-flex justify-content-center align-items-center text-center">
-                Product name
-              </p>
-              <p className="m-0 w-100 d-flex justify-content-end align-items-center text-center">
-                Price
-              </p>
-              <p className="m-0 w-100 d-flex justify-content-end align-items-center text-center">
-                Quantity
-              </p>
-              <p className="m-0 w-100 d-flex justify-content-center align-items-center text-center">
-                Subtotal
-              </p>
+        <div className="cart__body d-flex justify-content-between gap-5">
+          <div className="d-flex flex-column">
+            <div className="cart-sub-header d-flex mb-4">
+              <p>Product</p>
+              <p>Price</p>
+              <p>Quantity</p>
+              <p>Subtotal</p>
             </div>
             <div className="cart-item-section d-flex flex-column">
               {SanityProducts &&
                 SanityProducts.map((item, index) => {
                   return (
-                    <div className="cart-item d-flex" key={index}>
+                    <div className="cart__item d-flex" key={index}>
                       <div className="cart-box w-100 d-flex justify-content-flex-start  position-relative">
-                        <Link
-                          className="cart-image-container overflow-hidden"
-                          to={`/${item.dropdownField}/${item.path.current}`}
-                          key={index}
-                        >
-                          <img
-                            className="w-100 h-100"
-                            src={getImageUrl(item.images[0])}
-                            alt=""
-                          />
-                        </Link>
-
                         <ItemDetails
                           items={item}
                           index={index}
@@ -85,12 +70,13 @@ const CartSection = ({ SanityProducts, cartItems }) => {
                           onDataChange={handleDataChange}
                         />
 
-                        <div className="cart-buttons d-flex position-absolute">
-                          <p>Move to wishlist</p>
+                        <div className="cart__buttons d-flex position-absolute">
+                          <p onClick={() => handleWishlist(index)}>
+                            Move to wishlist
+                          </p>
                           <p onClick={() => handleDelete(index)}>Remove</p>
                         </div>
                       </div>
-                      <hr />
                     </div>
                   );
                 })}

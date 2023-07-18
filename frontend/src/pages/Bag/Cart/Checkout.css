@@ -1,9 +1,4 @@
 
-.Checkout-Section{
-  width: 30%;
-    background-color: #fff;
-  }
-
   .Checkout-header{
     padding: 6px 12px;
     border-bottom: 1px solid #6b6969;
@@ -20,18 +15,22 @@
     border-bottom: 2px solid var(--secondary-color);
   }
 
-  .checkout-row{
-    font-size: 12px;
+
+  .checkout__row{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
   }
 
-  .checkout-row p{
+  .checkout__row p{
     font-size: 16px;
     font-weight: 600;
     margin: 0px;
+  }
+
+  
+  .delivery__charges p{
+    font-weight: 300;
   }
 
   .total-amount{
@@ -44,24 +43,57 @@
     font-weight: 600;
   }
 
-  .checkout-footer{
+  .checkout__footer{
     display: flex;
     justify-content: space-around;
+    gap: 20px;
   }
 
-  .checkout-footer a{
+  .checkout__footer a{
+    width: 100%;
     border: 2px solid var(--secondary-color);
-    padding: 4px 24px;
+    padding: 12px;
+    text-align: center;
     border-radius: 6px;
+    font-size: 16px;
+    white-space: nowrap;
   }
 
-  .place-order{
+  .place__order{
     background-color: var(--secondary-color);
     color: #fff !important;
   }
 
-
-
-  .checkout-footer button:hover{
-    transform: scale(.98);
+  .qstn__container {
+    position: relative;
+    /* display: inline-block; */
   }
+
+  .hover-text {
+      visibility: hidden;
+      /* visibility: visible; */
+      background-color: #f9f9f9;
+      color: #000;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      position: absolute;
+      width: fit-content;
+      white-space: nowrap;
+      z-index: 1;
+      top: -50px;
+      left: -200px;
+      transform: translateX(-50%);
+  }
+
+  .qstn__container:hover .hover-text {
+    visibility: visible;
+}
+  
+/* Smart phones */
+@media screen and (max-width: 600px) {
+  .checkout__row h6{
+    font-size: 2rem;
+  }
+}
