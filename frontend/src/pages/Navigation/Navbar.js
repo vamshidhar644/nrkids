@@ -17,20 +17,22 @@ const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const [disableScrolling, setDisableScrolling] = useState(false);
 
-  const moveTop = () => {
+  const toggleNavbar = () => {
+    setIsActive(!isActive);
+    setDisableScrolling(!disableScrolling);
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   };
-  const toggleNavbar = () => {
-    setIsActive(!isActive);
-    setDisableScrolling(!disableScrolling);
-  };
 
   const closeNavbar = () => {
     setIsActive(false);
     setDisableScrolling(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   const [isFixed, setIsFixed] = useState(false);
@@ -112,7 +114,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a "
                   to="/birthday"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   Birthday
                 </NavLink>
@@ -121,7 +123,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a"
                   to="/new-arrivals"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   New Arrivals
                 </NavLink>
@@ -130,7 +132,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a"
                   to="/ethnic-wear"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   Ethnic wear
                 </NavLink>
@@ -139,7 +141,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a"
                   to="/party-wear"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   Party wear
                 </NavLink>
@@ -148,7 +150,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a"
                   to="/casual-wear"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   Casual wear
                 </NavLink>
@@ -157,7 +159,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a "
                   to="/mom-and-me"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   Mom & me
                 </NavLink>
@@ -166,7 +168,7 @@ const Navbar = () => {
                 <NavLink
                   className="nav-item-a"
                   to="/siblings-set"
-                  onClick={moveTop}
+                  onClick={closeNavbar}
                 >
                   Siblings set
                 </NavLink>

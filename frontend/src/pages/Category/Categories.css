@@ -1,8 +1,4 @@
 
-.category-body{
-    gap: 18px;
-}
-
 .filter-container{
     width: 300px;
 }
@@ -20,8 +16,9 @@
 }
 
 .Product-Grid{
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    min-width: fit-content;
 }
 
 
@@ -38,3 +35,10 @@
     height: 25px;
   }
 
+  .hero-container p{
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: 991px){
+
+  }

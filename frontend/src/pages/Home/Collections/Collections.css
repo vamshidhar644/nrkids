@@ -58,7 +58,7 @@
 
 .Cat-Card-Container{
     grid-template-columns: repeat(5, auto);
-    gap: 50px;
+    gap: 40px;
 }
 
 
@@ -70,13 +70,13 @@
   }
   .Cat-Card-Container{
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
   }
   .shop-button{
     display: none;
   }
   .cat-title{
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 }
 

@@ -75,44 +75,17 @@
 }
 
 @media (width < 620px) {
+    .footer__logo{
+       margin: 0;
+       width: 60px;
+       height: 60px;
+   }
     .Parent-Footer{
         padding: 16px;
         justify-content: space-between;
+        font-size: 10px;
     }
     .social-icons{
-        font-size: 20px;
+        font-size: 24px;
     }
 }
-
-/* @media (width >= 620px) {
-    footer{
-        margin: 0 auto;
-        max-width: 600px;
-        padding: 0;
-    }
-} */
-
-/* footer.bottom .links > a{
-    font-size: 24px;
-} */
-
-/* @media (width < 420px) {
-    footer{
-        text-align: center;
-        align-items: center;
-    }
-
-    footer.top .links{
-        grid-template-columns: 1fr;
-    }
-
-    footer.bottom{
-        align-items: center;
-    }
-
-    footer .legal > span{
-        display: block;
-        margin-right: 0;
-        margin-bottom: 2px;
-    }
-} */

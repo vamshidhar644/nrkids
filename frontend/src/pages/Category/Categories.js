@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import CategoryHero from './CategoryHero';
+import { BiChevronRight } from 'react-icons/bi';
 
 import './Categories.css';
 import ProductCard from '../Components/ProductCard/ProductCard';
+import { FetchSanity } from '../../BackOps/FetchSanity';
+import { SetPaths } from '../../BackOps/SetPaths';
+import FetchImageUrl from '../../BackOps/FetchImageUrl';
 
 const Categories = ({ Products }) => {
+  const { fetchHero, Hero } = FetchSanity();
+  const { getImageUrl } = FetchImageUrl();
+  const { setCategoryPath } = SetPaths();
   const { categorypath } = useParams();
 
   const [categoryProducts, setCatogeryProducts] = useState([]);
@@ -23,12 +30,42 @@ const Categories = ({ Products }) => {
     setCatogeryProducts(CategoryProducts);
   }, [categorypath, Products]);
 
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    fetchHero();
+    setCategoryPath(categorypath);
+  }, [categorypath]);
+
+  useEffect(() => {
+    if (Hero) {
+      Hero.forEach((banner) => {
+        if (banner.bannerlocation === categorypath) {
+          setImage(banner);
+        }
+      });
+    }
+  }, [Hero, categorypath]);
+
   return (
     <div className="Main-Category-Container">
-      <CategoryHero className="category-head" params={categorypath} />
+      <div className="hero-container p-4">
+        <p className="d-flex justify-content-start align-items-center gap-2">
+          <Link to="/">Home </Link>
+          <BiChevronRight /> {categorypath}
+        </p>
+        {image && (
+          <img
+            src={getImageUrl(image.image)}
+            alt=""
+            style={{ width: '100%' }}
+          />
+        )}
+      </div>
+      {/* <CategoryHero className="category-head" params={categorypath} /> */}
       <div className="category-body">
-        <div className="products-container w-100 pb-4">
-          <div className="Product-Grid">
+        <div className="products-container pb-4">
+          <div className="Product-Grid d-flex justify-content-start">
             <div className="Cards-Grid w-100 justify-content-evenly">
               {categoryProducts &&
                 categoryProducts.map((item, i) => {
