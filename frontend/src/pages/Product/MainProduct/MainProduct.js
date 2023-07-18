@@ -57,7 +57,7 @@ const MainProduct = ({ Product }) => {
 
   return (
     <div className="product-page p-4">
-      <p className="product-path d-flex flex-start align-items-center small">
+      <p className="product-path d-flex flex-start align-items-center">
         <Link to="/">Home </Link>
         <BiChevronRight />
         <Link to={`/${Product.dropdownField}`}>{categorypath}</Link>
@@ -65,7 +65,7 @@ const MainProduct = ({ Product }) => {
         {Product.title}
       </p>
       <div className="product-body d-flex gap-5">
-        <div className="product-image d-flex flex-column w-50">
+        <div className="product-image d-flex flex-column">
           <ReactImageMagnify
             {...{
               smallImage: {
@@ -112,12 +112,6 @@ const MainProduct = ({ Product }) => {
           <p className="product-subtitle">Description</p>
           {Product.isData && <ProductDetails Product={Product} />}
           {!Product.isData && <DetailsWithoutData Product={Product} />}
-
-          <p className="product-description p-0 py-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in
-            ex sit amet nulla egestas vulputate. Sed vel velit at magna commodo
-            convallis.
-          </p>
         </div>
       </div>
     </div>

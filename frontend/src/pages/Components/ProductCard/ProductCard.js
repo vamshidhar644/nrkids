@@ -55,8 +55,8 @@ const ProductCard = ({ item }) => {
           <img className="image1" src={getImageUrl(item.images[0])} alt="" />
         </Link>
         <div className="Product-Details">
-          <p className="title mb-0">{item.title}</p>
-          <p className="subtitle mb-0">Description</p>
+          <p className="title p-0 m-0">{item.title}</p>
+          <p className="subtitle">Description</p>
           {/* <p className="price mb-0">₹ {item.price}</p> */}
           {fav ? (
             <AiFillHeart

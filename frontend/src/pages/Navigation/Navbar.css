@@ -89,7 +89,7 @@ nav ul.active {
   justify-content: center;
 }
 
-.shop li a{
+.dropdownn-menu li a{
   width: 100%;
   padding: 12px;
 }
@@ -110,18 +110,15 @@ nav ul.active {
   text-decoration: none;
 }
 
-
+/* ===================================== */
 /* Logo */
 
 .main-logo{
   padding-left: 16px;
-  /* width: 14rem; */
   display: flex;
   justify-content: center;
 }
 .main-logo a{
-  /* position: absolute;
-  top: 0; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,18 +132,20 @@ nav ul.active {
   height: 95%;
 }
 
+/* ================================== */
+
 /* Icons  */
 .nav__section_2{
+  
   display: flex;
-  /* width: 100%; */
   font-size: 1.5rem;
-  /* justify-content: space-between; */
-  /* align-items: center; */
   padding: 0px 12px;
 }
 .user__profile{
   width: fit-content;
 }
+
+/* ====================================== */
 /* Offer Section */
 .offer-section{
   padding: 12px 0px;
@@ -216,8 +215,18 @@ nav ul.active {
     font-size: 3rem;
   }
 
+  .main-logo a{
+    width: 100px !important;
+    height: 100px !important;
+  }
+
   .user__profile{
     height: fit-content;
+  }
+
+  .offer-section{
+    
+    font-size: 2rem;
   }
 }
 

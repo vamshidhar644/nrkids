@@ -4,11 +4,23 @@
 }
 
 .Main-Card .title{
+    font-size: 1.2rem;
     color: var(--type-high-emphasis, #171520);
 }
   
 .Main-Card .subtitle{
+    font-size: 1.1rem;
     color: var(--type-low-emphasis, #626262);
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+
+@media only screen and (max-width: 991px){
+    .Main-Card .title{
+        font-size: 1.8rem;
+    }
+    .Main-Card .subtitle{
+        font-size: 1.5rem;
+    }
 }

@@ -189,7 +189,7 @@ const Navbar = () => {
 
         <div className="nav__section_2 w-100 d-flex justify-content-end">
           {/* <SearchBar className="Search-Section" /> */}
-          <div className="input-wrapper d-flex gap-2">
+          <div className="input-wrapper d-flex gap-3">
             {user ? (
               <div className="dropdownn">
                 <AiOutlineUser />
@@ -201,7 +201,6 @@ const Navbar = () => {
                     >
                       Hello {user.firstName}
                     </NavLink>
-                    <hr className="m-0" />
                   </li>
 
                   <li className="nav-item">

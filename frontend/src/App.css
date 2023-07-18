@@ -12,6 +12,7 @@
 
 #root{
     font-family: 'Poppins';
+    overflow-x: hidden;
 }
 
 a{
@@ -20,7 +21,7 @@ a{
 }
 
 
-body::-webkit-scrollbar, nav ul::-webkit-scrollbar {
+body::-webkit-scrollbar, nav ul::-webkit-scrollbar, .other-images::-webkit-scrollbar {
     width: 0.2em; /* Set the width of the scrollbar */
   }
   

@@ -72,8 +72,8 @@ const DoubleProduct = ({ item, favv }) => {
           ) : null}
         </Link>
         <div className="Product-Details">
-          <p className="title mb-0 font-weight-normal">{item.title}</p>
-          <p className="subtitle small">Description</p>
+          <p className="title m-0 p-0 font-weight-normal">{item.title}</p>
+          <p className="subtitle">Description</p>
 
           {!favv ? (
             <>

@@ -72,7 +72,7 @@ const ProductDetails = ({ Product }) => {
       {size !== 'none' && <p className="product-price">₹ {price}</p>}
       <div className="item-specifications d-flex">
         <div className="select-quantity d-flex justify-content-center align-items-center">
-          <h6>Quantity:</h6>
+          <p className="m-0">Quantity:</p>
           <div className="change-qty d-flex">
             <div
               className="qty-button d-flex justify-content-center align-items-center"
@@ -91,7 +91,7 @@ const ProductDetails = ({ Product }) => {
         </div>
         <div className="size-section d-flex justify-content-center align-items-center">
           <div className="select-size d-flex align-items-center">
-            <h6>Size:</h6>
+            <p className="m-0">Size:</p>
             <select
               name="size"
               id="size"
