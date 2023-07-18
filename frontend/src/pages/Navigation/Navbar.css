@@ -7,6 +7,7 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   z-index: 20;   
   top: 0;
+  padding: 0px;
   background-color: #ffffff;
 }
 
@@ -14,7 +15,7 @@ nav {
   /* width: 100%; */
   cursor: default;
   display: flex;
-  padding: 1rem 0px;
+  /* padding: 12px 0px; */
   padding-bottom: 0px;
   justify-content: space-between;
   align-items: center;
@@ -113,12 +114,16 @@ nav ul.active {
 
 .main-logo{
   padding-left: 16px;
+  /* width: 14rem; */
   display: flex;
   justify-content: center;
 }
 .main-logo a{
-  width: 130px;
-  height: 130px;
+  /* position: absolute;
+  top: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
   background-color: #fff;
   border-radius: 50%;
@@ -143,6 +148,7 @@ nav ul.active {
 }
 /* Offer Section */
 .offer-section{
+  padding: 12px 0px;
   background-color: var(--secondary-color);
   color: #fff;
 }

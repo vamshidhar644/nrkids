@@ -63,7 +63,7 @@ const Navbar = () => {
   }, []);
 
   // Calculate the dynamic width and height based on the scroll position
-  const containerSize = Math.max(100 - scrollPosition, 80);
+  const containerSize = Math.max(140 - scrollPosition, 90);
   return (
     <header className={`${isFixed ? 'fixed position-fixed' : ' w-100'}`}>
       <OfferSection />
@@ -85,7 +85,7 @@ const Navbar = () => {
             style={{
               width: `${containerSize}px`,
               height: `${containerSize}px`,
-              transition: '1.2s'
+              transition: '1.2s',
             }}
           >
             <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
