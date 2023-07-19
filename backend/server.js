@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors');
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 
@@ -12,16 +13,17 @@ const app = express();
 // middleware
 app.use(express.json());
 
+app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
- 
+
 // routes
 app.use('/api/user', userRoutes);
 app.use('/api/user/order', cartRoutes);
 
-mongoose.set('strictQuery', false); 
+mongoose.set('strictQuery', false);
 
 // connect to DB
 mongoose
