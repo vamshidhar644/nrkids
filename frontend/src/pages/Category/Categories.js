@@ -37,8 +37,6 @@ const Categories = ({ Products }) => {
     setCategoryPath(categorypath);
   }, [categorypath]);
 
-  console.log(categoryProducts);
-
   useEffect(() => {
     if (Hero) {
       Hero.forEach((banner) => {

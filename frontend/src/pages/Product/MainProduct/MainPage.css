@@ -1,11 +1,17 @@
 
-.product-image {
-  gap: 16px;
-}
+  .product__image {
+    width: 50%;
+    gap: 16px;
+  }
 
-.product-page .product-path{
-  gap: 8px;
-  cursor: default;
+  .normal__image{
+    display: none;
+  }
+
+
+  .product-page .product-path{
+    gap: 8px;
+    cursor: default;
   }
 
   .product-page .product-path a:hover{
@@ -43,16 +49,20 @@
   }
   
   
-.product-icon{
-  cursor: pointer;
-}
-
+  .product-icon{
+    cursor: pointer;
+  }
 
 @media only screen and (max-width: 991px) {
   .product-body{
     flex-direction: column;
     justify-content: center;
+    padding: 0px 4rem;
   }
+  .product__image{
+    width: 100%;
+  }
+
   .product-path{    
     font-size: 14px;
   }
@@ -66,5 +76,12 @@
   }
   .item-specifications{
     font-size: 16px;
+  }
+
+  .magnify__image{
+    display: none;
+  }
+  .normal__image{
+    display: block;
   }
 }

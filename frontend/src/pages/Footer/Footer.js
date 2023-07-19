@@ -38,7 +38,6 @@ const Footer = () => {
           <div className="Footer-links">
             <Link to={`nr-kids/return-policy`}>Return Policy</Link>
             <Link to={`nr-kids/Terms-and-conditions`}>Terms & Condition</Link>
-            <Link to={`nr-kids/security-and-privacy`}>Security & Privacy</Link>
           </div>
         </div>
       </div>

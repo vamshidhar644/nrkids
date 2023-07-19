@@ -66,6 +66,7 @@ p a:hover{
 @media screen and (max-width: 600px) {
   .cart__body{
     flex-direction: column;
+    padding: 0px 16px;
   }
   .cart__path, .cart-sub-header p{
     font-size: 14px;

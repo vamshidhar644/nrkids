@@ -67,9 +67,6 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
         </div>
       </div>
       <div className="py-3">
-        <center>
-          <h3>Add new address</h3>
-        </center>
         <AddressForm />
       </div>
     </div>

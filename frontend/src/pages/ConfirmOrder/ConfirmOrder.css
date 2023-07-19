@@ -17,7 +17,7 @@
   .popup-content {
     background-color: #fff;
     padding: 20px;
-    width: 700px;
+    width: 60%;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@
   .popup p{
     top: 0;
     right: 0;
-    font-size: 20px;
+    font-size: 24px;
     padding: 12px;
     cursor: pointer;
   }
@@ -55,3 +55,18 @@
     color: #fff;
     width: fit-content;
   }
+
+  
+
+  .close__icon{
+    position: absolute;
+    /* top: 0; */
+  }
+
+
+  
+@media only screen and (max-width: 991px) {
+  .popup-content{
+    width: 80%;
+  }
+}

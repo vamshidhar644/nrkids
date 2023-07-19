@@ -15,6 +15,9 @@
 .go-to-user:hover{
     color: var(--bs-hover-color);
 }
+.profile__sections{
+    justify-content: space-between;
+}
 .profile_section__list ul{
     flex-direction: column;
     background: var(--secondary-color);
@@ -158,19 +161,21 @@ textarea{
 .address__body .address{
     justify-content: space-between;
 }
-.address__body button{
+.new__address button{
     border: none;
     padding: 8px 16px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: #fff;
     font-weight: 600;
-    border: 1px solid var(--secondary-color);
     border-radius: 6px;
 }
 .saved__addresses{
     width: 50%;
 }
-
+.new__address{
+    justify-content: start;
+    align-items: start;
+}
 .address-card{
     display: flex;
     flex-direction: column;
@@ -213,6 +218,9 @@ textarea{
         border-left: none;
         border-bottom: 3px solid var(--primary-color);
     }
+    .profile__sections{
+        justify-content: center;
+    }
 
     
     .information__body{
@@ -243,6 +251,13 @@ textarea{
     .saved__addresses{
         font-size: 14px;
         width: 100%;
+    }
+    .new__address{
+        justify-content: center;
+        align-items: center;
+    }
+    .new__address button{
+        font-size: 14px;
     }
 
     .change_password__body{

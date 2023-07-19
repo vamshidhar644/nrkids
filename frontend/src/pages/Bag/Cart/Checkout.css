@@ -104,4 +104,7 @@
     left: -146px;
     font-size: 12px;
   }
+  .checkout__footer{
+    padding: 0px 12px;
+  }
 }

@@ -59,6 +59,14 @@ export default {
       },
     },
     {
+      name: 'sizeguide',
+      title: 'Size Guide',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'isData',
       title: 'Show Prices?',
       type: 'boolean',

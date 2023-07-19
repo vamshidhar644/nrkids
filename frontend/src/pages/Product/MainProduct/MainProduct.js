@@ -53,7 +53,11 @@ const MainProduct = ({ Product }) => {
     }
   }, [wishlist]);
 
+  console.log(Product);
+
   const watchImg = getImageUrl(Product.images[imageIndex]);
+
+  
 
   return (
     <div className="product-page p-4">
@@ -65,8 +69,9 @@ const MainProduct = ({ Product }) => {
         {Product.title}
       </p>
       <div className="product-body d-flex gap-5">
-        <div className="product-image d-flex flex-column">
+        <div className="product__image d-flex flex-column">
           <ReactImageMagnify
+            className="magnify__image"
             {...{
               smallImage: {
                 alt: '',
@@ -80,6 +85,7 @@ const MainProduct = ({ Product }) => {
               },
             }}
           />
+          <img src={watchImg} alt="" className="normal__image" />
 
           <div className="other-images d-flex justify-content-center">
             {Product.images &&

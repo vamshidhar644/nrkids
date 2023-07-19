@@ -16,13 +16,6 @@ const MyAddress = () => {
     fetchAddressData();
   }, [user]);
 
-  const handleAdd = (e) => {
-    e.preventDefault();
-
-    setNewform(!newForm);
-    setEditData(null);
-  };
-
   const handleEdit = (index) => {
     setNewform(!newForm);
     setEditData(address[index]);
@@ -37,9 +30,8 @@ const MyAddress = () => {
 
   return (
     <div className="address__body d-flex w-100 justify-content-between align-items-start gap-3">
-      <button onClick={handleAdd}>Add new Address</button>
       <div className="address d-flex w-100 gap-3">
-        <div className="saved__addresses d-flex flex-column mt-3 gap-3">
+        <div className="saved__addresses d-flex flex-column gap-3">
           {address &&
             address.map((address, i) => {
               return (
@@ -61,7 +53,7 @@ const MyAddress = () => {
               );
             })}
         </div>
-        {newForm ? <AddressForm editData={editData ? editData : ''} /> : null}
+        <AddressForm editData={editData ? editData : ''} />
       </div>
     </div>
   );

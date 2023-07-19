@@ -59,7 +59,7 @@ const ProfileBody = ({ userData }) => {
                   return (
                     <li
                       key={i}
-                      className={`profile__sections py-4 d-flex justify-content-between ${
+                      className={`profile__sections py-4 d-flex ${
                         section === profileList[i].title ? 'active-section' : ''
                       }`}
                       onClick={() => changeSection(item.title)}

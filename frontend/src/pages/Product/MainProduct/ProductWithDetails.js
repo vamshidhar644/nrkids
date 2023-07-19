@@ -8,10 +8,15 @@ import './ProductDetails.css';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { PostMongo } from '../../../BackOps/PostMongo';
+import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 const ProductDetails = ({ Product }) => {
   const { updatecart } = PostMongo();
+  const { getImageUrl } = FetchImageUrl();
   const { user } = UseAuthContext();
+  const [OpenPop, setOpenpop] = useState(false);
 
   const { setSizes, item } = ChangePriceperSize();
 
@@ -110,7 +115,27 @@ const ProductDetails = ({ Product }) => {
               <option value="none">Not listed</option>
             </select>
           </div>
-          <p className="size-guide text-nowrap m-0 small">Size guide</p>
+          {Product.sizeguide ? (
+            <p
+              className="size-guide text-nowrap m-0 small"
+              onClick={() => setOpenpop(!OpenPop)}
+            >
+              Size guide
+            </p>
+          ) : null}
+          {OpenPop && (
+            <div className="popup">
+              <div className="popup-content position-relative">
+                <img src={getImageUrl(Product.sizeguide)} alt="" width />
+                <p
+                  className="close__icon m-0"
+                  onClick={() => setOpenpop(!OpenPop)}
+                >
+                  <AiOutlineCloseCircle />
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {size === 'none' ? (
