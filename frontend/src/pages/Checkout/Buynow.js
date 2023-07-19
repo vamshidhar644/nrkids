@@ -4,7 +4,7 @@ import FetchImageUrl from '../../BackOps/FetchImageUrl';
 import { BiChevronRight } from 'react-icons/bi';
 import OrderAddress from './OrderAddress';
 import { UseAuthContext } from '../../hooks/useAuthContext';
-import ParentLogin from '../Login/ParentLogin';
+import Login from '../Login/Login';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 const Buynow = ({ Products }) => {
@@ -118,7 +118,7 @@ const Buynow = ({ Products }) => {
           </div>
         </div>
       ) : (
-        <ParentLogin />
+        <Login />
       )}
     </div>
   );

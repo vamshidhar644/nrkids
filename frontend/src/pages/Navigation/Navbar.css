@@ -183,28 +183,36 @@ nav ul.active {
 
 
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 894px) {
   html {
     font-size: 56.25%;
   }
   
   nav ul {
+    padding-top: 3rem;
     background-color: #fff;
     position: fixed;
     z-index: 999;
     width: 100vw;    
     left: -100vw;
+    top: 158px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 30px;
     transition: 1s;
     overflow-y: scroll;
-    gap: 0;
   }
   nav ul li a, nav ul{    
     font-size: 2.3rem;
+  }
+  
+  #ham-menu {
+    display: block;
+    font-size: 16px;
+    /* color: #ffffff; */
   }
   
   nav ul::-webkit-scrollbar-thumb {
@@ -224,8 +232,7 @@ nav ul.active {
     height: fit-content;
   }
 
-  .offer-section{
-    
+  .offer-section{    
     font-size: 2rem;
   }
 }
@@ -242,6 +249,9 @@ nav ul.active {
   #ham-menu {
     font-size: 3.2rem;
   }
+  nav ul{
+    bottom: 0;
+  }
 }
 @media only screen and (max-width: 575px) {
   html {
@@ -249,7 +259,7 @@ nav ul.active {
   }
   
   nav ul {
-    top: 0px;
-    /* height: calc(100vh - 60px); */
+    /* top: 0px; */
+    height: calc(100vh - 60px);
   }
 }
