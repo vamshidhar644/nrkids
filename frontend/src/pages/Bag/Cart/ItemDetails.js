@@ -140,7 +140,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
       {price ? (
         <div className="cart_item__details d-flex justify-content-between  align-items-start w-100 h-100">
           <div className="cart_item__price d-flex w-100 text-nowrap">
-            <p>₹ {price}</p>
+            <p>₹ {price}.00</p>
           </div>
 
           <div className="d-flex w-100 justify-content-between">
@@ -163,7 +163,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
             </div>
 
             <div className="cart_item__subtotal text-nowrap">
-              <p>₹ {subTotal}</p>
+              <p>₹ {subTotal}.00</p>
             </div>
           </div>
         </div>

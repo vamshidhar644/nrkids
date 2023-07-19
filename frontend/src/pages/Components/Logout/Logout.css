@@ -15,7 +15,7 @@
   }
   
   /* plus sign */
-  .logout__button {
+  .sign {
     width: 100%;
     transition-duration: .3s;
     display: flex;
@@ -23,11 +23,12 @@
     justify-content: center;
   }
   
-  .logout__button svg {
+  .sign svg {
+    color: ;
     width: 17px;
   }
   
-  .logout__button svg path {
+  .sign svg path {
     fill: white;
   }
   /* text */

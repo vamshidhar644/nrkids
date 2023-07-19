@@ -65,8 +65,8 @@ const Categories = ({ Products }) => {
       {/* <CategoryHero className="category-head" params={categorypath} /> */}
       <div className="category-body">
         <div className="products-container pb-4">
-          <div className="Product-Grid d-flex justify-content-start">
-            <div className="Cards-Grid w-100 justify-content-evenly">
+          <div className="Product-Grid d-flex justify-content-center">
+            <div className="Cards-Grid justify-content-evenly">
               {categoryProducts &&
                 categoryProducts.map((item, i) => {
                   return <ProductCard item={item} key={i} />;

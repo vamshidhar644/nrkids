@@ -39,7 +39,7 @@ const OrderItems = ({ data, cartItems, itemCount, totalPrice }) => {
             <div className="Checkout-body">
               <div className="checkout__row price">
                 <h6>Sub Total ({itemCount})</h6>
-                <p>₹ {totalPrice}</p>
+                <p>₹ {totalPrice}.00</p>
               </div>
               <div className="checkout__row discount">
                 <h6>Discount</h6>
@@ -62,7 +62,7 @@ const OrderItems = ({ data, cartItems, itemCount, totalPrice }) => {
               </div>
               <div className="checkout__row total-amount">
                 <h4>Total Amount</h4>
-                <h4>₹ {totalPrice}</h4>
+                <h4>₹ {totalPrice}.00</h4>
               </div>
             </div>
           </div>

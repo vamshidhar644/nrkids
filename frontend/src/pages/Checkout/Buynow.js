@@ -83,7 +83,7 @@ const Buynow = ({ Products }) => {
                     <div>
                       <div className="checkout__row price">
                         <h6>Sub Total (1 item)</h6>
-                        <p>₹ {data.price}</p>
+                        <p>₹ {data.price}.00</p>
                       </div>
                       <div className="checkout__row discount">
                         <h6>Discount</h6>
@@ -107,7 +107,7 @@ const Buynow = ({ Products }) => {
                       </div>
                       <div className="checkout__row total-amount">
                         <h4>Total Amount</h4>
-                        <h4>₹ {data.price}</h4>
+                        <h4>₹ {data.price}.00</h4>
                       </div>
                     </div>
                   </div>

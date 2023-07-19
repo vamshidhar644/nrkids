@@ -47,12 +47,6 @@ const ProductPage = ({ Products }) => {
         <div>
           <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-5">
             <h3 className="medium">Related items</h3>
-            {/* <Link
-              to={`/${data.dropdownField}`}
-              className="d-flex align-items-center"
-            > 
-              View all <AiOutlineRight />
-            </Link> */}
           </div>
           <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4 small">
             <div className="Cards-Container overflow-x-auto d-flex">

@@ -74,7 +74,7 @@ const ProductDetails = ({ Product }) => {
 
   return (
     <div className="product-withdata">
-      {size !== 'none' && <p className="product-price">₹ {price}</p>}
+      {size !== 'none' && <p className="product-price">₹ {price}.00</p>}
       <div className="item-specifications d-flex">
         <div className="select-quantity d-flex justify-content-center align-items-center">
           <p className="m-0">Quantity:</p>

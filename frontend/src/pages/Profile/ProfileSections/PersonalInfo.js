@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 // import { ImBin } from 'react-icons/im';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { PostMongo } from '../../../BackOps/PostMongo';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 
 const PersonalInfo = ({ userData }) => {
   const { user } = UseAuthContext();
@@ -134,15 +136,13 @@ const PersonalInfo = ({ userData }) => {
               <label htmlFor="phoneNumber" id="phoneNumber">
                 Mobile Number
               </label>
-              <p className="d-flex align-items-center m-0">
-                <span>+91 </span>&nbsp;&nbsp;&nbsp;
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  placeholder={userData.phoneNumber}
-                  onChange={(e) => setMobilenumber(e.target.value)}
-                />
-              </p>
+              <PhoneInput
+                placeholder="Enter phone number"
+                className="d-flex align-items-center m-0"
+                value={phoneNumber}
+                defaultCountry="IN"
+                onChange={setMobilenumber}
+              />
             </div>
             <div className="d-flex position-relative">
               <div className="d-flex flex-column w-50">

@@ -76,14 +76,14 @@ const Login = () => {
               </a>
             </div>
           </div>
-          <button className="sign" onClick={handleLogin}>
+          <button className="signin" onClick={handleLogin}>
             Sign in
           </button>
           {loginerror ? <p>{loginerror}</p> : <p></p>}
         </form>
-        <p className="signup m-0">Don't have an account?</p>
+        <p className="signup m-0 pt-2">Don't have an account?</p>
         <p className="google__signup" onClick={handleGoogleSignup}>
-          Signup with&nbsp;
+          Signup with&nbsp;&nbsp;
           <FcGoogle className="google-icon" />
         </p>
         {signerror ? <p className="m-0">{signerror}</p> : <p></p>}

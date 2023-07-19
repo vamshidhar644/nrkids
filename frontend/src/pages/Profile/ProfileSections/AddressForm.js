@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PostMongo } from '../../../BackOps/PostMongo';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 
 const AddressForm = ({ editData }) => {
   const { updateAddress } = PostMongo();
@@ -62,15 +64,15 @@ const AddressForm = ({ editData }) => {
               value={fullname}
               onChange={(e) => setFullname(e.target.value)}
             />
-            <input
-              type="text"
-              className="m-0"
-              placeholder="Mobile"
-              required="required"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-            />
           </div>
+
+          <PhoneInput
+            placeholder="Enter phone number"
+            className="d-flex align-items-center m-0 w-100"
+            value={mobile}
+            defaultCountry="IN"
+            onChange={setMobile}
+          />
           <div className="d-flex gap-2">
             <input
               placeholder="Email"
