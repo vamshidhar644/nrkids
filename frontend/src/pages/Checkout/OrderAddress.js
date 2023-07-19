@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { FetchMongo } from '../../BackOps/FetchMongo';
-import { FaWindowClose } from 'react-icons/fa';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 import AddressForm from '../Profile/ProfileSections/AddressForm';
 import ConfirmOrder from '../ConfirmOrder/ConfirmOrder';
@@ -48,7 +48,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
           {openConfirm && (
             <div className="popup">
               <div className="popup-content position-relative">
-                Are you sure want to confirm this Order?{' '}
+                <p>Are you sure want to confirm order this Address?</p>
                 <ConfirmOrder
                   cartItems={cartItems}
                   data={data}
@@ -56,10 +56,10 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
                   totalPrice={totalPrice}
                 />
                 <p
-                  className="position-absolute"
+                  className="close__icon m-0"
                   onClick={() => setOpenConfirm(!openConfirm)}
                 >
-                  <FaWindowClose />
+                  <AiOutlineCloseCircle />
                 </p>
               </div>
             </div>

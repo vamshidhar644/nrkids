@@ -2,7 +2,6 @@
 .newarrivals-head h3{
   color: var(--bs-font-color);
   gap: 4px;
-  font-size: 18px;
   font-weight: 600;
 }
 

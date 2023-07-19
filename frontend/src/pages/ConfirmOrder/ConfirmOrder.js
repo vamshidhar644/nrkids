@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { PostMongo } from '../../BackOps/PostMongo';
 import './ConfirmOrder.css';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   const { user } = UseAuthContext();
@@ -30,7 +31,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
     setorderedPincode(address.pincode);
     setItems(cartItems);
     settotalAmount(totalPrice);
-    // setshippingCost(0);
+    setshippingCost(0);
   }, []);
 
   const currentDate = new Date();
@@ -62,52 +63,29 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   };
 
   const ConfirmOrder = async () => {
-    console.log(orderedDate);
-    await addOrder(userId, orderData);
+    console.log(items);
+    // await addOrder(userId, orderData);
   };
 
   return (
-    <div>
+    <div className="confirm__card">
       <div>
-        <table>
-          <tr>
-            <td>Name</td>
-            <td>{orderedName}</td>
-          </tr>
-          <tr>
-            <td>Mobile</td>
-            <td>{orderedMobile}</td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>{orderedEmail}</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td>{orderedAddress}</td>
-          </tr>
-          <tr>
-            <td>Landmark</td>
-            <td>{orderedLocality}</td>
-          </tr>
-          <tr>
-            <td>State</td>
-            <td>{orderedState}</td>
-          </tr>
-          <tr>
-            <td>Pincode</td>
-            <td>{orderedPincode}</td>
-          </tr>
-          <tr>
-            <td>Total amount</td>
-            <td>{totalAmount}</td>
-          </tr>
-        </table>
-        <div className="d-flex justify-content-center py-2">
-          <p className="confirm-order" onClick={ConfirmOrder}>
-            Confirm Order
-          </p>
-        </div>
+        <p className="m-0">{orderedName}</p>
+        <p className="m-0">{address.email}</p>
+        <p className="m-0">{address.fullAddress}</p>
+        <p className="m-0">
+          {address.landmark}-<span>{address.pincode}</span>
+        </p>
+        <p className="m-0">{address.state}</p>
+        <p className="mt-2">Mobile {address.mobile}</p>
+      </div>
+      <p>
+        <AiOutlineInfoCircle /> Once you place the order the payment will be
+        done after seller confirmed. You can check the status in{' '}
+        <b>My Orders</b>.
+      </p>
+      <div className="confirm_order__button" onClick={ConfirmOrder}>
+        Confirm Order
       </div>
     </div>
   );
