@@ -63,8 +63,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   };
 
   const ConfirmOrder = async () => {
-    console.log(items);
-    // await addOrder(userId, orderData);
+    await addOrder(userId, orderData);
   };
 
   return (

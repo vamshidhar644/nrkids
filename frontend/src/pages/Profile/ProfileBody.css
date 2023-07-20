@@ -88,7 +88,7 @@
     cursor: pointer;
   }
   
-.user__inforomation input, textarea .change__password input{
+.user__inforomation input, textarea .change__password input, .new__address input{
     border: none;
     background: rgba(241, 241, 241, 1);
     border-radius: 4px;
@@ -177,7 +177,8 @@ textarea{
     justify-content: start;
     align-items: start;
 }
-.address-card{
+
+.checkout__address .address__card{
     display: flex;
     flex-direction: column;
     text-align: left;

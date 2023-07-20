@@ -59,7 +59,7 @@ const Footer = () => {
             <AiOutlineTwitter className="social-icon" />
           </Link>
         </div>
-        <p className="address">
+        <p className="footer__address d-flex justify-content-end align-items-center gap-1">
           <GoLocation /> Bangalore
         </p>
         <p>© 2023 | NRKids All Rights Reserved</p>

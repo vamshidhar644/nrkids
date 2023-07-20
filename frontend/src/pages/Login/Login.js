@@ -48,6 +48,7 @@ const Login = () => {
 
     await login(email, password);
   };
+
   return (
     <div className="Login__Parent">
       <div className="form__container">

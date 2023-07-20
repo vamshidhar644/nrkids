@@ -23,14 +23,14 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
   };
 
   return (
-    <div className="checkout-address">
+    <div className="checkout__address">
       <div>
         <h5>Saved Adresses</h5>
         <div className="saved__Address">
           {address &&
             address.map((address, i) => {
               return (
-                <div className="address-card p-3 pb-0" key={i}>
+                <div className="address__card p-3 pb-0" key={i}>
                   <h6>{address.fullname}</h6>
                   <p className="m-0 small">{address.email}</p>
                   <p className="m-0">{address.fullAddress}</p>
@@ -39,7 +39,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
                   </p>
                   <p className="m-0">{address.state}</p>
                   <h6 className="mt-2">Mobile {address.mobile}</h6>
-                  <div className=" deliver-address w-100 d-flex justify-content-end">
+                  <div className=" deliver__address w-100 d-flex justify-content-end">
                     <p onClick={() => setIndex(i)}>Deliver to this address</p>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
           )}
         </div>
       </div>
-      <div className="py-3">
+      <div className="py-3 px-5">
         <AddressForm />
       </div>
     </div>

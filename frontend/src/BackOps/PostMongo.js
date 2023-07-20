@@ -53,17 +53,20 @@ export const PostMongo = () => {
     dob,
     displayPic
   ) => {
-    const response = await fetch(`/api/user/${_id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        phoneNumber,
-        dob,
-        displayPic,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/${_id}`,
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          phoneNumber,
+          dob,
+          displayPic,
+        }),
+      }
+    );
 
     if (!response.ok) {
     }
@@ -75,15 +78,18 @@ export const PostMongo = () => {
 
   // P A S S W O R D S . . . . . . .
   const updatePassword = async (_id, email, oldpassword, newpassword) => {
-    const response = await fetch(`/api/user/${_id}/change-password`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        oldpassword,
-        newpassword,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/${_id}/change-password`,
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          oldpassword,
+          newpassword,
+        }),
+      }
+    );
 
     if (!response.ok) {
       console.log('Something went wrong');
@@ -95,11 +101,14 @@ export const PostMongo = () => {
   };
 
   const updatecart = async (productId, itemsData) => {
-    const response = await fetch(`/api/user/cart/${productId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ itemsData }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/cart/${productId}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ itemsData }),
+      }
+    );
     // const json = await response.json();
 
     if (!response.ok) {
@@ -138,20 +147,23 @@ export const PostMongo = () => {
       aId = `NKADDUID${date}${hours}${minutes}${seconds}${milliseconds}`;
     }
     const userId = user._id;
-    const response = await fetch(`/api/user/address/${aId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        userId,
-        fullname,
-        mobile,
-        email,
-        fullAddress,
-        landmark,
-        state,
-        pincode,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/address/${aId}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          fullname,
+          mobile,
+          email,
+          fullAddress,
+          landmark,
+          state,
+          pincode,
+        }),
+      }
+    );
     if (!response.ok) {
       console.log('Something went wrong');
     }
@@ -162,10 +174,13 @@ export const PostMongo = () => {
   };
 
   const deleteAddress = async (userId, addressId) => {
-    const response = await fetch(`/api/user/${userId}/address/${addressId}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/${userId}/address/${addressId}`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
 
     if (!response.ok) {
       console.log('Something went Wrong');
@@ -180,14 +195,17 @@ export const PostMongo = () => {
   const updateWishlist = async (productId) => {
     const userId = user._id;
 
-    const response = await fetch(`/api/user/wishlist/add`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        userId,
-        productId,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/wishlist/add`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          productId,
+        }),
+      }
+    );
 
     if (!response.ok) {
       console.log('Something went wrong');
@@ -200,10 +218,13 @@ export const PostMongo = () => {
   const deleteWishlist = async (productId) => {
     const userId = user._id;
 
-    const response = await fetch(`/api/user/${userId}/wishlist/${productId}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/${userId}/wishlist/${productId}`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
 
     if (!response.ok) {
       console.log('Something went wrong');
@@ -215,11 +236,14 @@ export const PostMongo = () => {
 
   const addOrder = async (userId, orderData) => {
     // console.log(userId, orderData);
-    const response = await fetch(`/api/user/order/${userId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ orderData }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/order/${userId}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderData }),
+      }
+    );
     // const json = await response.json();
 
     if (!response.ok) {

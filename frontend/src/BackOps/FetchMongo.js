@@ -15,7 +15,7 @@ export const FetchMongo = () => {
     if (user) {
       const id = user._id;
       axios
-        .get(`/api/user/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`)
         .then((response) => {
           setUserdata(response.data);
         })
@@ -30,7 +30,7 @@ export const FetchMongo = () => {
     if (user) {
       const id = user._id;
       axios
-        .get(`/api/user/cart/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/cart/${id}`)
         .then((response) => {
           setCartitems(response.data);
         })
@@ -45,7 +45,7 @@ export const FetchMongo = () => {
     if (user) {
       const id = user._id;
       axios
-        .get(`/api/user/address/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/address/${id}`)
         .then((response) => {
           setAddress(response.data);
         })
@@ -60,7 +60,7 @@ export const FetchMongo = () => {
     if (user) {
       const id = user._id;
       axios
-        .get(`/api/user/wishlist/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/wishlist/${id}`)
         .then((response) => {
           setWishlist(response.data);
         })
@@ -75,7 +75,7 @@ export const FetchMongo = () => {
     if (user) {
       const id = user._id;
       axios
-        .get(`/api/user/order/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/order/${id}`)
         .then((response) => {
           setOrders(response.data);
         })

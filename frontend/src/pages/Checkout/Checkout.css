@@ -1,4 +1,4 @@
-.checkout-address{
+.checkout__address{
     width: 100%;
 }
 .checkout-summary{
@@ -24,12 +24,27 @@
     gap: 20px;
     padding: 0rem 3rem;
 }
-.saved__Address .address-card{
+.saved__Address .address__card{
+    position: relative;
     min-width: 100%;
+    overflow: hidden;
 }
 
-.deliver-address{
+.deliver__address{
     cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.deliver__address p{
+    margin: 0;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    color:#fff ;
+    border-top-left-radius: 2rem;
+}
+.deliver__address p:hover{
+    color: var(--primary-color);
 }
 .checkout_summary__body{
     padding: 14px;
@@ -51,10 +66,10 @@
     .checkout__info h6{
         font-size: 14px;
     }
-    .saved__Address .address-card, .address-card h6{
+    .saved__Address .address__card, .address__card h6{
         font-size: 16px;
     }
-    .checkout-address h5{
+    .checkout__address h5{
         font-size: 14px;
         text-align: center;
     }
