@@ -25,12 +25,11 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
   return (
     <div className="checkout__address">
       <div>
-        <h5>Saved Adresses</h5>
         <div className="saved__Address">
           {address &&
             address.map((address, i) => {
               return (
-                <div className="address__card p-3 pb-0" key={i}>
+                <div className="address__card" key={i}>
                   <h6>{address.fullname}</h6>
                   <p className="m-0">{address.email}</p>
                   <p className="m-0">{address.fullAddress}</p>

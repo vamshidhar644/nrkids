@@ -18,7 +18,7 @@ const Checkout = ({ data }) => {
   }, [data]);
 
   return (
-    <div className="Checkout-Section">
+    <div className="Checkout__Section">
       <div className="Checkout-header">
         <h5>ORDER SUMMARY</h5>
       </div>
@@ -50,7 +50,7 @@ const Checkout = ({ data }) => {
           <h4>₹ {totalPrice}.00</h4>
         </div>
       </div>
-      <div className="checkout__footer pt-4">
+      <div className="checkout__footer">
         <Link
           to="/your-bag/check-out"
           className="place__order"

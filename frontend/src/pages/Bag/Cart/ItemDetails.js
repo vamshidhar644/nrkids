@@ -97,25 +97,21 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   };
 
   return (
-    <div className="cart-item-box d-flex w-100 align-items-center">
-      <div className="cart_item__box d-flex">
+    <div className="cart_item__main_box d-flex justify-content-between">
+      <div className="cart_item__box child1">
         <Link
-          className="cart-image-container overflow-hidden"
+          className="cart_image__container"
           to={`/${items.dropdownField}/${items.path.current}`}
           key={index}
         >
-          <img
-            className="w-100 h-100"
-            src={getImageUrl(items.images[0])}
-            alt=""
-          />
+          <img src={getImageUrl(items.images[0])} alt="" />
         </Link>
-        <div className="cart_item__info d-flex flex-column p-3">
+        <div className="cart_item__info d-flex flex-column">
           <h6 className="m-0">{items.title}</h6>
           <p className="m-0">Description</p>
 
           <div className="size__section d-flex align-items-center gap-2 pt-3">
-            <p className='m-0'>Size</p>
+            <p className="m-0">Size</p>
             <select
               name="size"
               id="size"
@@ -138,34 +134,28 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
       </div>
 
       {price ? (
-        <div className="cart_item__details d-flex justify-content-between  align-items-start w-100 h-100">
-          <div className="cart_item__price d-flex w-100 text-nowrap">
-            <p>₹ {price}.00</p>
-          </div>
+        <div className="child2 cart_item_details_box d-flex justify-content-around h-100">
+          <p>₹ {price}.00</p>
 
-          <div className="d-flex w-100 justify-content-between">
-            <div className="select-quantity d-flex justify-content-center align-items-center">
-              <div className="change-qty d-flex">
-                <div
-                  className="qty-button d-flex justify-content-center align-items-center"
-                  onClick={decr}
-                >
-                  <AiOutlineMinus />
-                </div>
-                <label>{qty}</label>
-                <div
-                  className="qty-button d-flex justify-content-center align-items-center"
-                  onClick={incr}
-                >
-                  <AiOutlinePlus />
-                </div>
+          <div className="select-quantity d-flex justify-content-center align-items-center">
+            <div className="change-qty d-flex">
+              <div
+                className="qty-button d-flex justify-content-center align-items-center"
+                onClick={decr}
+              >
+                <AiOutlineMinus />
+              </div>
+              <label>{qty}</label>
+              <div
+                className="qty-button d-flex justify-content-center align-items-center"
+                onClick={incr}
+              >
+                <AiOutlinePlus />
               </div>
             </div>
-
-            <div className="cart_item__subtotal text-nowrap">
-              <p>₹ {subTotal}.00</p>
-            </div>
           </div>
+
+          <p>₹ {subTotal}.00</p>
         </div>
       ) : (
         <DetailsWithoutData Product={items} />

@@ -4,6 +4,10 @@
     border-bottom: 1px solid #6b6969;
   }
 
+  .Checkout__Section{
+    width: 50%;
+  }
+
   .Checkout-header h5{
     font-weight: 700;
     color: var(--secondary-color);
@@ -45,6 +49,7 @@
     display: flex;
     justify-content: space-around;
     gap: 20px;
+    padding-top: 12px;
   }
 
   .checkout__footer a{
@@ -89,14 +94,22 @@
 }
   
 /* Smart phones */
-@media screen and (max-width: 600px) {
-
+@media screen and (max-width: 991px) {
+  .Checkout__Section{
+    width: 100%;
+  }
+  .Checkout-header{
+    padding: 0px;
+  }
+  .Checkout-body{
+    padding: 8px 0px;
+  }
+  .checkout__footer a{
+    padding: 6px;
+  }
   .hover-text{
     top: -44px;
     left: -146px;
     font-size: 12px;
-  }
-  .checkout__footer{
-    padding: 0px 12px;
   }
 }

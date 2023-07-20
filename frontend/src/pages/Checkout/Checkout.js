@@ -30,16 +30,16 @@ const Checkout = ({ Products }) => {
   return (
     <div className="p-4">
       <div>
-        <p className="checkout__path d-flex justify-content-start align-items-center gap-2">
+        <p className="checkout__path d-flex justify-content-start align-items-center">
           <Link to="/">Home </Link>
           <BiChevronRight /> <Link to="/your-bag">Shopping cart </Link>
           <BiChevronRight /> Checkout
         </p>
-        <div className="cart-header pt-4 pb-3">
+        <div className="cart-header">
           <h1>Checkout</h1>
         </div>
       </div>
-      <div className="checkout__body d-flex">
+      <div className="checkout__body d-flex justify-content-between">
         <OrderAddress
           data={filteredItems}
           cartItems={data}

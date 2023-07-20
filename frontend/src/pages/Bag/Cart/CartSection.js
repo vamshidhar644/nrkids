@@ -38,30 +38,34 @@ const CartSection = ({ SanityProducts, cartItems }) => {
   };
 
   return (
-    <div className="cart- p-4">
+    <div className="shopping__cart p-4">
       <div className="cart__path">
-        <p className="d-flex justify-content-start align-items-center gap-2">
+        <p className="d-flex justify-content-start align-items-center m-0">
           <Link to="/">Home </Link>
           <BiChevronRight /> Shopping cart
         </p>
-        <div className="cart-header d-flex justify-content-between align-items-center py-3">
+        <div className="cart-header d-flex align-items-center py-3">
           <h1>Shopping cart</h1>
         </div>
       </div>
-      <div className="cart__body d-flex justify-content-between gap-5">
-        <div className="d-flex flex-column">
-          <div className="cart-sub-header d-flex mb-4">
-            <p>Product</p>
-            <p>Price</p>
-            <p>Quantity</p>
-            <p>Subtotal</p>
+      <div className="cart__body d-flex justify-content-between">
+        <div className="w-100 gap-3">
+          <div className="cart_item__header mb-3 d-flex justify-content-between">
+            <div className="child child1">
+              <p>Product</p>
+            </div>
+            <div className="child child2 d-flex justify-content-between">
+              <p>Price</p>
+              <p>Quantity</p>
+              <p>Subtotal</p>
+            </div>
           </div>
-          <div className="cart-item-section d-flex flex-column">
+          <div className="cart_item__section d-flex flex-column">
             {SanityProducts &&
               SanityProducts.map((item, index) => {
                 return (
-                  <div className="cart__item d-flex" key={index}>
-                    <div className="cart-box d-flex justify-content-flex-start  position-relative">
+                  <div className="cart__item" key={index}>
+                    <div className="cart_box position-relative">
                       <ItemDetails
                         items={item}
                         index={index}
@@ -76,6 +80,7 @@ const CartSection = ({ SanityProducts, cartItems }) => {
                         <p onClick={() => handleDelete(index)}>Remove</p>
                       </div>
                     </div>
+                    <hr />
                   </div>
                 );
               })}
