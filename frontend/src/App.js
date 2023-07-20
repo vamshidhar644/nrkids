@@ -52,7 +52,7 @@ function App() {
   }, [user]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="nrkids">
       {/* <Navigation /> */}
       <Navbar />
       <Routes>
