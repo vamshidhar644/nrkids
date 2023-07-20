@@ -156,6 +156,7 @@ nav ul.active {
 .Close{
   right: 0;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .marquee-container {
@@ -195,14 +196,14 @@ nav ul.active {
     z-index: 999;
     width: 100vw;    
     left: -100vw;
-    top: 158px;
+    top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 30px;
-    transition: 1s;
+    transition: .8s;
     overflow-y: scroll;
   }
   nav ul li a, nav ul{    
@@ -234,6 +235,7 @@ nav ul.active {
 
   .offer-section{    
     font-size: 2rem;
+    min-height: 24px;
   }
 }
 
@@ -257,9 +259,5 @@ nav ul.active {
   html {
     font-size: 46.87%;
   }
-  
-  nav ul {
-    /* top: 0px; */
-    height: calc(100vh - 60px);
-  }
+
 }

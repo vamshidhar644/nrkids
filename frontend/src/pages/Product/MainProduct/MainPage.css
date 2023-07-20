@@ -47,7 +47,13 @@
     background-color: #000;
     color: #fff;
   }
-  
+
+  .item-specifications{
+    justify-content: center;
+  }
+  .change-qty{
+    width: fit-content;
+  }
   
   .product-icon{
     cursor: pointer;
@@ -76,6 +82,7 @@
   }
   .item-specifications{
     font-size: 16px;
+    align-items: start !important;
   }
 
   .magnify__image{
@@ -83,5 +90,13 @@
   }
   .normal__image{
     display: block;
+  }
+  .select-size{
+    flex-direction: column;
+  }
+  .product-buttons{
+    flex-direction: column;
+    justify-content: flex-start !important;
+    gap: 0px !important;
   }
 }

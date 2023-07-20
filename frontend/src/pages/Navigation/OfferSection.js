@@ -24,7 +24,7 @@ const OfferSection = () => {
               </div>
             </div>
           )}
-          <p className="Close m-0 p-0 px-2" onClick={() => setCloseOffer(true)}>
+          <p className="Close m-0 p-0 px-4" onClick={() => setCloseOffer(true)}>
             X
           </p>
         </div>

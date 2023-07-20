@@ -94,21 +94,19 @@ const Navbar = () => {
           </Link>
         </div>
         <ul id="nav-bar" className={isActive ? 'active' : ''}>
-          {/* <i
+          <i
             className={`fas ${isActive ? 'fa-times' : 'fa-bars'}`}
             style={{ width: '100%' }}
             id="ham-menu"
             onClick={toggleNavbar}
-          ></i> */}
+          ></i>
           <li>
             <NavLink to="/new-arrivals" onClick={closeNavbar}>
               NEW ARRIVALS
             </NavLink>
           </li>
           <li className="dropdownn">
-            <p className="m-0">
-              SHOP BY CATEGORY
-            </p>
+            <p className="m-0">SHOP BY CATEGORY</p>
             <ul className="dropdownn-menu shop w-100">
               <li className="nav-item">
                 <NavLink

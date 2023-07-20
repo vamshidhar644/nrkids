@@ -76,27 +76,27 @@ const ProductDetails = ({ Product }) => {
     <div className="product-withdata">
       {size !== 'none' && <p className="product-price">₹ {price}.00</p>}
       <div className="item-specifications d-flex">
-        <div className="select-quantity d-flex justify-content-center align-items-center">
-          <p className="m-0">Quantity:</p>
+        <div className="select-quantity d-flex ">
+          <p className="m-0">Quantity </p>
           <div className="change-qty d-flex">
             <div
-              className="qty-button d-flex justify-content-center align-items-center"
+              className="qty-button align-items-center"
               onClick={() => (quantity === 1 ? null : setQty(quantity - 1))}
             >
               <AiOutlineMinus />
             </div>
             <label>{quantity}</label>
             <div
-              className="qty-button d-flex justify-content-center align-items-center"
+              className="qty-button align-items-center"
               onClick={() => setQty(quantity + 1)}
             >
               <AiOutlinePlus />
             </div>
           </div>
         </div>
-        <div className="size-section d-flex justify-content-center align-items-center">
-          <div className="select-size d-flex align-items-center">
-            <p className="m-0">Size:</p>
+        <div className="size-section align-items-center">
+          <div className="select-size d-flex">
+            <p className="m-0">Size </p>
             <select
               name="size"
               id="size"
@@ -117,7 +117,7 @@ const ProductDetails = ({ Product }) => {
           </div>
           {Product.sizeguide ? (
             <p
-              className="size-guide text-nowrap m-0 small"
+              className="size-guide text-nowrap m-0 small pt-2"
               onClick={() => setOpenpop(!OpenPop)}
             >
               Size guide
@@ -141,7 +141,7 @@ const ProductDetails = ({ Product }) => {
       {size === 'none' ? (
         <DetailsWithoutData Product={Product} />
       ) : (
-        <div className="product-buttons d-flex p-3">
+        <div className="product-buttons d-flex">
           <button
             className="product-button cart-button d-flex justify-content-center align-items-center"
             onClick={UpdateCart}

@@ -55,7 +55,7 @@ const Login = () => {
         <p className="title">Login</p>
         <form className="form">
           <div className="input-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Email</label>
             <input
               type="email"
               placeholder="Email"

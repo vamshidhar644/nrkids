@@ -9,6 +9,8 @@
     padding: 12px;
     padding-left: 0px;
     gap: 12px;
+    justify-content: flex-start;
+    align-items: center;
 }
   
 .select-quantity, .select-size{
@@ -96,5 +98,10 @@
     }
     .product-description a{
         font-size: 1.8rem;
+    }
+    .select-quantity, .select-size{
+        flex-direction: column;
+        gap: 0px;
+        align-items: flex-start;
     }
 }

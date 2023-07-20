@@ -13,22 +13,25 @@ export const useSignup = () => {
     email,
     password,
     displayPic
-  ) => { 
+  ) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch('/api/user/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        _id,
-        firstName,
-        lastName,
-        email,
-        password,
-        displayPic,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/signup`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _id,
+          firstName,
+          lastName,
+          email,
+          password,
+          displayPic,
+        }),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
