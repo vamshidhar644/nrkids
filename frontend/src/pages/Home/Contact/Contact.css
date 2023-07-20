@@ -45,9 +45,11 @@
 @media screen and (max-width: 600px) {
     .Chat-Container h1{
         font-size: 2.3rem;
+        white-space: nowrap;
     }
     .Chat-Container p{
         font-size: 1.8rem;
+        white-space: nowrap;
     }
     .contact-button a{
         font-size: 1.6rem;

@@ -90,7 +90,9 @@
 
 /* Laptops */
 @media screen and (max-width: 992px) {
-  
+  .newarrivals-head h3{
+    font-size: 2.5rem;
+  }
 }
 
 /* Monitors */

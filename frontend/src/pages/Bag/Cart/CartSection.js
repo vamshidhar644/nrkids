@@ -17,7 +17,7 @@ const CartSection = ({ SanityProducts, cartItems }) => {
   const handleDelete = async (index) => {
     try {
       await axios.delete(
-        `api/user/${user._id}/cart/${cartItems[index].productId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/${user._id}/cart/${cartItems[index].productId}`
       );
       window.location.reload();
     } catch (error) {

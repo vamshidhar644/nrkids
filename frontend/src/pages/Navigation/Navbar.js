@@ -93,7 +93,7 @@ const Navbar = () => {
             <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
           </Link>
         </div>
-        <ul id="nav-bar" className={isActive ? 'active' : ''}>
+        <ul id="nav-bar" className={`ul ${isActive ? 'active' : ''}`}>
           <i
             className={`fas ${isActive ? 'fa-times' : 'fa-bars'}`}
             style={{ width: '100%' }}
@@ -191,7 +191,7 @@ const Navbar = () => {
             {user ? (
               <div className="dropdownn">
                 <AiOutlineUser />
-                <ul className="dropdownn-menu user__profile">
+                <ul className="user__profile">
                   <li className="nav-item">
                     <NavLink
                       className="profile-d"
