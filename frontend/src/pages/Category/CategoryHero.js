@@ -30,7 +30,7 @@ const CategoryHero = ({ params }) => {
 
   return (
     <div className="hero-container p-4">
-      <p className="d-flex justify-content-start align-items-center gap-2 small">
+      <p className="d-flex justify-content-start align-items-center gap-2">
         <Link to="/">Home </Link>
         <BiChevronRight /> {categorypath}
       </p>

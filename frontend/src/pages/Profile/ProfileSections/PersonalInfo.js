@@ -66,7 +66,7 @@ const PersonalInfo = ({ userData }) => {
   };
 
   return (
-    <div className="w-100">
+    <div>
       <div className="information__body">
         <div className="user_image__section align-items-end p-2 gap-4">
           <div className="profile-image-container">

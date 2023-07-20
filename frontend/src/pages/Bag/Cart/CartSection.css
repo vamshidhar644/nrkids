@@ -19,7 +19,6 @@ p a:hover{
 
 .cart-header h1{
   color: var(--secondary-color);
-  font-size: 32px;
   margin: 0px;
 }
 
@@ -45,10 +44,6 @@ p a:hover{
   text-decoration: underline;
 }
 
-.cart-sub-header{
-  justify-content: space-evenly;
-}
-
 .cart-sub-header p{
   min-width: 220px;
   text-align: right;
@@ -63,13 +58,10 @@ p a:hover{
 
 
 /* Smart phones */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 991px) {
   .cart__body{
     flex-direction: column;
     padding: 0px 16px;
-  }
-  .cart__path, .cart-sub-header p{
-    font-size: 14px;
   }
   .cart-sub-header{
     justify-content: space-between;
@@ -79,9 +71,6 @@ p a:hover{
     width: 100%;
     text-align: center;
   }
-  .cart_item__details{
-    font-size: 2rem;
-  }
   .cart_item__box{
     flex-direction: column;
   }
@@ -89,19 +78,6 @@ p a:hover{
     margin-left: 3rem;
     justify-content: start;
     width: 50% !important;
-  }
-  .cart_item__subtotal{
-    padding-right: 4rem;
-  }
-  .cart_item__info{
-    font-size: 1.7rem;
-  }
-  .cart_item__info h6{
-    font-size: 2.3rem;
-  }
-  .cart__buttons{
-    
-  font-size: 2rem;
   }
 }
   

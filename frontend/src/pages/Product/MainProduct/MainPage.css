@@ -67,19 +67,13 @@
     width: 100%;
   }
 
-  .product-path{    
-    font-size: 14px;
-  }
   .product-title{
-    font-size: 32px;
     font-weight: 600;
   }
   .product-subtitle{
-    font-size: 24px;
     font-weight: 300;
   }
   .item-specifications{
-    font-size: 16px;
     align-items: start !important;
   }
 

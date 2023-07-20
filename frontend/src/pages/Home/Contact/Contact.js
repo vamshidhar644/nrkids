@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div>
       <div className="Chat-Container">
-        <h1>Chat with our experts</h1>
+        <h3>Chat with our experts</h3>
         <p>Confused for fitting or other questions??</p>
         <div className="contact-button">
           <a

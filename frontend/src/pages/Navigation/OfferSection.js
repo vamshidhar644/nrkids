@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FetchSanity } from '../../BackOps/FetchSanity';
+import { MdClose } from 'react-icons/md';
 
 const OfferSection = () => {
   const { fetchOfferLine, offerLine } = FetchSanity();
@@ -24,8 +25,8 @@ const OfferSection = () => {
               </div>
             </div>
           )}
-          <p className="Close m-0 p-0 px-4" onClick={() => setCloseOffer(true)}>
-            X
+          <p className="Close m-0 p-0 px-3" onClick={() => setCloseOffer(true)}>
+            <MdClose />
           </p>
         </div>
       )}

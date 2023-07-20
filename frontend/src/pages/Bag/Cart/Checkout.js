@@ -18,7 +18,7 @@ const Checkout = ({ data }) => {
   }, [data]);
 
   return (
-    <div className="Checkout-Section w-100">
+    <div className="Checkout-Section">
       <div className="Checkout-header">
         <h5>ORDER SUMMARY</h5>
       </div>

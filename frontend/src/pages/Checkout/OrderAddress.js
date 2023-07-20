@@ -32,7 +32,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
               return (
                 <div className="address__card p-3 pb-0" key={i}>
                   <h6>{address.fullname}</h6>
-                  <p className="m-0 small">{address.email}</p>
+                  <p className="m-0">{address.email}</p>
                   <p className="m-0">{address.fullAddress}</p>
                   <p className="m-0">
                     {address.landmark}-<span>{address.pincode}</span>

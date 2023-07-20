@@ -51,26 +51,14 @@
 }
 
 @media only screen and (max-width: 991px){
-    .checkout__path{
-        font-size: 14px;
-    }
+    
     .checkout__body{
         flex-direction: column-reverse;
     }
     .checkout-summary{
         width: 100%;
     }
-    .checkout__info{
-        font-size: 14px;
-    }
-    .checkout__info h6{
-        font-size: 14px;
-    }
-    .saved__Address .address__card, .address__card h6{
-        font-size: 16px;
-    }
     .checkout__address h5{
-        font-size: 14px;
         text-align: center;
     }
 }

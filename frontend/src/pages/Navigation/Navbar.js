@@ -186,11 +186,10 @@ const Navbar = () => {
         </ul>
 
         <div className="nav__section_2 w-100 d-flex justify-content-end">
-          {/* <SearchBar className="Search-Section" /> */}
-          <div className="input-wrapper d-flex gap-3">
+          <div className="input-wrapper d-flex gap-2">
             {user ? (
               <div className="dropdownn">
-                <AiOutlineUser />
+                <AiOutlineUser className="nav__icon" />
                 <ul className="user__profile">
                   <li className="nav-item">
                     <NavLink
@@ -210,14 +209,14 @@ const Navbar = () => {
               </div>
             ) : (
               <Link className="nav-bar-icons " to="/login-or-signup">
-                <AiOutlineUser />
+                <AiOutlineUser className="nav__icon" />
               </Link>
             )}
             <Link className="nav-bar-icons" to="/wishlist">
-              <AiOutlineHeart />
+              <AiOutlineHeart className="nav__icon" />
             </Link>
             <Link className="nav-bar-icons" to="/your-bag">
-              <BsHandbag />
+              <BsHandbag className="nav__icon" />
             </Link>
           </div>
         </div>

@@ -5,10 +5,8 @@
     background: var(--fuschia-100, var(--primary-color));
 }
 
-
-
 .icon-space{
-    font-size: 34px;
+    font-size: 2rem;
 }
 
 /* Smart phones */
@@ -36,27 +34,6 @@
         white-space: nowrap;
         align-items: center;
     }
-    .bar-content h3{
-        font-size: 230%;
-    }
-    
-    .bar-content p{
-        font-size: 180%;
-    }
+
    }
    
-   
-   /* Tablets */
-   @media screen and (max-width: 768px) {
-     
-   }
-   
-   /* Laptops */
-   @media screen and (max-width: 992px) {
-     
-   }
-   
-   /* Monitors */
-   @media screen and (min-width: 1200px) {
-     
-   }

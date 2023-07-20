@@ -6,7 +6,6 @@
 
   .Checkout-header h5{
     font-weight: 700;
-    font-size: 18px;
     color: var(--secondary-color);
   }
 
@@ -23,9 +22,9 @@
   }
 
   .checkout__row p{
-    font-size: 16px;
     font-weight: 600;
     margin: 0px;
+    white-space: nowrap;
   }
 
   
@@ -39,7 +38,6 @@
   }
 
   .total-amount h4{
-    font-size: 20px;
     font-weight: 600;
   }
 
@@ -55,7 +53,6 @@
     padding: 12px;
     text-align: center;
     border-radius: 6px;
-    font-size: 16px;
     white-space: nowrap;
   }
 
@@ -93,12 +90,7 @@
   
 /* Smart phones */
 @media screen and (max-width: 600px) {
-  .checkout__row h6{
-    font-size: 2rem;
-  }
-  .qstn__container svg{
-    font-size: 2rem;
-  }
+
   .hover-text{
     top: -44px;
     left: -146px;

@@ -70,8 +70,8 @@ const Buynow = ({ Products }) => {
                         </div>
                         <div className="">
                           <h6>{filteredItems[0].title}</h6>
-                          <p className="m-0 small">Description</p>
-                          <p className="d-flex gap-3 justify-content-between w-100 m-0 small">
+                          <p className="m-0">Description</p>
+                          <p className="d-flex gap-3 justify-content-between w-100 m-0">
                             <span>Quantity - {data.quantity}</span>
                             <span>Size - {data.size}</span>
                           </p>

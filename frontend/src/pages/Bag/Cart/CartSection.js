@@ -38,52 +38,50 @@ const CartSection = ({ SanityProducts, cartItems }) => {
   };
 
   return (
-    <div className="cart-page d-flex justify-content-between bg-white">
-      <div className="cart-items w-100 p-4">
-        <div className="cart__path">
-          <p className="d-flex justify-content-start align-items-center gap-2">
-            <Link to="/">Home </Link>
-            <BiChevronRight /> Shopping cart
-          </p>
-          <div className="cart-header d-flex justify-content-between align-items-center py-3">
-            <h1>Shopping cart</h1>
-          </div>
+    <div className="cart- p-4">
+      <div className="cart__path">
+        <p className="d-flex justify-content-start align-items-center gap-2">
+          <Link to="/">Home </Link>
+          <BiChevronRight /> Shopping cart
+        </p>
+        <div className="cart-header d-flex justify-content-between align-items-center py-3">
+          <h1>Shopping cart</h1>
         </div>
-        <div className="cart__body d-flex justify-content-between gap-5">
-          <div className="d-flex flex-column">
-            <div className="cart-sub-header d-flex mb-4">
-              <p>Product</p>
-              <p>Price</p>
-              <p>Quantity</p>
-              <p>Subtotal</p>
-            </div>
-            <div className="cart-item-section d-flex flex-column">
-              {SanityProducts &&
-                SanityProducts.map((item, index) => {
-                  return (
-                    <div className="cart__item d-flex" key={index}>
-                      <div className="cart-box w-100 d-flex justify-content-flex-start  position-relative">
-                        <ItemDetails
-                          items={item}
-                          index={index}
-                          cartItems={cartItems}
-                          onDataChange={handleDataChange}
-                        />
+      </div>
+      <div className="cart__body d-flex justify-content-between gap-5">
+        <div className="d-flex flex-column">
+          <div className="cart-sub-header d-flex mb-4">
+            <p>Product</p>
+            <p>Price</p>
+            <p>Quantity</p>
+            <p>Subtotal</p>
+          </div>
+          <div className="cart-item-section d-flex flex-column">
+            {SanityProducts &&
+              SanityProducts.map((item, index) => {
+                return (
+                  <div className="cart__item d-flex" key={index}>
+                    <div className="cart-box d-flex justify-content-flex-start  position-relative">
+                      <ItemDetails
+                        items={item}
+                        index={index}
+                        cartItems={cartItems}
+                        onDataChange={handleDataChange}
+                      />
 
-                        <div className="cart__buttons d-flex position-absolute">
-                          <p onClick={() => handleWishlist(index)}>
-                            Move to wishlist
-                          </p>
-                          <p onClick={() => handleDelete(index)}>Remove</p>
-                        </div>
+                      <div className="cart__buttons d-flex position-absolute">
+                        <p onClick={() => handleWishlist(index)}>
+                          Move to wishlist
+                        </p>
+                        <p onClick={() => handleDelete(index)}>Remove</p>
                       </div>
                     </div>
-                  );
-                })}
-            </div>
+                  </div>
+                );
+              })}
           </div>
-          <Checkout cartItems={cartItems} data={data} />
         </div>
+        <Checkout cartItems={cartItems} data={data} />
       </div>
     </div>
   );

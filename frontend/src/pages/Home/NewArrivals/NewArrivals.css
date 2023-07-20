@@ -40,25 +40,6 @@
   transition: opacity 0.6s;
 }
 
-.scrol__arrows{
-  padding: 12px;
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 0px;
-}
-
-.scroll-button{
-  font-size: 28px;
-  cursor: pointer;
-  transition: .9s ease all;
-  border-radius: 8px;
-  height: fit-content;
-}
-
-.scroll-button:hover{
-  background-color: var(--secondary-color);
-  color: #fff;
-}
 
 .Product-Details{
   position: relative;
@@ -76,26 +57,3 @@
   color: var(--bs-hover-color);
 }
 
-/* Smart phones */
-@media screen and (max-width: 600px) {
-  .newarrivals-head{
-    /* padding: 2px; */
-  }
-}
-
-/* Tablets */
-@media screen and (max-width: 768px) {
-  
-}
-
-/* Laptops */
-@media screen and (max-width: 992px) {
-  .newarrivals-head h3{
-    font-size: 2.5rem;
-  }
-}
-
-/* Monitors */
-@media screen and (min-width: 1200px) {
-  
-}

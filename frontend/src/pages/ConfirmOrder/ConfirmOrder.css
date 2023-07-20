@@ -50,6 +50,7 @@
     top: 0;
     right: 0;
     font-size:  1.6rem;
+    padding: 0px 14px;
     /* top: 0; */
   }
 
@@ -58,10 +59,8 @@
 @media only screen and (max-width: 991px) {
   .popup-content{
     width: 85%;
-    font-size: 14px;
   }
   .close__icon{
-    font-size: 18px;
     padding: 12px;
   }
 }

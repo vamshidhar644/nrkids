@@ -1,7 +1,6 @@
 
 
 .product-price {
-    font-size: 28px;
     font-weight: 600;
   }
   
@@ -70,7 +69,6 @@
 .product-button {
     padding: 8px 5rem;
     gap: 12px;
-    font-size: 18px;
     font-weight: 500;
     width: 100%;
     white-space: nowrap;
@@ -93,12 +91,7 @@
 
 
 @media only screen and (max-width: 991px){
-    .product-description p{
-        font-size: 1.8rem;
-    }
-    .product-description a{
-        font-size: 1.8rem;
-    }
+   
     .select-quantity, .select-size{
         flex-direction: column;
         gap: 0px;

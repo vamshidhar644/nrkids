@@ -48,15 +48,13 @@
     justify-content: flex-end;
     align-items: center;
     gap: 12px;
-    font-size: 26px;
-    padding: 8px 0px;
+    padding: 12px 0px;
 }
 
 .social-icon{
     padding: 4px;
-    border-radius: 50%;
-    background-color: #5085B9;
-    color: #1B4B66;
+    font-size: 2rem;
+    color: var(--primary-color);
 }
 
 .footer_address{
@@ -65,8 +63,8 @@
 
  .footer__logo{
     margin: 0;
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
 }
 
 .footer__logo img{
@@ -90,11 +88,12 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 24px;
-        padding-left: 4rem;
-        font-size: 18px;
+        /* padding-left: 4rem; */
+    }
+    .box1, .box2{
+        padding-left: 2rem;
     }
     .social-icons{
-        font-size: 24px;
         padding: 0;
     }
 
