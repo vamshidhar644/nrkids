@@ -85,6 +85,7 @@ nav ul.active {
 }
 
 .dropdownn-menu li, .user__profile li {
+  background-color: #fff;
   display: flex;
   justify-content: center;
 }
@@ -240,7 +241,6 @@ nav ul.active {
   .user__profile{
     width: fit-content;
     height: fit-content;
-
   }
 
   .offer-section{    

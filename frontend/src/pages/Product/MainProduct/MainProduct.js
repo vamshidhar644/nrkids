@@ -87,7 +87,7 @@ const MainProduct = ({ Product }) => {
           />
           <img src={watchImg} alt="" className="normal__image" />
 
-          <div className="other-images d-flex justify-content-center">
+          <div className="other-images d-flex justify-content-start">
             {Product.images &&
               Product.images.map((image, path) => {
                 const url = getImageUrl(image);
