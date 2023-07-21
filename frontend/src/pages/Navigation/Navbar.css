@@ -257,6 +257,7 @@ nav ul.active {
     color: var(--primary-color);
     position: fixed;
     margin: 0px;
+    bottom: 0;
     padding: 10px;
     text-align: center;
     transition: transform .9s;

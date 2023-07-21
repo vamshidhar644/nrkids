@@ -2,7 +2,11 @@
 .cart-page p{
   cursor: default;
 }
-
+.Parent__Cart, .Parent__Wishlist{
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-start;
+}
 .cart_item__header {
   cursor: default;
   border-bottom: 1px solid;
@@ -23,16 +27,14 @@
 .cart__body{
   gap: 2rem;
 }
-
+.cart_box{
+  border-radius: 16px;
+  overflow: hidden;
+}
 .cart-header h1{
   color: var(--secondary-color);
   margin: 0px;
 }
-
-.cart_item__section{
-  gap: 32px;
-}
-
 
 .cart_image__container{
   display: flex;
@@ -47,8 +49,16 @@
 }
 
 .cart__buttons{
+  right: 0;
+  bottom: 0;
   gap: 24px;
-  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #fff;
+  justify-content: center;
+  background-color: #B00020;
+  border-top-left-radius: 16px;
 }
 
 .cart__buttons p:hover{

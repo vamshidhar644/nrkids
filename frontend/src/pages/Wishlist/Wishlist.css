@@ -1,13 +1,18 @@
 .wishlist-grid{
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    justify-content: start;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
     gap: 15px;
+}
+
+.no__items{
+    text-align: center;
 }
 
 
 @media only screen and (max-width: 991px){
-    .wishlist__path{
-        /* font-size: 14px; */
+    .wishlist-grid{
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
     }
 }

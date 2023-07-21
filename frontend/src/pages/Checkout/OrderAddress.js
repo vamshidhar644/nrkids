@@ -20,6 +20,11 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
   const setIndex = (i) => {
     setOpenConfirm(!openConfirm);
     setAddress(address[i]);
+    document.body.style.overflow = 'hidden';
+  };
+  const closePopup = () => {
+    setOpenConfirm(!openConfirm);
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -47,17 +52,17 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
           {openConfirm && (
             <div className="popup">
               <div className="popup-content position-relative">
-                <p>Are you sure want to confirm order this Address?</p>
+                <p className="m-0">
+                  Are you sure want to confirm order this Address?
+                </p>
+                <hr />
                 <ConfirmOrder
                   cartItems={cartItems}
                   data={data}
                   address={orderAddress}
                   totalPrice={totalPrice}
                 />
-                <p
-                  className="close__icon m-0"
-                  onClick={() => setOpenConfirm(!openConfirm)}
-                >
+                <p className="close__icon m-0" onClick={closePopup}>
                   <AiOutlineCloseCircle />
                 </p>
               </div>

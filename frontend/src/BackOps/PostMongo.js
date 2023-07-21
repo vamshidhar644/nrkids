@@ -92,7 +92,7 @@ export const PostMongo = () => {
     );
 
     if (!response.ok) {
-      console.log('Something went wrong');
+      // console.log('Something went wrong');
     }
     if (response.ok) {
       alert('updated');
@@ -116,7 +116,29 @@ export const PostMongo = () => {
     }
     if (response.ok) {
       // save the user to local storage
+      window.location.reload();
       navigate('/your-bag');
+    }
+  };
+
+  // D E L E T E  C A R T  I T E M
+  const deleteCartItem = async (productId) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/user/${user._id}/cart/${productId}`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      }
+    );
+    // const json = await response.json();
+
+    if (!response.ok) {
+      console.log('something wrong');
+    }
+    if (response.ok) {
+      // save the user to local storage
+      window.location.reload();
     }
   };
 
@@ -211,7 +233,8 @@ export const PostMongo = () => {
       console.log('Something went wrong');
     }
     if (response.ok) {
-      console.log('Updated');
+      window.location.reload();
+      // console.log('Updated');
     }
   };
 
@@ -230,7 +253,9 @@ export const PostMongo = () => {
       console.log('Something went wrong');
     }
     if (response.ok) {
-      console.log('deleted');
+      // console.log('deleted');
+
+      window.location.reload();
     }
   };
 
@@ -252,7 +277,7 @@ export const PostMongo = () => {
     if (response.ok) {
       // save the user to local storage
       // navigate('/your-bag');
-      console.log('Success');
+      // console.log('Success');
     }
   };
 
@@ -262,6 +287,7 @@ export const PostMongo = () => {
     imageSrc,
     updatecart,
     updatePassword,
+    deleteCartItem,
     updateAddress,
     deleteAddress,
     updateWishlist,

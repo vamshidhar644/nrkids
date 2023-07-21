@@ -9,7 +9,7 @@ import BottomImage from './Stripes/BottomImage';
 
 const Home = ({ Hero, NewArrivals, Collections }) => {
   return (
-    <div>
+    <div className="Parent__Home">
       <Banner Hero={Hero} />
       <NewArrival NewArrivals={NewArrivals} />
       <Bar1 />

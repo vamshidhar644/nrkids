@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FetchMongo } from '../../../BackOps/FetchMongo';
-import './Checkout.css';
+
 import { Calcuate } from '../../../BackOps/Calcuate';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
@@ -55,6 +55,12 @@ const Checkout = ({ data }) => {
           to="/your-bag/check-out"
           className="place__order"
           state={{ data: cartData }}
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
         >
           Checkout
         </Link>

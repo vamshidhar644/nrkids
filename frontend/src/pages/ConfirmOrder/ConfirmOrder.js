@@ -3,10 +3,12 @@ import { UseAuthContext } from '../../hooks/useAuthContext';
 import { PostMongo } from '../../BackOps/PostMongo';
 import './ConfirmOrder.css';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   const { user } = UseAuthContext();
   const { addOrder } = PostMongo();
+  const navigate = useNavigate();
 
   const [userId, setUserId] = useState();
   const [orderedName, setorderedName] = useState();
@@ -63,13 +65,26 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   };
 
   const ConfirmOrder = async () => {
+    // alert('Is in construction');
     await addOrder(userId, orderData);
+
+    document.body.style.overflow = 'auto';
+    navigate(`/my-profile/${user._id}?value=my-orders`);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    alert('Order Confirmation mechanism is in process');
   };
 
   return (
     <div className="confirm__card">
       <div>
-        <p className="m-0">{orderedName}</p>
+        <p className="m-0">
+          <strong>{orderedName}</strong>
+        </p>
         <p className="m-0">{address.email}</p>
         <p className="m-0">{address.fullAddress}</p>
         <p className="m-0">

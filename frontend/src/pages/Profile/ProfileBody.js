@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
 import './ProfileBody.css';
 
@@ -27,6 +27,21 @@ const ProfileBody = ({ userData }) => {
   const changeSection = (item) => {
     setSection(item);
   };
+
+  const location = useLocation();
+  // const { id } = useParams();
+
+  useEffect(() => {
+    // Get the value of the 'value' query parameter from the location search
+    const searchParams = new URLSearchParams(location.search);
+    const valueFromOrders = searchParams.get('value');
+
+    // Now, you can print the value in the console when the component is opened
+    console.log(valueFromOrders);
+    if (valueFromOrders === 'my-orders') {
+      setSection(profileList[1].title);
+    }
+  }, [location.search]);
 
   return (
     <div className="profile-main-container">
