@@ -73,7 +73,7 @@ const CartSection = ({ SanityProducts, cartItems }) => {
                         onDataChange={handleDataChange}
                       />
 
-                      <div className="cart__buttons d-flex position-absolute">
+                      <div className="cart__buttons d-flex">
                         <p onClick={() => handleWishlist(index)}>
                           Move to wishlist
                         </p>

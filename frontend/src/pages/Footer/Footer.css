@@ -108,7 +108,6 @@
         /* flex-direction: row-reverse; */
         width: 100%;
         align-items: flex-end;
-        margin-top: 1rem;
         justify-content: space-around;
         font-size: 14px;
     }

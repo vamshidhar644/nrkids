@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import OfferSection from './OfferSection';
@@ -7,6 +7,8 @@ import { UseAuthContext } from '../../hooks/useAuthContext';
 import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai';
 import { BsHandbag } from 'react-icons/bs';
 import { useLogout } from '../../hooks/useLogout';
+import { HiOutlineMenuAlt2, HiMenu } from 'react-icons/hi';
+import { ScrollContext } from '../Components/ScrollProvider';
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -16,6 +18,7 @@ const Navbar = () => {
   };
   const [isActive, setIsActive] = useState(false);
   const [disableScrolling, setDisableScrolling] = useState(false);
+  const isAtFooter = useContext(ScrollContext);
 
   const toggleNavbar = () => {
     setIsActive(!isActive);
@@ -35,47 +38,39 @@ const Navbar = () => {
     });
   };
 
-  const [isFixed, setIsFixed] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [scrollingUp, setScrollingUp] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const scrollingUp = prevScrollPos > currentScrollPos;
+    setScrollingUp(scrollingUp);
+    setPrevScrollPos(currentScrollPos);
+    setIsAtTop(window.pageYOffset === 0);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      setIsFixed(scrollTop > 0);
-    };
-
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prevScrollPos]);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // Calculate the dynamic width and height based on the scroll position
-  const containerSize = Math.max(140 - scrollPosition, 90);
   return (
-    <header className={`${isFixed ? 'fixed position-fixed' : ' w-100'}`}>
+    <header
+      className={`${isAtTop ? '' : 'fixed'} ${
+        scrollingUp ? 'scrollUp' : 'scrolldown'
+      }`}
+      style={{
+        transition: 'transform .9s',
+        position: isAtTop ? '' : 'fixed',
+        zIndex: '999',
+      }}
+    >
       <OfferSection />
       <nav>
-        <div className="main-logo">
-          <i
-            className={`fas ${isActive ? 'fa-times' : 'fa-bars'}`}
-            id="ham-menu"
-            onClick={toggleNavbar}
-          ></i>
+        <div className="main__logo">
           <Link
             to="/"
             onClick={() => {
@@ -84,22 +79,11 @@ const Navbar = () => {
                 behavior: 'smooth',
               });
             }}
-            style={{
-              width: `${containerSize}px`,
-              height: `${containerSize}px`,
-              transition: '1.2s',
-            }}
           >
             <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
           </Link>
         </div>
         <ul id="nav-bar" className={`ul ${isActive ? 'active' : ''}`}>
-          <i
-            className={`fas ${isActive ? 'fa-times' : 'fa-bars'}`}
-            style={{ width: '100%' }}
-            id="ham-menu"
-            onClick={toggleNavbar}
-          ></i>
           <li>
             <NavLink to="/new-arrivals" onClick={closeNavbar}>
               NEW ARRIVALS
@@ -185,39 +169,108 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="nav__section_2 w-100 d-flex justify-content-end">
+        <div
+          // className="nav__section_2 d-flex w-100 justify-content-end"
+          className={`nav__section_2 w-100 ${
+            isAtFooter ? 'hidden' : 'visible'
+          }`}
+        >
           <div className="input-wrapper d-flex gap-2">
-            {user ? (
-              <div className="dropdownn">
-                <AiOutlineUser className="nav__icon" />
-                <ul className="user__profile">
-                  <li className="nav-item">
-                    <NavLink
-                      className="profile-d"
-                      to={`/my-profile/${user._id}`}
-                    >
-                      Hello {user.firstName}
-                    </NavLink>
-                  </li>
+            <div className="mobile__nav_boxes">
+              {isActive ? (
+                <HiMenu
+                  className="nav__icon"
+                  id="ham-menu"
+                  onClick={toggleNavbar}
+                />
+              ) : (
+                <HiOutlineMenuAlt2
+                  className="nav__icon"
+                  id="ham-menu"
+                  onClick={toggleNavbar}
+                />
+              )}
+              {user ? (
+                <div className="dropdownn">
+                  <NavLink to={`/my-profile/${user._id}`} onClick={closeNavbar}>
+                    <AiOutlineUser className="nav__icon" />
+                  </NavLink>
+                  <ul className="user__profile">
+                    <li className="nav-item">
+                      <NavLink
+                        className="profile-d"
+                        to={`/my-profile/${user._id}`}
+                      >
+                        Hello {user.firstName}
+                      </NavLink>
+                    </li>
 
-                  <li className="nav-item">
-                    <NavLink className="profile-d" onClick={handleClick}>
-                      logout
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <Link className="nav-bar-icons " to="/login-or-signup">
-                <AiOutlineUser className="nav__icon" />
+                    <li className="nav-item">
+                      <NavLink className="profile-d" onClick={handleClick}>
+                        logout
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  className="nav-bar-icons"
+                  to="/login-or-signup"
+                  onClick={closeNavbar}
+                >
+                  <AiOutlineUser className="nav__icon" />
+                </Link>
+              )}
+            </div>
+            <div className="navbar__logo" onClick={closeNavbar}>
+              <Link
+                to="/"
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
+                }}
+              >
+                <img
+                  style={{ width: '95%', height: '95%' }}
+                  src={process.env.PUBLIC_URL + '/Assets/logo.png'}
+                  alt=""
+                />
               </Link>
-            )}
-            <Link className="nav-bar-icons" to="/wishlist">
-              <AiOutlineHeart className="nav__icon" />
-            </Link>
-            <Link className="nav-bar-icons" to="/your-bag">
-              <BsHandbag className="nav__icon" />
-            </Link>
+            </div>
+            <div className="mobile__nav_boxes d-flex gap-2">
+              <Link
+                className="nav-bar-icons"
+                to="/wishlist"
+                onClick={closeNavbar}
+              >
+                <AiOutlineHeart
+                  className="nav__icon"
+                  onClick={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
+                />
+              </Link>
+              <Link
+                className="nav-bar-icons"
+                to="/your-bag"
+                onClick={closeNavbar}
+              >
+                <BsHandbag
+                  className="nav__icon"
+                  onClick={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

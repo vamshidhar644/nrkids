@@ -22,6 +22,7 @@
 
 .change-qty{
     border: 1px solid;
+    align-items: center;
     border-radius: 3px;
 }
 

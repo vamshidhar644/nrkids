@@ -1,22 +1,26 @@
 header {
   width: 100%;
-  top: 0;
+  background-color: #ffffff;
+  position: relative;
 }
 
 .fixed {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-  z-index: 20;   
   top: 0;
   padding: 0px;
-  background-color: #ffffff;
 }
 
+.scrollUp{
+  transform: translateY(0);
+}
+.scrolldown{
+  transform: translateY(-100%);
+}
 nav {
   /* width: 100%; */
   cursor: default;
   display: flex;
   padding: 12px 0px;
-  padding-bottom: 0px;
   justify-content: space-between;
   align-items: flex-end;
   font-weight: 300;
@@ -33,10 +37,6 @@ nav ul li{
 }
 nav a {
   text-decoration: none;
-}
-nav a#logo {
-  color: #000000;
-  font-weight: 700;
 }
 nav ul a {
   border-bottom: solid 2px transparent ;
@@ -71,11 +71,10 @@ nav ul.active {
   /* display: block; */
   text-align: center;
   position: absolute;
-  top: 100%;
-  z-index: 998;
   left: 0;
   padding: 0px;
   background-color: #fff;
+  transition: 0.9s;
 }
 
 .dropdownn-menu li, .user__profile li {
@@ -108,23 +107,30 @@ nav ul.active {
 /* ===================================== */
 /* Logo */
 
-.main-logo{
+.main__logo{
   padding-left: 16px;
   display: flex;
   justify-content: center;
 }
-.main-logo a{
+.main__logo a{
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
+  width: 120px;
   background-color: #fff;
   border-radius: 50%;
 }
 
-.main-logo img{
+.main__logo img{
   width: 95%;
   height: 95%;
+}
+
+.navbar__logo{
+  display: none;
+  width: 68px;
+  height: 68px;
 }
 
 /* ================================== */
@@ -132,7 +138,9 @@ nav ul.active {
 /* Icons  */
 .nav__section_2{
   display: flex;
+  justify-content: flex-end;
   padding: 0px 12px;
+  margin-bottom: 1rem;
 }
 
 .nav__icon{
@@ -146,7 +154,7 @@ nav ul.active {
   position: absolute;
   top: 100%;
   right: -260%;
-  z-index: 998;
+  /* z-index: 999; */
   padding: 0px;
   background-color: #fff;
 }
@@ -191,9 +199,10 @@ nav ul.active {
 @media only screen and (max-width: 894px) {
   nav .ul {
     padding-top: 3rem;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #fff;
     position: fixed;
-    z-index: 999;
     width: 100vw;    
     left: -100vw;
     top: 0;
@@ -210,24 +219,92 @@ nav ul.active {
   #ham-menu {
     display: block;
     height: fit-content;
+    bottom: 0;
   }
   
   nav ul::-webkit-scrollbar-thumb {
     background-color: transparent; /* Set the background color of the scrollbar thumb */
   }
-
-  .main-logo a{
-    width: 100px !important;
-    height: 100px !important;
+  .main__logo{
+    display: none;
   }
 
   .user__profile{
-    width: fit-content;
-    height: fit-content;
+    display: none;
   }
 
   .offer-section{    
     min-height: 24px;
+  }
+
+  nav{
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 999;
+    width: 100%;
+    padding: 0px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .dropdownn-menu{
+    position: relative;
+  }
+
+  .nav__section_2{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    position: fixed;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+    transition: transform .9s;
+  }
+  .nav__section_2.visible{
+    transform: translateY(0);
+  }
+  .nav__section_2.hidden {
+    transform: translateY(150%);
+  }
+  .nav__section_2 .input-wrapper{
+    width: 100%;
+    position: relative;
+    gap: 2.8rem !important;
+  }
+  .navbar__logo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -25%;
+    display: flex;
+  }
+  .navbar__logo a{
+    display: flex;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+  .mobile__nav_boxes{
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .mobile__nav_boxes a{    
+    color: var(--primary-color);
+  }
+  .dropdownn:hover .user__profile {
+    display: none;
+  }
+  
+  .scrollUp{
+    transform: none;
+  }
+  .scrolldown{
+    transform: none;
   }
 }
 

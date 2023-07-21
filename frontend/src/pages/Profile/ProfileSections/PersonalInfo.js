@@ -4,6 +4,7 @@ import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { PostMongo } from '../../../BackOps/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the CSS file for styling
+import { Navigate } from 'react-router-dom';
 
 const PersonalInfo = ({ userData }) => {
   const { user } = UseAuthContext();
@@ -65,10 +66,14 @@ const PersonalInfo = ({ userData }) => {
     updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
   };
 
+  if (!userData) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div>
       <div className="information__body">
-        <div className="user_image__section align-items-end p-2 gap-4">
+        <div className="user_image__section p-2 gap-4">
           <div className="profile-image-container">
             <img
               className="w-100 h-100"
@@ -144,32 +149,25 @@ const PersonalInfo = ({ userData }) => {
                 onChange={setMobilenumber}
               />
             </div>
-            <div className="d-flex position-relative">
-              <div className="d-flex flex-column w-50">
-                <label htmlFor="DateofBirth" id="dob">
-                  Date of birth
-                </label>
-                {userData.dob && (
-                  <input type="text" readOnly defaultValue={dob} />
-                )}
-                {!userData.dob && (
-                  <>
-                    <input
-                      type="date"
-                      onChange={(e) => dateFormat(e.target.value)}
-                    />
-                    *Once the dob is set, cannot be changed again
-                  </>
-                )}
-              </div>
-              <div
-                className="save-button d-flex gap-4 position-absolute"
-                onClick={handleUpdate}
-              >
-                <p className="profile-image-upload py-1 px-3 m-0">
-                  Save Changes
-                </p>
-              </div>
+            <div className="d-flex flex-column">
+              <label htmlFor="DateofBirth" id="dob">
+                Date of birth
+              </label>
+              {userData.dob && (
+                <input type="text" readOnly defaultValue={dob} />
+              )}
+              {!userData.dob && (
+                <>
+                  <input
+                    type="date"
+                    onChange={(e) => dateFormat(e.target.value)}
+                  />
+                  *Once the dob is set, cannot be changed again
+                </>
+              )}
+            </div>
+            <div className="save__button d-flex" onClick={handleUpdate}>
+              <p className="profile-image-upload py-1 px-3 m-0">Save Changes</p>
             </div>
           </form>
         </div>

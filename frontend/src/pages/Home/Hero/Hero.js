@@ -19,10 +19,7 @@ const Hero = ({ Hero }) => {
   }, [Hero]);
 
   return (
-    <div
-      className="Hero"
-      style={{ margin: '14px', borderRadius: '16px', overflow: 'hidden' }}
-    >
+    <div className="Hero">
       <Carousel className="Carousel-Container">
         {image &&
           image.map((homedata, i) => (

@@ -8,7 +8,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="Parent-Footer">
+    <footer className="Parent-Footer" id="footer">
       <div className="box box1">
         <b>Shop by Category</b>
         <hr />
