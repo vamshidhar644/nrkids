@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import { PostMongo } from '../../../BackOps/PostMongo';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
+import { PostMongo } from '../../../helpers/PostMongo';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 import './DoubleProduct.css';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 const DoubleProduct = ({ item, favv }) => {
@@ -58,14 +58,10 @@ const DoubleProduct = ({ item, favv }) => {
             })
           }
         >
-          <img
-            className="image1 w-100 h-100"
-            src={getImageUrl(item.images[0])}
-            alt=""
-          />
+          <img className="image1" src={getImageUrl(item.images[0])} alt="" />
           {item.images[1] ? (
             <img
-              className="image2 w-100 h-100 position-absolute"
+              className="image2 position-absolute"
               src={getImageUrl(item.images[1])}
               alt=""
             />

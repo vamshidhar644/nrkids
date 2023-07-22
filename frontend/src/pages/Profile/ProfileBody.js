@@ -13,7 +13,7 @@ import Logout from '../Components/Logout/Logout';
 import { FaInfo, FaKey } from 'react-icons/fa';
 import { GiLargeDress } from 'react-icons/gi';
 import { GoLocation } from 'react-icons/go';
-import { FetchMongo } from '../../BackOps/FetchMongo';
+import { FetchMongo } from '../../helpers/FetchMongo';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 
 const ProfileBody = () => {

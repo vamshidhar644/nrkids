@@ -4,8 +4,8 @@ import './Wishlist.css';
 import { BiChevronRight } from 'react-icons/bi';
 
 import ProductCard from '../Components/ProductCard/ProductCard';
-import FilterSanity from '../../BackOps/FilterSanity';
-import { FetchMongo } from '../../BackOps/FetchMongo';
+import FilterSanity from '../../helpers/FilterSanity';
+import { FetchMongo } from '../../helpers/FetchMongo';
 
 const Wishlist = ({ Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();

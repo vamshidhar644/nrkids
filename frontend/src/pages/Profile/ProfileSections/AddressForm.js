@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PostMongo } from '../../../BackOps/PostMongo';
+import { PostMongo } from '../../../helpers/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 

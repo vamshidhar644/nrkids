@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Bars.css';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
 
 const BottomImage = ({ Hero }) => {
   const { getImageUrl } = FetchImageUrl();

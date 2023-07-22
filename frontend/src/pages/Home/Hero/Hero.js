@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
 
 const Hero = ({ Hero }) => {
   const { getImageUrl } = FetchImageUrl();

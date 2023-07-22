@@ -3,12 +3,12 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 
-import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
+import ChangePriceperSize from '../../../helpers/ChangePriceperSize';
 
 import DetailsWithoutData from '../../Product/MainProduct/ProductWithoutData';
-import { PostMongo } from '../../../BackOps/PostMongo';
+import { PostMongo } from '../../../helpers/PostMongo';
 import { Link } from 'react-router-dom';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
 
 const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   const { updatecart } = PostMongo();

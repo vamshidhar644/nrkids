@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 
-import { Calcuate } from '../../../BackOps/Calcuate';
+import { Calcuate } from '../../../helpers/Calcuate';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 const Checkout = ({ data }) => {

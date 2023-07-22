@@ -4,13 +4,18 @@
   gap: 4px;
   font-weight: 600;
 }
+.New-Arrivals{
+  padding: 0px 12px;
+}
 
 .newarrivals-head a:hover{
   color: var(--bs-hover-color);
 }
 
 .Cards-Container{
+  display: flex;
   gap: 20px;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   transition: scroll-behavior 1.6s;
   padding-bottom: 0px;
@@ -40,7 +45,6 @@
   transition: opacity 0.6s;
 }
 
-
 .Product-Details{
   position: relative;
 }
@@ -57,3 +61,13 @@
   color: var(--bs-hover-color);
 }
 
+
+@media only screen and (max-width: 894px) {
+  .Cards-Container{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import { PostMongo } from '../../../BackOps/PostMongo';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
+import { PostMongo } from '../../../helpers/PostMongo';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 import './ProductCard.css';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 const ProductCard = ({ item }) => {

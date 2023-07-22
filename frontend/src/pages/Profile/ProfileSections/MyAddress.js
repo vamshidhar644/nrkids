@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AddressForm from './AddressForm';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
-import { PostMongo } from '../../../BackOps/PostMongo';
+import { PostMongo } from '../../../helpers/PostMongo';
 
 const MyAddress = () => {
   const { user } = UseAuthContext();
@@ -33,8 +33,6 @@ const MyAddress = () => {
   const handleDataChange = () => {
     fetchAddressData();
   };
-
-  console.log(editData);
 
   return (
     <div className="address__body d-flex w-100 justify-content-between">

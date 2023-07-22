@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FetchSanity } from '../../BackOps/FetchSanity';
+import { FetchSanity } from '../../helpers/FetchSanity';
 import { MdClose } from 'react-icons/md';
 
 const OfferSection = () => {

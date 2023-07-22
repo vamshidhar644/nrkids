@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import './MainPage.css';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
-import { SetPaths } from '../../../BackOps/SetPaths';
+import { SetPaths } from '../../../helpers/SetPaths';
 import ProductDetails from './ProductWithDetails';
 import { Link } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
 
 import { BiChevronRight } from 'react-icons/bi';
 import DetailsWithoutData from './ProductWithoutData';
-import { PostMongo } from '../../../BackOps/PostMongo';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import { PostMongo } from '../../../helpers/PostMongo';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 
 const MainProduct = ({ Product }) => {
   const { getImageUrl } = FetchImageUrl();

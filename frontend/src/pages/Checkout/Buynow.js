@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import FetchImageUrl from '../../BackOps/FetchImageUrl';
+import FetchImageUrl from '../../helpers/FetchImageUrl';
 import { BiChevronRight } from 'react-icons/bi';
 import OrderAddress from './OrderAddress';
 import { UseAuthContext } from '../../hooks/useAuthContext';

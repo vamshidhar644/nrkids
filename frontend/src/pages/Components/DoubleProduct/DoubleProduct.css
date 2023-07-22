@@ -1,8 +1,16 @@
+
 .Main-Card .card{
+    display: flex;
     width: 20rem;
     transition: 0.4s ease-out;
 }
 
+.Main-Card a{
+    margin: 0px;
+}
+.Main-Card a img{
+    width: 100%;
+}
 .Main-Card .title{
     font-size: 16px;
     color: var(--type-high-emphasis, #171520);
@@ -18,7 +26,7 @@
 
 @media only screen and (max-width: 991px) {
     .Main-Card .card{
-        width: 10rem;
+        width: 100%;
     }
 }
 

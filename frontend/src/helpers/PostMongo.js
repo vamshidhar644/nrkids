@@ -229,7 +229,6 @@ export const PostMongo = () => {
     }
     if (response.ok) {
       window.location.reload();
-      // console.log('Updated');
     }
   };
 
@@ -255,7 +254,6 @@ export const PostMongo = () => {
   };
 
   const addOrder = async (userId, orderData) => {
-    // console.log(userId, orderData);
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/api/user/order/${userId}`,
       {
@@ -270,9 +268,6 @@ export const PostMongo = () => {
       console.log('something wrong');
     }
     if (response.ok) {
-      // save the user to local storage
-      // navigate('/your-bag');
-      // console.log('Success');
     }
   };
 

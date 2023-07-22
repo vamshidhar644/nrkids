@@ -24,11 +24,8 @@ const NewArrival = ({ NewArrivals }) => {
           <Viewall />
         </Link>
       </div>
-      <div className="New-Arrivals d-flex flex-column py-0 px-4">
-        <div
-          className="Cards-Container overflow-x-auto d-flex"
-          ref={containerRef}
-        >
+      <div className="New-Arrivals d-flex flex-column py-0 w-100">
+        <div className="Cards-Container" ref={containerRef}>
           {NewArrivals &&
             NewArrivals.map((item, i) => {
               return <DoubleProduct item={item} key={i} favv={true} />;

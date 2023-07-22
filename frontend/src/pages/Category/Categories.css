@@ -2,7 +2,10 @@
 .filter-container{
     width: 300px;
 }
-
+.hero-container{
+    padding: 2rem;
+    padding-bottom: 0px;
+}
 
 .hero-container img{
     border-radius: 10px;
@@ -37,5 +40,14 @@
   @media only screen and (max-width: 991px){
     .Cards-Grid{
         grid-template-columns: repeat(2,auto);
+    }
+    .hero-container{
+        padding: 0px;
+    }
+    .category__path{
+        display: none !important;
+    }
+    .no__items img{
+        width: 100%;
     }
   }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PostMongo } from '../../../BackOps/PostMongo';
+import { PostMongo } from '../../../helpers/PostMongo';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 
 const ChangePassword = ({ userData }) => {

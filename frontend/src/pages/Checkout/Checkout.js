@@ -4,8 +4,8 @@ import { BiChevronRight } from 'react-icons/bi';
 
 import OrderAddress from './OrderAddress';
 import OrderItems from './OrderItems';
-import FilterSanity from '../../BackOps/FilterSanity';
-import { Calcuate } from '../../BackOps/Calcuate';
+import FilterSanity from '../../helpers/FilterSanity';
+import { Calcuate } from '../../helpers/Calcuate';
 import './Checkout.css';
 
 const Checkout = ({ Products }) => {

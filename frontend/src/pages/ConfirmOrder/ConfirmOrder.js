@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { UseAuthContext } from '../../hooks/useAuthContext';
-import { PostMongo } from '../../BackOps/PostMongo';
+import { PostMongo } from '../../helpers/PostMongo';
 import './ConfirmOrder.css';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';

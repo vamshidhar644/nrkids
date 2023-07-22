@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import './Bag.css';
 import './Checkout.css';
-import FilterSanity from '../../BackOps/FilterSanity';
+import FilterSanity from '../../helpers/FilterSanity';
 import { Link } from 'react-router-dom';
 
 import { BiChevronRight } from 'react-icons/bi';
 import ItemDetails from './Cart/ItemDetails';
 
 import Checkout from './Cart/Checkout';
-import { PostMongo } from '../../BackOps/PostMongo';
-import { FetchMongo } from '../../BackOps/FetchMongo';
+import { PostMongo } from '../../helpers/PostMongo';
+import { FetchMongo } from '../../helpers/FetchMongo';
 
 const Bag = ({ Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();

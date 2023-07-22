@@ -144,7 +144,7 @@ nav ul.active {
 }
 
 .nav__icon{
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 
 .user__profile{
@@ -206,7 +206,7 @@ nav ul.active {
     width: 100vw;    
     left: -100vw;
     top: 0;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;

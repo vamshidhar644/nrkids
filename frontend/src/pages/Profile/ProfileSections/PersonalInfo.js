@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 // import { ImBin } from 'react-icons/im';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
-import { PostMongo } from '../../../BackOps/PostMongo';
+import { PostMongo } from '../../../helpers/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 

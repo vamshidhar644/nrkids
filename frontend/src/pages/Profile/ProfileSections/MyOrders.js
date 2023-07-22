@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { FetchMongo } from '../../../BackOps/FetchMongo';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 import './MyOrders.css';
-import { FetchSanity } from '../../../BackOps/FetchSanity';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
-import FilterSanity from '../../../BackOps/FilterSanity';
+import { FetchSanity } from '../../../helpers/FetchSanity';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
+import FilterSanity from '../../../helpers/FilterSanity';
 
 const PayButton = ({ orderdata }) => {
   const handlePayment = () => {};

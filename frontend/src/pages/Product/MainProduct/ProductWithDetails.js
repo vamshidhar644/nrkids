@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import { UseAuthContext } from '../../../hooks/useAuthContext';
-import ChangePriceperSize from '../../../BackOps/ChangePriceperSize';
+import ChangePriceperSize from '../../../helpers/ChangePriceperSize';
 import DetailsWithoutData from './ProductWithoutData';
 import './ProductDetails.css';
 
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
-import { PostMongo } from '../../../BackOps/PostMongo';
-import FetchImageUrl from '../../../BackOps/FetchImageUrl';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { PostMongo } from '../../../helpers/PostMongo';
+import FetchImageUrl from '../../../helpers/FetchImageUrl';
 
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
@@ -68,6 +68,8 @@ const ProductDetails = ({ Product }) => {
           behavior: 'smooth',
         });
       }
+    } else {
+      navigate('/login');
     }
   };
 
@@ -152,7 +154,6 @@ const ProductDetails = ({ Product }) => {
             className="product-button cart-button d-flex justify-content-center align-items-center"
             onClick={UpdateCart}
           >
-            {/* <BsHandbag className="product-icon" /> */}
             Add to Cart
           </button>
           &nbsp;

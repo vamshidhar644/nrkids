@@ -60,13 +60,12 @@
   color: #fff;
   justify-content: center;
   background-color: #B00020;
+  cursor: pointer;  
   border-top-left-radius: 16px;
 }
 
-.cart__buttons p:hover{
-  cursor: pointer;
-  color: var(--secondary-color);
-  text-decoration: underline;
+.cart__buttons:hover{
+  background-color: #2f4858;
 }
 
 .cart_item__info{

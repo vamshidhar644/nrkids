@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { FetchMongo } from '../../BackOps/FetchMongo';
+import { FetchMongo } from '../../helpers/FetchMongo';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 import AddressForm from '../Profile/ProfileSections/AddressForm';

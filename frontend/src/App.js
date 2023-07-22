@@ -12,8 +12,7 @@ import Nextpage from './pages/Footer/NextPage/Nextpage';
 import Navbar from './pages/Navigation/Navbar';
 
 import { UseAuthContext } from './hooks/useAuthContext';
-import { FetchSanity } from './BackOps/FetchSanity';
-import { FetchMongo } from './BackOps/FetchMongo';
+import { FetchSanity } from './helpers/FetchSanity';
 import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';

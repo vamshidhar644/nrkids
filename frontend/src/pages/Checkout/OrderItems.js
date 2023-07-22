@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import FetchImageUrl from '../../BackOps/FetchImageUrl';
+import FetchImageUrl from '../../helpers/FetchImageUrl';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 const OrderItems = ({ data, cartItems, itemCount, totalPrice }) => {

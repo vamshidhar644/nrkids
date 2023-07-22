@@ -20,10 +20,6 @@ a{
   color: var(--bs-font-color);
 }
 
-a:hover{
-  color: var(--bs-hover-color);
-}
-
 body::-webkit-scrollbar, nav ul::-webkit-scrollbar, .other-images::-webkit-scrollbar {
     width: 0.2em; /* Set the width of the scrollbar */
   }
