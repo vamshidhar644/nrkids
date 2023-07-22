@@ -5,6 +5,37 @@ import { FetchSanity } from '../../../BackOps/FetchSanity';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 import FilterSanity from '../../../BackOps/FilterSanity';
 
+const PayButton = ({ orderdata }) => {
+  const handlePayment = () => {};
+  return (
+    <p
+      className={`pay__button ${
+        orderdata.status === 'Yet to confirm'
+          ? 'bg-warning'
+          : orderdata.status === 'Confirm Order'
+          ? 'bg-primary'
+          : orderdata.status === 'Cancel Order'
+          ? 'bg-danger'
+          : orderdata.status === 'Delivered'
+          ? 'bg-success'
+          : ''
+      }`}
+    >
+      {orderdata.status === 'Yet to confirm' ? (
+        'Pay after confirmed'
+      ) : orderdata.status === 'Confirm Order' ? (
+        <span onClick={() => handlePayment()}>Pay Now!</span>
+      ) : orderdata.status === 'Cancel Order' ? (
+        'Cancelled'
+      ) : orderdata.status === 'Delivered' ? (
+        'Delivered'
+      ) : (
+        ''
+      )}
+    </p>
+  );
+};
+
 const AccordionItem = ({ orderdata, isOpen, onClick }) => {
   const dateStr = orderdata.orderedDate;
   const dateObj = new Date(dateStr);
@@ -25,23 +56,36 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
     }
   }, [Products]);
 
-  const [isPaid, setIspaid] = useState(false);
-
-  const handlePayment = () => {};
   // Options for the date format
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
 
   // Convert the date to the desired format
   const formattedDate = dateObj.toLocaleDateString(undefined, options);
   return (
-    <div className={`accordion-item ${isOpen ? 'open' : ''}`} onClick={onClick}>
+    <div
+      className={`accordion-item ${isOpen ? 'open' : ''} `}
+      onClick={onClick}
+    >
       <div className="accordion-title">
         <strong>#{orderdata._id}</strong>
-        <p className="m-0">{orderdata.status}</p>
+        <p className="m-0">
+          {orderdata.status === 'Yet to confirm'
+            ? 'Not confirmed yet'
+            : orderdata.status === 'Confirm Order'
+            ? 'Confirmed'
+            : orderdata.status === 'Cancel Order'
+            ? 'Cancelled'
+            : orderdata.status === 'Delivered'
+            ? 'Delivered'
+            : ''}
+        </p>
       </div>
       {isOpen && (
         <div className="accordion-content">
-          <div className="orders__box w-100">
+          <div className="mobile__pay_button">
+            <PayButton orderdata={orderdata} />
+          </div>
+          <div className="orders__box">
             <h4 style={{ marginBlockStart: '1em', marginTop: '0px' }}>
               Orders
             </h4>
@@ -57,12 +101,19 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
                             alt=""
                           />
                         </div>
-                        <div className="item-info">
-                          <p>{filteredItems && filteredItems[i].title}</p>
+                        <div className="item-info small">
+                          <p>
+                            <strong>
+                              {filteredItems && filteredItems[i].title}
+                            </strong>
+                          </p>
                           <p>Description</p>
-                          <p>Quantity: {item.quantity}</p>
-                          <p>Size: {item.size}</p>
-                          <p>Price: ₹ {item.price}</p>
+                          <p>
+                            {item.size} - {item.quantity}
+                          </p>
+                          <p>
+                            <b>₹ {item.price}</b>
+                          </p>
                         </div>
                       </div>
                     );
@@ -70,7 +121,7 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
                 : null}
             </div>
           </div>
-          <div className="orders__box w-100">
+          <div className="orders__box">
             <h4 style={{ marginBlockStart: '1em', marginTop: '0px' }}>
               Address
             </h4>
@@ -89,7 +140,7 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
             <p className="m-0 mt-2">Mobile {orderdata.orderedMobile}</p>
           </div>
 
-          <div className="orders__box w-100">
+          <div className="orders__box">
             <h4 style={{ marginBlockStart: '1em', marginTop: '0px' }}>
               Order Summary
             </h4>
@@ -103,14 +154,7 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
                 .00
               </b>
             </p>
-            {!isPaid ? (
-              <p
-                className="add_address__button"
-                onClick={() => handlePayment()}
-              >
-                Pay Now!
-              </p>
-            ) : null}
+            <PayButton orderdata={orderdata} />
           </div>
         </div>
       )}
@@ -125,25 +169,25 @@ const Accordion = () => {
     fetchOrders();
   }, []);
 
-  console.log(orders ? orders : '');
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleItemClick = (index) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  return (
+  return orders ? (
     <div className="accordion">
-      {orders &&
-        orders.map((order, index) => (
-          <AccordionItem
-            key={index}
-            orderdata={order}
-            isOpen={activeIndex === index}
-            onClick={() => handleItemClick(index)}
-          />
-        ))}
+      {orders.map((order, index) => (
+        <AccordionItem
+          key={index}
+          orderdata={order}
+          isOpen={activeIndex === index}
+          onClick={() => handleItemClick(index)}
+        />
+      ))}
     </div>
+  ) : (
+    <>Loading...</>
   );
 };
 

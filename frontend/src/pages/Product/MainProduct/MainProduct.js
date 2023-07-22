@@ -52,9 +52,6 @@ const MainProduct = ({ Product }) => {
       setFav(valueExists);
     }
   }, [wishlist]);
-
-  console.log(Product);
-
   const watchImg = getImageUrl(Product.images[imageIndex]);
 
   return (

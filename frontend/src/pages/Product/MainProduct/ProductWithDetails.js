@@ -6,7 +6,7 @@ import DetailsWithoutData from './ProductWithoutData';
 import './ProductDetails.css';
 
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PostMongo } from '../../../BackOps/PostMongo';
 import FetchImageUrl from '../../../BackOps/FetchImageUrl';
 
@@ -16,6 +16,8 @@ const ProductDetails = ({ Product }) => {
   const { updatecart } = PostMongo();
   const { getImageUrl } = FetchImageUrl();
   const { user } = UseAuthContext();
+  const navigate = useNavigate();
+
   const [OpenPop, setOpenpop] = useState(false);
 
   const { setSizes, item } = ChangePriceperSize();
@@ -60,7 +62,7 @@ const ProductDetails = ({ Product }) => {
 
       if (productId && quantity && size && price) {
         await updatecart(productId, itemsData);
-        window.location.reload();
+        navigate('/your-bag');
       }
     }
   };

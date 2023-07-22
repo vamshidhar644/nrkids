@@ -215,7 +215,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   className="nav-bar-icons"
-                  to="/login-or-signup"
+                  to="/login"
                   onClick={closeNavbar}
                 >
                   <AiOutlineUser className="nav__icon" />

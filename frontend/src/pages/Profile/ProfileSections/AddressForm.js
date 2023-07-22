@@ -43,74 +43,68 @@ const AddressForm = ({ editData }) => {
   };
 
   return (
-    <div className="new__address d-flex flex-column">
-      <form action="">
-        <div className="d-flex gap-2 mt-3 ">
-          <input
-            type="text"
-            placeholder="Full name"
-            required="required"
-            value={fullname}
-            onChange={(e) => setFullname(e.target.value)}
-          />
-        </div>
+    <form action="" className="new__address d-flex flex-column">
+      <input
+        type="text"
+        placeholder="Full name"
+        required="required"
+        value={fullname}
+        onChange={(e) => setFullname(e.target.value)}
+      />
 
-        <PhoneInput
-          placeholder="Enter phone number"
-          className="d-flex align-items-center"
-          value={mobile}
-          defaultCountry="IN"
-          onChange={setMobile}
-        />
-        <input
-          placeholder="Email"
-          className="h-2"
-          required="required"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <PhoneInput
+        placeholder="Enter phone number"
+        className="w-100"
+        value={mobile}
+        defaultCountry="IN"
+        onChange={setMobile}
+      />
+      <input
+        placeholder="Email"
+        className="h-2"
+        required="required"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-        <textarea
-          placeholder="Address"
-          className="w-100"
-          required="required"
-          value={fullAddress}
-          rows="4"
-          cols="18"
-          onChange={(e) => setAddress(e.target.value)}
-        ></textarea>
+      <textarea
+        placeholder="Address"
+        className="w-100"
+        required="required"
+        value={fullAddress}
+        rows="4"
+        cols="18"
+        onChange={(e) => setAddress(e.target.value)}
+      ></textarea>
 
-        <div className="d-flex gap-2">
-          <input
-            type="text"
-            placeholder="Landmark"
-            required="required"
-            value={landmark}
-            onChange={(e) => setLandmark(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Pincode"
-            required="required"
-            value={pincode}
-            onChange={(e) => setPincode(e.target.value)}
-          />
-        </div>
+      <div className="d-flex gap-2">
         <input
           type="text"
-          placeholder="State"
+          placeholder="Landmark"
           required="required"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
+          value={landmark}
+          onChange={(e) => setLandmark(e.target.value)}
         />
+        <input
+          type="text"
+          placeholder="Pincode"
+          required="required"
+          value={pincode}
+          onChange={(e) => setPincode(e.target.value)}
+        />
+      </div>
+      <input
+        type="text"
+        placeholder="State"
+        required="required"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+      />
 
-        <div className="d-flex text-nowrap gap-3 align-items-center">
-          <p className="add_address__button w-100" onClick={handleAddress}>
-            Add
-          </p>
-        </div>
-      </form>
-    </div>
+      <button className="add_address__button w-100" onClick={handleAddress}>
+        Add
+      </button>
+    </form>
   );
 };
 

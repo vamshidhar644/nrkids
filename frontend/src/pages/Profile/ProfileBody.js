@@ -13,8 +13,17 @@ import Logout from '../Components/Logout/Logout';
 import { FaInfo, FaKey } from 'react-icons/fa';
 import { GiLargeDress } from 'react-icons/gi';
 import { GoLocation } from 'react-icons/go';
+import { FetchMongo } from '../../BackOps/FetchMongo';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
-const ProfileBody = ({ userData }) => {
+const ProfileBody = () => {
+  const { user } = UseAuthContext();
+  const { userData, fetchUserData } = FetchMongo();
+
+  useEffect(() => {
+    fetchUserData();
+  }, [user]);
+
   const profileList = [
     { title: 'Personal Information', icon: <FaInfo className="list__icon" /> },
     { title: 'My Orders', icon: <GiLargeDress className="list__icon" /> },
@@ -36,14 +45,12 @@ const ProfileBody = ({ userData }) => {
     const searchParams = new URLSearchParams(location.search);
     const valueFromOrders = searchParams.get('value');
 
-    // Now, you can print the value in the console when the component is opened
-    console.log(valueFromOrders);
     if (valueFromOrders === 'my-orders') {
       setSection(profileList[1].title);
     }
   }, [location.search]);
 
-  return (
+  return userData ? (
     <div className="profile-main-container">
       <div className="p-4">
         <div>
@@ -107,6 +114,8 @@ const ProfileBody = ({ userData }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <>Loading...</>
   );
 };
 

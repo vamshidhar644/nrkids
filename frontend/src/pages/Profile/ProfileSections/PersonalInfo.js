@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { PostMongo } from '../../../BackOps/PostMongo';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css'; // Import the CSS file for styling
-import { Navigate } from 'react-router-dom';
+import 'react-phone-number-input/style.css';
 
 const PersonalInfo = ({ userData }) => {
   const { user } = UseAuthContext();
@@ -65,10 +64,6 @@ const PersonalInfo = ({ userData }) => {
     const _id = user._id;
     updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
   };
-
-  if (!userData) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <div>

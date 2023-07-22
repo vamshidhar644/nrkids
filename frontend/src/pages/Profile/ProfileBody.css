@@ -79,7 +79,8 @@
   
   /* Style the custom label */
   .custom-label {
-    /* border-radius: 5px; */
+    border-radius: 5px;
+    border-bottom: 1px solid;
     cursor: pointer;
   }
   
@@ -143,10 +144,6 @@ textarea{
 
 /* ============================ */
 /* Address */
-.address__body{
-    display: flex;
-    flex-direction: column;
-}
 .address__body .address{
     justify-content: space-between;
 }
@@ -169,10 +166,6 @@ textarea{
 }
 .saved__addresses{
     width: 50%;
-}
-.new__address{
-    justify-content: start;
-    align-items: start;
 }
 
 .checkout__address .address__card{
@@ -253,6 +246,7 @@ textarea{
     }
 
     .address__body{
+        gap: 2rem;
         flex-direction: column;
     }
     .address__body .address {

@@ -10,9 +10,7 @@ export const useLogout = () => {
     localStorage.removeItem('cart');
     localStorage.removeItem('email');
 
-    // dispatch logout action
     dispatch({ type: 'LOGOUT' });
-    window.location.reload();
   };
   return { logout };
 };

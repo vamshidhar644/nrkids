@@ -72,7 +72,6 @@ export const PostMongo = () => {
     }
     if (response.ok) {
       alert('updated');
-      window.location.reload();
     }
   };
 
@@ -115,8 +114,6 @@ export const PostMongo = () => {
       console.log('something wrong');
     }
     if (response.ok) {
-      // save the user to local storage
-      window.location.reload();
       navigate('/your-bag');
     }
   };
@@ -137,8 +134,6 @@ export const PostMongo = () => {
       console.log('something wrong');
     }
     if (response.ok) {
-      // save the user to local storage
-      window.location.reload();
     }
   };
 

@@ -10,10 +10,18 @@ import ItemDetails from './Cart/ItemDetails';
 
 import Checkout from './Cart/Checkout';
 import { PostMongo } from '../../BackOps/PostMongo';
+import { FetchMongo } from '../../BackOps/FetchMongo';
 
-const Bag = ({ cartItems, Products }) => {
+const Bag = ({ Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();
+  const { fetchcartData, cartItems } = FetchMongo();
   const { deleteCartItem } = PostMongo();
+
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    fetchcartData();
+  }, []);
 
   useEffect(() => {
     filtersanity(cartItems, Products);
@@ -21,9 +29,8 @@ const Bag = ({ cartItems, Products }) => {
 
   const handleDelete = async (index) => {
     await deleteCartItem(cartItems[index].productId);
+    fetchcartData();
   };
-
-  const [data, setData] = useState('');
 
   const handleDataChange = (newData) => {
     setData(newData);
@@ -69,7 +76,10 @@ const Bag = ({ cartItems, Products }) => {
                               />
 
                               <div className="cart__buttons d-flex position-absolute">
-                                <p onClick={() => handleDelete(index)} className='m-0'>
+                                <p
+                                  onClick={() => handleDelete(index)}
+                                  className="m-0"
+                                >
                                   Remove
                                 </p>
                               </div>
