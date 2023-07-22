@@ -63,6 +63,10 @@ const ProductDetails = ({ Product }) => {
       if (productId && quantity && size && price) {
         await updatecart(productId, itemsData);
         navigate('/your-bag');
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
       }
     }
   };

@@ -11,9 +11,10 @@ const MyAddress = () => {
 
   const { fetchAddressData, address } = FetchMongo();
   const { deleteAddress } = PostMongo();
+
   useEffect(() => {
     fetchAddressData();
-  }, [user]);
+  }, []);
 
   const handleDelete = async (index) => {
     const addressId = address[index]._id;
@@ -22,9 +23,18 @@ const MyAddress = () => {
     deleteAddress(userId, addressId);
   };
 
+  const [triggerChildFunction, setTriggerChildFunction] = useState(false);
   const handleEdit = (index) => {
     setEditData(address[index]);
+
+    setTriggerChildFunction(true);
   };
+
+  const handleDataChange = () => {
+    fetchAddressData();
+  };
+
+  console.log(editData);
 
   return (
     <div className="address__body d-flex w-100 justify-content-between">
@@ -57,10 +67,11 @@ const MyAddress = () => {
       ) : (
         <>Loading...</>
       )}
-      <div>
-        <p className="add_address__button">Add new Address</p>
-        <AddressForm editData={editData ? editData : ''} />
-      </div>
+      <AddressForm
+        editData={editData && editData}
+        onDataChange={handleDataChange}
+        triggerFunction={triggerChildFunction}
+      />
     </div>
   );
 };

@@ -38,12 +38,12 @@ const Bag = ({ Products }) => {
   return (
     <div className="Parent__Cart">
       <div className="shopping__cart w-100 p-4">
-        <div className="cart__path">
-          <p className="d-flex justify-content-start align-items-center">
+        <div>
+          <p className="cart__path d-flex justify-content-start align-items-center">
             <Link to="/">Home </Link>
             <BiChevronRight /> Shopping cart
           </p>
-          <div className="cart-header d-flex align-items-center pt-4 pb-3">
+          <div className="cart-header d-flex align-items-center pb-3">
             <h1>Shopping cart</h1>
           </div>
         </div>
@@ -62,7 +62,7 @@ const Bag = ({ Products }) => {
                       <p>Subtotal</p>
                     </div>
                   </div>
-                  <div className="cart_item__section d-flex flex-column">
+                  <div className="cart_item__section d-flex flex-column-reverse">
                     {filteredItems &&
                       filteredItems.map((item, index) => {
                         return (
@@ -93,12 +93,10 @@ const Bag = ({ Products }) => {
                 <Checkout cartItems={cartItems} data={data} />
               </div>
             ) : (
-              <>
-                <div className="no__items w-100">
-                  <img src="./Assets/empty.png" alt="" />
-                  <h3>No items in the Bag</h3>
-                </div>
-              </>
+              <div className="no__items w-100">
+                <img src="./Assets/empty.png" alt="" />
+                <h3>No items in the Bag</h3>
+              </div>
             )}
           </>
         ) : (

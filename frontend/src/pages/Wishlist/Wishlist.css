@@ -15,4 +15,7 @@
         grid-template-columns: repeat(2, auto);
         justify-content: center;
     }
+    .wishlist__path{
+        display: none !important;
+    }
 }

@@ -5,22 +5,25 @@ import { BiChevronRight } from 'react-icons/bi';
 
 import ProductCard from '../Components/ProductCard/ProductCard';
 import FilterSanity from '../../BackOps/FilterSanity';
+import { FetchMongo } from '../../BackOps/FetchMongo';
 
-const Wishlist = ({ wishlist, Products }) => {
+const Wishlist = ({ Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();
+  const { fetchWishlist, wishlist } = FetchMongo();
 
   useEffect(() => {
+    fetchWishlist();
     filtersanity(wishlist, Products);
   }, [wishlist, Products]);
 
   return (
     <div className="Parent__Wishlist p-4">
-      <div className='w-100'>
+      <div className="w-100">
         <p className="wishlist__path d-flex justify-content-start align-items-center">
           <Link to="/">Home </Link>
           <BiChevronRight /> Wishlist
         </p>
-        <div className="cart-header d-flex pt-4 pb-3">
+        <div className="cart-header d-flex pb-3">
           <h1>My wishlist</h1>
         </div>
         {wishlist ? (

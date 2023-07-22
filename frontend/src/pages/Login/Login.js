@@ -6,7 +6,7 @@ import { auth, provider } from './config';
 import { signInWithPopup } from 'firebase/auth';
 import { useLogin } from '../../hooks/useLogin';
 
-const Login = () => {
+const Login = ({ from }) => {
   const { signup, signerror } = useSignup();
   const currentDate = new Date();
   const hours = currentDate.getHours().toString().padStart(2, '0');
@@ -50,7 +50,12 @@ const Login = () => {
   };
 
   return (
-    <div className="Login__Parent">
+    <div className="Login__Parent py-5">
+      {from && (
+        <h4 style={{ marginBlockStart: '1em', marginTop: '0px' }}>
+          Please login to see your {from}
+        </h4>
+      )}
       <div className="form__container">
         <p className="title">Login</p>
         <form className="form">

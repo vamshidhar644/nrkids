@@ -27,19 +27,11 @@ function App() {
   const { fetchCollections, Collections } = FetchSanity();
   const { fetchAllProducts, Products } = FetchSanity();
 
-  const { fetchWishlist, wishlist } = FetchMongo();
-
   useEffect(() => {
     fetchHero();
     fetchNewArrivals();
     fetchCollections();
     fetchAllProducts();
-  }, [user]);
-
-  useEffect(() => {
-    if (user) {
-      fetchWishlist();
-    }
   }, [user]);
 
   return (
@@ -64,11 +56,13 @@ function App() {
 
         <Route
           path="/wishlist"
-          element={user && <Wishlist wishlist={wishlist} Products={Products} />}
+          element={
+            user ? <Wishlist Products={Products} /> : <Login from="wishlist" />
+          }
         />
         <Route
           path="/your-bag"
-          element={<Bag Products={Products} />}
+          element={user ? <Bag Products={Products} /> : <Login from="cart" />}
         />
 
         <Route

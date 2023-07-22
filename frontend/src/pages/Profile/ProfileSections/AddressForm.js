@@ -3,7 +3,7 @@ import { PostMongo } from '../../../BackOps/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 
-const AddressForm = ({ editData }) => {
+const AddressForm = ({ editData, onDataChange, triggerFunction }) => {
   const { updateAddress } = PostMongo();
 
   const [aId, setaddressId] = useState();
@@ -16,7 +16,7 @@ const AddressForm = ({ editData }) => {
   const [pincode, setPincode] = useState();
 
   useEffect(() => {
-    if (editData) {
+    if (triggerFunction && editData) {
       setaddressId(editData.aId);
       setFullname(editData.fullname);
       setMobile(editData.mobile);
@@ -28,9 +28,9 @@ const AddressForm = ({ editData }) => {
     }
   }, [editData]);
 
-  const handleAddress = (e) => {
+  const handleAddress = async (e) => {
     e.preventDefault();
-    updateAddress(
+    await updateAddress(
       aId,
       fullname,
       mobile,
@@ -40,10 +40,25 @@ const AddressForm = ({ editData }) => {
       state,
       pincode
     );
+    onDataChange();
+  };
+
+  const handleEmpty = () => {
+    setaddressId('');
+    setFullname('');
+    setMobile('');
+    setEmail('');
+    setAddress('');
+    setLandmark('');
+    setState('');
+    setPincode('');
   };
 
   return (
     <form action="" className="new__address d-flex flex-column">
+      <p className="add_address__button w-100" onClick={handleEmpty}>
+        Add new Address
+      </p>
       <input
         type="text"
         placeholder="Full name"
@@ -102,7 +117,7 @@ const AddressForm = ({ editData }) => {
       />
 
       <button className="add_address__button w-100" onClick={handleAddress}>
-        Add
+        {aId ? 'Update' : 'Add'}
       </button>
     </form>
   );

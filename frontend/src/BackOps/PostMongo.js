@@ -186,7 +186,7 @@ export const PostMongo = () => {
     }
     if (response.ok) {
       alert('updated');
-      window.location.reload();
+      // window.location.reload();
     }
   };
 

@@ -71,6 +71,10 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
       await updatecart(productId, itemData);
 
       onDataChange(sendingData);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
   };
 
