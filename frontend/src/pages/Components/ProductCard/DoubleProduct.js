@@ -4,8 +4,9 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import FetchImageUrl from '../../../helpers/FetchImageUrl';
 import { PostMongo } from '../../../helpers/PostMongo';
 import { FetchMongo } from '../../../helpers/FetchMongo';
-import './DoubleProduct.css';
+import './ProductCard.css';
 import { UseAuthContext } from '../../../hooks/useAuthContext';
+
 const DoubleProduct = ({ item, favv }) => {
   const { user } = UseAuthContext();
   const { getImageUrl } = FetchImageUrl();
@@ -68,8 +69,8 @@ const DoubleProduct = ({ item, favv }) => {
           ) : null}
         </Link>
         <div className="Product-Details">
-          <p className="title m-0 p-0 font-weight-normal">{item.title}</p>
-          <p className="subtitle">Description</p>
+          <p className="title m-0 p-0">{item.title}</p>
+          <p className="subtitle">{item.description}</p>
 
           {!favv ? (
             <>

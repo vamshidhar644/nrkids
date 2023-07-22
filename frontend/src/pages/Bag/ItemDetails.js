@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
-import { UseAuthContext } from '../../../hooks/useAuthContext';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
-import ChangePriceperSize from '../../../helpers/ChangePriceperSize';
+import ChangePriceperSize from '../../helpers/ChangePriceperSize';
 
-import DetailsWithoutData from '../../Product/MainProduct/ProductWithoutData';
-import { PostMongo } from '../../../helpers/PostMongo';
+import DetailsWithoutData from '../Product/MainProduct/ProductWithoutData';
+import { PostMongo } from '../../helpers/PostMongo';
 import { Link } from 'react-router-dom';
-import FetchImageUrl from '../../../helpers/FetchImageUrl';
+import FetchImageUrl from '../../helpers/FetchImageUrl';
 
 const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   const { updatecart } = PostMongo();
@@ -112,7 +112,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
         </Link>
         <div className="cart_item__info d-flex flex-column">
           <h6 className="m-0">{items.title}</h6>
-          <p className="m-0">Description</p>
+          <p className="m-0 small">{items.description}</p>
 
           <div className="size__section d-flex align-items-center gap-2 pt-3">
             <p className="m-0">Size</p>

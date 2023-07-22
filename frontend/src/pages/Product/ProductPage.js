@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
-import DoubleProduct from '../Components/DoubleProduct/DoubleProduct';
+import DoubleProduct from '../Components/ProductCard/DoubleProduct';
 
 const ProductPage = ({ Products }) => {
   const { product } = useParams();

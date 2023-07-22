@@ -110,7 +110,7 @@ const MainProduct = ({ Product }) => {
               )}
             </span>
           </h2>
-          <p className="product-subtitle">Description</p>
+          <p className="product-subtitle">{Product.description}</p>
           {Product.isData && <ProductDetails Product={Product} />}
           {!Product.isData && <DetailsWithoutData Product={Product} />}
         </div>

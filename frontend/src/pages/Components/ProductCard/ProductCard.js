@@ -4,7 +4,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import FetchImageUrl from '../../../helpers/FetchImageUrl';
 import { PostMongo } from '../../../helpers/PostMongo';
 import { FetchMongo } from '../../../helpers/FetchMongo';
-import './ProductCard.css';
+
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 const ProductCard = ({ item }) => {
   const { user } = UseAuthContext();
@@ -56,7 +56,7 @@ const ProductCard = ({ item }) => {
         </Link>
         <div className="Product-Details">
           <p className="title p-0 m-0">{item.title}</p>
-          <p className="subtitle">Description</p>
+          <p className="subtitle">{item.description}</p>
           {/* <p className="price mb-0">₹ {item.price}</p> */}
           {fav ? (
             <AiFillHeart

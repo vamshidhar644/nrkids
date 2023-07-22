@@ -1,20 +1,13 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 
 import Viewall from '../../Components/ViewAll/Viewall';
 
 import './NewArrivals.css';
-import DoubleProduct from '../../Components/DoubleProduct/DoubleProduct';
+import DoubleProduct from '../../Components/ProductCard/DoubleProduct';
 
 const NewArrival = ({ NewArrivals }) => {
   const containerRef = useRef(null);
-
-  const scrollHorizontally = (scrollOffset) => {
-    if (containerRef.current) {
-      containerRef.current.scrollLeft += scrollOffset;
-    }
-  };
 
   return (
     <div className="newarrivals-container">

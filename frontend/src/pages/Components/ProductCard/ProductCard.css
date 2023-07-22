@@ -1,22 +1,35 @@
 
 .Main-Card .card{
+    display: flex;
+    width: 20rem;
     transition: 0.4s ease-out;
-    overflow: hidden;
 }
 
+.Main-Card a{
+    margin: 0px;
+}
+.Main-Card a img{
+    width: 100%;
+}
 .Main-Card .title{
-    /* font-size: 1.2rem; */
+    font-size: 16px;
     color: var(--type-high-emphasis, #171520);
 }
   
 .Main-Card .subtitle{
-    /* font-size: 1.1rem; */
     color: var(--type-low-emphasis, #626262);
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 
-@media only screen and (max-width: 991px){
-   
+@media only screen and (max-width: 991px) {
+    .Main-Card .card{
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 767px) {
+
 }

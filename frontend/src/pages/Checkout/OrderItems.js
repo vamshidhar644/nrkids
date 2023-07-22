@@ -22,9 +22,9 @@ const OrderItems = ({ data, cartItems, itemCount, totalPrice }) => {
                         <img src={getImageUrl(item.images[0])} alt="" />
                       </div>
                       <div className="checkout__info">
-                        <h6>{item.title}</h6>
-                        <p className="m-0">Description</p>
-                        <p className="d-flex gap-3 justify-content-between w-100 m-0">
+                        <h6 className="m-0">{item.title}</h6>
+                        <p className="m-0">{item.description}</p>
+                        <p className="d-flex gap-3 justify-content-between w-100 mt-0">
                           <span>Quantity - {cartItems[i].quantity}</span>
                           <span>Size - {cartItems[i].size}</span>
                         </p>

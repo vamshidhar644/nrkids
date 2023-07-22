@@ -6,9 +6,9 @@ import FilterSanity from '../../helpers/FilterSanity';
 import { Link } from 'react-router-dom';
 
 import { BiChevronRight } from 'react-icons/bi';
-import ItemDetails from './Cart/ItemDetails';
+import ItemDetails from './ItemDetails';
 
-import Checkout from './Cart/Checkout';
+import Checkout from './Checkout';
 import { PostMongo } from '../../helpers/PostMongo';
 import { FetchMongo } from '../../helpers/FetchMongo';
 

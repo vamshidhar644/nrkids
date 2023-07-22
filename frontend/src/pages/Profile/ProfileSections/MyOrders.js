@@ -107,7 +107,7 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
                               {filteredItems && filteredItems[i].title}
                             </strong>
                           </p>
-                          <p>Description</p>
+                          <p>{filteredItems[i].description}</p>
                           <p>
                             {item.size} - {item.quantity}
                           </p>
