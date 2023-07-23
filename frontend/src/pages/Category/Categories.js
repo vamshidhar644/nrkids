@@ -71,25 +71,23 @@ const Categories = ({ Products }) => {
         </h4>
       </div>
       {/* <CategoryHero className="category-head" params={categorypath} /> */}
-      <div className="category-body">
-        <div className="products-container pb-4">
-          <hr />
-          {categoryProducts && categoryProducts.length > 0 ? (
-            <div className="Product-Grid d-flex justify-content-center">
-              <div className="Cards-Grid justify-content-evenly">
-                {categoryProducts &&
-                  categoryProducts.map((item, i) => {
-                    return <ProductCard item={item} key={i} />;
-                  })}
-              </div>
+      <div className="category-body pb-5">
+        <hr />
+        {categoryProducts && categoryProducts.length > 0 ? (
+          <div className="Product-Grid d-flex justify-content-center">
+            <div className="Cards-Grid justify-content-around">
+              {categoryProducts &&
+                categoryProducts.map((item, i) => {
+                  return <ProductCard item={item} key={i} />;
+                })}
             </div>
-          ) : (
-            <div className="no__items">
-              <img src="./Assets/no_cat.png" alt="" />
-              <h3>No items in this category yet!</h3>
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="no__items">
+            <img src="./Assets/no_cat.png" alt="" />
+            <h3>No items in this category yet!</h3>
+          </div>
+        )}
       </div>
     </div>
   );

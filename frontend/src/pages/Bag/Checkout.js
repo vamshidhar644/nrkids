@@ -64,7 +64,16 @@ const Checkout = ({ data }) => {
         >
           Checkout
         </Link>
-        <Link to="/" className="bg-white">
+        <Link
+          to="/"
+          className="bg-white"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
           Continue shopping
         </Link>
       </div>

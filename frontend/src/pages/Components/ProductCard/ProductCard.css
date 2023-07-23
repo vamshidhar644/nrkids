@@ -24,8 +24,14 @@
 
 
 @media only screen and (max-width: 991px) {
+    .Cards-Grid .Main-Card{
+        min-width: 100%;
+        /* max-width: 10rem; */
+    }
     .Main-Card .card{
-        width: 100%;
+        min-width: 10rem;
+        width: 100% ;
+        border-radius: 0px !important;
     }
 }
 

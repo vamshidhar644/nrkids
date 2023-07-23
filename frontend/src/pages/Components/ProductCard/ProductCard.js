@@ -43,7 +43,7 @@ const ProductCard = ({ item }) => {
     <>
       <div className="Main-Card" key={item.title}>
         <Link
-          className="card"
+          className="card h-100"
           to={`/${item.dropdownField}/${item.path.current}`}
           onClick={() =>
             window.scrollTo({
@@ -53,23 +53,31 @@ const ProductCard = ({ item }) => {
           }
         >
           <img className="image1" src={getImageUrl(item.images[0])} alt="" />
+          <div className="Product-Details">
+            <p className="title m-0 p-0">
+              {item.title && item.title.length > 16
+                ? item.title.substring(0, 13) + '...'
+                : item.title}
+            </p>
+            <p className="subtitle">
+              {item.description && item.description.length > 20
+                ? item.description.substring(0, 18) + '...'
+                : item.description}
+            </p>
+            {/* <p className="price mb-0">₹ {item.price}</p> */}
+            {fav ? (
+              <AiFillHeart
+                className="fav-icon position-absolute"
+                onClick={() => delFav(item.productId)}
+              />
+            ) : (
+              <AiOutlineHeart
+                className="fav-icon position-absolute"
+                onClick={() => addFav(item.productId)}
+              />
+            )}
+          </div>
         </Link>
-        <div className="Product-Details">
-          <p className="title p-0 m-0">{item.title}</p>
-          <p className="subtitle">{item.description}</p>
-          {/* <p className="price mb-0">₹ {item.price}</p> */}
-          {fav ? (
-            <AiFillHeart
-              className="fav-icon position-absolute"
-              onClick={() => delFav(item.productId)}
-            />
-          ) : (
-            <AiOutlineHeart
-              className="fav-icon position-absolute"
-              onClick={() => addFav(item.productId)}
-            />
-          )}
-        </div>
       </div>
     </>
   );

@@ -1,9 +1,12 @@
+footer{
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
 .Parent-Footer{
     /* position: relative; */
     left: 0;
     bottom: 0;
-    background-color: var(--secondary-color);
-    color: #fff;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -74,6 +77,13 @@
 
 .box3{
     text-align: right;
+}
+
+.dev a{
+    color: #8EC3E1;
+}
+.dev a:hover{
+    color: var(--primary-color);
 }
 
 @media (width < 620px) {

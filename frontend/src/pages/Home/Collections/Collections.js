@@ -18,7 +18,16 @@ const ShopByCategory = ({ Collections }) => {
           Collections.map((categories, index) => {
             return (
               <div key={index}>
-                <Link to={`/${categories.path.current}`} className="cat-card">
+                <Link
+                  to={`/${categories.path.current}`}
+                  className="cat-card"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: 30,
+                      behavior: 'smooth',
+                    })
+                  }
+                >
                   <div className="cat-img-container">
                     <div className="cat-img">
                       <img src={getImageUrl(categories.image)} alt="" />

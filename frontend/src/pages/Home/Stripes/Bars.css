@@ -25,7 +25,9 @@
         display: grid;
         grid-template-columns: repeat(2, auto);
     }
-
+    .bar__icon_container{
+        flex-direction: column;
+    }
     .bar-box{
         display: flex;
         justify-content: flex-start;

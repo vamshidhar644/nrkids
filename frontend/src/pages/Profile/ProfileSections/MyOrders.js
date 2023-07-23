@@ -140,19 +140,21 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
             <p className="m-0 mt-2">Mobile {orderdata.orderedMobile}</p>
           </div>
 
-          <div className="orders__box">
+          <div className="orders__box order__summary">
             <h4 style={{ marginBlockStart: '1em', marginTop: '0px' }}>
               Order Summary
             </h4>
             <hr />
-            <p>Sub Total: ₹ {orderdata.totalAmount}.00</p>
-            <p>Delivery cost: ₹ {orderdata.shippingCost}.00</p>
             <p>
-              <b>
-                Total Amount:&nbsp;&nbsp; ₹{' '}
-                {orderdata.totalAmount + orderdata.shippingCost}
-                .00
-              </b>
+              Sub Total: <span>₹ {orderdata.totalAmount}.00</span>
+            </p>
+            <p>
+              Delivery cost: <span>₹ {orderdata.shippingCost}.00</span>
+            </p>
+            <hr />
+            <p>
+              <b>Total Amount</b>
+              <b>₹ {orderdata.totalAmount + orderdata.shippingCost}.00</b>
             </p>
             <PayButton orderdata={orderdata} />
           </div>

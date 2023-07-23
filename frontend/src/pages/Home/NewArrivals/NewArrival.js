@@ -18,7 +18,7 @@ const NewArrival = ({ NewArrivals }) => {
         </Link>
       </div>
       <div className="New-Arrivals d-flex flex-column py-0 w-100">
-        <div className="Cards-Container" ref={containerRef}>
+        <div className="Cards-Container home__new_arrival" ref={containerRef}>
           {NewArrivals &&
             NewArrivals.map((item, i) => {
               return <DoubleProduct item={item} key={i} favv={true} />;

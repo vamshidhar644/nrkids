@@ -59,7 +59,11 @@
 .orders__box:nth-child(2){
   max-width: 30%;
 }
-
+.order__summary p{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
 .items-container::-webkit-scrollbar {
     width: 0.5em; /* Set the width of the scrollbar */
