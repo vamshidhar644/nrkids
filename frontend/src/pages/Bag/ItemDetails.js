@@ -24,24 +24,15 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
   const [price, setPrice] = useState();
   const [qty, setQty] = useState();
 
-  const [subTotal, setSubtotal] = useState();
-
   useEffect(() => {
     setUserId(user._id);
     setProductId(cartItems[index].productId);
 
+    setSizes(items);
     setSize(cartItems[index].size);
     setPrice(cartItems[index].price);
     setQty(cartItems[index].quantity);
   }, []);
-
-  useEffect(() => {
-    setSizes(items);
-  }, []);
-
-  useEffect(() => {
-    setSubtotal(price * qty);
-  });
 
   const changeSize = (itemsize) => {
     setSize(itemsize);
@@ -142,7 +133,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
           <p>₹ {price}.00</p>
 
           <div className="select-quantity d-flex justify-content-center align-items-center">
-            <div className="change-qty d-flex">
+            <div className="change-qty change_qty__cart d-flex">
               <div
                 className="qty-button d-flex justify-content-center align-items-center"
                 onClick={decr}
@@ -159,7 +150,7 @@ const ItemDetails = ({ index, items, cartItems, onDataChange }) => {
             </div>
           </div>
 
-          <p>₹ {subTotal}.00</p>
+          <p>₹ {price * qty}.00</p>
         </div>
       ) : (
         <DetailsWithoutData Product={items} />

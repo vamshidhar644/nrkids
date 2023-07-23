@@ -37,15 +37,16 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   }, []);
 
   const currentDate = new Date();
+  const date = currentDate.getDate();
+  const month = currentDate.getMonth();
+  const year = currentDate.getFullYear() % 100;
   const hours = currentDate.getHours().toString().padStart(2, '0');
   const minutes = currentDate.getMinutes().toString().padStart(2, '0');
   const seconds = currentDate.getSeconds().toString().padStart(2, '0');
-  const milliseconds = currentDate
-    .getMilliseconds()
-    .toString()
-    .padStart(3, '0');
-  const _id = `${hours}${minutes}${seconds}${milliseconds}`;
-  const orderedDate = new Date();
+
+  const _id = `${date}${month}${year}${hours}${minutes}${seconds}`;
+
+  const orderedDate = currentDate;
   const status = 'Yet to confirm';
   const orderData = {
     _id,

@@ -35,6 +35,7 @@
   @media only screen and (max-width: 991px){
     .Cards-Grid{
         width: 100%;
+        gap: 0px;
         grid-template-columns: repeat(2,auto);
     }
     .hero-container{

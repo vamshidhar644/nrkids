@@ -46,13 +46,6 @@
     color: #fff;
   }
 
-  .item-specifications{
-    justify-content: center;
-  }
-  .change-qty{
-    width: fit-content;
-  }
-  
   .product-icon{
     cursor: pointer;
   }
@@ -61,7 +54,6 @@
   .product-body{
     flex-direction: column;
     justify-content: center;
-    padding: 0px 2rem;
   }
   .product__image{
     width: 100%;
@@ -75,6 +67,7 @@
   }
   .item-specifications{
     align-items: start !important;
+    justify-content: space-around;
   }
 
   .magnify__image{
@@ -82,9 +75,6 @@
   }
   .normal__image{
     display: block;
-  }
-  .select-size{
-    flex-direction: column;
   }
   .product-buttons{
     flex-direction: column;

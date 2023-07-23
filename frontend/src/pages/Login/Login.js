@@ -9,29 +9,25 @@ import { useLogin } from '../../hooks/useLogin';
 const Login = ({ from }) => {
   const { signup, signerror } = useSignup();
   const currentDate = new Date();
+  const date = currentDate.getDate();
+  const month = currentDate.getMonth();
+  const year = currentDate.getFullYear() % 100;
   const hours = currentDate.getHours().toString().padStart(2, '0');
   const minutes = currentDate.getMinutes().toString().padStart(2, '0');
   const seconds = currentDate.getSeconds().toString().padStart(2, '0');
-  const milliseconds = currentDate
-    .getMilliseconds()
-    .toString()
-    .padStart(3, '0');
 
   const handleGoogleSignup = async () => {
     signInWithPopup(auth, provider).then((data) => {
-      // setUser(data.user);
-
       const newName = data.user.displayName;
       // Split the display name into first name and last name
       const namesArray = newName.split(' ');
 
-      const _id = `NKUID${hours}${minutes}${seconds}${milliseconds}`;
+      const _id = `NKUID${date}${month}${year}${hours}${minutes}${seconds}`;
       const firstName = namesArray[0];
       const lastName = namesArray.slice(1).join(' ');
       const email = data.user.email;
       const password = data.user.uid;
       const displayPic = data.user.photoURL;
-
       signup(_id, firstName, lastName, email, password, displayPic);
       localStorage.setItem('email', data.user.email);
     });

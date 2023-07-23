@@ -2,6 +2,7 @@ header {
   width: 100%;
   background-color: #ffffff;
   position: relative;
+  top: 0;
 }
 .fixed {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -90,6 +91,10 @@ header {
 }
 
 @media only screen and (max-width: 894px) {
+  
+  #ham-menu {
+    display: block;
+  }
   .main__logo{
     display: none;
   }

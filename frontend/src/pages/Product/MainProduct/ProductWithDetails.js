@@ -23,8 +23,6 @@ const ProductDetails = ({ Product }) => {
   const { setSizes, item } = ChangePriceperSize();
 
   const [productId, setProdId] = useState();
-  const [userId, setUserId] = useState();
-
   const [size, setSize] = useState('');
   const [price, setPrice] = useState();
   const [quantity, setQty] = useState(1);
@@ -34,9 +32,6 @@ const ProductDetails = ({ Product }) => {
   useEffect(() => {
     setProdId(Product.productId);
     setSizes(Product);
-    if (user) {
-      setUserId(user._id);
-    }
   }, [user]);
 
   useEffect(() => {
@@ -58,6 +53,7 @@ const ProductDetails = ({ Product }) => {
     e.preventDefault();
 
     if (user) {
+      const userId = user._id;
       const itemsData = { userId, quantity, size, price };
 
       if (productId && quantity && size && price) {
@@ -84,7 +80,7 @@ const ProductDetails = ({ Product }) => {
     <div className="product-withdata">
       {size !== 'none' && <p className="product-price">₹ {price}.00</p>}
       <div className="item-specifications d-flex">
-        <div className="select-quantity d-flex ">
+        <div className="select-quantity d-flex align-items-center gap-2">
           <p className="m-0">Quantity </p>
           <div className="change-qty d-flex">
             <div
@@ -102,8 +98,8 @@ const ProductDetails = ({ Product }) => {
             </div>
           </div>
         </div>
-        <div className="size-section align-items-center">
-          <div className="select-size d-flex">
+        <div className="size-section d-flex">
+          <div className="select-size d-flex align-items-center gap-2">
             <p className="m-0">Size </p>
             <select
               name="size"
@@ -161,6 +157,12 @@ const ProductDetails = ({ Product }) => {
             className="product-button d-flex justify-content-center align-items-center"
             to="/check-out"
             state={{ data: buyData }}
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+            }
           >
             Buy now
           </Link>

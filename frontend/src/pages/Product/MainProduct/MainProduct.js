@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './MainPage.css';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 import { SetPaths } from '../../../helpers/SetPaths';
@@ -55,7 +54,7 @@ const MainProduct = ({ Product }) => {
   const watchImg = getImageUrl(Product.images[imageIndex]);
 
   return (
-    <div className="product-page p-4">
+    <div className="product-page">
       <p className="product-path d-flex flex-start align-items-center">
         <Link to="/">Home </Link>
         <BiChevronRight />

@@ -34,23 +34,11 @@ const PersonalInfo = ({ userData }) => {
 
   useEffect(() => {
     if (userData) {
-      if (userData.displayPic) {
-        setDisplaypic(userData.displayPic);
-      }
-
-      if (userData.dob) {
-        setSelectedDate(convertDateFormat(userData.dob));
-      }
-
-      if (!firstName) {
-        setFirstName(userData.firstName);
-      }
-      if (!lastName) {
-        setLastName(userData.lastName);
-      }
-      if (!phoneNumber) {
-        setMobilenumber(userData.phoneNumber);
-      }
+      setDisplaypic(userData.displayPic || null);
+      setSelectedDate(convertDateFormat(userData.dob) || null);
+      setFirstName(userData.firstName || firstName);
+      setLastName(userData.lastName || lastName);
+      setMobilenumber(userData.phoneNumber || phoneNumber);
     }
   }, []);
 
@@ -59,10 +47,7 @@ const PersonalInfo = ({ userData }) => {
   };
 
   const handleUpdate = async (e) => {
-    e.preventDefault();
-
-    const _id = user._id;
-    updateUserData(_id, firstName, lastName, phoneNumber, dob, imageSrc);
+    updateUserData(firstName, lastName, phoneNumber, dob, imageSrc);
   };
 
   return (

@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
 import DoubleProduct from '../Components/ProductCard/DoubleProduct';
 
+import './ProductPage.css';
+
 const ProductPage = ({ Products }) => {
   const { product } = useParams();
 
@@ -42,19 +44,15 @@ const ProductPage = ({ Products }) => {
 
   if (data.length !== 0) {
     return (
-      <div>
+      <div className="d-flex flex-column gap-5 p-4">
         <MainProduct Product={data} />
-        <div>
-          <div className="newarrivals-head d-flex justify-content-between p-0 py-0 px-5">
-            <h3 className="medium">Related items</h3>
-          </div>
-          <div className="New-Arrivals d-flex align-items-center justify-content-center p-0 py-0 px-4 small">
-            <div className="Cards-Container overflow-x-auto d-flex">
-              {relatedProducts &&
-                relatedProducts.map((item, i) => {
-                  return <DoubleProduct item={item} key={i} />;
-                })}
-            </div>
+        <div className="New-Arrivals may_like">
+          <h3>You may also like</h3>
+          <div className="Cards-Container overflow-x-auto">
+            {relatedProducts &&
+              relatedProducts.map((item, i) => {
+                return <DoubleProduct item={item} key={i} />;
+              })}
           </div>
         </div>
       </div>

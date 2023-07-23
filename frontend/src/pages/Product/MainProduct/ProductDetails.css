@@ -11,18 +11,13 @@
     justify-content: flex-start;
     align-items: center;
 }
-  
-.select-quantity, .select-size{
-    gap: 12px;
-}
 
-.size-section{
-    gap: 10px;
-}
 
 .change-qty{
     border: 1px solid;
     align-items: center;
+    width: 110px;
+    justify-content: space-between;
     border-radius: 3px;
 }
 
@@ -96,6 +91,6 @@
     .select-quantity, .select-size{
         flex-direction: column;
         gap: 0px;
-        align-items: flex-start;
+        align-items: flex-start !important;
     }
 }

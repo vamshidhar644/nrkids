@@ -49,7 +49,7 @@
 
 .Product-Details{
   width: 100%;
-  padding: 4px 12px;
+  padding: 12px;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -75,7 +75,9 @@
   .Cards-Container{
     display: grid;
     width: 100%;
-    align-items: flex-start;
     grid-template-columns: repeat(2, auto);
+  }
+  .may_like{
+    padding: 0px;
   }
 }

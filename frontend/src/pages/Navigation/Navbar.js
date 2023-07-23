@@ -77,13 +77,13 @@ const Navbar = () => {
           </Link>
         </div>
         <NavbarItems isActive={isActive} changeNavbar={closeNavbar} />
-        {/* <Search /> */}
         <NavbarIcons
           isActive={isActive}
           changeNavbar={closeNavbar}
           changeToggle={toggleNavbar}
         />
       </nav>
+      <Search />
     </header>
   );
 };

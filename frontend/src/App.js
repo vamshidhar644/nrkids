@@ -18,6 +18,7 @@ import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
 import Login from './pages/Login/Login';
+import Searched from './pages/Searched/Searched';
 
 function App() {
   const { user } = UseAuthContext();
@@ -79,6 +80,8 @@ function App() {
           path="/my-profile/:id"
           element={user ? <ProfileBody /> : <Login />}
         />
+
+        <Route path="/search/:searched" element={<Searched />} />
 
         <Route
           path="/your-bag/check-out"

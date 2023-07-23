@@ -18,9 +18,7 @@ const MyAddress = () => {
 
   const handleDelete = async (index) => {
     const addressId = address[index]._id;
-    const userId = user._id;
-
-    deleteAddress(userId, addressId);
+    deleteAddress(addressId);
   };
 
   const [triggerChildFunction, setTriggerChildFunction] = useState(false);
