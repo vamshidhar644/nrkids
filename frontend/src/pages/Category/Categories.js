@@ -75,7 +75,7 @@ const Categories = ({ Products }) => {
         <hr />
         {categoryProducts && categoryProducts.length > 0 ? (
           <div className="Product-Grid d-flex justify-content-center">
-            <div className="Cards-Grid justify-content-around">
+            <div className="Cards-Grid justify-content-center">
               {categoryProducts &&
                 categoryProducts.map((item, i) => {
                   return <ProductCard item={item} key={i} />;

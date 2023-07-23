@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
+import './NavbarItems/NavbarItems.css';
+import './NavbarIcons/NavbarIcons.css';
 import { Link } from 'react-router-dom';
 import OfferSection from './OfferSection';
-import NavbarItems from './NavbarItems';
-import NavbarIcons from './NavbarIcons';
+import NavbarItems from './NavbarItems/NavbarItems';
+import NavbarIcons from './NavbarIcons/NavbarIcons';
+import Search from './Search/Search';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -74,6 +77,7 @@ const Navbar = () => {
           </Link>
         </div>
         <NavbarItems isActive={isActive} changeNavbar={closeNavbar} />
+        {/* <Search /> */}
         <NavbarIcons
           isActive={isActive}
           changeNavbar={closeNavbar}

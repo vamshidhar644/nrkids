@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ScrollContext } from '../Components/ScrollProvider';
+import { ScrollContext } from '../../Components/ScrollProvider';
 import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai';
 import { FaUser, FaHeart } from 'react-icons/fa';
 import { BsHandbag, BsHandbagFill } from 'react-icons/bs';
 import { HiOutlineMenuAlt2, HiMenu } from 'react-icons/hi';
-import { useLogout } from '../../hooks/useLogout';
+import { useLogout } from '../../../hooks/useLogout';
 
-import { UseAuthContext } from '../../hooks/useAuthContext';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { Link, NavLink } from 'react-router-dom';
 
 const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {

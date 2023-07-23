@@ -59,7 +59,7 @@ const ProductCard = ({ item }) => {
                 ? item.title.substring(0, 13) + '...'
                 : item.title}
             </p>
-            <p className="subtitle">
+            <p className="subtitle m-0">
               {item.description && item.description.length > 20
                 ? item.description.substring(0, 18) + '...'
                 : item.description}
