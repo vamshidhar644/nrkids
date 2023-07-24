@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLogout } from '../../../hooks/useLogout';
+import { UseAuthContext } from '../../../hooks/useAuthContext';
 
 const NavbarItems = ({ isActive, changeNavbar }) => {
+  const { user } = UseAuthContext();
   const closeNavbar = () => {
     changeNavbar();
   };
@@ -96,9 +98,11 @@ const NavbarItems = ({ isActive, changeNavbar }) => {
           MOM & ME
         </NavLink>
       </li>
-      <li className="mobile__logout" onClick={handlelogout}>
-        <p className='m-0'>LOGOUT</p>
-      </li>
+      {user ? (
+        <li className="mobile__logout" onClick={handlelogout}>
+          <p className="m-0">LOGOUT</p>
+        </li>
+      ) : null}
     </ul>
   );
 };

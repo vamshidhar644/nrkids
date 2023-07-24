@@ -99,9 +99,11 @@ const Login = ({ isOpen }) => {
             To proceed with shopping, please continue using Google.
           </p>
 
-          <button onClick={handleGoogle} className="acceptButton">
-            Continue with <FcGoogle />
-          </button>
+          <div className="w-100 d-flex justify-content-end">
+            <button onClick={handleGoogle} className="acceptButton">
+              Continue with <FcGoogle />
+            </button>
+          </div>
           <div onClick={handleClosePopup} className="login__close">
             <AiOutlineClose />
           </div>
