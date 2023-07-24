@@ -73,30 +73,52 @@ nav {
     color: #333;
     text-decoration: none;
   }
-
+  .mobile__logout{
+    display: none;
+  }
 
 @media only screen and (max-width: 894px) {
-    nav .ul {
-        padding-top: 3rem;
-        padding-left: 10px;
-        padding-right: 10px;
-        background-color: #fff;
-        position: fixed;
-        width: 100vw;    
-        left: -100vw;
-        top: 0;
-        z-index: 998;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 30px;
-        transition: .8s;
-        overflow-y: scroll;
-    }
-    
+  nav .ul {
+    padding-top: 3rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #fff;
+    position: fixed;
+    width: 100vw;    
+    left: -100vw;
+    top: 0;
+    z-index: 998;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    transition: .8s;
+    overflow-y: scroll;
+  }
+
+  nav ul a{
+    display: flex;
+    width: 100%;
+  }
+
   .dropdownn-menu{
     position: relative;
+  }
+  
+  .mobile__logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    padding-top: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding-bottom: 5rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding-left: 10px;
   }
 }

@@ -1,9 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useLogout } from '../../../hooks/useLogout';
 
 const NavbarItems = ({ isActive, changeNavbar }) => {
   const closeNavbar = () => {
     changeNavbar();
+  };
+
+  const { logout } = useLogout();
+  const handlelogout = () => {
+    logout();
   };
   return (
     <ul id="nav-bar" className={`ul ${isActive ? 'active' : ''}`}>
@@ -89,6 +95,9 @@ const NavbarItems = ({ isActive, changeNavbar }) => {
         <NavLink to="/mom-and-me" onClick={closeNavbar}>
           MOM & ME
         </NavLink>
+      </li>
+      <li className="mobile__logout" onClick={handlelogout}>
+        <p className='m-0'>LOGOUT</p>
       </li>
     </ul>
   );

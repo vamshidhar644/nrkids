@@ -13,7 +13,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
 
   useEffect(() => {
     fetchAddressData();
-  }, []);
+  }, [address]);
 
   const [orderAddress, setAddress] = useState();
 
