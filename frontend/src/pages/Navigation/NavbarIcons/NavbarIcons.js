@@ -8,9 +8,11 @@ import { useLogout } from '../../../hooks/useLogout';
 
 import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { Link, NavLink } from 'react-router-dom';
+import { FetchMongo } from '../../../helpers/FetchMongo';
 
 const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
   const { user } = UseAuthContext();
+  const { fetchUserData, userData } = FetchMongo();
   const isAtFooter = useContext(ScrollContext);
 
   const { logout } = useLogout();
@@ -25,6 +27,10 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
   const toggleNavbar = () => {
     changeToggle();
   };
+
+  useEffect(() => {
+    fetchUserData();
+  }, [user]);
 
   const [activeLink, setActiveLink] = useState();
   useEffect(() => {
@@ -82,7 +88,7 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
               <ul className="user__profile">
                 <li className="nav-item">
                   <NavLink className="profile-d" to={`/my-profile/${user._id}`}>
-                    Hello {user.firstName}
+                    Hello {userData && userData.firstName}
                   </NavLink>
                 </li>
 

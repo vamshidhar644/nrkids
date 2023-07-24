@@ -7,6 +7,7 @@ export const PostMongo = () => {
   const [imageSrc, setImage] = useState();
   const navigate = useNavigate();
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   //  I M A G E  C O M P R E S S . . . . .
   const handleCompress = (inputRef, compressedImageRef) => {
     const inputImage = inputRef.current;
@@ -46,52 +47,29 @@ export const PostMongo = () => {
 
   //  U S E R D A T A . . . . . . .
   const updateUserData = async (
-    _id,
     firstName,
     lastName,
     phoneNumber,
     dob,
     displayPic
   ) => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/${_id}`,
-      {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          phoneNumber,
-          dob,
-          displayPic,
-        }),
-      }
-    );
+    const response = await fetch(`${BACKEND_URL}/api/user/${user._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        phoneNumber,
+        dob,
+        displayPic,
+      }),
+    });
 
     if (!response.ok) {
-    }
-    if (response.ok) {
-      alert('updated');
-    }
-  };
-
-  // P A S S W O R D S . . . . . . .
-  const updatePassword = async (_id, email, oldpassword, newpassword) => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/${_id}/change-password`,
-      {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          oldpassword,
-          newpassword,
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      // console.log('Something went wrong');
+      console.log(response);
     }
     if (response.ok) {
       alert('updated');
@@ -100,14 +78,14 @@ export const PostMongo = () => {
   };
 
   const updatecart = async (productId, itemsData) => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/cart/${productId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ itemsData }),
-      }
-    );
+    const response = await fetch(`${BACKEND_URL}/api/user/cart/${productId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({ itemsData }),
+    });
     // const json = await response.json();
 
     if (!response.ok) {
@@ -121,10 +99,13 @@ export const PostMongo = () => {
   // D E L E T E  C A R T  I T E M
   const deleteCartItem = async (productId) => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/${user._id}/cart/${productId}`,
+      `${BACKEND_URL}/api/user/${user._id}/cart/${productId}`,
       {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
         body: JSON.stringify({}),
       }
     );
@@ -164,38 +145,40 @@ export const PostMongo = () => {
       aId = `NKADDUID${date}${hours}${minutes}${seconds}${milliseconds}`;
     }
     const userId = user._id;
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/address/${aId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId,
-          fullname,
-          mobile,
-          email,
-          fullAddress,
-          landmark,
-          state,
-          pincode,
-        }),
-      }
-    );
+    const response = await fetch(`${BACKEND_URL}/api/user/address/${aId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({
+        userId,
+        fullname,
+        mobile,
+        email,
+        fullAddress,
+        landmark,
+        state,
+        pincode,
+      }),
+    });
     if (!response.ok) {
-      console.log('Something went wrong');
+      console.log(response);
     }
     if (response.ok) {
       alert('updated');
-      // window.location.reload();
     }
   };
 
-  const deleteAddress = async (userId, addressId) => {
+  const deleteAddress = async (addressId) => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/${userId}/address/${addressId}`,
+      `${BACKEND_URL}/api/user/${user._id}/address/${addressId}`,
       {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
       }
     );
 
@@ -212,23 +195,22 @@ export const PostMongo = () => {
   const updateWishlist = async (productId) => {
     const userId = user._id;
 
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/wishlist/add`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId,
-          productId,
-        }),
-      }
-    );
+    const response = await fetch(`${BACKEND_URL}/api/user/wishlist/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({
+        userId,
+        productId,
+      }),
+    });
 
     if (!response.ok) {
       console.log('Something went wrong');
     }
     if (response.ok) {
-      window.location.reload();
     }
   };
 
@@ -236,10 +218,13 @@ export const PostMongo = () => {
     const userId = user._id;
 
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/${userId}/wishlist/${productId}`,
+      `${BACKEND_URL}/api/user/${userId}/wishlist/${productId}`,
       {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
       }
     );
 
@@ -247,21 +232,18 @@ export const PostMongo = () => {
       console.log('Something went wrong');
     }
     if (response.ok) {
-      // console.log('deleted');
-
-      window.location.reload();
     }
   };
 
   const addOrder = async (userId, orderData) => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/user/order/${userId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderData }),
-      }
-    );
+    const response = await fetch(`${BACKEND_URL}/api/user/order/${userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({ orderData }),
+    });
     // const json = await response.json();
 
     if (!response.ok) {
@@ -276,7 +258,6 @@ export const PostMongo = () => {
     handleCompress,
     imageSrc,
     updatecart,
-    updatePassword,
     deleteCartItem,
     updateAddress,
     deleteAddress,

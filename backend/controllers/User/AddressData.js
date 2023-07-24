@@ -45,8 +45,6 @@ const updateAddressData = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-
-    console.log('aId: ', aId);
     // Check if the PRODUCT already exists for the USER
     const address = user.addresses.find((item) => item.aId === aId);
     if (address) {

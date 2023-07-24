@@ -10,18 +10,26 @@ export const FetchMongo = () => {
   const [wishlist, setWishlist] = useState();
   const [orders, setOrders] = useState();
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   //  U S E R  D A T A . . . . . . . . .
   const fetchUserData = async () => {
     if (user) {
       const id = user._id;
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`)
-        .then((response) => {
-          setUserdata(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
+      const response = await fetch(`${BACKEND_URL}/api/user/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log('something wrong');
+      }
+      if (response.ok) {
+        setUserdata(json);
+      }
     }
   };
 
@@ -29,14 +37,29 @@ export const FetchMongo = () => {
   const fetchcartData = async () => {
     if (user) {
       const id = user._id;
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/cart/${id}`)
-        .then((response) => {
-          setCartitems(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
+      const response = await fetch(`${BACKEND_URL}/api/user/cart/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log('something wrong');
+      }
+      if (response.ok) {
+        setCartitems(json);
+      }
+      // axios
+      //   .get(`${BACKEND_URL}/api/user/cart/${id}`)
+      //   .then((response) => {
+      //     setCartitems(response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error fetching document:', error);
+      //   });
     }
   };
 
@@ -44,14 +67,21 @@ export const FetchMongo = () => {
   const fetchAddressData = async () => {
     if (user) {
       const id = user._id;
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/address/${id}`)
-        .then((response) => {
-          setAddress(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
+      const response = await fetch(`${BACKEND_URL}/api/user/address/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log('something wrong');
+      }
+      if (response.ok) {
+        setAddress(json);
+      }
     }
   };
 
@@ -59,14 +89,29 @@ export const FetchMongo = () => {
   const fetchWishlist = async () => {
     if (user) {
       const id = user._id;
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/wishlist/${id}`)
-        .then((response) => {
-          setWishlist(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
+      const response = await fetch(`${BACKEND_URL}/api/user/wishlist/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log('something wrong');
+      }
+      if (response.ok) {
+        setWishlist(json);
+      }
+      // axios
+      //   .get(`${BACKEND_URL}/api/user/wishlist/${id}`)
+      //   .then((response) => {
+      //     setWishlist(response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error fetching document:', error);
+      //   });
     }
   };
 
@@ -74,14 +119,29 @@ export const FetchMongo = () => {
   const fetchOrders = async () => {
     if (user) {
       const id = user._id;
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/order/${id}`)
-        .then((response) => {
-          setOrders(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching document:', error);
-        });
+      const response = await fetch(`${BACKEND_URL}/api/user/order/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (!response.ok) {
+        console.log('something wrong');
+      }
+      if (response.ok) {
+        setOrders(json);
+      }
+      // axios
+      //   .get(`${BACKEND_URL}/api/user/order/${id}`)
+      //   .then((response) => {
+      //     setOrders(response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error fetching document:', error);
+      //   });
     }
   };
 

@@ -1,20 +1,4 @@
 const User = require('../../models/userModel');
-const moment = require('moment'); // Import moment.js library
-
-// Convert the date to DD-MM-YYYY format
-function formatDateToDDMMYYYY(date) {
-  const parts = date.split('-');
-  if (parts.length === 3) {
-    const [day, month, year] = parts;
-    const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(
-      2,
-      '0'
-    )}T00:00:00.000Z`;
-    return formattedDate;
-  }
-  throw new Error('Invalid date format. Expected DD-MM-YYYY');
-}
-
 // Get User data
 const getUserData = async (req, res) => {
   const userId = req.params.id;
@@ -60,22 +44,14 @@ const updateUserData = async (req, res) => {
 
   // console.log(displayPic);
   try {
-    let formattedDOB;
-    if (dob) {
-      formattedDOB = formatDateToDDMMYYYY(dob);
-    } else {
-      formattedDOB = '';
-    }
-
     const user = await User.findByIdAndUpdate(
       id,
-      { firstName, lastName, phoneNumber, dob: formattedDOB, displayPic },
+      { firstName, lastName, phoneNumber, dob, displayPic },
       { new: true }
     );
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
     return res.json(user);
   } catch (error) {
     console.error('Error updating user data:', error);

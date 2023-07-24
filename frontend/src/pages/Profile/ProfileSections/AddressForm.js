@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import { PostMongo } from '../../../helpers/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 
-const AddressForm = ({ editData, onDataChange, triggerFunction }) => {
+const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
   const { updateAddress } = PostMongo();
 
   const [aId, setaddressId] = useState();
@@ -15,8 +20,10 @@ const AddressForm = ({ editData, onDataChange, triggerFunction }) => {
   const [state, setState] = useState();
   const [pincode, setPincode] = useState();
 
+  const [triggerChildFunction, setTriggerChildFunction] = useState(false);
+
   useEffect(() => {
-    if (triggerFunction && editData) {
+    if (editData) {
       setaddressId(editData.aId);
       setFullname(editData.fullname);
       setMobile(editData.mobile);
@@ -25,8 +32,17 @@ const AddressForm = ({ editData, onDataChange, triggerFunction }) => {
       setLandmark(editData.landmark);
       setState(editData.state);
       setPincode(editData.pincode);
+    } else {
+      setaddressId('');
+      setFullname('');
+      setMobile('');
+      setEmail('');
+      setAddress('');
+      setLandmark('');
+      setState('');
+      setPincode('');
     }
-  }, [editData]);
+  }, [triggerChildFunction, editData]);
 
   const handleAddress = async (e) => {
     e.preventDefault();
@@ -43,20 +59,19 @@ const AddressForm = ({ editData, onDataChange, triggerFunction }) => {
     onDataChange();
   };
 
-  const handleEmpty = () => {
-    setaddressId('');
-    setFullname('');
-    setMobile('');
-    setEmail('');
-    setAddress('');
-    setLandmark('');
-    setState('');
-    setPincode('');
+  useImperativeHandle(ref, () => ({
+    changeTrigger: () => {
+      setTriggerChildFunction(!triggerChildFunction);
+    },
+  }));
+
+  const changeTrigger = () => {
+    emptyData();
   };
 
   return (
     <form action="" className="new__address d-flex flex-column">
-      <p className="add_address__button w-100" onClick={handleEmpty}>
+      <p className="add_address__button w-100" onClick={changeTrigger}>
         Add new Address
       </p>
       <input
@@ -121,6 +136,6 @@ const AddressForm = ({ editData, onDataChange, triggerFunction }) => {
       </button>
     </form>
   );
-};
+});
 
 export default AddressForm;

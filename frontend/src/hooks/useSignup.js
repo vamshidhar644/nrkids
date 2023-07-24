@@ -44,7 +44,6 @@ export const useSignup = () => {
       setError('*' + json.error);
 
       if (json.error === '0') {
-        console.log('to login=>');
         login(email);
       }
     }

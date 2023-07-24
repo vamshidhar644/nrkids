@@ -27,7 +27,7 @@ const userSchema = new Schema({
   },
   displayPic: { type: String },
   phoneNumber: { type: String },
-  dob: { type: Date },
+  dob: { type: String },
   addresses: [
     {
       aId: { type: String, required: true },
@@ -106,7 +106,6 @@ userSchema.statics.signup = async function (
 
 // static login method
 userSchema.statics.login = async function (email) {
-  
   const user = await this.findOne({ email });
 
   if (!user) {

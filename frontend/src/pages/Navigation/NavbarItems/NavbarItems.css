@@ -85,6 +85,7 @@ nav {
         width: 100vw;    
         left: -100vw;
         top: 0;
+        z-index: 998;
         height: 100vh;
         display: flex;
         flex-direction: column;

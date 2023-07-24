@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 // import { ImBin } from 'react-icons/im';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { PostMongo } from '../../../helpers/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 const PersonalInfo = ({ userData }) => {
-  const { user } = UseAuthContext();
   const { updateUserData, handleCompress, imageSrc } = PostMongo();
 
   const inputRef = useRef();
@@ -19,23 +17,10 @@ const PersonalInfo = ({ userData }) => {
   const [phoneNumber, setMobilenumber] = useState('');
   const [dob, setSelectedDate] = useState('');
 
-  const convertDateFormat = (inputDate) => {
-    const date = new Date(inputDate);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
-    return `${day}-${month}-${year}`;
-  };
-
-  const dateFormat = (dob) => {
-    const [year, month, day] = dob.split('-');
-    setSelectedDate(`${day}-${month}-${year}`);
-  };
-
   useEffect(() => {
     if (userData) {
       setDisplaypic(userData.displayPic || null);
-      setSelectedDate(convertDateFormat(userData.dob) || null);
+      setSelectedDate(userData.dob.split('T')[0] || null);
       setFirstName(userData.firstName || firstName);
       setLastName(userData.lastName || lastName);
       setMobilenumber(userData.phoneNumber || phoneNumber);
@@ -90,7 +75,7 @@ const PersonalInfo = ({ userData }) => {
                 <input
                   type="text"
                   name="firstName"
-                  placeholder={userData.firstName}
+                  defaultValue={userData.firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 ></input>
               </div>
@@ -101,7 +86,7 @@ const PersonalInfo = ({ userData }) => {
                 <input
                   type="text"
                   name="lastName"
-                  placeholder={userData.lastName}
+                  defaultValue={userData.lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 ></input>
               </div>
@@ -133,18 +118,11 @@ const PersonalInfo = ({ userData }) => {
               <label htmlFor="DateofBirth" id="dob">
                 Date of birth
               </label>
-              {userData.dob && (
-                <input type="text" readOnly defaultValue={dob} />
-              )}
-              {!userData.dob && (
-                <>
-                  <input
-                    type="date"
-                    onChange={(e) => dateFormat(e.target.value)}
-                  />
-                  *Once the dob is set, cannot be changed again
-                </>
-              )}
+              <input
+                type="date"
+                defaultValue={dob}
+                onChange={(e) => setSelectedDate(e.target.value)}
+              />
             </div>
             <div className="save__button d-flex" onClick={handleUpdate}>
               <p className="profile-image-upload py-1 px-3 m-0">Save Changes</p>

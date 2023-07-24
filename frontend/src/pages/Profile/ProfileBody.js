@@ -28,7 +28,6 @@ const ProfileBody = () => {
     { title: 'Personal Information', icon: <FaInfo className="list__icon" /> },
     { title: 'My Orders', icon: <GiLargeDress className="list__icon" /> },
     { title: 'My Addresses', icon: <GoLocation className="list__icon" /> },
-    { title: 'Change Password', icon: <FaKey className="list__icon" /> },
   ];
 
   const [section, setSection] = useState(profileList[0].title);
@@ -108,9 +107,6 @@ const ProfileBody = () => {
           ) : null}
           {section === profileList[1].title ? <MyOrders /> : null}
           {section === profileList[2].title ? <MyAddress /> : null}
-          {section === profileList[3].title ? (
-            <ChangePassword userData={userData ? userData : null} />
-          ) : null}
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const { default: mongoose } = require('mongoose');
-
+const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
 const cartRoutes = require('./routes/orders');
 // const adminRoutes = require('./routes/admin');
@@ -18,6 +18,9 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+// Parse incoming request bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
 app.use('/api/user', userRoutes);

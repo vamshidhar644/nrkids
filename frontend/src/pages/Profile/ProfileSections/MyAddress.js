@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AddressForm from './AddressForm';
 import { FetchMongo } from '../../../helpers/FetchMongo';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
 import { PostMongo } from '../../../helpers/PostMongo';
 
 const MyAddress = () => {
-  const { user } = UseAuthContext();
-
   const [editData, setEditData] = useState();
 
   const { fetchAddressData, address } = FetchMongo();
@@ -19,17 +16,25 @@ const MyAddress = () => {
   const handleDelete = async (index) => {
     const addressId = address[index]._id;
     deleteAddress(addressId);
+    fetchAddressData();
   };
 
-  const [triggerChildFunction, setTriggerChildFunction] = useState(false);
+  const addressFormRef = useRef(null);
+
   const handleEdit = (index) => {
     setEditData(address[index]);
-
-    setTriggerChildFunction(true);
+    if (addressFormRef.current) {
+      addressFormRef.current.changeTrigger();
+    }
   };
 
   const handleDataChange = () => {
     fetchAddressData();
+  };
+
+  const emptyData = () => {
+    // Set the addressData to editData when editing an address
+    setEditData(null);
   };
 
   return (
@@ -64,9 +69,10 @@ const MyAddress = () => {
         <>Loading...</>
       )}
       <AddressForm
+        ref={addressFormRef}
         editData={editData && editData}
+        emptyData={emptyData}
         onDataChange={handleDataChange}
-        triggerFunction={triggerChildFunction}
       />
     </div>
   );
