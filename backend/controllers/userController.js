@@ -7,24 +7,25 @@ const createToken = (_id) => {
 
 // login user
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
 
   try {
-    const user = await User.login(email, password);
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      throw Error('User does not exists');
+    }
 
     // create a token
     const token = createToken(user._id);
-
-    const firstName = user.firstName;
-    const lastName = user.lastName;
     const _id = user.id;
 
-    res.status(200).json({ _id, firstName, lastName, email, token });
+    res.status(200).json({ _id, token });
   } catch (error) {
-    res.status(400).json({ error: error.message }); 
+    res.status(400).json({ error: error.message });
   }
 };
- 
+
 // signup user
 const signupUser = async (req, res) => {
   const { _id, firstName, lastName, email, password, displayPic } = req.body;
@@ -42,7 +43,7 @@ const signupUser = async (req, res) => {
     // create a token
     const token = createToken(user._id);
 
-    res.status(200).json({ _id, firstName, lastName, email, token });
+    res.status(200).json({ _id, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

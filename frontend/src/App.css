@@ -13,6 +13,8 @@
 #root{
     font-family: 'Poppins';
     overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
 }
 
 a{

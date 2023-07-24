@@ -17,8 +17,9 @@ import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
-import Login from './pages/Login/Login';
+// import Login from './pages/Login/Login';
 import Searched from './pages/Searched/Searched';
+import Parent from './pages/Login/Parent';
 
 function App() {
   const { user } = UseAuthContext();
@@ -51,18 +52,18 @@ function App() {
         />
         <Route
           path="/login"
-          element={!user ? <Login /> : <Navigate to="/" />}
+          element={!user ? <Parent /> : <Navigate to="/" />}
         />
 
         <Route
           path="/wishlist"
           element={
-            user ? <Wishlist Products={Products} /> : <Login from="wishlist" />
+            user ? <Wishlist Products={Products} /> : <Parent from="wishlist" />
           }
         />
         <Route
           path="/your-bag"
-          element={user ? <Bag Products={Products} /> : <Login from="cart" />}
+          element={user ? <Bag Products={Products} /> : <Parent from="cart" />}
         />
 
         <Route
@@ -78,7 +79,7 @@ function App() {
 
         <Route
           path="/my-profile/:id"
-          element={user ? <ProfileBody /> : <Login />}
+          element={user ? <ProfileBody /> : <Parent />}
         />
 
         <Route path="/search/:searched" element={<Searched />} />

@@ -86,11 +86,12 @@ userSchema.statics.signup = async function (
   const exists = await this.findOne({ email });
 
   if (exists) {
-    throw Error('Email already in use');
+    throw Error(0);
   }
 
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
+
   const user = await this.create({
     _id,
     firstName,
@@ -104,12 +105,8 @@ userSchema.statics.signup = async function (
 };
 
 // static login method
-userSchema.statics.login = async function (email, password) {
-  // authentication
-  if (!email || !password) {
-    throw Error('All fields must be filled');
-  }
-
+userSchema.statics.login = async function (email) {
+  
   const user = await this.findOne({ email });
 
   if (!user) {

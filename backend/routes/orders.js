@@ -6,9 +6,9 @@ const requireAuth = require('../middleware/requireAuth');
 const router = express.Router();
 
 // GET all workouts
-router.get('/:userId', getOrders);
+router.get('/:userId', requireAuth, getOrders);
 
 // POST a new workout
-router.post('/:userId', createOrder);
+router.post('/:userId', requireAuth, createOrder);
 
 module.exports = router;

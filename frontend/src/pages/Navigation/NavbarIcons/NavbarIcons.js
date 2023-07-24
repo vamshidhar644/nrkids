@@ -54,9 +54,7 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
   }, [window.location.pathname]);
 
   return (
-    <div
-      className={`nav__section_2 w-100 ${isAtFooter ? 'hidden' : 'visible'}`}
-    >
+    <div className={`nav__section_2 ${isAtFooter ? 'hidden' : 'visible'}`}>
       <div className="input-wrapper d-flex gap-2">
         <div className="mobile__nav_boxes">
           {isActive ? (

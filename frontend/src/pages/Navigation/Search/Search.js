@@ -49,7 +49,7 @@ const Search = () => {
   return (
     <div className="search__container">
       <div className="inputBox_container">
-        <div className="w-100">
+        <div className="w-100 position-relative">
           <input
             id="input-box"
             name="item_list"
@@ -61,7 +61,7 @@ const Search = () => {
             onChange={handleSearch}
           />
           {isInputFocused && (
-            <ul className="search_suggestions" ref={ulRef}>
+            <ul className="search_suggestions " ref={ulRef}>
               {searchResults.map((product) => (
                 <li key={product.productId}>
                   <Link

@@ -29,7 +29,6 @@ const Login = ({ from }) => {
       const password = data.user.uid;
       const displayPic = data.user.photoURL;
       signup(_id, firstName, lastName, email, password, displayPic);
-      localStorage.setItem('email', data.user.email);
     });
   };
 

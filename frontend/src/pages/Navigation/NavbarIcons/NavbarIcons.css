@@ -3,8 +3,8 @@
 .nav__section_2{
     display: flex;
     justify-content: flex-end;
-    padding: 0px 4rem;
-    /* margin-bottom: 1rem; */
+    padding-right: 4rem;
+    margin-bottom: 1rem;
   }
   
   .nav__icon{
@@ -29,6 +29,7 @@
     background-color: var(--secondary-color);
     color: var(--primary-color);
     position: fixed;
+    width: 100%;
     margin: 0px;
     bottom: 0;
     padding: 10px;

@@ -8,20 +8,19 @@ export const useLogin = () => {
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-  const login = async (email, password) => {
+  const login = async (email) => {
     setIsLoading(true);
     setError(null);
 
     const response = await fetch(`${BACKEND_URL}/api/user/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email }),
     });
     const json = await response.json();
 
     if (!response.ok) {
       setIsLoading(false);
-      setError('*' + json.error);
     }
     if (response.ok) {
       // save the user to local storage
@@ -30,7 +29,7 @@ export const useLogin = () => {
       // update the auth context
       dispatch({ type: 'LOGIN', payload: json });
 
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
   return { login, isLoading, loginerror };

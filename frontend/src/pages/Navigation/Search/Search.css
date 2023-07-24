@@ -1,17 +1,21 @@
-.search__container{
-    display: flex;
-    justify-content: flex-end;
-    padding: 18px 4rem;
+.mobile__search .search__container{
+    display: none;
 }
-
+.desktop__search{
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.search__container{
+  width: 70%;
+}
 .inputBox_container {
+
     display: flex;
     align-items: center;
-    width: 40%;
     height: fit-content;
     border: 1px solid var(--secondary-color);
     border-radius: 0.4em;
-    overflow: hidden;
   }
   
   .search_icon {
@@ -20,6 +24,7 @@
   }
   
   .inputBox {
+    display: flex;
     background-color: transparent;
     color: #000;
     outline: none;
@@ -32,19 +37,18 @@
   ::placeholder {
     color: var(--secondary-color);
   }
-
-
   .search_suggestions{
     position: absolute;
-
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
-    width: 100%;
     list-style: none;
+    top: 100%;
+    width: 100%;
     padding: 0px;
   }
 
   .search_suggestions li a{
-    width: 100%;
     display: flex;
     align-items: center;
     padding: 12px;
@@ -61,5 +65,12 @@
     }
     .inputBox_container{
         width: 100%;
+    }
+    .desktop__search{
+      display: none;
+    }
+    .mobile__search .search__container{
+      display: flex;
+      width: 100%;
     }
 }

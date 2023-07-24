@@ -77,13 +77,18 @@ const Navbar = () => {
           </Link>
         </div>
         <NavbarItems isActive={isActive} changeNavbar={closeNavbar} />
+        <div className="desktop__search w-100 px-3">
+          <Search />
+        </div>
         <NavbarIcons
           isActive={isActive}
           changeNavbar={closeNavbar}
           changeToggle={toggleNavbar}
         />
       </nav>
-      <Search />
+      <div className="mobile__search">
+        <Search />
+      </div>
     </header>
   );
 };
