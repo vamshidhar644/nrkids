@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
@@ -10,6 +10,8 @@ import Bag from './pages/Bag/Bag';
 import Footer from './pages/Footer/Footer';
 import Nextpage from './pages/Footer/NextPage/Nextpage';
 import Navbar from './pages/Navigation/Navbar';
+import Searched from './pages/Searched/Searched';
+import Login from './pages/Login/Login';
 
 import { UseAuthContext } from './hooks/useAuthContext';
 import { FetchSanity } from './helpers/FetchSanity';
@@ -18,8 +20,6 @@ import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
 // import Login from './pages/Login/Login';
-import Searched from './pages/Searched/Searched';
-import Parent from './pages/Login/Parent';
 
 function App() {
   const { user } = UseAuthContext();
@@ -39,6 +39,7 @@ function App() {
     <BrowserRouter basename="nrkids">
       {/* <Navigation /> */}
       <Navbar />
+      {user ? null : <Login />}
       <Routes>
         <Route
           path="/"
@@ -50,21 +51,9 @@ function App() {
             />
           }
         />
-        <Route
-          path="/login"
-          element={!user ? <Parent /> : <Navigate to="/" />}
-        />
 
-        <Route
-          path="/wishlist"
-          element={
-            user ? <Wishlist Products={Products} /> : <Parent from="wishlist" />
-          }
-        />
-        <Route
-          path="/your-bag"
-          element={user ? <Bag Products={Products} /> : <Parent from="cart" />}
-        />
+        <Route path="/wishlist" element={<Wishlist Products={Products} />} />
+        <Route path="/your-bag" element={<Bag Products={Products} />} />
 
         <Route
           path="/:categorypath"
@@ -79,7 +68,7 @@ function App() {
 
         <Route
           path="/my-profile/:id"
-          element={user ? <ProfileBody /> : <Parent />}
+          element={user ? <ProfileBody /> : <Login />}
         />
 
         <Route path="/search/:searched" element={<Searched />} />

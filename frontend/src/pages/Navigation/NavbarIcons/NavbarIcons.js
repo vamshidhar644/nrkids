@@ -26,6 +26,7 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
 
   const toggleNavbar = () => {
     changeToggle();
+    
   };
 
   useEffect(() => {
@@ -54,6 +55,8 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
       setActiveLink(1);
     } else if (pathAfterNrKids === 'your-bag') {
       setActiveLink(2);
+    } else if (pathAfterNrKids === 'login') {
+      setActiveLink(0);
     } else {
       setActiveLink(3);
     }
@@ -99,10 +102,10 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
                 </li>
               </ul>
             </div>
+          ) : activeLink === 0 ? (
+            <FaUser className="nav__icon" />
           ) : (
-            <Link className="nav-bar-icons" to="/login" onClick={closeNavbar}>
-              <AiOutlineUser className="nav__icon" />
-            </Link>
+            <AiOutlineUser className="nav__icon" />
           )}
         </div>
         <div className="navbar__logo" onClick={closeNavbar}>

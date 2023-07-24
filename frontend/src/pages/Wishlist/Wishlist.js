@@ -6,8 +6,10 @@ import { BiChevronRight } from 'react-icons/bi';
 import ProductCard from '../Components/ProductCard/ProductCard';
 import FilterSanity from '../../helpers/FilterSanity';
 import { FetchMongo } from '../../helpers/FetchMongo';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
 const Wishlist = ({ Products }) => {
+  const {} = UseAuthContext();
   const { filtersanity, filteredItems } = FilterSanity();
   const { fetchWishlist, wishlist } = FetchMongo();
 

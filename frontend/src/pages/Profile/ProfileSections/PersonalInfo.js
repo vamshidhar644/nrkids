@@ -20,7 +20,7 @@ const PersonalInfo = ({ userData }) => {
   useEffect(() => {
     if (userData) {
       setDisplaypic(userData.displayPic || null);
-      setSelectedDate(userData.dob.split('T')[0] || null);
+      setSelectedDate((userData.dob && userData.dob.split('T')[0]) || null);
       setFirstName(userData.firstName || firstName);
       setLastName(userData.lastName || lastName);
       setMobilenumber(userData.phoneNumber || phoneNumber);

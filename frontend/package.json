@@ -26,6 +26,7 @@
     "react-dropzone": "^14.2.3",
     "react-firebase-hooks": "^5.1.1",
     "react-firebaseui": "^6.0.0",
+    "react-google-login": "^5.2.2",
     "react-icons": "^4.7.1",
     "react-image-magnify": "^2.7.4",
     "react-phone-number-input": "^3.3.0",

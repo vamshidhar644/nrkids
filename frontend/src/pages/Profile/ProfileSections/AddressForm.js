@@ -70,7 +70,7 @@ const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
   };
 
   return (
-    <form action="" className="new__address d-flex flex-column">
+    <form action="" className="new__address d-flex flex-column gap-3">
       <p className="add_address__button w-100" onClick={changeTrigger}>
         Add new Address
       </p>
@@ -99,7 +99,7 @@ const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
 
       <textarea
         placeholder="Address"
-        className="w-100"
+        className="w-100 m-0"
         required="required"
         value={fullAddress}
         rows="4"

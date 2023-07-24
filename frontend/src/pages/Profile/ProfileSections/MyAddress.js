@@ -38,7 +38,7 @@ const MyAddress = () => {
   };
 
   return (
-    <div className="address__body d-flex w-100 justify-content-between">
+    <div className="address__body d-flex justify-content-between gap-4">
       {address ? (
         <div className="saved__addresses d-flex flex-column gap-3">
           {address.map((address, i) => {

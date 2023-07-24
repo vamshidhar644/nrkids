@@ -6,7 +6,7 @@ import DetailsWithoutData from './ProductWithoutData';
 import './ProductDetails.css';
 
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PostMongo } from '../../../helpers/PostMongo';
 import FetchImageUrl from '../../../helpers/FetchImageUrl';
 
@@ -65,7 +65,7 @@ const ProductDetails = ({ Product }) => {
         });
       }
     } else {
-      navigate('/login');
+      alert('please login');
     }
   };
 

@@ -1,3 +1,6 @@
+.Parent__Wishlist{
+    min-height: 100vh;
+}
 .wishlist-grid{
     display: grid;
     grid-template-columns: repeat(3, auto);
