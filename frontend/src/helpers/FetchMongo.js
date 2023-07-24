@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { UseAuthContext } from '../hooks/useAuthContext';
-import axios from 'axios';
 
 export const FetchMongo = () => {
   const { user } = UseAuthContext();
@@ -11,6 +10,7 @@ export const FetchMongo = () => {
   const [orders, setOrders] = useState();
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  // const BACKEND_URL = 'http://localhost:4000';
   //  U S E R  D A T A . . . . . . . . .
   const fetchUserData = async () => {
     if (user) {

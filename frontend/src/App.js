@@ -39,7 +39,7 @@ function App() {
     <BrowserRouter basename="nrkids">
       {/* <Navigation /> */}
       <Navbar />
-      {user ? null : <Login />}
+      {user ? null : <Login isOpen={false} />}
       <Routes>
         <Route
           path="/"

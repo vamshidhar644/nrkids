@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
-import { useSignup } from '../../hooks/useSignup';
+import { useSign } from '../../hooks/useSign';
 import { UseAuthContext } from '../../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AiOutlineClose } from 'react-icons/ai';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ isOpen }) => {
   const { user } = UseAuthContext();
-  const { signup, signerror } = useSignup();
+  const { signup, signerror } = useSign();
   const navigate = useNavigate();
 
   const currentDate = new Date();
@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   const [showPopup, setShowPopup] = useState(false);
-  const [closedPopup, setClosedPopup] = useState(false);
+  const [closedPopup, setClosedPopup] = useState(isOpen);
   useEffect(() => {
     // Check if the user variable is null on the first refresh
     if (!closedPopup) {
@@ -68,7 +68,7 @@ const Login = () => {
       const timer = setTimeout(() => {
         setShowPopup(true);
         setClosedPopup(false);
-      }, 10000);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -88,15 +88,13 @@ const Login = () => {
     <div className="popup">
       <div className=" popup-content p-0">
         <div className="loginCard p-4 position-relative">
-          <p className="loginHeading">
-            <div className="logo__container">
-              <img
-                src={process.env.PUBLIC_URL + '/Assets/logo2.jpg'}
-                alt=""
-                className="w-100"
-              />
-            </div>
-          </p>
+          <div className="loginHeading logo__container">
+            <img
+              src={process.env.PUBLIC_URL + '/Assets/logo2.jpg'}
+              alt=""
+              className="w-100"
+            />
+          </div>
           <p className="loginDescription">
             To proceed with shopping, please continue using Google.
           </p>

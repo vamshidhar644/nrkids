@@ -31,7 +31,12 @@ const signupUser = async (req, res) => {
   const { _id, firstName, lastName, email, password, displayPic } = req.body;
 
   try {
-    const user = await User.signup(
+    const exist = await User.findOne({ email });
+    if (exist) {
+      await loginUser(req, res);
+      return;
+    }
+    const user = await User.signup( 
       _id,
       firstName,
       lastName,

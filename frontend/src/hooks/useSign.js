@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { UseAuthContext } from './useAuthContext';
-import { useLogin } from './useLogin';
 
-export const useSignup = () => {
+export const useSign = () => {
   const [signerror, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = UseAuthContext();
 
-  const { login } = useLogin();
-
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  // const BACKEND_URL = 'http://localhost:4000';
 
   const signup = async (
     _id,
@@ -42,10 +40,6 @@ export const useSignup = () => {
     if (!response.ok) {
       setIsLoading(false);
       setError('*' + json.error);
-
-      if (json.error === '0') {
-        login(email);
-      }
     }
     if (response.ok) {
       // console.log(JSON.stringify(json));
