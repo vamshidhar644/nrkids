@@ -70,7 +70,11 @@ const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
   };
 
   return (
-    <form action="" className="new__address d-flex flex-column gap-3">
+    <form
+      action=""
+      className="new__address d-flex flex-column gap-3"
+      id="#address_form"
+    >
       <p className="add_address__button w-100" onClick={changeTrigger}>
         Add new Address
       </p>

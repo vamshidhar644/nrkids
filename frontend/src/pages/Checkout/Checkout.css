@@ -64,4 +64,7 @@
     .checkout__address h5{
         text-align: center;
     }
+    .confirm__order{
+        width: 90%;
+    }
 }

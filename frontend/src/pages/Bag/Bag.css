@@ -114,6 +114,9 @@
     justify-content: start;
     width: 50% !important;
   }
+  .change-qty{
+    width: auto;
+  }
 }
   
 

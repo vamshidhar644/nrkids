@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { UseAuthContext } from '../hooks/useAuthContext';
-import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export const PostMongo = () => {
   const { user } = UseAuthContext();
   const [imageSrc, setImage] = useState();
-  const navigate = useNavigate();
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   // const BACKEND_URL = 'http://localhost:4000';

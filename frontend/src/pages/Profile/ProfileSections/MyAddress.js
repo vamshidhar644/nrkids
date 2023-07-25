@@ -39,7 +39,6 @@ const MyAddress = () => {
   };
 
   const emptyData = () => {
-    // Set the addressData to editData when editing an address
     setEditData(null);
   };
 

@@ -51,7 +51,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
             })}
           {openConfirm && (
             <div className="popup">
-              <div className="popup-content position-relative">
+              <div className="popup-content confirm__order position-relative">
                 <p className="m-0">
                   Are you sure want to confirm order this Address?
                 </p>

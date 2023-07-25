@@ -75,13 +75,14 @@ const Footer = () => {
       <hr />
       <div className="dev d-flex justify-content-center">
         <p>
+          <span>developer: </span>
+
           <a
             href="https://vamshidharonline.com"
             target="_blank"
             rel="noreferrer"
           >
-            <BiLinkAlt />
-            &nbsp; vamshidharonline
+            vamshidhar dawoor
           </a>
         </p>
       </div>

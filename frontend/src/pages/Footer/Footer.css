@@ -81,6 +81,13 @@ footer{
 
 .dev a{
     color: #8EC3E1;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+}
+.dev span{
+    font-weight: 100;
+    font-size: 12px;
+    letter-spacing: 1.6px;
 }
 .dev a:hover{
     color: var(--primary-color);
