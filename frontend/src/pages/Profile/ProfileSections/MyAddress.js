@@ -9,9 +9,15 @@ const MyAddress = () => {
   const { fetchAddressData, address } = FetchMongo();
   const { deleteAddress } = PostMongo();
 
+  const [renderCount, setCount] = useState(0);
+
   useEffect(() => {
-    fetchAddressData();
-  }, []);
+    if (renderCount === 2) {
+      fetchAddressData();
+    } else {
+      setCount(2);
+    }
+  }, [renderCount]);
 
   const handleDelete = async (index) => {
     const addressId = address[index]._id;
@@ -38,7 +44,7 @@ const MyAddress = () => {
   };
 
   return (
-    <div className="address__body d-flex justify-content-between gap-4">
+    <div className="address__body d-flex justify-content-between gap-4 w-100">
       {address ? (
         <div className="saved__addresses d-flex flex-column gap-3">
           {address.map((address, i) => {

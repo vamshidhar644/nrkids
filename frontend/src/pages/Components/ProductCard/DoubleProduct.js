@@ -69,18 +69,18 @@ const DoubleProduct = ({ item, favv }) => {
           ) : null}
         </Link>
         <div className="Product-Details">
-          <p className="title m-0 p-0">
-            {item.title && item.title.length > 16
-              ? item.title.substring(0, 13) + '...'
-              : item.title}
-          </p>
-          <p className="subtitle">
-            {item.description && item.description.length > 20
-              ? item.description.substring(0, 18) + '...'
-              : item.description}
-          </p>
           {!favv ? (
             <>
+              <p className="title m-0 p-0">
+                {item.title && item.title.length > 16
+                  ? item.title.substring(0, 13) + '...'
+                  : item.title}
+              </p>
+              <p className="subtitle">
+                {item.description && item.description.length > 20
+                  ? item.description.substring(0, 18) + '...'
+                  : item.description}
+              </p>
               {fav ? (
                 <AiFillHeart
                   className="fav-icon position-absolute"

@@ -13,7 +13,7 @@ const ShopByCategory = ({ Collections }) => {
       <div className="title-container">
         <h3 className="title">Handpicked Collections</h3>
       </div>
-      <div className="Cat-Card-Container d-grid justify-content-around align-items-center">
+      <div className="Cat-Card-Container justify-content-around align-items-center">
         {Collections &&
           Collections.map((categories, index) => {
             return (

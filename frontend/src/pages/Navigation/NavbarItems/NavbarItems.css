@@ -113,8 +113,8 @@ nav {
     align-items: center;
     font-weight: 700;
     letter-spacing: 3px;
-    padding: 2rem 0px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    padding: 1.3rem 0px;
+    border: 2px solid var(--secondary-color);
+     color: var(--secondary-color);
   }
 }

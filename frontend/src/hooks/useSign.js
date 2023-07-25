@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { UseAuthContext } from './useAuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const useSign = () => {
   const [signerror, setError] = useState(null);
@@ -39,7 +41,15 @@ export const useSign = () => {
 
     if (!response.ok) {
       setIsLoading(false);
-      setError('*' + json.error);
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 2000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
       // console.log(JSON.stringify(json));
@@ -49,7 +59,16 @@ export const useSign = () => {
       // update the auth context
       dispatch({ type: 'LOGIN', payload: json });
 
-      // setIsLoading(false);
+      setIsLoading(false);
+      toast.success('Successfully Logged in!', {
+        position: 'bottom-center',
+        autoClose: 2000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   return { signup, isLoading, signerror };

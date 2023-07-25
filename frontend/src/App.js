@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Home from './pages/Home/Home';
@@ -19,6 +19,7 @@ import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
+import { ToastContainer } from 'react-toastify';
 // import Login from './pages/Login/Login';
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
     fetchCollections();
     fetchAllProducts();
   }, [user]);
+
+  // InactivityTimeout();
 
   return (
     <BrowserRouter basename="nrkids">
@@ -82,9 +85,41 @@ function App() {
 
         <Route path="/phone-verify" element={<MobileVerify />} />
       </Routes>
+      <ToastContainer />
       <Footer />
     </BrowserRouter>
   );
 }
 
 export default App;
+
+// const handleInactivityTimeout = () => {
+//   localStorage.removeItem('nkuser'); // Replace 'yourDataKey' with the actual key used in local storage
+//   localStorage.removeItem('user'); // Replace 'yourDataKey' with the actual key used in local storage
+//   console.log('Data removed from local storage due to inactivity.');
+// };
+
+// const InactivityTimeout = () => {
+//   const inactivityTimeLimit = 10 * 60 * 1000; // 10 minutes in milliseconds
+//   let inactivityTimer;
+
+//   const resetInactivityTimer = () => {
+//     clearTimeout(inactivityTimer);
+//     inactivityTimer = setTimeout(handleInactivityTimeout, inactivityTimeLimit);
+//   };
+
+//   useEffect(() => {
+//     const handleUserActivity = () => resetInactivityTimer();
+
+//     document.addEventListener('mousemove', handleUserActivity);
+//     document.addEventListener('keydown', handleUserActivity);
+//     document.addEventListener('scroll', handleUserActivity);
+
+//     return () => {
+//       document.removeEventListener('mousemove', handleUserActivity);
+//       document.removeEventListener('keydown', handleUserActivity);
+//       document.removeEventListener('scroll', handleUserActivity);
+//       clearTimeout(inactivityTimer);
+//     };
+//   }, []);
+// };

@@ -18,6 +18,8 @@ const PayButton = ({ orderdata }) => {
           ? 'bg-danger'
           : orderdata.status === 'Delivered'
           ? 'bg-success'
+          : orderdata.status === 'Paid'
+          ? 'bg-info'
           : ''
       }`}
     >
@@ -29,6 +31,8 @@ const PayButton = ({ orderdata }) => {
         'Cancelled'
       ) : orderdata.status === 'Delivered' ? (
         'Delivered'
+      ) : orderdata.status === 'Paid' ? (
+        'Paid'
       ) : (
         ''
       )}
@@ -77,6 +81,8 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
             ? 'Cancelled'
             : orderdata.status === 'Delivered'
             ? 'Delivered'
+            : orderdata.status === 'Paid'
+            ? 'Paid'
             : ''}
         </p>
       </div>
@@ -112,7 +118,7 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
                             {item.size} - {item.quantity}
                           </p>
                           <p>
-                            <b>₹ {item.price}</b>
+                            <b>₹ {item.price}.00</b>
                           </p>
                         </div>
                       </div>

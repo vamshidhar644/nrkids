@@ -57,6 +57,7 @@
 }
 
 .Cat-Card-Container{
+  display: grid;
     grid-template-columns: repeat(5, auto);
     gap: 40px;
 }
@@ -68,11 +69,7 @@
     padding: 12px 0px;
   }
   .Cat-Card-Container{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-  }
-  .shop-button{
-    display: none;
+    grid-template-columns: repeat(1, auto);
   }
 }
 

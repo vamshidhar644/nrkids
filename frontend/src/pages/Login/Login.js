@@ -11,7 +11,7 @@ import './Login.css';
 
 const Login = ({ isOpen }) => {
   const { user } = UseAuthContext();
-  const { signup, signerror } = useSign();
+  const { signup, signerror, isLoading } = useSign();
   const navigate = useNavigate();
 
   const currentDate = new Date();
@@ -54,7 +54,6 @@ const Login = ({ isOpen }) => {
       alert(signerror);
     }
   };
-
   const [showPopup, setShowPopup] = useState(false);
   const [closedPopup, setClosedPopup] = useState(isOpen);
   useEffect(() => {
@@ -101,7 +100,13 @@ const Login = ({ isOpen }) => {
 
           <div className="w-100 d-flex justify-content-end">
             <button onClick={handleGoogle} className="acceptButton">
-              Continue with <FcGoogle />
+              {isLoading === null ? (
+                <>
+                  Continue with <FcGoogle />
+                </>
+              ) : (
+                'Loading...'
+              )}
             </button>
           </div>
           <div onClick={handleClosePopup} className="login__close">

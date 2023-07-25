@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { UseAuthContext } from '../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const PostMongo = () => {
   const { user } = UseAuthContext();
   const [imageSrc, setImage] = useState();
@@ -68,13 +71,29 @@ export const PostMongo = () => {
         displayPic,
       }),
     });
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log(response);
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 2000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
-      alert('updated');
-      window.location.reload();
+      toast.success('Your details are updated', {
+        position: 'bottom-center',
+        autoClose: 2000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -87,13 +106,29 @@ export const PostMongo = () => {
       },
       body: JSON.stringify({ itemsData }),
     });
-    // const json = await response.json();
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('something wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
-      navigate('/your-bag');
+      toast.success('Cart Updated', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -110,12 +145,29 @@ export const PostMongo = () => {
         body: JSON.stringify({}),
       }
     );
-    // const json = await response.json();
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('something wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 2000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
+      toast.success('Item Deleted', {
+        position: 'bottom-center',
+        autoClose: 2000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -163,11 +215,29 @@ export const PostMongo = () => {
         pincode,
       }),
     });
+    const json = await response.json();
+
     if (!response.ok) {
-      console.log(response);
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
-      alert('updated');
+      toast.success('Address Updated', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -182,13 +252,29 @@ export const PostMongo = () => {
         },
       }
     );
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('Something went Wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
-      alert('Deleted');
-      window.location.reload();
+      toast.success('Address Deleted', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -207,11 +293,29 @@ export const PostMongo = () => {
         productId,
       }),
     });
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('Something went wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
+      toast.success('Added to wishlist', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -228,11 +332,29 @@ export const PostMongo = () => {
         },
       }
     );
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('Something went wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
+      toast.success('Deleted from wishlist', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

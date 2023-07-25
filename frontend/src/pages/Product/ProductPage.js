@@ -39,7 +39,7 @@ const ProductPage = ({ Products }) => {
       });
     }
 
-    setRelatedProducts(CategoryProducts);
+    setRelatedProducts(CategoryProducts.slice(0, 4));
   }, [data]);
 
   if (data.length !== 0) {

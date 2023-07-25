@@ -75,7 +75,7 @@
   .Cards-Container{
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(2, auto);
+    /* grid-template-columns: repeat(2, auto); */
   }
   .may_like{
     padding: 0px;
