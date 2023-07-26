@@ -7,7 +7,9 @@ import FilterSanity from '../../../helpers/FilterSanity';
 import { Link } from 'react-router-dom';
 
 const PayButton = ({ orderdata }) => {
-  const handlePayment = () => {};
+  const handlePayment = () => {
+    
+  };
   return (
     <p
       className={`pay__button ${

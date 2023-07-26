@@ -39,7 +39,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
 
   const currentDate = new Date();
   const date = currentDate.getDate();
-  const month = currentDate.getMonth();
+  const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear() % 100;
   const hours = currentDate.getHours().toString().padStart(2, '0');
   const minutes = currentDate.getMinutes().toString().padStart(2, '0');
@@ -79,6 +79,8 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
     });
   };
 
+  const [checked, setChecked] = useState(false);
+
   return (
     <div className="confirm__card">
       <div>
@@ -98,7 +100,20 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
         done after seller confirmed. You can check the status in{' '}
         <b>My Orders</b>.
       </p>
-      <MobileVerify number={address.mobile} ConfirmOrder={ConfirmOrder} />
+      <label class="check__container">
+        <input type="checkbox" onChange={() => setChecked(!checked)} />
+        <svg viewBox="0 0 64 64" height="2em" width="2em">
+          <path
+            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+            pathLength="575.0541381835938"
+            class="path"
+          ></path>
+        </svg>
+        I agree to terms & conditions
+      </label>
+      {checked && (
+        <MobileVerify number={address.mobile} ConfirmOrder={ConfirmOrder} />
+      )}
     </div>
   );
 };

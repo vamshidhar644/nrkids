@@ -7,6 +7,12 @@ import { BiLinkAlt } from 'react-icons/bi';
 import './Footer.css';
 
 const Footer = () => {
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <footer id="footer">
       <div className="Parent-Footer">
@@ -29,16 +35,24 @@ const Footer = () => {
             <b>About</b>
             <hr />
             <div className="Footer-links">
-              <Link to={`nr-kids/contact-us`}>Contact Us</Link>
-              <Link to={`nr-kids/about-us`}>About Us</Link>
+              <Link to={`nr-kids/contact-us`} onClick={handleClick}>
+                Contact Us
+              </Link>
+              <Link to={`nr-kids/about-us`} onClick={handleClick}>
+                About Us
+              </Link>
             </div>
           </div>
           <div>
-            <b>Policy</b>
+            <b>Abount & Policy</b>
             <hr />
             <div className="Footer-links">
-              <Link to={`nr-kids/return-policy`}>Return Policy</Link>
-              <Link to={`nr-kids/Terms-and-conditions`}>Terms & Condition</Link>
+              <Link to={`nr-kids/return-policy`} onClick={handleClick}>
+                Return Policy
+              </Link>
+              <Link to={`nr-kids/Terms-and-conditions`} onClick={handleClick}>
+                Terms & Condition
+              </Link>
             </div>
           </div>
         </div>
