@@ -1,6 +1,4 @@
 
-
-
 .popup {
     position: fixed;
     top: 0;
@@ -55,11 +53,18 @@
     /* top: 0; */
   }
 
+  .verify__otp{
+    display: flex;
+    gap: 12px;
+  }
 
   
 @media only screen and (max-width: 991px) {
 
   .close__icon{
     padding: 12px;
+  }
+  .verify__otp{
+    flex-direction: column;
   }
 }

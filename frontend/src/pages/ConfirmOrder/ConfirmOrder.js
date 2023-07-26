@@ -4,6 +4,7 @@ import { PostMongo } from '../../helpers/PostMongo';
 import './ConfirmOrder.css';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import MobileVerify from './MobileVerify';
 
 const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   const { user } = UseAuthContext();
@@ -66,7 +67,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   };
 
   const ConfirmOrder = async () => {
-    alert('Is in construction');
+    // alert('Is in construction');
     await addOrder(userId, orderData);
 
     document.body.style.overflow = 'auto';
@@ -97,9 +98,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
         done after seller confirmed. You can check the status in{' '}
         <b>My Orders</b>.
       </p>
-      <div className="confirm_order__button" onClick={ConfirmOrder}>
-        Confirm Order
-      </div>
+      <MobileVerify number={address.mobile} ConfirmOrder={ConfirmOrder} />
     </div>
   );
 };

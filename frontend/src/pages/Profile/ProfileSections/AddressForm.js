@@ -3,7 +3,7 @@ import { PostMongo } from '../../../helpers/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 
-const AddressForm = forwardRef(({ editData, onDataChange }) => {
+const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
   const { updateAddress } = PostMongo();
 
   const [aId, setaddressId] = useState();

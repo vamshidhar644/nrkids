@@ -60,7 +60,7 @@ export const useSign = () => {
       dispatch({ type: 'LOGIN', payload: json });
 
       setIsLoading(false);
-      toast.success('Successfully Logged in!', {
+      toast.success('Login Success!', {
         position: 'bottom-center',
         autoClose: 2000, // 2 seconds
         hideProgressBar: false,

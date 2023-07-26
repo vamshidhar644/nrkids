@@ -10,6 +10,7 @@ export const PostMongo = () => {
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   // const BACKEND_URL = 'http://localhost:4000';
+  
   //  I M A G E  C O M P R E S S . . . . .
   const handleCompress = (inputRef, compressedImageRef) => {
     const inputImage = inputRef.current;

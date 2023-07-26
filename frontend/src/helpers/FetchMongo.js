@@ -52,14 +52,6 @@ export const FetchMongo = () => {
       if (response.ok) {
         setCartitems(json);
       }
-      // axios
-      //   .get(`${BACKEND_URL}/api/user/cart/${id}`)
-      //   .then((response) => {
-      //     setCartitems(response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error fetching document:', error);
-      //   });
     }
   };
 
@@ -104,14 +96,6 @@ export const FetchMongo = () => {
       if (response.ok) {
         setWishlist(json);
       }
-      // axios
-      //   .get(`${BACKEND_URL}/api/user/wishlist/${id}`)
-      //   .then((response) => {
-      //     setWishlist(response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error fetching document:', error);
-      //   });
     }
   };
 
@@ -134,14 +118,6 @@ export const FetchMongo = () => {
       if (response.ok) {
         setOrders(json);
       }
-      // axios
-      //   .get(`${BACKEND_URL}/api/user/order/${id}`)
-      //   .then((response) => {
-      //     setOrders(response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error fetching document:', error);
-      //   });
     }
   };
 

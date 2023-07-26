@@ -14,17 +14,15 @@ import Login from './pages/Login/Login';
 import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
-import MobileVerify from './pages/Profile/MobileVerify';
+import MobileVerify from './pages/ConfirmOrder/MobileVerify';
 
 import { UseAuthContext } from './hooks/useAuthContext';
 import { FetchSanity } from './helpers/FetchSanity';
 import { ToastContainer } from 'react-toastify';
-import { useLogout } from './hooks/useLogout';
 import InactiveTimerComponent from './InactivivityTImer';
 
 function App() {
   const { user } = UseAuthContext();
-  const { logout } = useLogout();
   const { fetchHero, Hero } = FetchSanity();
   const { fetchNewArrivals, NewArrivals } = FetchSanity();
   const { fetchCollections, Collections } = FetchSanity();
