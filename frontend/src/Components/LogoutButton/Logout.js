@@ -1,6 +1,6 @@
 import React from 'react';
 import './Logout.css';
-import { useLogout } from '../../../hooks/useLogout';
+import { useLogout } from '../../hooks/useLogout';
 
 const Logout = () => {
   const { logout } = useLogout();

@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
 import './ProfileBody.css';
 
 import PersonalInfo from './ProfileSections/PersonalInfo';
 import MyOrders from './ProfileSections/MyOrders';
 import MyAddress from './ProfileSections/MyAddress';
+import Logout from '../../Components/LogoutButton/Logout';
 
-import ChangePassword from './ProfileSections/ChangePassword';
-import Logout from '../Components/Logout/Logout';
-
-import { FaInfo, FaKey } from 'react-icons/fa';
+import { FaInfo } from 'react-icons/fa';
 import { GiLargeDress } from 'react-icons/gi';
 import { GoLocation } from 'react-icons/go';
 import { FetchMongo } from '../../helpers/FetchMongo';
@@ -37,10 +35,8 @@ const ProfileBody = () => {
   };
 
   const location = useLocation();
-  // const { id } = useParams();
 
   useEffect(() => {
-    // Get the value of the 'value' query parameter from the location search
     const searchParams = new URLSearchParams(location.search);
     const valueFromOrders = searchParams.get('value');
 

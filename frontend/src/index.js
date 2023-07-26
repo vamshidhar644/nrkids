@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { AuthContextProvider } from './context/AuthContext';
 import App from './App';
 // import { UserAuthContextProvider } from './context/UseAuthContext';
-import { ScrollProvider } from './pages/Components/ScrollProvider';
+import { ScrollProvider } from './Components/ScrollProvider';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 

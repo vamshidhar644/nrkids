@@ -2,7 +2,7 @@
     display: none;
 }
 .desktop__search{
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   display: flex;
   justify-content: flex-end;
 }
@@ -14,8 +14,9 @@
     display: flex;
     align-items: center;
     height: fit-content;
-    border: 1px solid var(--secondary-color);
-    border-radius: 0.4em;
+    border: 1.8px solid var(--secondary-color);
+    border-radius: 1.4em;
+    padding: .4rem;
   }
   
   .search_icon {
@@ -45,6 +46,7 @@
     list-style: none;
     top: 100%;
     width: 100%;
+    gap: 0;
     padding: 0px;
   }
 

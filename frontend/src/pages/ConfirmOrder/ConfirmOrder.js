@@ -66,7 +66,7 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
   };
 
   const ConfirmOrder = async () => {
-    // alert('Is in construction');
+    alert('Is in construction');
     await addOrder(userId, orderData);
 
     document.body.style.overflow = 'auto';

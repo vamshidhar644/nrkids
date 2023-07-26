@@ -2,6 +2,7 @@
 /* Icons  */
 .nav__section_2{
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     padding-right: 4rem;
     margin-bottom: 1rem;

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import Viewall from '../../Components/ViewAll/Viewall';
+import Viewall from '../../../Components/ViewAllButton/Viewall';
 
 import './NewArrivals.css';
-import DoubleProduct from '../../Components/ProductCard/DoubleProduct';
+import DoubleProduct from '../../../Components/ProductCard/DoubleProduct';
 
 const NewArrival = ({ NewArrivals }) => {
   const containerRef = useRef(null);

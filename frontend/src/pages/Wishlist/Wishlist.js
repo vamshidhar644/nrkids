@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import './Wishlist.css';
 import { BiChevronRight } from 'react-icons/bi';
 
-import ProductCard from '../Components/ProductCard/ProductCard';
+import ProductCard from '../../Components/ProductCard/ProductCard';
 import FilterSanity from '../../helpers/FilterSanity';
 import { FetchMongo } from '../../helpers/FetchMongo';
 
 const Wishlist = ({ Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();
   const { fetchWishlist, wishlist } = FetchMongo();
-  document.title = 'NRKids | Wishlist'
+  document.title = 'NRKids | Wishlist';
   useEffect(() => {
     fetchWishlist();
     filtersanity(wishlist, Products);

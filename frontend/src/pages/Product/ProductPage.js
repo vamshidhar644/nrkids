@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 import MainProduct from './MainProduct/MainProduct';
-import DoubleProduct from '../Components/ProductCard/DoubleProduct';
+import DoubleProduct from '../../Components/ProductCard/DoubleProduct';
 
 import './ProductPage.css';
 

@@ -42,7 +42,6 @@ const updatePassword = async (req, res) => {
     console.error('Error updating item:', error);
     return res.status(500).json({ message: 'Server error' });
   }
-  return res.status(404).json({ hash });
 };
 
 module.exports = {

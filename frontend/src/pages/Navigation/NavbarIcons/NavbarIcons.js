@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ScrollContext } from '../../Components/ScrollProvider';
+import { ScrollContext } from '../../../Components/ScrollProvider';
 import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai';
 import { FaUser, FaHeart } from 'react-icons/fa';
 import { BsHandbag, BsBagFill } from 'react-icons/bs';

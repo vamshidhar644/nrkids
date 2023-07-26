@@ -59,6 +59,7 @@ const Navbar = () => {
         transition: 'transform .9s',
         position: isAtTop ? '' : 'fixed',
         zIndex: '999',
+        paddingBottom: '.6rem',
       }}
     >
       <OfferSection />

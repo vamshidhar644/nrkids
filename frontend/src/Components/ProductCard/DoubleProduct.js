@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import FetchImageUrl from '../../../helpers/FetchImageUrl';
-import { PostMongo } from '../../../helpers/PostMongo';
-import { FetchMongo } from '../../../helpers/FetchMongo';
+import FetchImageUrl from '../../helpers/FetchImageUrl';
+import { PostMongo } from '../../helpers/PostMongo';
+import { FetchMongo } from '../../helpers/FetchMongo';
 import './ProductCard.css';
-import { UseAuthContext } from '../../../hooks/useAuthContext';
+import { UseAuthContext } from '../../hooks/useAuthContext';
 
 const DoubleProduct = ({ item, favv }) => {
   const { user } = UseAuthContext();
