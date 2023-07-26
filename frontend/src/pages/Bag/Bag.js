@@ -13,6 +13,7 @@ import { PostMongo } from '../../helpers/PostMongo';
 import { FetchMongo } from '../../helpers/FetchMongo';
 
 const Bag = ({ Products }) => {
+  document.title = 'NRKids | Bag'
   const { filtersanity, filteredItems } = FilterSanity();
   const { fetchcartData, cartItems } = FetchMongo();
   const { deleteCartItem } = PostMongo();

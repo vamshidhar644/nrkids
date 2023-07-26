@@ -5,12 +5,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const useLogout = () => {
   const { dispatch } = UseAuthContext();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const logout = () => {
     // remove user from storage
     localStorage.removeItem('user');
     localStorage.removeItem('nkuser');
-    navigate('/');
+    // navigate('/');
     dispatch({ type: 'LOGOUT' });
     toast.success('Logged out!', {
       position: 'bottom-center',

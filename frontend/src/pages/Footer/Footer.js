@@ -75,7 +75,7 @@ const Footer = () => {
       <hr />
       <div className="dev d-flex justify-content-center">
         <p>
-          <span>developer: </span>
+          <span>developer site: </span>
 
           <a
             href="https://vamshidharonline.com"

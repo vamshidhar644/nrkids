@@ -1,14 +1,9 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { PostMongo } from '../../../helpers/PostMongo';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the CSS file for styling
 
-const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
+const AddressForm = forwardRef(({ editData, onDataChange }) => {
   const { updateAddress } = PostMongo();
 
   const [aId, setaddressId] = useState();
@@ -19,8 +14,6 @@ const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
   const [landmark, setLandmark] = useState();
   const [state, setState] = useState();
   const [pincode, setPincode] = useState();
-
-  const [triggerChildFunction, setTriggerChildFunction] = useState(false);
 
   useEffect(() => {
     if (editData) {
@@ -42,7 +35,7 @@ const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
       setState('');
       setPincode('');
     }
-  }, [triggerChildFunction, editData]);
+  }, [editData]);
 
   const handleAddress = async (e) => {
     e.preventDefault();
@@ -59,25 +52,8 @@ const AddressForm = forwardRef(({ editData, onDataChange, emptyData }, ref) => {
     onDataChange();
   };
 
-  useImperativeHandle(ref, () => ({
-    changeTrigger: () => {
-      setTriggerChildFunction(!triggerChildFunction);
-    },
-  }));
-
-  const changeTrigger = () => {
-    emptyData();
-  };
-
   return (
-    <form
-      action=""
-      className="new__address d-flex flex-column gap-3"
-      id="#address_form"
-    >
-      <p className="add_address__button w-100" onClick={changeTrigger}>
-        Add new Address
-      </p>
+    <form action="" className="new__address d-flex flex-column gap-3 w-100">
       <input
         type="text"
         placeholder="Full name"

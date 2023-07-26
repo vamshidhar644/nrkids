@@ -10,7 +10,7 @@ const ProductPage = ({ Products }) => {
   const { product } = useParams();
 
   const [data, setData] = useState([]);
-
+  document.title = `NRKids | ${data.title}`;
   useEffect(() => {
     const fetchData = async () => {
       if (Products) {

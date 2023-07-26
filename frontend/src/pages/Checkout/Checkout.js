@@ -13,7 +13,7 @@ const Checkout = ({ Products }) => {
   const { data = null } = location.state || {};
   const { filtersanity, filteredItems } = FilterSanity();
   const { totalPricing, itemCount, totalPrice } = Calcuate();
-
+  document.title = 'NRKids | Checkout';
   useEffect(() => {
     filtersanity(data, Products);
   }, [data]);

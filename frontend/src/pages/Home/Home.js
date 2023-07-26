@@ -8,6 +8,7 @@ import Contact from './Contact/Contact';
 import BottomImage from './Stripes/BottomImage';
 
 const Home = ({ Hero, NewArrivals, Collections }) => {
+  document.title = 'NRKids | Home';
   return (
     <div className="Parent__Home">
       <Banner Hero={Hero} />

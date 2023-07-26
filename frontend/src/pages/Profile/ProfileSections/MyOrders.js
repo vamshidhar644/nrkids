@@ -4,6 +4,7 @@ import './MyOrders.css';
 import { FetchSanity } from '../../../helpers/FetchSanity';
 import FetchImageUrl from '../../../helpers/FetchImageUrl';
 import FilterSanity from '../../../helpers/FilterSanity';
+import { Link } from 'react-router-dom';
 
 const PayButton = ({ orderdata }) => {
   const handlePayment = () => {};
@@ -14,7 +15,7 @@ const PayButton = ({ orderdata }) => {
           ? 'bg-warning'
           : orderdata.status === 'Confirm Order'
           ? 'bg-primary'
-          : orderdata.status === 'Cancel Order'
+          : orderdata.status === 'Reject Order'
           ? 'bg-danger'
           : orderdata.status === 'Delivered'
           ? 'bg-success'
@@ -27,7 +28,7 @@ const PayButton = ({ orderdata }) => {
         'Pay after confirmed'
       ) : orderdata.status === 'Confirm Order' ? (
         <span onClick={() => handlePayment()}>Pay Now!</span>
-      ) : orderdata.status === 'Cancel Order' ? (
+      ) : orderdata.status === 'Reject Order' ? (
         'Cancelled'
       ) : orderdata.status === 'Delivered' ? (
         'Delivered'
@@ -71,13 +72,13 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
       onClick={onClick}
     >
       <div className="accordion-title">
-        <strong>#{orderdata._id}</strong>
+        <p className="m-0 small">order ID - {orderdata._id}</p>
         <p className="m-0">
           {orderdata.status === 'Yet to confirm'
             ? 'Not confirmed yet'
             : orderdata.status === 'Confirm Order'
             ? 'Confirmed'
-            : orderdata.status === 'Cancel Order'
+            : orderdata.status === 'Reject Order'
             ? 'Cancelled'
             : orderdata.status === 'Delivered'
             ? 'Delivered'
@@ -100,7 +101,17 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
               {orderdata.items && filteredItems
                 ? orderdata.items.map((item, i) => {
                     return (
-                      <div className="ordered-item" key={i}>
+                      <Link
+                        to={`/${filteredItems[i].dropdownField}/${filteredItems[i].path.current}`}
+                        className="ordered-item"
+                        key={i}
+                        onClick={() =>
+                          window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth',
+                          })
+                        }
+                      >
                         <div className="item-image">
                           <img
                             src={getImageUrl(filteredItems[i].images[0])}
@@ -117,11 +128,9 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
                           <p>
                             {item.size} - {item.quantity}
                           </p>
-                          <p>
-                            <b>₹ {item.price}.00</b>
-                          </p>
+                          <p>₹ {item.price}.00</p>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })
                 : null}

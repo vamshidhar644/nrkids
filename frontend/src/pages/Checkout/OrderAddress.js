@@ -53,7 +53,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
             <div className="popup">
               <div className="popup-content confirm__order position-relative">
                 <p className="m-0">
-                  Are you sure want to confirm order this Address?
+                  Are you sure want to confirm order to this Address?
                 </p>
                 <hr />
                 <ConfirmOrder

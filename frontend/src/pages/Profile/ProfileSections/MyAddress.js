@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import AddressForm from './AddressForm';
 import { FetchMongo } from '../../../helpers/FetchMongo';
 import { PostMongo } from '../../../helpers/PostMongo';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 const MyAddress = () => {
   const [editData, setEditData] = useState();
+  const [showForm, setShowform] = useState(false);
 
   const { fetchAddressData, address } = FetchMongo();
   const { deleteAddress } = PostMongo();
@@ -29,6 +31,7 @@ const MyAddress = () => {
 
   const handleEdit = (index) => {
     setEditData(address[index]);
+    setShowform(true);
     if (addressFormRef.current) {
       addressFormRef.current.changeTrigger();
     }
@@ -36,16 +39,25 @@ const MyAddress = () => {
 
   const handleDataChange = () => {
     fetchAddressData();
+    setShowform(false);
   };
 
   const emptyData = () => {
     setEditData(null);
+    setShowform(true);
+  };
+
+  const closePopup = () => {
+    setShowform(false);
   };
 
   return (
     <div className="address__body d-flex justify-content-between gap-4 w-100">
       {address ? (
         <div className="saved__addresses d-flex flex-column gap-3">
+          <p className="add_address__button w-100" onClick={emptyData}>
+            Add new Address
+          </p>
           {address.map((address, i) => {
             return (
               <div className="address__card" key={i}>
@@ -73,12 +85,20 @@ const MyAddress = () => {
       ) : (
         <>Loading...</>
       )}
-      <AddressForm
-        ref={addressFormRef}
-        editData={editData && editData}
-        emptyData={emptyData}
-        onDataChange={handleDataChange}
-      />
+      {showForm ? (
+        <div className="popup">
+          <div className="popup-content address__form position-relative">
+            <AddressForm
+              ref={addressFormRef}
+              editData={editData && editData}
+              onDataChange={handleDataChange}
+            />
+            <p className="add_address__button m-0 mt-3" onClick={closePopup}>
+              close
+            </p>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

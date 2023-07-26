@@ -10,20 +10,21 @@ import Bag from './pages/Bag/Bag';
 import Footer from './pages/Footer/Footer';
 import Nextpage from './pages/Footer/NextPage/Nextpage';
 import Navbar from './pages/Navigation/Navbar';
-import Searched from './pages/Searched/Searched';
 import Login from './pages/Login/Login';
-
-import { UseAuthContext } from './hooks/useAuthContext';
-import { FetchSanity } from './helpers/FetchSanity';
 import ProfileBody from './pages/Profile/ProfileBody';
 import Checkout from './pages/Checkout/Checkout';
 import Buynow from './pages/Checkout/Buynow';
 import MobileVerify from './pages/Profile/MobileVerify';
+
+import { UseAuthContext } from './hooks/useAuthContext';
+import { FetchSanity } from './helpers/FetchSanity';
 import { ToastContainer } from 'react-toastify';
-// import Login from './pages/Login/Login';
+import { useLogout } from './hooks/useLogout';
+import InactiveTimerComponent from './InactivivityTImer';
 
 function App() {
   const { user } = UseAuthContext();
+  const { logout } = useLogout();
   const { fetchHero, Hero } = FetchSanity();
   const { fetchNewArrivals, NewArrivals } = FetchSanity();
   const { fetchCollections, Collections } = FetchSanity();
@@ -36,11 +37,8 @@ function App() {
     fetchAllProducts();
   }, [user]);
 
-  // InactivityTimeout();
-
   return (
     <BrowserRouter basename="nrkids">
-      {/* <Navigation /> */}
       <Navbar />
       {user ? null : <Login isOpen={false} />}
       <Routes>
@@ -74,8 +72,6 @@ function App() {
           element={user ? <ProfileBody /> : <Login />}
         />
 
-        <Route path="/search/:searched" element={<Searched />} />
-
         <Route
           path="/your-bag/check-out"
           element={<Checkout Products={Products} />}
@@ -85,6 +81,7 @@ function App() {
 
         <Route path="/phone-verify" element={<MobileVerify />} />
       </Routes>
+      {user && <InactiveTimerComponent />}
       <ToastContainer />
       <Footer />
     </BrowserRouter>
@@ -92,34 +89,3 @@ function App() {
 }
 
 export default App;
-
-// const handleInactivityTimeout = () => {
-//   localStorage.removeItem('nkuser'); // Replace 'yourDataKey' with the actual key used in local storage
-//   localStorage.removeItem('user'); // Replace 'yourDataKey' with the actual key used in local storage
-//   console.log('Data removed from local storage due to inactivity.');
-// };
-
-// const InactivityTimeout = () => {
-//   const inactivityTimeLimit = 10 * 60 * 1000; // 10 minutes in milliseconds
-//   let inactivityTimer;
-
-//   const resetInactivityTimer = () => {
-//     clearTimeout(inactivityTimer);
-//     inactivityTimer = setTimeout(handleInactivityTimeout, inactivityTimeLimit);
-//   };
-
-//   useEffect(() => {
-//     const handleUserActivity = () => resetInactivityTimer();
-
-//     document.addEventListener('mousemove', handleUserActivity);
-//     document.addEventListener('keydown', handleUserActivity);
-//     document.addEventListener('scroll', handleUserActivity);
-
-//     return () => {
-//       document.removeEventListener('mousemove', handleUserActivity);
-//       document.removeEventListener('keydown', handleUserActivity);
-//       document.removeEventListener('scroll', handleUserActivity);
-//       clearTimeout(inactivityTimer);
-//     };
-//   }, []);
-// };

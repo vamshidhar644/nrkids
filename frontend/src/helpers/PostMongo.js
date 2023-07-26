@@ -365,12 +365,29 @@ export const PostMongo = () => {
       },
       body: JSON.stringify({ orderData }),
     });
-    // const json = await response.json();
+    const json = await response.json();
 
     if (!response.ok) {
-      console.log('something wrong');
+      toast.error(`${json.error}`, {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     if (response.ok) {
+      toast.success('Hurray! Your Order is Placed', {
+        position: 'bottom-center',
+        autoClose: 1000, // 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

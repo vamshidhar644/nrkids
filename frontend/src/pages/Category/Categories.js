@@ -14,6 +14,7 @@ const Categories = ({ Products }) => {
   const { getImageUrl } = FetchImageUrl();
   const { setCategoryPath, categorypathh } = SetPaths();
   const { categorypath } = useParams();
+  document.title = `NRKids | ${categorypathh}`;
 
   const [categoryProducts, setCatogeryProducts] = useState([]);
 

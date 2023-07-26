@@ -19,7 +19,7 @@ import { UseAuthContext } from '../../hooks/useAuthContext';
 const ProfileBody = () => {
   const { user } = UseAuthContext();
   const { userData, fetchUserData } = FetchMongo();
-
+  document.title = 'NRKids | User Profile';
   useEffect(() => {
     fetchUserData();
   }, [user]);

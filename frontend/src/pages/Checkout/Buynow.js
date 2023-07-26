@@ -12,7 +12,7 @@ const Buynow = ({ Products }) => {
   const { getImageUrl } = FetchImageUrl();
   const location = useLocation();
   const { data = null } = location.state || {};
-
+  document.title = 'NRKids | Checkout';
   const [filteredItems, setFilteredItems] = useState();
   useEffect(() => {
     const sanitycart = [];

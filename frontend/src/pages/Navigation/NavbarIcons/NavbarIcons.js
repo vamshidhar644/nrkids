@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ScrollContext } from '../../Components/ScrollProvider';
 import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai';
 import { FaUser, FaHeart } from 'react-icons/fa';
-import { BsHandbag, BsHandbagFill } from 'react-icons/bs';
+import { BsHandbag, BsBagFill } from 'react-icons/bs';
 import { HiOutlineMenuAlt2, HiMenu } from 'react-icons/hi';
 import { useLogout } from '../../../hooks/useLogout';
 
 import { UseAuthContext } from '../../../hooks/useAuthContext';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FetchMongo } from '../../../helpers/FetchMongo';
 
 const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
@@ -26,7 +26,6 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
 
   const toggleNavbar = () => {
     changeToggle();
-    
   };
 
   useEffect(() => {
@@ -34,33 +33,37 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
   }, [user]);
 
   const [activeLink, setActiveLink] = useState();
+
+  const location = useLocation();
+
+  // Access the active path name from the location object
+  const activePathName = location.pathname;
+  // Split the path by "/"
+  const pathParts = activePathName.split('/');
+
+  // The relevant part is the second element in the array after the split
+  const extractedPath = `/${pathParts[1]}`;
+
   useEffect(() => {
-    // Get the current URL path using window.location
-    const currentPath = window.location.pathname;
-
-    // Find the index of "/nrkids/"
-    const index = currentPath.indexOf('/nrkids/');
-
-    // If "/nrkids/" is found, extract the part after it
-    let pathAfterNrKids = '';
-    if (index !== -1) {
-      pathAfterNrKids = currentPath.slice(index + 8);
-      // Split the pathAfterNrKids by '/', and get the first part (word after "/nrkids/")
-      pathAfterNrKids = pathAfterNrKids.split('/')[0];
-    }
-
-    if (pathAfterNrKids === 'my-profile') {
+    if (extractedPath === '/my-profile') {
       setActiveLink(0);
-    } else if (pathAfterNrKids === 'wishlist') {
+    } else if (extractedPath === '/wishlist') {
       setActiveLink(1);
-    } else if (pathAfterNrKids === 'your-bag') {
+    } else if (extractedPath === '/your-bag') {
       setActiveLink(2);
-    } else if (pathAfterNrKids === 'login') {
+    } else if (extractedPath === '/login') {
       setActiveLink(0);
     } else {
       setActiveLink(3);
     }
-  }, [window.location.pathname]);
+  });
+
+  const handleChangeIcon = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className={`nav__section_2 ${isAtFooter ? 'hidden' : 'visible'}`}>
@@ -83,9 +86,12 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
             <div className="dropdownn">
               <NavLink to={`/my-profile/${user._id}`} onClick={closeNavbar}>
                 {activeLink === 0 ? (
-                  <FaUser className="nav__icon" />
+                  <FaUser className="nav__icon" onClick={handleChangeIcon} />
                 ) : (
-                  <AiOutlineUser className="nav__icon" />
+                  <AiOutlineUser
+                    className="nav__icon"
+                    onClick={handleChangeIcon}
+                  />
                 )}
               </NavLink>
               <ul className="user__profile">
@@ -103,9 +109,9 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
               </ul>
             </div>
           ) : activeLink === 0 ? (
-            <FaUser className="nav__icon" />
+            <FaUser className="nav__icon" onClick={handleChangeIcon} />
           ) : (
-            <AiOutlineUser className="nav__icon" />
+            <AiOutlineUser className="nav__icon" onClick={handleChangeIcon} />
           )}
         </div>
         <div className="navbar__logo" onClick={closeNavbar}>
@@ -128,48 +134,19 @@ const NavbarIcons = ({ isActive, changeNavbar, changeToggle }) => {
         <div className="mobile__nav_boxes d-flex gap-2">
           <Link className="nav-bar-icons" to="/wishlist" onClick={closeNavbar}>
             {activeLink === 1 ? (
-              <FaHeart
-                className="nav__icon"
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                }}
-              />
+              <FaHeart className="nav__icon" onClick={handleChangeIcon} />
             ) : (
               <AiOutlineHeart
                 className="nav__icon"
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                }}
+                onClick={handleChangeIcon}
               />
             )}
           </Link>
           <Link className="nav-bar-icons" to="/your-bag" onClick={closeNavbar}>
             {activeLink === 2 ? (
-              <BsHandbagFill
-                className="nav__icon"
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                }}
-              />
+              <BsBagFill className="nav__icon" onClick={handleChangeIcon} />
             ) : (
-              <BsHandbag
-                className="nav__icon"
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                }}
-              />
+              <BsHandbag className="nav__icon" onClick={handleChangeIcon} />
             )}
           </Link>
         </div>

@@ -76,8 +76,6 @@ const ConfirmOrder = ({ cartItems, address, totalPrice }) => {
       top: 0,
       behavior: 'smooth',
     });
-
-    alert('Order Confirmation mechanism is in process');
   };
 
   return (

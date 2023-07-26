@@ -35,7 +35,6 @@
   border: none;
   color: rgb(241, 241, 241);
   cursor: pointer;
-  font-weight: 600;
   z-index: 2;
 }
 
@@ -43,7 +42,9 @@
   background-color: var(--bs-third-color);
   transition-duration: .2s;
 }
-
+.acceptButton svg{
+  font-size: 24px;
+}
 .logo__container{
   width: 10rem;
   border-radius: 6px;
