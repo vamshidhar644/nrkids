@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <b>Abount & Policy</b>
+            <b>Policy</b>
             <hr />
             <div className="Footer-links">
               <Link to={`nr-kids/return-policy`} onClick={handleClick}>

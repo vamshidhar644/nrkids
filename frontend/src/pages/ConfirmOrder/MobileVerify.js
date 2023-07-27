@@ -65,16 +65,16 @@ const MobileVerify = ({ number, ConfirmOrder }) => {
   const onSubmitOTP = (e) => {
     e.preventDefault();
     const code = otp;
-    // console.log(code);
+    console.log(code);
     window.confirmationResult
       .confirm(code)
       .then((result) => {
         ConfirmOrder();
       })
       .catch((error) => {
-        setOpen(false);
+        // setOpen(false);
         console.log(error);
-        toast.error('OTP is not correct', {
+        toast.error('OTP not matched', {
           position: 'bottom-center',
           autoClose: 2000, // 2 seconds
           hideProgressBar: false,
@@ -88,25 +88,23 @@ const MobileVerify = ({ number, ConfirmOrder }) => {
   return (
     <form className="d-flex flex-column">
       <div id="sign-in-button" />
-      <div className="d-flex align-items-start justify-content-between m-0 gap-2">
-        {openOTP ? (
-          <div className="verify__otp">
-            <input
-              type="text"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              placeholder="OTP"
-            />
-            <div className="confirm_order__button" onClick={onSubmitOTP}>
-              Confirm Order
-            </div>
-          </div>
-        ) : (
-          <div className="confirm_order__button" onClick={onSignInSubmit}>
-            Generate OTP
-          </div>
-        )}
-      </div>
+      {openOTP ? (
+        <div className="verify__otp">
+          <input
+            type="number"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+            placeholder="OTP"
+          />
+          <button className="confirm_order__button" onClick={onSubmitOTP}>
+            Place Order
+          </button>
+        </div>
+      ) : (
+        <div className="confirm_order__button" onClick={onSignInSubmit}>
+          Generate OTP to {number}
+        </div>
+      )}
     </form>
   );
 };

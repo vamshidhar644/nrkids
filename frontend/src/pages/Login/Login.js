@@ -99,15 +99,13 @@ const Login = ({ isOpen }) => {
           </p>
 
           <div className="w-100 d-flex justify-content-end">
-            <button onClick={handleGoogle} className="acceptButton">
-              {isLoading === null ? (
-                <>
-                  Continue with <FcGoogle />
-                </>
-              ) : (
-                'Loading...'
-              )}
-            </button>
+            {isLoading === null ? (
+              <button onClick={handleGoogle} className="acceptButton">
+                Continue with <FcGoogle />
+              </button>
+            ) : (
+              <p>Loading . . .</p>
+            )}
           </div>
           <div onClick={handleClosePopup} className="login__close">
             <AiOutlineClose />

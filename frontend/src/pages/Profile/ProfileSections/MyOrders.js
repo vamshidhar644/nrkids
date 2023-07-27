@@ -5,10 +5,20 @@ import { FetchSanity } from '../../../helpers/FetchSanity';
 import FetchImageUrl from '../../../helpers/FetchImageUrl';
 import FilterSanity from '../../../helpers/FilterSanity';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PayButton = ({ orderdata }) => {
   const handlePayment = () => {
-    
+    toast.error('Payment Process is in Construction, Please contact Seller', {
+      position: 'bottom-center',
+      autoClose: 3000, // 3 seconds
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   return (
     <p
@@ -71,9 +81,9 @@ const AccordionItem = ({ orderdata, isOpen, onClick }) => {
   return (
     <div
       className={`accordion-item ${isOpen ? 'open' : ''} `}
-      onClick={onClick}
+      // onClick={onClick}
     >
-      <div className="accordion-title">
+      <div className="accordion-title" onClick={onClick}>
         <p className="m-0 small">order ID - {orderdata._id}</p>
         <p className="m-0">
           {orderdata.status === 'Yet to confirm'
