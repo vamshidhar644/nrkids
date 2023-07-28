@@ -8,7 +8,7 @@ import ProductPage from './pages/Product/ProductPage';
 import Wishlist from './pages/Wishlist/Wishlist';
 import Bag from './pages/Bag/Bag';
 import Footer from './pages/Footer/Footer';
-import Nextpage from './pages/Footer/NextPage/Nextpage';
+import Next from './pages/Footer/NextPage/Next';
 import Navbar from './pages/Navigation/Navbar';
 import Login from './pages/Login/Login';
 import ProfileBody from './pages/Profile/ProfileBody';
@@ -63,7 +63,7 @@ function App() {
           element={<ProductPage Products={Products} />}
         />
 
-        <Route path="nr-kids/:nextpage" element={<Nextpage />} />
+        <Route path="nrkids/:nextpage" element={<Next />} />
 
         <Route
           path="/my-profile/:id"

@@ -53,11 +53,15 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
   };
 
   return (
-    <form action="" className="new__address d-flex flex-column gap-3 w-100">
+    <form
+      action=""
+      className="new__address d-flex flex-column gap-3 w-100"
+      onSubmit={handleAddress}
+    >
       <input
         type="text"
         placeholder="Full name"
-        required="required"
+        required
         value={fullname}
         onChange={(e) => setFullname(e.target.value)}
       />
@@ -72,7 +76,7 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
       <input
         placeholder="Email"
         className="h-2"
-        required="required"
+        required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -80,7 +84,7 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
       <textarea
         placeholder="Address"
         className="w-100 m-0"
-        required="required"
+        required
         value={fullAddress}
         rows="4"
         cols="18"
@@ -91,14 +95,14 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
         <input
           type="text"
           placeholder="Landmark"
-          required="required"
+          required
           value={landmark}
           onChange={(e) => setLandmark(e.target.value)}
         />
         <input
           type="text"
           placeholder="Pincode"
-          required="required"
+          required
           value={pincode}
           onChange={(e) => setPincode(e.target.value)}
         />
@@ -106,12 +110,12 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
       <input
         type="text"
         placeholder="State"
-        required="required"
+        required
         value={state}
         onChange={(e) => setState(e.target.value)}
       />
 
-      <button className="add_address__button w-100" onClick={handleAddress}>
+      <button className="add_address__button w-100">
         {aId ? 'Update' : 'Add'}
       </button>
     </form>

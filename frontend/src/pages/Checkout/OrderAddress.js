@@ -5,6 +5,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 import AddressForm from '../Profile/ProfileSections/AddressForm';
 import ConfirmOrder from '../ConfirmOrder/ConfirmOrder';
+import Loader from '../../Components/Loader/Loader';
 
 const OrderAddress = ({ cartItems, data, totalPrice }) => {
   const { fetchAddressData, address } = FetchMongo();
@@ -31,7 +32,7 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
     <div className="checkout__address">
       <div>
         <div className="saved__Address">
-          {address &&
+          {address ? (
             address.map((address, i) => {
               return (
                 <div className="address__card" key={i}>
@@ -48,7 +49,10 @@ const OrderAddress = ({ cartItems, data, totalPrice }) => {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <Loader />
+          )}
           {openConfirm && (
             <div className="popup">
               <div className="popup-content confirm__order position-relative">

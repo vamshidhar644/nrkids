@@ -5,6 +5,7 @@
   "homepage": "http://vamshidhar644.github.io/nrkids/",
   "private": true,
   "dependencies": {
+    "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^6.1.1",
     "@sanity/image-url": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.5",

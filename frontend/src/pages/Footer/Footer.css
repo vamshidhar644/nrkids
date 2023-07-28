@@ -51,6 +51,7 @@ footer{
     justify-content: flex-end;
     align-items: center;
     padding: 12px 0px;
+    gap: 12px;
 }
 
 .social-icon{
@@ -127,4 +128,5 @@ footer{
         justify-content: space-around;
         font-size: 14px;
     }
+    
 }

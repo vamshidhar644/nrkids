@@ -11,9 +11,10 @@ import ItemDetails from './ItemDetails';
 import Checkout from './Checkout';
 import { PostMongo } from '../../helpers/PostMongo';
 import { FetchMongo } from '../../helpers/FetchMongo';
+import Loader from '../../Components/Loader/Loader';
 
 const Bag = ({ Products }) => {
-  document.title = 'NRKids | Bag'
+  document.title = 'NRKids | Bag';
   const { filtersanity, filteredItems } = FilterSanity();
   const { fetchcartData, cartItems } = FetchMongo();
   const { deleteCartItem } = PostMongo();
@@ -105,7 +106,7 @@ const Bag = ({ Products }) => {
             </div>
           )
         ) : (
-          <>loading</>
+          <Loader />
         )}
       </div>
     </div>

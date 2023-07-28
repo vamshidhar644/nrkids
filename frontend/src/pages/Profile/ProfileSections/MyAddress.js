@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import AddressForm from './AddressForm';
 import { FetchMongo } from '../../../helpers/FetchMongo';
 import { PostMongo } from '../../../helpers/PostMongo';
+import Loader from '../../../Components/Loader/Loader';
 
 const MyAddress = () => {
   const [editData, setEditData] = useState();
@@ -82,7 +83,7 @@ const MyAddress = () => {
           })}
         </div>
       ) : (
-        <>Loading...</>
+        <Loader />
       )}
       {showForm ? (
         <div className="popup">

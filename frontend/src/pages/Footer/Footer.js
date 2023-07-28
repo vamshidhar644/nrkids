@@ -32,26 +32,20 @@ const Footer = () => {
 
         <div className="box box2">
           <div>
-            <b>About</b>
+            <b>Customer Policy</b>
             <hr />
             <div className="Footer-links">
-              <Link to={`nr-kids/contact-us`} onClick={handleClick}>
-                Contact Us
-              </Link>
-              <Link to={`nr-kids/about-us`} onClick={handleClick}>
-                About Us
-              </Link>
-            </div>
-          </div>
-          <div>
-            <b>Policy</b>
-            <hr />
-            <div className="Footer-links">
-              <Link to={`nr-kids/return-policy`} onClick={handleClick}>
+              <Link to={`nrkids/return-policy`} onClick={handleClick}>
                 Return Policy
               </Link>
-              <Link to={`nr-kids/Terms-and-conditions`} onClick={handleClick}>
+              <Link
+                to={`nrkids/${'terms-and-conditions'}`}
+                onClick={handleClick}
+              >
                 Terms & Condition
+              </Link>
+              <Link to={`nrkids/cancellation`} onClick={handleClick}>
+                Cancellation
               </Link>
             </div>
           </div>
@@ -62,20 +56,35 @@ const Footer = () => {
         <div className="box box3">
           <div className="d-flex justify-content-end">
             <div className="footer__logo">
-              <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
+              <Link
+                to="/"
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
+                }}
+              >
+                <img src={process.env.PUBLIC_URL + '/Assets/logo.png'} alt="" />
+              </Link>
             </div>
           </div>
           <div>
             <div className="social-icons">
-              <Link>
+              <a
+                href="https://www.instagram.com/nischalareddykids/?igshid=MmIzYWVlNDQ5Yg%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <AiFillInstagram className="social-icon" />
-              </Link>
-              <Link>
+              </a>
+              <a
+                href="https://www.facebook.com/nischalareddykids?mibextid=ZbWKwL"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FaFacebookF className="social-icon" />
-              </Link>
-              <Link>
-                <AiOutlineTwitter className="social-icon" />
-              </Link>
+              </a>
             </div>
             <div>
               <p className="footer__address d-flex justify-content-end align-items-center gap-1">

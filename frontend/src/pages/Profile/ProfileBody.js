@@ -45,7 +45,7 @@ const ProfileBody = () => {
     }
   }, [location.search]);
 
-  return userData ? (
+  return (
     <div className="profile-main-container">
       <div className="p-4">
         <div>
@@ -72,7 +72,7 @@ const ProfileBody = () => {
             <Logout />
           </div>
         </div>
-        <div className="profile__body d-flex gap-4">
+        <div className="profile__body position-relative d-flex gap-4">
           <div className="profile_section__list">
             <ul className="list-unstyled d-flex gap-2 justify-content-between">
               {profileList.map((item, i) => {
@@ -106,8 +106,6 @@ const ProfileBody = () => {
         </div>
       </div>
     </div>
-  ) : (
-    <>Loading...</>
   );
 };
 

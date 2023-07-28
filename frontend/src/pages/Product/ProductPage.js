@@ -46,15 +46,21 @@ const ProductPage = ({ Products }) => {
     return (
       <div className="d-flex flex-column gap-5 p-4">
         <MainProduct Product={data} />
-        <div className="New-Arrivals may_like">
-          <h3>You may also like</h3>
-          <div className="Cards-Container overflow-x-auto">
-            {relatedProducts &&
-              relatedProducts.map((item, i) => {
-                return <DoubleProduct item={item} key={i} />;
+
+        {relatedProducts && (
+          <>
+            <h3>You may also like</h3>
+            <div className="New-Arrivals may_like">
+              {relatedProducts.map((item, i) => {
+                return (
+                  <div className="Cards-Container overflow-x-auto">
+                    <DoubleProduct item={item} key={i} />
+                  </div>
+                );
               })}
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
     );
   }

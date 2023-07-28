@@ -6,6 +6,7 @@ import { BiChevronRight } from 'react-icons/bi';
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import FilterSanity from '../../helpers/FilterSanity';
 import { FetchMongo } from '../../helpers/FetchMongo';
+import Loader from '../../Components/Loader/Loader';
 
 const Wishlist = ({ Products }) => {
   const { filtersanity, filteredItems } = FilterSanity();
@@ -45,7 +46,7 @@ const Wishlist = ({ Products }) => {
             )}
           </>
         ) : (
-          <>loading</>
+          <Loader />
         )}
       </div>
     </div>

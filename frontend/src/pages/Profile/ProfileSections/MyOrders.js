@@ -7,6 +7,7 @@ import FilterSanity from '../../../helpers/FilterSanity';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../../../Components/Loader/Loader';
 
 const PayButton = ({ orderdata }) => {
   const handlePayment = () => {
@@ -39,7 +40,9 @@ const PayButton = ({ orderdata }) => {
       {orderdata.status === 'Yet to confirm' ? (
         'Pay after confirmed'
       ) : orderdata.status === 'Confirm Order' ? (
-        <span onClick={() => handlePayment()}>Pay Now!</span>
+        <span onClick={() => handlePayment()} className="d-flex justify-content-center w-100">
+          Pay Now!
+        </span>
       ) : orderdata.status === 'Reject Order' ? (
         'Cancelled'
       ) : orderdata.status === 'Delivered' ? (
@@ -216,7 +219,7 @@ const Accordion = () => {
       ))}
     </div>
   ) : (
-    <>Loading...</>
+    <Loader />
   );
 };
 
