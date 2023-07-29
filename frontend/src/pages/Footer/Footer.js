@@ -20,13 +20,27 @@ const Footer = () => {
           <b>Shop by Category</b>
           <hr />
           <div className="Footer-links">
-            <Link to="/birthday">First Birthday</Link>
-            <Link to="/new-arrivals">New Arrivals</Link>
-            <Link to="/ethnic-wear">Ethnic Wear</Link>
-            <Link to="/party-wear">Party Wear</Link>
-            <Link to="/mom-and-me">Mom & me</Link>
-            <Link to="/casual-wear">Casual wear</Link>
-            <Link to="/siblings-set">Siblings set</Link>
+            <Link onClick={handleClick} to="/birthday">
+              Birthday
+            </Link>
+            <Link onClick={handleClick} to="/new-arrivals">
+              New Arrivals
+            </Link>
+            <Link onClick={handleClick} to="/ethnic-wear">
+              Ethnic Wear
+            </Link>
+            <Link onClick={handleClick} to="/party-wear">
+              Party Wear
+            </Link>
+            <Link onClick={handleClick} to="/mom-and-me">
+              Mom & me
+            </Link>
+            <Link onClick={handleClick} to="/casual-wear">
+              Casual wear
+            </Link>
+            <Link onClick={handleClick} to="/siblings-set">
+              Siblings set
+            </Link>
           </div>
         </div>
 

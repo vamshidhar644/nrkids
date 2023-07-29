@@ -19,7 +19,7 @@ const MyAddress = () => {
     } else {
       setCount(2);
     }
-  }, [renderCount]);
+  }, [renderCount, showForm]);
 
   const handleDelete = async (index) => {
     const addressId = address[index]._id;

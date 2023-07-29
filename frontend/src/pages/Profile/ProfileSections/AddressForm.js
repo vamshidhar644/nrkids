@@ -39,6 +39,7 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
 
   const handleAddress = async (e) => {
     e.preventDefault();
+
     await updateAddress(
       aId,
       fullname,
@@ -71,6 +72,7 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
         className="w-100"
         value={mobile}
         defaultCountry="IN"
+        required={true}
         onChange={setMobile}
       />
       <input
@@ -100,7 +102,7 @@ const AddressForm = forwardRef(({ editData, onDataChange }, ref) => {
           onChange={(e) => setLandmark(e.target.value)}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Pincode"
           required
           value={pincode}

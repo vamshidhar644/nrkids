@@ -20,7 +20,7 @@
     overflow: hidden;
   }
 
-  .accordion-item ol, .accordion-item p{
+  .accordion__terms .accordion-item ol, .accordion__terms .accordion-item p{
     padding: 0px 3rem;
   }
   
@@ -51,7 +51,7 @@
     width: 92%;
   }
   
-  .accordion-item ol, .accordion-item p{
+  .accordion__terms .accordion-item ol, .accordion__terms .accordion-item p{
     padding: 0px 1.2rem;
   }
   

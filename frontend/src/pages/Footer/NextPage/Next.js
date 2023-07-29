@@ -9,7 +9,15 @@ const Next = () => {
 
   const nextpage = useParams();
 
-  console.log(nextpage);
+  // console.log(nextpage);
+
+  if (nextpage.nextpage === 'terms-and-conditions') {
+    document.title = 'NRKids | T&C';
+  } else if (nextpage.nextpage === 'cancellation') {
+    document.title = 'NRKids | Cancellation';
+  } else if (nextpage.nextpage === 'return-policy') {
+    document.title = 'NRKids | Return Policy';
+  }
 
   useEffect(() => {
     client.fetch(`*[_type == "${nextpage.nextpage}"]`).then((data) => {

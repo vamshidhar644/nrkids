@@ -11,7 +11,6 @@ const PersonalInfo = ({ userData }) => {
   const inputRef = useRef();
   const compressedImageRef = useRef();
 
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setMobilenumber] = useState('');

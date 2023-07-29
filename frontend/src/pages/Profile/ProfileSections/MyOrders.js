@@ -40,7 +40,10 @@ const PayButton = ({ orderdata }) => {
       {orderdata.status === 'Yet to confirm' ? (
         'Pay after confirmed'
       ) : orderdata.status === 'Confirm Order' ? (
-        <span onClick={() => handlePayment()} className="d-flex justify-content-center w-100">
+        <span
+          onClick={() => handlePayment()}
+          className="d-flex justify-content-center w-100"
+        >
           Pay Now!
         </span>
       ) : orderdata.status === 'Reject Order' ? (
@@ -48,7 +51,7 @@ const PayButton = ({ orderdata }) => {
       ) : orderdata.status === 'Delivered' ? (
         'Delivered'
       ) : orderdata.status === 'Paid' ? (
-        'Paid'
+        'Seller is processing your Order'
       ) : (
         ''
       )}
