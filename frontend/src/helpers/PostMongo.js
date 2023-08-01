@@ -10,7 +10,7 @@ export const PostMongo = () => {
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   // const BACKEND_URL = 'http://localhost:4000';
-  
+
   //  I M A G E  C O M P R E S S . . . . .
   const handleCompress = (inputRef, compressedImageRef) => {
     const inputImage = inputRef.current;
@@ -48,6 +48,16 @@ export const PostMongo = () => {
     };
   };
 
+  const TOAST_CONFIG = {
+    position: 'bottom-center',
+    autoClose: 2000, // 2 seconds
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  };
+
   //  U S E R D A T A . . . . . . .
   const updateUserData = async (
     firstName,
@@ -73,26 +83,10 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 2000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Your details are updated', {
-        position: 'bottom-center',
-        autoClose: 2000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Your details are updated', TOAST_CONFIG);
     }
   };
 
@@ -108,26 +102,10 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Cart Updated', {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Cart Updated', TOAST_CONFIG);
     }
   };
 
@@ -217,26 +195,10 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Address Updated', {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Address Updated', TOAST_CONFIG);
     }
   };
 
@@ -254,26 +216,10 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Address Deleted', {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Address Deleted', TOAST_CONFIG);
     }
   };
 
@@ -295,26 +241,10 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Added to wishlist', {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Added to wishlist', TOAST_CONFIG);
     }
   };
 
@@ -334,26 +264,10 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Deleted from wishlist', {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Deleted from wishlist', TOAST_CONFIG);
     }
   };
 
@@ -369,28 +283,14 @@ export const PostMongo = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      toast.error(`${json.error}`, {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(`${json.error}`, TOAST_CONFIG);
     }
     if (response.ok) {
-      toast.success('Hurray! Your Order is Placed', {
-        position: 'bottom-center',
-        autoClose: 1000, // 2 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.success('Hurray! Your Order is Placed', TOAST_CONFIG);
     }
   };
+
+  const payment = async () => {};
 
   return {
     updateUserData,
@@ -403,5 +303,6 @@ export const PostMongo = () => {
     updateWishlist,
     deleteWishlist,
     addOrder,
+    payment,
   };
 };

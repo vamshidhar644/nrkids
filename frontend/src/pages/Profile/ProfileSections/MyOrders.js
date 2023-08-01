@@ -5,59 +5,9 @@ import { FetchSanity } from '../../../helpers/FetchSanity';
 import FetchImageUrl from '../../../helpers/FetchImageUrl';
 import FilterSanity from '../../../helpers/FilterSanity';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Loader from '../../../Components/Loader/Loader';
 
-const PayButton = ({ orderdata }) => {
-  const handlePayment = () => {
-    toast.error('Payment Process is in Construction, Please contact Seller', {
-      position: 'bottom-center',
-      autoClose: 3000, // 3 seconds
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-  return (
-    <p
-      className={`pay__button ${
-        orderdata.status === 'Yet to confirm'
-          ? 'bg-warning'
-          : orderdata.status === 'Confirm Order'
-          ? 'bg-primary'
-          : orderdata.status === 'Reject Order'
-          ? 'bg-danger'
-          : orderdata.status === 'Delivered'
-          ? 'bg-success'
-          : orderdata.status === 'Paid'
-          ? 'bg-info'
-          : ''
-      }`}
-    >
-      {orderdata.status === 'Yet to confirm' ? (
-        'Pay after confirmed'
-      ) : orderdata.status === 'Confirm Order' ? (
-        <span
-          onClick={() => handlePayment()}
-          className="d-flex justify-content-center w-100"
-        >
-          Pay Now!
-        </span>
-      ) : orderdata.status === 'Reject Order' ? (
-        'Cancelled'
-      ) : orderdata.status === 'Delivered' ? (
-        'Delivered'
-      ) : orderdata.status === 'Paid' ? (
-        'Seller is processing your Order'
-      ) : (
-        ''
-      )}
-    </p>
-  );
-};
+import Loader from '../../../Components/Loader/Loader';
+import PayButton from '../Payment/PayButton';
 
 const AccordionItem = ({ orderdata, isOpen, onClick }) => {
   const dateStr = orderdata.orderedDate;

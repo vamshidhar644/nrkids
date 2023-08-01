@@ -53,8 +53,8 @@ const ProductPage = ({ Products }) => {
             <div className="New-Arrivals may_like">
               {relatedProducts.map((item, i) => {
                 return (
-                  <div className="Cards-Container overflow-x-auto">
-                    <DoubleProduct item={item} key={i} />
+                  <div className="Cards-Container overflow-x-auto" key={i}>
+                    <DoubleProduct item={item} />
                   </div>
                 );
               })}
